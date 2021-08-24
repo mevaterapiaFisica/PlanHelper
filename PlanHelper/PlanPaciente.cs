@@ -73,7 +73,7 @@ namespace PlanHelper
         public override string ToString()
         {
             string nfx;
-            if (NumeroFracciones!=null)
+            if (NumeroFracciones != null)
             {
                 nfx = NumeroFracciones.ToString();
             }
@@ -105,12 +105,21 @@ namespace PlanHelper
 
         public bool EstaraEnEquipo(Equipo equipo, double Dias)
         {
-            if (Dias==0)
+            if (Dias == 0)
             {
                 return false;
             }
-            int? diasHastaInicio = equipo.Parametros.Where(p => p.StatusInicial == this.Status && p.Modalidad == this.Modalidad).First().Dias;
-            if (diasHastaInicio!=null && ConsultasDB.AddBusinessDays(this.FechaStatus,Convert.ToDouble(diasHastaInicio))<ConsultasDB.AddBusinessDays(DateTime.Today,Dias) && ConsultasDB.AddBusinessDays(this.FechaStatus,Convert.ToDouble(diasHastaInicio + this.NumeroFracciones)) > ConsultasDB.AddBusinessDays(DateTime.Today,Dias))
+            int? diasHastaInicio = 0;
+            if (equipo.Parametros.Any(p => p.StatusInicial == this.Status && p.Modalidad == this.Modalidad))
+            {
+                diasHastaInicio = equipo.Parametros.Where(p => p.StatusInicial == this.Status && p.Modalidad == this.Modalidad).First().Dias;
+            }
+            else
+            {
+                diasHastaInicio = Convert.ToInt32(equipo.Parametros.Select(p => p.Dias).Average());
+            }
+
+            if (diasHastaInicio != null && ConsultasDB.AddBusinessDays(this.FechaStatus, Convert.ToDouble(diasHastaInicio)) < ConsultasDB.AddBusinessDays(DateTime.Today, Dias) && ConsultasDB.AddBusinessDays(this.FechaStatus, Convert.ToDouble(diasHastaInicio + this.NumeroFracciones)) > ConsultasDB.AddBusinessDays(DateTime.Today, Dias))
             {
                 return true;
             }
