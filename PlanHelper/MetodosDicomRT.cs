@@ -9,6 +9,31 @@ namespace PlanHelper
 {
     public static class MetodosDicomRT
     {
+        public static int numeroDeTratamientos(string carpetaPaciente)
+        {
+            if (carpetaPaciente != null)
+            {
+                List<string> carpetas = Directory.GetDirectories(carpetaPaciente).ToList();
+                if (carpetas.Count == 1 && carpetas.First().ToUpper().Contains("BA"))
+                {
+                    return 1;
+                }
+                else if (carpetas.Count > 1)// && !carpetas.Any(c => c.ToUpper().Contains("BA"))) //Tiene carpetas de cada tto
+                {
+                    int numTtos = 0;
+                    foreach (string carpeta in carpetas)
+                    {
+                        List<string> subCarpetas = Directory.GetDirectories(carpeta).ToList();
+                        if (subCarpetas.Any(c => c.ToUpper().Contains("BA")))
+                        {
+                            numTtos++;
+                        }
+                    }
+                    return numTtos;
+                }
+            }
+            return 0;
+        }
         public static string CarpetaBackup(string path)
         {
             List<string> carpetas = Directory.GetDirectories(path).ToList();
@@ -24,7 +49,6 @@ namespace PlanHelper
                     DateTime fechaUltimaApl = DateTime.MinValue;
                     foreach (string carpetaParent in carpetas)
                     {
-
                         string carpeta = CarpetaBackup(carpetaParent);
                         if (carpeta != null)
                         {
@@ -99,7 +123,7 @@ namespace PlanHelper
                             fracciones.Add((int)fx);
                         }
                     }
-                    if (TratamientosSimultaneos(carpetaPaciente)>1)
+                    if (TratamientosSimultaneos(carpetaPaciente) > 1)
                     {
                         return fracciones.First();
                     }
@@ -125,10 +149,6 @@ namespace PlanHelper
                         string carpetaBackup = CarpetaBackup(carpeta);
                         if (carpetaBackup != null && Directory.GetFiles(carpetaBackup).Where(f => f.Contains("BeamRecord")).ToList().Count > 0)
                         {
-                            if (carpeta.Contains("po3"))
-                            {
-
-                            }
                             DateTime ultimaApFecha = new DirectoryInfo(carpetaBackup).GetFileSystemInfos().Where(f => f.Name.Contains("BeamRecord")).OrderBy(f => f.LastWriteTime.Date).Last().LastWriteTime.Date;
                             ultimaAplicacionFechas.Add(ultimaApFecha);
                         }
@@ -144,44 +164,99 @@ namespace PlanHelper
             return 0;
         }
 
+
+        public static bool PlanPacienteSigueEnEquipoDia(Equipo equipo, double Dias, string carpetaPaciente, List<string> pacientesEstancados)
+        {
+            string aux = carpetaPaciente.Split(Path.DirectorySeparatorChar).Last();
+            if (Char.IsLetter(aux.FirstOrDefault()) || (aux.Length < 4 || !aux.Substring(0, 4).Contains(" - ")))
+            {
+                string carpetaBackup = CarpetaBackup(carpetaPaciente);
+                if (carpetaBackup != null && Directory.GetFiles(carpetaBackup).Where(f => f.Contains("BeamRecord")).ToList().Count > 0 && equipo.ID == EquipoPlan(carpetaPaciente))
+                {
+                    var archivos = new DirectoryInfo(carpetaBackup).GetFileSystemInfos().Where(f => f.Name.Contains("BeamRecord")).OrderBy(f => f.LastWriteTime);
+                    FileSystemInfo fileSystemInfo = archivos.Last();
+                    PlanPaciente planPaciente = ExtraerDeDCM(carpetaPaciente);
+                    int? numeroDeFraccionesAplicadas = ultimaFraccion(carpetaPaciente);
+                    DateTime ultimaFecha = fileSystemInfo.LastWriteTime;
+                    if (numeroDeFraccionesAplicadas + Dias < planPaciente.NumeroFracciones && (DateTime.Today - ultimaFecha).Days < 7)
+                    {
+                        return true;
+                    }
+                    else if (Dias == 0 && (DateTime.Today - ultimaFecha).Days >= 7 && numeroDeFraccionesAplicadas != null && numeroDeFraccionesAplicadas < planPaciente.NumeroFracciones && planPaciente.EquipoID == equipo.ID)
+                    {
+                        if (numeroDeFraccionesAplicadas < 3)
+                        {
+                            planPaciente.BeamRecordOverride = BuscarOverride(carpetaBackup);
+                        }
+                        pacientesEstancados.Add(planPaciente.PacienteID + ";" + planPaciente.PacienteNombre + ";" + planPaciente.EquipoID + ";" + planPaciente.PlanID + ";" + ultimaFecha.ToShortDateString() + ";" + planPaciente.BeamRecordOverride.ToString());
+                    }
+                }
+            }
+            return false;
+        }
+
         public static List<string> PacientesSiguenEnEquipoDia(Equipo equipo, double Dias)
         {
             List<string> pacientes = new List<string>();
             List<string> pacientesEstancados = new List<string>();
             //var carpetas = Directory.GetDirectories(@"\\Fisica0\dicom rt").ToList();
             var carpetas = CarpetasPacientes(equipo);
+
             foreach (string carpeta in carpetas)
             {
-                string aux = carpeta.Split(Path.DirectorySeparatorChar).Last();
-                if (Char.IsLetter(aux.FirstOrDefault()))
+                if (carpeta.ToLower().Contains("marasco"))
                 {
-                    string carpetaBackup = CarpetaBackup(carpeta);
-                    if (carpetaBackup != null && Directory.GetFiles(carpetaBackup).Where(f => f.Contains("BeamRecord")).ToList().Count > 0)
+
+                }
+                int numTtos = numeroDeTratamientos(carpeta);
+                if (numTtos == 1)
+                {
+                    if (PlanPacienteSigueEnEquipoDia(equipo, Dias, carpeta, pacientesEstancados))
                     {
-                        var archivos = new DirectoryInfo(carpetaBackup).GetFileSystemInfos().Where(f => f.Name.Contains("BeamRecord")).OrderBy(f => f.LastWriteTime);
-                        FileSystemInfo fileSystemInfo = archivos.Last();
-                        PlanPaciente planPaciente = ExtraerDeDCM(carpeta);
-                        int? numeroDeFraccionesAplicadas = ultimaFraccion(carpeta);
-                        DateTime ultimaFecha = fileSystemInfo.LastWriteTime;
-                        if (numeroDeFraccionesAplicadas + Dias < planPaciente.NumeroFracciones && (DateTime.Today - ultimaFecha).Days < 7)
+                        pacientes.Add(ExtraerDeDCM(carpeta).ToString());
+                    }
+                }
+                else if (numTtos > 1)
+                {
+                    string[] subcarpetas = Directory.GetDirectories(carpeta);
+                    foreach (string subcarpeta in subcarpetas)
+                    {
+                        if (PlanPacienteSigueEnEquipoDia(equipo, Dias, subcarpeta, pacientesEstancados))
                         {
-                            int tratamientosSimultaneos = TratamientosSimultaneos(carpeta);
-                            for (int i=0;i< tratamientosSimultaneos; i++)
-                            {
-                                pacientes.Add(planPaciente.ToString());
-                            }
-                            
-                        }
-                        else if (Dias == 0 && (DateTime.Today - ultimaFecha).Days >= 7 && numeroDeFraccionesAplicadas != null && numeroDeFraccionesAplicadas < planPaciente.NumeroFracciones && planPaciente.EquipoID == equipo.ID)
-                        {
-                            if (numeroDeFraccionesAplicadas < 3)
-                            {
-                                planPaciente.BeamRecordOverride = BuscarOverride(carpetaBackup);
-                            }
-                            pacientesEstancados.Add(planPaciente.PacienteID + ";" + planPaciente.PacienteNombre + ";" + planPaciente.EquipoID + ";" + planPaciente.PlanID + ";" + ultimaFecha.ToShortDateString() + ";" + planPaciente.BeamRecordOverride.ToString());
+                            pacientes.Add(ExtraerDeDCM(subcarpeta).ToString());
                         }
                     }
                 }
+                /*                string aux = carpeta.Split(Path.DirectorySeparatorChar).Last();
+                                if (Char.IsLetter(aux.FirstOrDefault()))
+                                {
+                                    string carpetaBackup = CarpetaBackup(carpeta);
+                                    if (carpetaBackup != null && Directory.GetFiles(carpetaBackup).Where(f => f.Contains("BeamRecord")).ToList().Count > 0)
+                                    {
+                                        var archivos = new DirectoryInfo(carpetaBackup).GetFileSystemInfos().Where(f => f.Name.Contains("BeamRecord")).OrderBy(f => f.LastWriteTime);
+                                        FileSystemInfo fileSystemInfo = archivos.Last();
+                                        PlanPaciente planPaciente = ExtraerDeDCM(carpeta);
+                                        int? numeroDeFraccionesAplicadas = ultimaFraccion(carpeta);
+                                        DateTime ultimaFecha = fileSystemInfo.LastWriteTime;
+                                        if (numeroDeFraccionesAplicadas + Dias < planPaciente.NumeroFracciones && (DateTime.Today - ultimaFecha).Days < 7)
+                                        {
+                                            int tratamientosSimultaneos = TratamientosSimultaneos(carpeta);
+                                            for (int i=0;i< tratamientosSimultaneos; i++)
+                                            {
+                                                pacientes.Add(planPaciente.ToString());
+                                            }
+
+                                        }
+                                        else if (Dias == 0 && (DateTime.Today - ultimaFecha).Days >= 7 && numeroDeFraccionesAplicadas != null && numeroDeFraccionesAplicadas < planPaciente.NumeroFracciones && planPaciente.EquipoID == equipo.ID)
+                                        {
+                                            if (numeroDeFraccionesAplicadas < 3)
+                                            {
+                                                planPaciente.BeamRecordOverride = BuscarOverride(carpetaBackup);
+                                            }
+                                            pacientesEstancados.Add(planPaciente.PacienteID + ";" + planPaciente.PacienteNombre + ";" + planPaciente.EquipoID + ";" + planPaciente.PlanID + ";" + ultimaFecha.ToShortDateString() + ";" + planPaciente.BeamRecordOverride.ToString());
+                                        }
+                                    }
+                                }*/
             }
             if (pacientesEstancados.Count > 0)
             {
@@ -190,6 +265,19 @@ namespace PlanHelper
             return pacientes;
         }
 
+        public static string EquipoPlan(string carpetaPlan)
+        {
+            if (Directory.GetFiles(carpetaPlan).Where(f => f.Contains(".dcm") && !f.Contains("BeamRecord")).Count() > 0)
+            {
+                string dcmPath = Directory.GetFiles(carpetaPlan).Where(f => f.Contains(".dcm") && !f.Contains("BeamRecord")).First();
+                var objeto = EvilDICOM.Core.DICOMObject.Read(dcmPath);
+                return objeto.FindFirst("300A00B2").DData;
+            }
+            else
+            {
+                return "";
+            }
+        }
         public static PlanPaciente ExtraerDeDCM(string carpetaPaciente)
         {
             string _pacienteNombre = "";
@@ -213,7 +301,7 @@ namespace PlanHelper
                     _EquipoID = objeto.FindFirst("300A00B2").DData;
 
                 }
-                else
+                /*else
                 {
                     string[] subcarpetas = Directory.GetDirectories(carpetaPaciente);
                     if (Directory.GetFiles(subcarpetas.First()).Where(f => f.Contains(".dcm") && !f.Contains("BeamRecord")).Count() > 0)
@@ -241,7 +329,7 @@ namespace PlanHelper
                             }
                         }
                     }
-                }
+                }*/
             }
             return new PlanPaciente(_pacienteID, _pacienteNombre, _planID, _numFracciones, _EquipoID);
         }
@@ -250,7 +338,8 @@ namespace PlanHelper
         {
             if (carpetaPaciente != null)
             {
-                if (Directory.GetFiles(carpetaPaciente).Where(f => f.Contains(".dcm") && f.Contains("BeamRecord")).Count() > 0)
+                //if (Directory.GetFiles(carpetaPaciente).Where(f => f.Contains(".dcm") && f.Contains("BeamRecord")).Count() > 0)
+                if (Directory.GetFiles(carpetaPaciente).Where(f => f.Contains("BeamRecord")).Count() > 0)
                 {
                     List<string> BeamRecords = Directory.GetFiles(carpetaPaciente).Where(s => s.Contains("BeamRecord")).ToList();
                     foreach (string BeamRecord in BeamRecords)
@@ -270,9 +359,20 @@ namespace PlanHelper
 
         public static List<string> CarpetasPacientes(Equipo equipo)
         {
-            List<string> pacientes = new List<string>();
             DirectoryInfo directoryInfo = new DirectoryInfo(equipo.RutaDicomRT);
-            return directoryInfo.GetDirectories().Where(d => (DateTime.Today - d.LastWriteTime).Days < 120).Select(d => d.FullName).ToList();
+            List<string> carpetas = directoryInfo.GetDirectories().Where(d => (DateTime.Today - d.LastWriteTime).Days < 120).Select(d => d.FullName).ToList();
+            List<string> carpetasFiltradas = new List<string>();
+            foreach (string carpeta in carpetas)
+            {
+                string aux = carpeta.Split(Path.DirectorySeparatorChar).Last();
+                if (Char.IsLetter(aux.FirstOrDefault()))
+                {
+                    carpetasFiltradas.Add(carpeta);
+                }
+            }
+            return carpetasFiltradas;
+
+
         }
     }
 }

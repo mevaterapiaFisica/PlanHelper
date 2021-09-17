@@ -227,7 +227,7 @@ namespace PlanHelper
                 int TBIs = ConsultasDB.TBIsDia(aria, this, Dias).Count;
                 if (TBIs>0)
                 {
-                    int turnosExtras = (TBIs - 1) * 4;
+                    int turnosExtras = (TBIs - 2) * 4;
                     PacientesEnEquipoDia += turnosExtras;
                 }
             }

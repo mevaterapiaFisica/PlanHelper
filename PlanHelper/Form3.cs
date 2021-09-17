@@ -362,7 +362,8 @@ namespace PlanHelper
 
         private void llenarDGVQAEstancadosEq3()
         {
-            string[] Planes = File.ReadAllLines(Equipo.pathArchivos + "Equipo 3_estancados.txt");
+            List<string> Planes = File.ReadAllLines(Equipo.pathArchivos + "Equipo 3_estancados.txt").ToList();
+            Planes.AddRange(File.ReadAllLines(Equipo.pathArchivos + "Equipo 2_estancados.txt").ToList());
             DGV_QA_PlacasPendientes.Rows.Clear();
             DGV_QA_PlacasPendientes.Columns[5].HeaderText = "Ultima fx";
             DGV_QA_PlacasPendientes.Columns[6].Visible = true;
