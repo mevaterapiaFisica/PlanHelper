@@ -496,7 +496,7 @@ namespace PlanHelper
         {
             if (equipo.EsDicomRT)
             {
-                return MetodosDicomRT.PacientesSiguenEnEquipoDia(equipo, Dias);
+                return MetodosDicomRT.PacientesSiguenEnEquipoDia(equipo, Dias,equipo.planPacientesActualizarFx());
             }
             else
             {
@@ -714,7 +714,7 @@ namespace PlanHelper
         {
             if (equipo.EsDicomRT)
             {
-                return MetodosDicomRT.PacientesSiguenEnEquipoDia(equipo, 0);
+                return MetodosDicomRT.PacientesSiguenEnEquipoDia(equipo, 0,equipo.planPacientesActualizarFx());
             }
             else
             {

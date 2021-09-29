@@ -97,6 +97,19 @@ namespace PlanHelper
             }
         }
 
+        public List<PlanPaciente> planPacientesActualizarFx()
+        {
+            if (File.Exists(pathArchivos + this.Nombre + "_ocupacion290921.txt"))
+            {
+                return PlanPaciente.ExtraerDeArchivo(pathArchivos + this.Nombre + "_ocupacion290921.txt",true);
+            }
+            else
+            {
+                return new List<PlanPaciente>();
+            }
+            
+        }
+
         public static List<Equipo> Equipos()
         {
             return new List<Equipo>()

@@ -505,7 +505,7 @@ namespace PlanHelper
                 {
                     if (row.Cells[0].Value != null && (bool)row.Cells[0].Value == true)
                     {
-                        Sacar.Add(row.Cells[1].Value + ";" + row.Cells[2].Value + ";" + row.Cells[3].Value + ";" + row.Cells[4].Value + ";" + row.Cells[5].Value);
+                        Sacar.Add(row.Cells[1].Value + ";" + row.Cells[2].Value + ";" + row.Cells[3].Value + ";" + row.Cells[4].Value + ";" + row.Cells[5].Value + ";" + row.Cells[6].Value);
                     }
                 }
                 File.AppendAllLines(Equipo.pathArchivos + "SacarEq3_estancados.txt", Sacar.ToArray());
@@ -517,7 +517,7 @@ namespace PlanHelper
                 {
                     if (row.Cells[0].Value != null && (bool)row.Cells[0].Value == true)
                     {
-                        Sacar.Add(row.Cells[1].Value + ";" + row.Cells[2].Value + ";" + row.Cells[3].Value + ";" + row.Cells[4].Value + ";" + row.Cells[5].Value + row.Cells[6].Value);
+                        Sacar.Add(row.Cells[1].Value + ";" + row.Cells[2].Value + ";" + row.Cells[3].Value + ";" + row.Cells[4].Value + ";" + row.Cells[5].Value + ";" + row.Cells[6].Value);
                     }
                 }
                 File.AppendAllLines(Equipo.pathArchivos + "SacarEnCursoEstancados.txt", Sacar.ToArray());

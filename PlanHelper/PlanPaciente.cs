@@ -1,4 +1,5 @@
 ﻿using AriaQ;
+using System.IO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,7 @@ namespace PlanHelper
         public string EquipoID { get; set; }
         public int? NumeroFracciones { get; set; }
         public bool BeamRecordOverride { get; set; }
+        public int AplicacionesRealizadas { get; set; }
 
         public PlanPaciente(PlanSetup planSetup)
         {
@@ -55,6 +57,15 @@ namespace PlanHelper
             {
                 NumeroFracciones = null;
             }
+        }
+        public PlanPaciente(string String, bool actualizacionFracciones)
+        {
+            string[] aux = String.Split(';');
+            PacienteID = aux[0];
+            PacienteNombre = aux[1];
+            PlanID = aux[2];
+            AplicacionesRealizadas = Convert.ToInt32(aux[3]);
+            //NumeroFracciones = Convert.ToInt32(aux[4]);
         }
 
         public PlanPaciente(string _ID, string _pacNombre, string _planId, int? _NumeroFracciones, string _EquipoID) //Para pacientes en equipo DICOMRT
@@ -93,6 +104,29 @@ namespace PlanHelper
             }
             return planPacientes;
         }
+
+        public static List<PlanPaciente> ExtraerDeArchivo(string path)
+        {
+            string[] archivo = File.ReadAllLines(path);
+            List<PlanPaciente> lista = new List<PlanPaciente>();
+            foreach (string linea in archivo)
+            {
+                lista.Add(new PlanPaciente(linea));
+            }
+            return lista;
+        }
+
+        public static List<PlanPaciente> ExtraerDeArchivo(string path, bool actualizacionFracciones)
+        {
+            string[] archivo = File.ReadAllLines(path);
+            List<PlanPaciente> lista = new List<PlanPaciente>();
+            foreach (string linea in archivo)
+            {
+                lista.Add(new PlanPaciente(linea, actualizacionFracciones));
+            }
+            return lista;
+        }
+
         public static List<string> ConvertirListasToString(List<PlanSetup> planes)
         {
             List<string> planPacientes = new List<string>();
