@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace PlanHelper
 {
@@ -22,6 +23,11 @@ namespace PlanHelper
         public int? NumeroFracciones { get; set; }
         public bool BeamRecordOverride { get; set; }
         public int AplicacionesRealizadas { get; set; }
+        public bool RequierePlanQA { get; set; }
+        public bool TienePlanQA { get; set; }
+        public bool SeMidioPlanQA { get; set; }
+        public bool PlanQAOK { get; set; }
+        public string NotaQA { get; set; }
 
         public PlanPaciente(PlanSetup planSetup)
         {
@@ -47,7 +53,9 @@ namespace PlanHelper
             PlanSer = Convert.ToInt32(aux[4]);
             Modalidad = aux[5];
             Status = aux[6];
-            FechaStatus = Convert.ToDateTime(aux[7]);
+            DateTime fechaStatusAux = DateTime.MinValue;
+            DateTime.TryParse(aux[7],out fechaStatusAux);
+            FechaStatus = fechaStatusAux;
             EquipoID = aux[8];
             if (aux[9] != "null")
             {
@@ -56,6 +64,16 @@ namespace PlanHelper
             else
             {
                 NumeroFracciones = null;
+            }
+            if (aux.Count() > 16) //QAPE
+            {
+                BeamRecordOverride = Convert.ToBoolean(aux[10]);
+                AplicacionesRealizadas = Convert.ToInt32(aux[11]);
+                RequierePlanQA = Convert.ToBoolean(aux[12]);
+                TienePlanQA = Convert.ToBoolean(aux[13]);
+                SeMidioPlanQA = Convert.ToBoolean(aux[14]);
+                PlanQAOK = Convert.ToBoolean(aux[15]);
+                NotaQA = aux[16];
             }
         }
         public PlanPaciente(string String, bool actualizacionFracciones)
@@ -92,7 +110,38 @@ namespace PlanHelper
             {
                 nfx = "null";
             }
-            return PacienteID + ";" + PacienteNombre + ";" + CursoID + ";" + PlanID + ";" + PlanSer.ToString() + ";" + Modalidad + ";" + Status + ";" + FechaStatus.ToString() + ";" + EquipoID + ";" + nfx;
+            /*string apRealizadas;
+            if (AplicacionesRealizadas!=null)
+            {
+                apRealizadas = AplicacionesRealizadas.ToString();
+            }
+            else
+            {
+                apRealizadas = "null";
+            }*/
+            if (NotaQA==null)
+            {
+                NotaQA = "";
+            }
+            return PacienteID + ";" + PacienteNombre + ";" + CursoID + ";" + PlanID + ";" + PlanSer.ToString() + ";" + Modalidad + ";" + Status + ";" + FechaStatus.ToString() + ";" + EquipoID + ";" + nfx +
+                ";" + BeamRecordOverride.ToString() + ";" + AplicacionesRealizadas.ToString() + ";" + RequierePlanQA.ToString() + ";" + TienePlanQA.ToString() + ";" + SeMidioPlanQA.ToString() + ";" + PlanQAOK.ToString() + ";" + NotaQA.ToString();
+        }
+
+        public string ToStringQAPE()
+        {
+            return PacienteID + ";" + PacienteNombre + ";" + PlanID + ";" + FechaStatus.ToString() + ";" + EquipoID + ";" + TienePlanQA.ToString() + ";" + SeMidioPlanQA.ToString() + ";" + PlanQAOK.ToString() + ";" + NotaQA.ToString();
+        }
+
+        public override bool Equals(object otroPlan)
+        {
+            if (otroPlan.GetType() == typeof(PlanPaciente))
+            {
+                return (PacienteID == ((PlanPaciente)otroPlan).PacienteID) && (CursoID == ((PlanPaciente)otroPlan).CursoID) && (PlanSer == ((PlanPaciente)otroPlan).PlanSer) && (EquipoID == ((PlanPaciente)otroPlan).EquipoID);
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public static List<PlanPaciente> ConvertirListas(List<PlanSetup> planes)
@@ -105,11 +154,11 @@ namespace PlanHelper
             return planPacientes;
         }
 
-        public static List<PlanPaciente> ExtraerDeArchivo(string path)
+        public static List<PlanPaciente> ExtraerDeArchivo(string path, int saltear=0)
         {
             string[] archivo = File.ReadAllLines(path);
             List<PlanPaciente> lista = new List<PlanPaciente>();
-            foreach (string linea in archivo)
+            foreach (string linea in archivo.Skip(saltear))
             {
                 lista.Add(new PlanPaciente(linea));
             }
@@ -158,6 +207,40 @@ namespace PlanHelper
                 return true;
             }
             return false;
+        }
+
+        public bool actualizarPlanPacienteQA(List<PlanPaciente> planesNuevos, Aria aria)
+        {
+            if (planesNuevos.Contains(this))
+            {
+                PlanPaciente planNuevo = planesNuevos.First(p => p.Equals(this));
+                Status = planNuevo.Status;
+                FechaStatus = planNuevo.FechaStatus;
+                if (!RequierePlanQA) //por si es un unnaproved que se agrego manualmente
+                {
+                    RequierePlanQA = planNuevo.RequierePlanQA;
+                }
+                TienePlanQA = planNuevo.TienePlanQA;
+                if (!SeMidioPlanQA) //por si se midio y tildo manualmente
+                {
+                    SeMidioPlanQA = planNuevo.SeMidioPlanQA;
+                }
+                return true;
+            }
+            else
+            {
+                
+                PlanSetup planNuevo = aria.PlanSetups.FirstOrDefault(p => p.PlanSetupSer == this.PlanSer);
+                if (planNuevo==null)
+                {
+                    return true;
+                }
+                else if (planNuevo.Status=="TreatApproval")
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

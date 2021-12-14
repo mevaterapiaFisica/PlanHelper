@@ -301,13 +301,13 @@ namespace PlanHelper
         {
             if (plan.Radiations.First().ExternalFieldCommon.Technique.TechniqueId == "ARC" && plan.Radiations.First().ExternalFieldCommon.MLCPlans.First().MLCPlanType == "DynMLCPlan")
             {
-                if (plan.Radiations.First().RadiationDevice.Machine.MachineId=="2100CMLC")
+                if (plan.Radiations.First().RadiationDevice.Machine.MachineId == "2100CMLC")
                 {
                     return "3DC"; //Es un arco conformado. Tengo que ver como distinguirlo. Con el DoseRate probar
                 }
                 return "VMAT";
             }
-            else if (plan.Radiations.First().ExternalFieldCommon.Technique.TechniqueId == "ARC" )
+            else if (plan.Radiations.First().ExternalFieldCommon.Technique.TechniqueId == "ARC")
             {
                 return "VMAT";
             }
@@ -496,7 +496,7 @@ namespace PlanHelper
         {
             if (equipo.EsDicomRT)
             {
-                return MetodosDicomRT.PacientesSiguenEnEquipoDia(equipo, Dias,equipo.planPacientesActualizarFx());
+                return MetodosDicomRT.PacientesSiguenEnEquipoDia(equipo, Dias, equipo.planPacientesActualizarFx());
             }
             else
             {
@@ -714,7 +714,7 @@ namespace PlanHelper
         {
             if (equipo.EsDicomRT)
             {
-                return MetodosDicomRT.PacientesSiguenEnEquipoDia(equipo, 0,equipo.planPacientesActualizarFx());
+                return MetodosDicomRT.PacientesSiguenEnEquipoDia(equipo, 0, equipo.planPacientesActualizarFx());
             }
             else
             {
@@ -761,15 +761,15 @@ namespace PlanHelper
             }
             else
             {
-               /* foreach (Equipo equipoDicomRT in Equipos.Where(e => e.EsDicomRT))
-                {
-                    if (equipoDicomRT.LeerEnCurso().Any(p => p.PacienteID == idPaciente))
-                    {
-                        PlanPaciente planPaciente = equipoDicomRT.LeerEnCurso().Where(p => p.PacienteID == idPaciente).First();
-                        PlanSetup planSetup = new PlanSetup();
-                        planSetup.PlanSetupId = planPaciente.PlanID;
-                    }
-                }*/
+                /* foreach (Equipo equipoDicomRT in Equipos.Where(e => e.EsDicomRT))
+                 {
+                     if (equipoDicomRT.LeerEnCurso().Any(p => p.PacienteID == idPaciente))
+                     {
+                         PlanPaciente planPaciente = equipoDicomRT.LeerEnCurso().Where(p => p.PacienteID == idPaciente).First();
+                         PlanSetup planSetup = new PlanSetup();
+                         planSetup.PlanSetupId = planPaciente.PlanID;
+                     }
+                 }*/
             }
             return null;
         }
@@ -868,7 +868,131 @@ namespace PlanHelper
 
         }
 
-        public static List<PlanSetup> BusquedaGeneral(string apellidoContiene, string idContiene, string cursoContiene, string planContiene, string equipoEtiqueta, DateTime? fechaDesde, DateTime? fechaHasta, string modalidad, string estadoAprobacion, bool estaEnTratamiento, int? numeroFracciones, double? dosisDia,string estructura)
+        public static List<PlanPaciente> busquedaQAPE(Aria aria)
+        {
+            List<Equipo> Equipos = Equipo.InicializarEquipos();
+            IQueryable<PlanSetup> query;
+            DateTime unMes = DateTime.Today.AddDays(-30);
+            List<PlanPaciente> planPacientesQAPE = new List<PlanPaciente>();
+            query = aria.PlanSetups.Where(p => p.Course.Patient.PatientId != null && p.Course.Patient.LastName != null);
+            query = query.Where(p => p.Intent != "VERIFICATION");
+            query = query.Where(p => p.Radiations.Any(r => (r.ExternalFieldCommon.ControlPoints.Any(c => c.GantryRtn != null) && r.ExternalFieldCommon.MLCPlans.FirstOrDefault().IndexParameterType.ToLower().Contains("imrt")) || (r.ExternalFieldCommon.ControlPoints.Count > 30 && r.ExternalFieldCommon.ControlPoints.FirstOrDefault().GantryRtn == null)));
+            //query = query.Where(p => p.Radiations.Any(r => r.ExternalFieldCommon.ControlPoints.Count > 30 && r.ExternalFieldCommon.ControlPoints.FirstOrDefault().GantryRtn == null));
+            query = query.Where(p => p.CreationDate >= unMes);
+            query = query.Where(p => p.Radiations.FirstOrDefault().RadiationDevice.Machine.MachineId != "PBA_6EX_730");
+            query = query.Where(p => p.Status == "PlanApproval" || p.Status == "Unapproved");
+            var lista = query.ToList();
+            foreach (var plan in query)
+            {
+                PlanPaciente planPaciente = new PlanPaciente(plan);
+                if (planPaciente.Status == "PlanApproval")
+                {
+                    planPaciente.RequierePlanQA = true;
+                }
+                else
+                {
+                    planPaciente.RequierePlanQA = false;
+                }
+
+                var paciente = plan.Course.Patient;
+                if (plan.RTPlans.First().PlanRelationships1.Count > 0)
+                {
+                    planPaciente.TienePlanQA = true;
+                    long RTPPlanVerSer = plan.RTPlans.First().PlanRelationships1.FirstOrDefault().RTPlanSer;
+                    var RTPlanVer = aria.RTPlans.FirstOrDefault(p => p.RTPlanSer == RTPPlanVerSer);
+                    if (RTPlanVer.SessionRTPlans.Count > 0)
+                    {
+
+                        if (RTPlanVer.PlanSetup.Radiations.FirstOrDefault().SliceRTs.Any(s => s.AcqNote != null))
+                        {
+                            planPaciente.SeMidioPlanQA = true;
+                        }
+                        else
+                        {
+                            planPaciente.SeMidioPlanQA = false;
+                        }
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+                    planPaciente.TienePlanQA = false;
+                }
+                planPacientesQAPE.Add(planPaciente);
+            }
+            return planPacientesQAPE;
+        }
+
+        public static void ActualizarQAPE(Aria aria)
+        {
+            //Aria aria = new Aria();
+            List<PlanPaciente> planesEnArchivo = new List<PlanPaciente>();
+            List<PlanPaciente> planesNuevos = busquedaQAPE(aria);
+            List<PlanPaciente> planesRemover = new List<PlanPaciente>();
+            if (File.Exists(Equipo.pathArchivos + "pacientesQAPE.txt") && new FileInfo(Equipo.pathArchivos + "pacientesQAPE.txt").Length > 0)
+            {
+                planesEnArchivo.AddRange(PlanPaciente.ExtraerDeArchivo(Equipo.pathArchivos + "pacientesQAPE.txt", 1));
+                foreach (PlanPaciente planEnArchivo in planesEnArchivo)
+                {
+                    if (!planEnArchivo.actualizarPlanPacienteQA(planesNuevos, aria))
+                    {
+                        planesRemover.Add(planEnArchivo);
+                    }
+                    if (planesNuevos.Contains(planEnArchivo))
+                    {
+                        planesNuevos.Remove(planEnArchivo);
+                    }
+
+                }
+                foreach (PlanPaciente planRemover in planesRemover)
+                {
+                    planesEnArchivo.Remove(planRemover);
+                }
+            }
+            planesEnArchivo.AddRange(planesNuevos);
+            File.WriteAllLines(Equipo.pathArchivos + "pacientesQAPE.txt", planesEnArchivo.Select(p => p.ToString()).ToArray());
+            agregarDateTime(Equipo.pathArchivos + "pacientesQAPE.txt");
+            List<PlanPaciente> pacientesRequiereQA = planesEnArchivo.Where(p => p.RequierePlanQA).ToList();
+            File.WriteAllLines(Equipo.pathArchivos + "pacientesRequiereQAPE.txt", pacientesRequiereQA.Select(p => p.ToStringQAPE()).ToArray());
+            agregarHeader(Equipo.pathArchivos + "pacientesRequiereQAPE.txt");
+        }
+
+        public static void agregarDateTime(string path)
+        {
+            List<string> texto = File.ReadAllLines(path).ToList();
+            texto.Insert(0, DateTime.Today.ToShortDateString() + " " + DateTime.Now.ToShortTimeString());
+            File.WriteAllLines(path, texto.ToArray());
+        }
+        public static void agregarDateTime(string path, string _dateTime)
+        {
+            List<string> texto = File.ReadAllLines(path).ToList();
+            texto.Insert(0, _dateTime);
+            File.WriteAllLines(path, texto.ToArray());
+        }
+
+        public static void agregarHeader(string path)
+        {
+            List<string> texto = File.ReadAllLines(path).ToList();
+            string header = "ID;Nombre;Plan;Fecha;Equipo;Tiene Plan QA; Se Midio;Plan QA OK;Nota";
+            texto.Insert(0, header);
+            File.WriteAllLines(path, texto.ToArray());
+        }
+        public static string LeerDateTimeQAPE()
+        {
+            if (File.Exists(Equipo.pathArchivos + "pacientesQAPE.txt"))
+            {
+                return File.ReadAllLines(Equipo.pathArchivos + "pacientesQAPE.txt")[0];
+            }
+            return "";
+        }
+
+
+
+
+        public static List<PlanSetup> BusquedaGeneral(string apellidoContiene, string idContiene, string cursoContiene, string planContiene, string equipoEtiqueta, DateTime? fechaDesde, DateTime? fechaHasta, string modalidad, string estadoAprobacion, bool estaEnTratamiento, int? numeroFracciones, double? dosisDia, string estructura)
         {
             Aria aria = new Aria();
             int cuantos;
@@ -905,6 +1029,7 @@ namespace PlanHelper
             else
             {
                 query = aria.PlanSetups.Where(p => p.Course.Patient.PatientId != null && p.Course.Patient.LastName != null);
+                //var toconas = query.Where(p => p.PlanSetupId.ToLower().Contains("plan3_ci_arc") && p.Course.Patient.LastName.ToLower().Contains("palmieri")).ToList();
             }
             if (!string.IsNullOrEmpty(apellidoContiene))
             {
@@ -918,7 +1043,8 @@ namespace PlanHelper
             }
             if (!string.IsNullOrEmpty(cursoContiene))
             {
-                query = query.Where(p => p.Course.CourseId.ToLower().Contains(cursoContiene.ToLower()));
+                query = query.Where(p => !p.Course.CourseId.ToLower().Contains(cursoContiene.ToLower()));
+                //query = query.Where(p => p.Course.CourseId.ToLower().Contains(cursoContiene.ToLower()));
                 // cuantos = query.Count();
             }
             if (!string.IsNullOrEmpty(planContiene))
@@ -957,26 +1083,28 @@ namespace PlanHelper
                 }
                 else if (modalidad == "VMAT")
                 {
-                    query = query.Where(p => p.Radiations.Any(r => r.ExternalFieldCommon.ControlPoints.Count > 30 && r.ExternalFieldCommon.ControlPoints.First().GantryRtn!=r.ExternalFieldCommon.ControlPoints.Last().GantryRtn));
+                    query = query.Where(p => p.Radiations.Any(r => r.ExternalFieldCommon.ControlPoints.Any(c => c.GantryRtn != null) && r.ExternalFieldCommon.MLCPlans.FirstOrDefault().IndexParameterType.ToLower().Contains("imrt")));
+
                 }
-                /*else if (modalidad == "IMRT")
+                else if (modalidad == "IMRT")
                 {
-                    query = query.Where(p => p.Radiations.Any(r => r.ExternalFieldCommon.ControlPoints.Count > 30 && Math.Abs((double)r.ExternalFieldCommon.ControlPoints.First().GantryRtn - (double)r.ExternalFieldCommon.ControlPoints.Last().GantryRtn)<1));
-                }*/
-                
+                    query = query.Where(p => p.Radiations.Any(r => r.ExternalFieldCommon.ControlPoints.Count > 30 && r.ExternalFieldCommon.ControlPoints.FirstOrDefault().GantryRtn==null));
+                }
+
+
             }
             if (!string.IsNullOrEmpty(estadoAprobacion))
             {
                 query = query.Where(p => p.Status == estadoAprobacion);
             }
-            if (numeroFracciones!=null)
+            if (numeroFracciones != null)
             {
                 query = query.Where(p => p.RTPlans.FirstOrDefault().NoFractions != null && p.RTPlans.FirstOrDefault().NoFractions == numeroFracciones);
             }
             if (dosisDia != null)
             {
                 double dosisDiaCorr = Math.Round((double)dosisDia, 2);
-                query = query.Where(p => p.RTPlans.FirstOrDefault().PrescribedDose != null && Math.Round((double)p.RTPlans.FirstOrDefault().PrescribedDose,2) == dosisDiaCorr);
+                query = query.Where(p => p.RTPlans.FirstOrDefault().PrescribedDose != null && Math.Round((double)p.RTPlans.FirstOrDefault().PrescribedDose, 2) == dosisDiaCorr);
             }
             if (!string.IsNullOrEmpty(estructura))
             {

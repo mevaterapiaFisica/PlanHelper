@@ -26,7 +26,7 @@ namespace PlanHelper
             InitializeComponent();
             Stopwatch sw = new Stopwatch();
             //ConsultasDB.buscaPbElectrones();
-            Equipos = Equipo.InicializarEquipos();
+            Equipos = PlanHelper.Equipo.InicializarEquipos();
             GenerarGUI_Parametros();
             habilitacionBotones();
             iniciarLB_ExacTrac();
@@ -712,8 +712,8 @@ namespace PlanHelper
 
         private void BT_Minar_Click(object sender, EventArgs e)
         {
-            Form2 form2 = new Form2(Equipos);
-            form2.ShowDialog();
+            Form4 form4 = new Form4();
+            form4.ShowDialog();
         }
         #endregion
 
@@ -829,7 +829,7 @@ namespace PlanHelper
             }
             double aux2;
             double? dosisDia;
-            if (double.TryParse(TB_BuscadorDosisDia.Text,out aux2))
+            if (double.TryParse(TB_BuscadorDosisDia.Text, out aux2))
             {
                 dosisDia = aux2;
             }
@@ -838,7 +838,7 @@ namespace PlanHelper
                 dosisDia = null;
             }
 
-            List<AriaQ.PlanSetup> planes = ConsultasDB.BusquedaGeneral(TB_BuscadorApellido.Text, TB_BuscadorHC.Text, TB_BuscadorCurso.Text, TB_BuscadorPlan.Text, equipoEtiqueta, fechaDesde, fechaHasta, CB_BuscadorModalidad.Text, CB_BuscadorEstadoAprobacion.Text, CHB_BuscarEstaEnTratamiento.Checked,numFx,dosisDia,TB_BuscadorEstructuras.Text);
+            List<AriaQ.PlanSetup> planes = ConsultasDB.BusquedaGeneral(TB_BuscadorApellido.Text, TB_BuscadorHC.Text, TB_BuscadorCurso.Text, TB_BuscadorPlan.Text, equipoEtiqueta, fechaDesde, fechaHasta, CB_BuscadorModalidad.Text, CB_BuscadorEstadoAprobacion.Text, CHB_BuscarEstaEnTratamiento.Checked, numFx, dosisDia, TB_BuscadorEstructuras.Text);
 
             foreach (AriaQ.PlanSetup plan in planes)
             {
@@ -1006,6 +1006,106 @@ namespace PlanHelper
 
         #endregion
 
+        #region tabQAPE
+
+        private void BT_ActualizarQAPE_Click(object sender, EventArgs e)
+        {
+            if(Environment.MachineName == "ARIA-FISICA3" && Environment.UserName == "Varian")
+            {
+                Conexion conexion = new Conexion(false, false, false, false, Equipos, true);
+                conexion.ShowDialog();
+                llenarDGVEstadoEquipos();
+            }
+            LlenarDGVQAPE();
+        }
+
+        private void LlenarDGVQAPE()
+        {
+            if (File.Exists(Equipo.pathArchivos + "pacientesQAPE.txt"))
+            {
+                DGV_QAPE.Rows.Clear();
+                List<PlanPaciente> pacientesQAPE = PlanPaciente.ExtraerDeArchivo(Equipo.pathArchivos + "pacientesQAPE.txt",1);
+                foreach (PlanPaciente paciente in pacientesQAPE)
+                {
+                    if (paciente.RequierePlanQA)
+                    {
+                        string equipo = "";
+                        if (paciente.EquipoID== "D-2300CD")
+                        {
+                            equipo = "Equipo 4";
+                        }
+                        else if (paciente.EquipoID=="Equipo1")
+                        {
+                            equipo = "Equipo 1";
+                        }
+                        else if (paciente.EquipoID=="2100CMLC")
+                        {
+                            equipo = "Equipo 3";
+                        }
+                        DataGridViewRow row = new DataGridViewRow();
+                        row.CreateCells(DGV_QAPE);
+                        row.Cells[0].Value = paciente.PacienteID;
+                        row.Cells[1].Value = paciente.PacienteNombre;
+                        row.Cells[2].Value = paciente.PlanID;
+                        row.Cells[3].Value = equipo;
+                        row.Cells[4].Value = paciente.TienePlanQA;
+                        row.Cells[5].Value = paciente.SeMidioPlanQA;
+                        row.Cells[6].Value = paciente.PlanQAOK;
+                        row.Cells[7].Value = paciente.NotaQA;
+                        DGV_QAPE.Rows.Add(row);
+                    }
+                }
+                DGV_QAPE.Columns[0].DefaultCellStyle.BackColor = DGV_QAPE.ColumnHeadersDefaultCellStyle.BackColor;
+                DGV_QAPE.Columns[1].DefaultCellStyle.BackColor = DGV_QAPE.ColumnHeadersDefaultCellStyle.BackColor;
+                DGV_QAPE.Columns[2].DefaultCellStyle.BackColor = DGV_QAPE.ColumnHeadersDefaultCellStyle.BackColor;
+                DGV_QAPE.Columns[3].DefaultCellStyle.BackColor = DGV_QAPE.ColumnHeadersDefaultCellStyle.BackColor;
+                DGV_QAPE.Columns[4].DefaultCellStyle.BackColor = DGV_QAPE.ColumnHeadersDefaultCellStyle.BackColor;
+                DGV_QAPE.Sort(DGV_QAPE.Columns[1], ListSortDirection.Ascending);
+                DGV_QAPE.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                DGV_QAPE.Columns[7].Width = 150;
+            }
+            L_QAPEActualizacion.Text = "Ultima actualización: " + ConsultasDB.LeerDateTimeQAPE();
+
+        }
+
+        private PlanPaciente PlanDeRow(DataGridViewRow row, List<PlanPaciente> lista)
+        {
+            return lista.First(p => p.PacienteID == (string)row.Cells[0].Value && p.PlanID == (string)row.Cells[2].Value);
+        }
+
+        private void BT_QAGuardarCambios_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(Equipo.pathArchivos + "pacientesQAPE.txt"))
+            {
+                List<PlanPaciente> pacientesQAPE = PlanPaciente.ExtraerDeArchivo(Equipo.pathArchivos + "pacientesQAPE.txt",1);
+                foreach (DataGridViewRow row in DGV_QAPE.Rows)
+                {
+                    PlanPaciente plan = PlanDeRow(row, pacientesQAPE);
+                    plan.SeMidioPlanQA = (bool)row.Cells[5].Value;
+                    plan.PlanQAOK = (bool)row.Cells[6].Value;
+                    plan.NotaQA = (string)row.Cells[7].Value;
+                }
+                string fechaQAPE = ConsultasDB.LeerDateTimeQAPE();
+                List<PlanPaciente> pacientesRequiereQA = pacientesQAPE.Where(p => p.RequierePlanQA).ToList();
+                File.WriteAllLines(Equipo.pathArchivos + "pacientesQAPE.txt", pacientesQAPE.Select(p => p.ToString()).ToArray());
+                File.WriteAllLines(Equipo.pathArchivos + "pacientesRequiereQAPE.txt", pacientesRequiereQA.Select(p => p.ToStringQAPE()).ToArray());
+                ConsultasDB.agregarDateTime(Equipo.pathArchivos + "pacientesQAPE.txt", fechaQAPE);
+                ConsultasDB.agregarHeader(Equipo.pathArchivos + "pacientesRequiereQAPE.txt");
+                LlenarDGVQAPE();
+            }
+
+        }
+
+        private void BT_QAAgregar_Click(object sender, EventArgs e)
+        {
+            AgregarQA agregarQA = new AgregarQA();
+            agregarQA.ShowDialog();
+            LlenarDGVQAPE();
+        }
+
+
+
+        #endregion
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tabControl1.SelectedIndex == 0)
@@ -1034,6 +1134,10 @@ namespace PlanHelper
                 tabControl1.SelectedIndex = 0;
                 MessageBox.Show("No se puede buscar en la base de datos desde esta pc y usuario");
             }
+            else if (tabControl1.SelectedIndex == 6)
+            {
+                LlenarDGVQAPE();
+            }
         }
 
 
@@ -1056,6 +1160,10 @@ namespace PlanHelper
             }
         }
 
+        private void Form3_Load(object sender, EventArgs e)
+        {
 
+        }
     }
+
 }

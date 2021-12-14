@@ -242,6 +242,11 @@ namespace PlanHelper
             }
             File.WriteAllLines(@"c:\eq4.txt", planesEq4);
         }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

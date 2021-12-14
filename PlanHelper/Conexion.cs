@@ -26,7 +26,8 @@ namespace PlanHelper
         bool ActualizaEnCurso;
         bool ActualizaOcupacion;
         bool ActualizaQA;
-        public Conexion(bool _ActualizaParametros, bool _ActualizaEnCurso, bool _ActualizaOcupacion, bool _ActualizaQA, List<Equipo> _Equipos)
+        bool ActualizaQAPE;
+        public Conexion(bool _ActualizaParametros, bool _ActualizaEnCurso, bool _ActualizaOcupacion, bool _ActualizaQA, List<Equipo> _Equipos, bool _actualizaQAPE=false)
         {
             InitializeComponent();
             Equipos = _Equipos;
@@ -34,6 +35,7 @@ namespace PlanHelper
             ActualizaEnCurso = _ActualizaEnCurso;
             ActualizaOcupacion = _ActualizaOcupacion;
             ActualizaQA = _ActualizaQA;
+            ActualizaQAPE = _actualizaQAPE;
             if (DateTime.Now.Hour==5)
             {
                 SeguimientoEq3();
@@ -105,6 +107,15 @@ namespace PlanHelper
             L_Texto.Text += "Listo\n";
             L_Texto.Update();
         }
+        private void ActualizarQAPE()
+        {
+            L_Texto.Text += "Buscando QA Paciente Específico...\n";
+            L_Texto.Update();
+            sw.Start();
+            ConsultasDB.ActualizarQAPE(aria);
+            L_Texto.Text += "Búsqueda finalizada. Archivo actualizado" + "(demoró " + sw.Elapsed.ToString() + ")\n";
+            sw.Reset();
+        }
 
         private void Conexion_Shown(object sender, EventArgs e)
         {
@@ -123,6 +134,10 @@ namespace PlanHelper
             if (ActualizaQA)
             {
                 ActualizarQA();
+            }
+            if (ActualizaQAPE)
+            {
+                ActualizarQAPE();
             }
             L_Texto.Text += "\n\nTareas finalizadas";
             L_Texto.Update();

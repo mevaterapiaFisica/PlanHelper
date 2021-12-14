@@ -81,6 +81,9 @@
             this.HayCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HayEstructuras = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tab_Buscador = new System.Windows.Forms.TabPage();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.TB_BuscadorEstructuras = new System.Windows.Forms.TextBox();
             this.BT_BuscadorExportarPDF = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.CHB_BuscarEstaEnTratamiento = new System.Windows.Forms.CheckBox();
@@ -106,6 +109,10 @@
             this.DTP_BuscadorHasta = new System.Windows.Forms.DateTimePicker();
             this.DTP_BuscadorDesde = new System.Windows.Forms.DateTimePicker();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.L_BuscadorNumFx = new System.Windows.Forms.Label();
+            this.TB_BuscadorNumFx = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.TB_BuscadorDosisDia = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.TB_BuscadorPlan = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -115,13 +122,20 @@
             this.TB_BuscadorApellido = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.TB_BuscadorHC = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.TB_BuscadorDosisDia = new System.Windows.Forms.TextBox();
-            this.L_BuscadorNumFx = new System.Windows.Forms.Label();
-            this.TB_BuscadorNumFx = new System.Windows.Forms.TextBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.TB_BuscadorEstructuras = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.L_QAPEActualizacion = new System.Windows.Forms.Label();
+            this.BT_QAAgregar = new System.Windows.Forms.Button();
+            this.BT_QAGuardarCambios = new System.Windows.Forms.Button();
+            this.BT_ActualizarQAPE = new System.Windows.Forms.Button();
+            this.DGV_QAPE = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EquipoQA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.QA_OK = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.NotaQA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tab_Consulta.SuspendLayout();
             this.tab_EstadoEquipos.SuspendLayout();
@@ -132,13 +146,15 @@
             this.tab_ExacTrac.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_ExacTrac)).BeginInit();
             this.tab_Buscador.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Buscador)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox6.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_QAPE)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -149,10 +165,11 @@
             this.tabControl1.Controls.Add(this.tab_Parametros);
             this.tabControl1.Controls.Add(this.tab_ExacTrac);
             this.tabControl1.Controls.Add(this.tab_Buscador);
+            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Location = new System.Drawing.Point(13, 13);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(793, 356);
+            this.tabControl1.Size = new System.Drawing.Size(869, 418);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
@@ -171,7 +188,7 @@
             this.tab_Consulta.Location = new System.Drawing.Point(4, 22);
             this.tab_Consulta.Name = "tab_Consulta";
             this.tab_Consulta.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_Consulta.Size = new System.Drawing.Size(785, 265);
+            this.tab_Consulta.Size = new System.Drawing.Size(861, 392);
             this.tab_Consulta.TabIndex = 0;
             this.tab_Consulta.Text = "Consulta";
             this.tab_Consulta.UseVisualStyleBackColor = true;
@@ -280,7 +297,7 @@
             this.tab_EstadoEquipos.Location = new System.Drawing.Point(4, 22);
             this.tab_EstadoEquipos.Name = "tab_EstadoEquipos";
             this.tab_EstadoEquipos.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_EstadoEquipos.Size = new System.Drawing.Size(785, 265);
+            this.tab_EstadoEquipos.Size = new System.Drawing.Size(861, 392);
             this.tab_EstadoEquipos.TabIndex = 1;
             this.tab_EstadoEquipos.Text = "EstadoEquipos";
             this.tab_EstadoEquipos.UseVisualStyleBackColor = true;
@@ -389,7 +406,7 @@
             this.tab_QA.Location = new System.Drawing.Point(4, 22);
             this.tab_QA.Name = "tab_QA";
             this.tab_QA.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_QA.Size = new System.Drawing.Size(785, 265);
+            this.tab_QA.Size = new System.Drawing.Size(861, 392);
             this.tab_QA.TabIndex = 2;
             this.tab_QA.Text = "QA";
             this.tab_QA.UseVisualStyleBackColor = true;
@@ -511,7 +528,7 @@
             this.tab_Parametros.Location = new System.Drawing.Point(4, 22);
             this.tab_Parametros.Name = "tab_Parametros";
             this.tab_Parametros.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_Parametros.Size = new System.Drawing.Size(785, 265);
+            this.tab_Parametros.Size = new System.Drawing.Size(861, 392);
             this.tab_Parametros.TabIndex = 3;
             this.tab_Parametros.Text = "Parámetros";
             this.tab_Parametros.UseVisualStyleBackColor = true;
@@ -556,7 +573,7 @@
             this.tab_ExacTrac.Location = new System.Drawing.Point(4, 22);
             this.tab_ExacTrac.Name = "tab_ExacTrac";
             this.tab_ExacTrac.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_ExacTrac.Size = new System.Drawing.Size(785, 265);
+            this.tab_ExacTrac.Size = new System.Drawing.Size(861, 392);
             this.tab_ExacTrac.TabIndex = 4;
             this.tab_ExacTrac.Text = "ExacTrac";
             this.tab_ExacTrac.UseVisualStyleBackColor = true;
@@ -659,10 +676,37 @@
             this.tab_Buscador.Controls.Add(this.groupBox1);
             this.tab_Buscador.Location = new System.Drawing.Point(4, 22);
             this.tab_Buscador.Name = "tab_Buscador";
-            this.tab_Buscador.Size = new System.Drawing.Size(785, 330);
+            this.tab_Buscador.Size = new System.Drawing.Size(861, 392);
             this.tab_Buscador.TabIndex = 5;
             this.tab_Buscador.Text = "Buscador de planes";
             this.tab_Buscador.UseVisualStyleBackColor = true;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.label11);
+            this.groupBox6.Controls.Add(this.TB_BuscadorEstructuras);
+            this.groupBox6.Location = new System.Drawing.Point(296, 90);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(321, 49);
+            this.groupBox6.TabIndex = 10;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Estructuras";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(12, 22);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(49, 13);
+            this.label11.TabIndex = 8;
+            this.label11.Text = "Contiene";
+            // 
+            // TB_BuscadorEstructuras
+            // 
+            this.TB_BuscadorEstructuras.Location = new System.Drawing.Point(68, 19);
+            this.TB_BuscadorEstructuras.Name = "TB_BuscadorEstructuras";
+            this.TB_BuscadorEstructuras.Size = new System.Drawing.Size(66, 20);
+            this.TB_BuscadorEstructuras.TabIndex = 12;
             // 
             // BT_BuscadorExportarPDF
             // 
@@ -813,7 +857,8 @@
             "SRS",
             "Electrones",
             "VMAT",
-            "3DC"});
+            "3DC",
+            "IMRT"});
             this.CB_BuscadorModalidad.Location = new System.Drawing.Point(66, 42);
             this.CB_BuscadorModalidad.Name = "CB_BuscadorModalidad";
             this.CB_BuscadorModalidad.Size = new System.Drawing.Size(69, 21);
@@ -922,6 +967,39 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Plan";
             // 
+            // L_BuscadorNumFx
+            // 
+            this.L_BuscadorNumFx.AutoSize = true;
+            this.L_BuscadorNumFx.Location = new System.Drawing.Point(12, 95);
+            this.L_BuscadorNumFx.Name = "L_BuscadorNumFx";
+            this.L_BuscadorNumFx.Size = new System.Drawing.Size(30, 13);
+            this.L_BuscadorNumFx.TabIndex = 6;
+            this.L_BuscadorNumFx.Text = "Nº fx";
+            // 
+            // TB_BuscadorNumFx
+            // 
+            this.TB_BuscadorNumFx.Location = new System.Drawing.Point(56, 92);
+            this.TB_BuscadorNumFx.Name = "TB_BuscadorNumFx";
+            this.TB_BuscadorNumFx.Size = new System.Drawing.Size(66, 20);
+            this.TB_BuscadorNumFx.TabIndex = 7;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(6, 70);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(53, 13);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "D.Dia[Gy]";
+            // 
+            // TB_BuscadorDosisDia
+            // 
+            this.TB_BuscadorDosisDia.Location = new System.Drawing.Point(69, 66);
+            this.TB_BuscadorDosisDia.Name = "TB_BuscadorDosisDia";
+            this.TB_BuscadorDosisDia.Size = new System.Drawing.Size(53, 20);
+            this.TB_BuscadorDosisDia.TabIndex = 5;
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -999,75 +1077,147 @@
             this.TB_BuscadorHC.Size = new System.Drawing.Size(80, 20);
             this.TB_BuscadorHC.TabIndex = 1;
             // 
-            // label8
+            // tabPage1
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(6, 70);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(53, 13);
-            this.label8.TabIndex = 4;
-            this.label8.Text = "D.Dia[Gy]";
+            this.tabPage1.Controls.Add(this.L_QAPEActualizacion);
+            this.tabPage1.Controls.Add(this.BT_QAAgregar);
+            this.tabPage1.Controls.Add(this.BT_QAGuardarCambios);
+            this.tabPage1.Controls.Add(this.BT_ActualizarQAPE);
+            this.tabPage1.Controls.Add(this.DGV_QAPE);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(861, 392);
+            this.tabPage1.TabIndex = 6;
+            this.tabPage1.Text = "QA Paciente Específico";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // TB_BuscadorDosisDia
+            // L_QAPEActualizacion
             // 
-            this.TB_BuscadorDosisDia.Location = new System.Drawing.Point(69, 66);
-            this.TB_BuscadorDosisDia.Name = "TB_BuscadorDosisDia";
-            this.TB_BuscadorDosisDia.Size = new System.Drawing.Size(53, 20);
-            this.TB_BuscadorDosisDia.TabIndex = 5;
+            this.L_QAPEActualizacion.AutoSize = true;
+            this.L_QAPEActualizacion.Location = new System.Drawing.Point(11, 357);
+            this.L_QAPEActualizacion.Name = "L_QAPEActualizacion";
+            this.L_QAPEActualizacion.Size = new System.Drawing.Size(108, 13);
+            this.L_QAPEActualizacion.TabIndex = 5;
+            this.L_QAPEActualizacion.Text = "Ultima Actualización: ";
             // 
-            // L_BuscadorNumFx
+            // BT_QAAgregar
             // 
-            this.L_BuscadorNumFx.AutoSize = true;
-            this.L_BuscadorNumFx.Location = new System.Drawing.Point(12, 95);
-            this.L_BuscadorNumFx.Name = "L_BuscadorNumFx";
-            this.L_BuscadorNumFx.Size = new System.Drawing.Size(30, 13);
-            this.L_BuscadorNumFx.TabIndex = 6;
-            this.L_BuscadorNumFx.Text = "Nº fx";
+            this.BT_QAAgregar.Location = new System.Drawing.Point(547, 348);
+            this.BT_QAAgregar.Name = "BT_QAAgregar";
+            this.BT_QAAgregar.Size = new System.Drawing.Size(75, 23);
+            this.BT_QAAgregar.TabIndex = 4;
+            this.BT_QAAgregar.Text = "Agregar";
+            this.BT_QAAgregar.UseVisualStyleBackColor = true;
+            this.BT_QAAgregar.Click += new System.EventHandler(this.BT_QAAgregar_Click);
             // 
-            // TB_BuscadorNumFx
+            // BT_QAGuardarCambios
             // 
-            this.TB_BuscadorNumFx.Location = new System.Drawing.Point(56, 92);
-            this.TB_BuscadorNumFx.Name = "TB_BuscadorNumFx";
-            this.TB_BuscadorNumFx.Size = new System.Drawing.Size(66, 20);
-            this.TB_BuscadorNumFx.TabIndex = 7;
+            this.BT_QAGuardarCambios.Location = new System.Drawing.Point(644, 348);
+            this.BT_QAGuardarCambios.Name = "BT_QAGuardarCambios";
+            this.BT_QAGuardarCambios.Size = new System.Drawing.Size(101, 23);
+            this.BT_QAGuardarCambios.TabIndex = 3;
+            this.BT_QAGuardarCambios.Text = "Guardar cambios";
+            this.BT_QAGuardarCambios.UseVisualStyleBackColor = true;
+            this.BT_QAGuardarCambios.Click += new System.EventHandler(this.BT_QAGuardarCambios_Click);
             // 
-            // groupBox6
+            // BT_ActualizarQAPE
             // 
-            this.groupBox6.Controls.Add(this.label11);
-            this.groupBox6.Controls.Add(this.TB_BuscadorEstructuras);
-            this.groupBox6.Location = new System.Drawing.Point(296, 90);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(321, 49);
-            this.groupBox6.TabIndex = 10;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Estructuras";
+            this.BT_ActualizarQAPE.Location = new System.Drawing.Point(766, 348);
+            this.BT_ActualizarQAPE.Name = "BT_ActualizarQAPE";
+            this.BT_ActualizarQAPE.Size = new System.Drawing.Size(75, 23);
+            this.BT_ActualizarQAPE.TabIndex = 2;
+            this.BT_ActualizarQAPE.Text = "Actualizar";
+            this.BT_ActualizarQAPE.UseVisualStyleBackColor = true;
+            this.BT_ActualizarQAPE.Click += new System.EventHandler(this.BT_ActualizarQAPE_Click);
             // 
-            // TB_BuscadorEstructuras
+            // DGV_QAPE
             // 
-            this.TB_BuscadorEstructuras.Location = new System.Drawing.Point(68, 19);
-            this.TB_BuscadorEstructuras.Name = "TB_BuscadorEstructuras";
-            this.TB_BuscadorEstructuras.Size = new System.Drawing.Size(66, 20);
-            this.TB_BuscadorEstructuras.TabIndex = 12;
+            this.DGV_QAPE.AllowUserToAddRows = false;
+            this.DGV_QAPE.AllowUserToDeleteRows = false;
+            this.DGV_QAPE.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_QAPE.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.EquipoQA,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.QA_OK,
+            this.NotaQA});
+            this.DGV_QAPE.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnKeystroke;
+            this.DGV_QAPE.Location = new System.Drawing.Point(11, 10);
+            this.DGV_QAPE.Name = "DGV_QAPE";
+            this.DGV_QAPE.RowHeadersVisible = false;
+            this.DGV_QAPE.Size = new System.Drawing.Size(830, 332);
+            this.DGV_QAPE.TabIndex = 1;
             // 
-            // label11
+            // dataGridViewTextBoxColumn1
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(12, 22);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(49, 13);
-            this.label11.TabIndex = 8;
-            this.label11.Text = "Contiene";
+            this.dataGridViewTextBoxColumn1.HeaderText = "HC";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 70;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Paciente";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Plan";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 80;
+            // 
+            // EquipoQA
+            // 
+            this.EquipoQA.HeaderText = "Equipo";
+            this.EquipoQA.Name = "EquipoQA";
+            this.EquipoQA.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "QA creado";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewTextBoxColumn4.Width = 70;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "QA medido";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewTextBoxColumn5.Width = 70;
+            // 
+            // QA_OK
+            // 
+            this.QA_OK.HeaderText = "QA OK";
+            this.QA_OK.Name = "QA_OK";
+            // 
+            // NotaQA
+            // 
+            this.NotaQA.HeaderText = "Nota";
+            this.NotaQA.MinimumWidth = 170;
+            this.NotaQA.Name = "NotaQA";
+            this.NotaQA.Width = 170;
             // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(818, 381);
+            this.ClientSize = new System.Drawing.Size(901, 446);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form3";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Plan Helper V2";
+            this.Load += new System.EventHandler(this.Form3_Load);
             this.tabControl1.ResumeLayout(false);
             this.tab_Consulta.ResumeLayout(false);
             this.tab_Consulta.PerformLayout();
@@ -1083,6 +1233,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.DGV_ExacTrac)).EndInit();
             this.tab_Buscador.ResumeLayout(false);
             this.tab_Buscador.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Buscador)).EndInit();
@@ -1094,8 +1246,9 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_QAPE)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1196,5 +1349,19 @@
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox TB_BuscadorEstructuras;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Button BT_ActualizarQAPE;
+        private System.Windows.Forms.DataGridView DGV_QAPE;
+        private System.Windows.Forms.Button BT_QAAgregar;
+        private System.Windows.Forms.Button BT_QAGuardarCambios;
+        private System.Windows.Forms.Label L_QAPEActualizacion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EquipoQA;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn QA_OK;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NotaQA;
     }
 }
