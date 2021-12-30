@@ -187,12 +187,14 @@
     <Compile Include="Grafico.Designer.cs">
       <DependentUpon>Grafico.cs</DependentUpon>
     </Compile>
+    <Compile Include="Impersonator.cs" />
     <Compile Include="ListaPacientes.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ListaPacientes.Designer.cs">
       <DependentUpon>ListaPacientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="MetodosAuxiliares.cs" />
     <Compile Include="MetodosDicomRT.cs" />
     <Compile Include="PacienteExacTrac.cs" />
     <Compile Include="Parametro.cs" />

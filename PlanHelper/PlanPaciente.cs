@@ -54,7 +54,7 @@ namespace PlanHelper
             Modalidad = aux[5];
             Status = aux[6];
             DateTime fechaStatusAux = DateTime.MinValue;
-            DateTime.TryParse(aux[7],out fechaStatusAux);
+            DateTime.TryParse(aux[7], out fechaStatusAux);
             FechaStatus = fechaStatusAux;
             EquipoID = aux[8];
             if (aux[9] != "null")
@@ -119,7 +119,7 @@ namespace PlanHelper
             {
                 apRealizadas = "null";
             }*/
-            if (NotaQA==null)
+            if (NotaQA == null)
             {
                 NotaQA = "";
             }
@@ -136,7 +136,8 @@ namespace PlanHelper
         {
             if (otroPlan.GetType() == typeof(PlanPaciente))
             {
-                return (PacienteID == ((PlanPaciente)otroPlan).PacienteID) && (CursoID == ((PlanPaciente)otroPlan).CursoID) && (PlanSer == ((PlanPaciente)otroPlan).PlanSer) && (EquipoID == ((PlanPaciente)otroPlan).EquipoID);
+                return PlanSer == ((PlanPaciente)otroPlan).PlanSer;
+                //return (PacienteID == ((PlanPaciente)otroPlan).PacienteID) && (CursoID == ((PlanPaciente)otroPlan).CursoID) && (PlanSer == ((PlanPaciente)otroPlan).PlanSer) && (EquipoID == ((PlanPaciente)otroPlan).EquipoID);
             }
             else
             {
@@ -154,13 +155,28 @@ namespace PlanHelper
             return planPacientes;
         }
 
-        public static List<PlanPaciente> ExtraerDeArchivo(string path, int saltear=0)
+        public static List<PlanPaciente> ExtraerDeArchivo(string path, int saltear = 0)
         {
-            string[] archivo = File.ReadAllLines(path);
+            string[] archivo;
             List<PlanPaciente> lista = new List<PlanPaciente>();
-            foreach (string linea in archivo.Skip(saltear))
+            try
             {
-                lista.Add(new PlanPaciente(linea));
+                using (FileStream stream = File.Open(path, FileMode.Open, FileAccess.Read, FileShare.None))
+                {
+                    stream.Close();
+                    archivo = File.ReadAllLines(path);
+
+                    foreach (string linea in archivo.Skip(saltear))
+                    {
+                        lista.Add(new PlanPaciente(linea));
+                    }
+                }
+            }
+            catch (IOException)
+            {
+                System.Threading.Thread.Sleep(1000);
+                ExtraerDeArchivo(path, saltear);
+
             }
             return lista;
         }
@@ -229,13 +245,13 @@ namespace PlanHelper
             }
             else
             {
-                
+
                 PlanSetup planNuevo = aria.PlanSetups.FirstOrDefault(p => p.PlanSetupSer == this.PlanSer);
-                if (planNuevo==null)
+                if (planNuevo == null)
                 {
                     return true;
                 }
-                else if (planNuevo.Status=="TreatApproval")
+                else if (planNuevo.Status == "TreatApproval")
                 {
                     return false;
                 }

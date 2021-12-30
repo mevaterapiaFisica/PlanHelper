@@ -1010,7 +1010,7 @@ namespace PlanHelper
 
         private void BT_ActualizarQAPE_Click(object sender, EventArgs e)
         {
-            if(Environment.MachineName == "ARIA-FISICA3" && Environment.UserName == "Varian")
+            if(true)//Environment.MachineName == "ARIA-FISICA3")// && Environment.UserName == "Varian")
             {
                 Conexion conexion = new Conexion(false, false, false, false, Equipos, true);
                 conexion.ShowDialog();
@@ -1087,8 +1087,8 @@ namespace PlanHelper
                 }
                 string fechaQAPE = ConsultasDB.LeerDateTimeQAPE();
                 List<PlanPaciente> pacientesRequiereQA = pacientesQAPE.Where(p => p.RequierePlanQA).ToList();
-                File.WriteAllLines(Equipo.pathArchivos + "pacientesQAPE.txt", pacientesQAPE.Select(p => p.ToString()).ToArray());
-                File.WriteAllLines(Equipo.pathArchivos + "pacientesRequiereQAPE.txt", pacientesRequiereQA.Select(p => p.ToStringQAPE()).ToArray());
+                MetodosAuxiliares.EscribirSiEstaDisponible(Equipo.pathArchivos + "pacientesQAPE.txt", pacientesQAPE.Select(p => p.ToString()).ToArray());
+                MetodosAuxiliares.EscribirSiEstaDisponible(Equipo.pathArchivos + "pacientesRequiereQAPE.txt", pacientesRequiereQA.Select(p => p.ToStringQAPE()).ToArray());
                 ConsultasDB.agregarDateTime(Equipo.pathArchivos + "pacientesQAPE.txt", fechaQAPE);
                 ConsultasDB.agregarHeader(Equipo.pathArchivos + "pacientesRequiereQAPE.txt");
                 LlenarDGVQAPE();

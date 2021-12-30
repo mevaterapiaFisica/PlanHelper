@@ -18,6 +18,7 @@ namespace AriaQ
         public Aria()
             : base("name=variansystemEntities")
         {
+
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

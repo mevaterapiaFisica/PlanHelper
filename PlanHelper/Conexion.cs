@@ -19,7 +19,10 @@ namespace PlanHelper
     public partial class Conexion : Form
     {
         Stopwatch sw = new Stopwatch();
-        Aria aria = new Aria();
+        Aria aria;
+
+
+
         Eclipse.Application app;
         List<Equipo> Equipos;
         bool ActualizaParametros;
@@ -27,7 +30,7 @@ namespace PlanHelper
         bool ActualizaOcupacion;
         bool ActualizaQA;
         bool ActualizaQAPE;
-        public Conexion(bool _ActualizaParametros, bool _ActualizaEnCurso, bool _ActualizaOcupacion, bool _ActualizaQA, List<Equipo> _Equipos, bool _actualizaQAPE=false)
+        public Conexion(bool _ActualizaParametros, bool _ActualizaEnCurso, bool _ActualizaOcupacion, bool _ActualizaQA, List<Equipo> _Equipos, bool _actualizaQAPE = false)
         {
             InitializeComponent();
             Equipos = _Equipos;
@@ -36,7 +39,7 @@ namespace PlanHelper
             ActualizaOcupacion = _ActualizaOcupacion;
             ActualizaQA = _ActualizaQA;
             ActualizaQAPE = _actualizaQAPE;
-            if (DateTime.Now.Hour==5)
+            if (DateTime.Now.Hour == 5)
             {
                 SeguimientoEq3();
             }
@@ -119,6 +122,8 @@ namespace PlanHelper
 
         private void Conexion_Shown(object sender, EventArgs e)
         {
+            aria = new Aria();
+
             if (ActualizaParametros)
             {
                 ActualizarParametros();
