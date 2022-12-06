@@ -19,6 +19,7 @@ namespace PlanHelper
     public partial class Form3 : Form
     {
         public List<Equipo> Equipos;
+        private List<PacienteTBI> pacientesTBI;
         public string QAVisible = "";
         public string QATitulo = "";
         public Form3()
@@ -1129,7 +1130,7 @@ namespace PlanHelper
             {
 
             }
-            else if (tabControl1.SelectedIndex == 5 && !(Environment.MachineName == "ARIA-FISICA3" && Environment.UserName == "Varian"))
+            else if (tabControl1.SelectedIndex == 5 && !(Environment.UserName == "Varian"))
             {
                 tabControl1.SelectedIndex = 0;
                 MessageBox.Show("No se puede buscar en la base de datos desde esta pc y usuario");
@@ -1138,13 +1139,23 @@ namespace PlanHelper
             {
                 LlenarDGVQAPE();
             }
+			else if (this.tabControl1.SelectedIndex == 7)
+        {
+          this.LlenarDGVTBI();
+        }
+        else
+        {
+          if (this.tabControl1.SelectedIndex != 8)
+            return;
+          this.LlenarInicios();
+        }
         }
 
 
 
         private void habilitacionBotones()
         {
-            if (Environment.MachineName == "ARIA-FISICA3" && Environment.UserName == "Varian")
+            if (Environment.UserName == "Varian")
             {
                 BT_QAActualizarBusquedas.Enabled = true;
                 BT_EstadoEquiposActualizar.Enabled = true;
@@ -1163,6 +1174,152 @@ namespace PlanHelper
         private void Form3_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void BT_NuevoTBI_Click(object sender, EventArgs e)
+        {
+            NuevoPacienteTBI nuevoPacienteTBI = new NuevoPacienteTBI(_edita: false);
+            nuevoPacienteTBI.ShowDialog();
+            if (nuevoPacienteTBI.DialogResult == DialogResult.OK)
+            {
+                pacientesTBI.Add(nuevoPacienteTBI.nuevoPaciente);
+                PacienteTBI.EscribirArchivo(pacientesTBI);
+                LlenarDGVTBI();
+            }
+        }
+
+        private void BT_TBIEditaPaciente_Click(object sender, EventArgs e)
+        {
+            if (pacienteTBISeleccionado() != null)
+            {
+                NuevoPacienteTBI nuevoPacienteTBI = new NuevoPacienteTBI(_edita: true, pacienteTBISeleccionado());
+                nuevoPacienteTBI.ShowDialog();
+                if (nuevoPacienteTBI.DialogResult == DialogResult.OK)
+                {
+                    pacientesTBI.Remove(pacienteTBISeleccionado());
+                    pacientesTBI.Add(nuevoPacienteTBI.nuevoPaciente);
+                    PacienteTBI.EscribirArchivo(pacientesTBI);
+                    LlenarDGVTBI();
+                }
+            }
+        }
+
+        private void BT_PacTBIEliminarPaciente_Click(object sender, EventArgs e)
+        {
+            pacientesTBI = PacienteTBI.LeerArchivo();
+            pacientesTBI.Remove(pacienteTBISeleccionado());
+            PacienteTBI.EscribirArchivo(pacientesTBI);
+            LlenarDGVTBI();
+
+        }
+
+        private void BT_TBIActualizarBusqueda_Click(object sender, EventArgs e)
+        {
+            if (Environment.UserName == "Varian")
+            {
+                Conexion conexion = new Conexion(false, false, false, false, Equipos, false, true);
+                conexion.ShowDialog();
+            }
+            LlenarDGVTBI();
+        }
+
+        private void BT_TBIGuardarCambios_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow fila in DGV_PacientesTBI.Rows)
+            {
+                PacienteTBI pacienteTBI = pacientesTBI.First((PacienteTBI p) => p.ID == fila.Cells[0].Value.ToString());
+                pacienteTBI.LlevaPb = Convert.ToBoolean(fila.Cells[5].Value);
+                pacienteTBI.PbHechos = Convert.ToBoolean(fila.Cells[10].Value);
+                pacienteTBI.ArchivosEnEquipo = Convert.ToBoolean(fila.Cells[11].Value);
+            }
+            PacienteTBI.EscribirArchivo(pacientesTBI);
+            LlenarDGVTBI();
+
+        }
+
+        private void LlenarDGVTBI()
+        {
+            pacientesTBI = PacienteTBI.LeerArchivo();
+            DGV_PacientesTBI.Rows.Clear();
+            if (pacientesTBI.Count <= 0)
+            {
+                return;
+            }
+            foreach (PacienteTBI pac in pacientesTBI)
+            {
+                DataGridViewRow fila = new DataGridViewRow();
+                fila.CreateCells(DGV_PacientesTBI);
+                fila.Cells[0].Value = pac.ID;
+                fila.Cells[1].Value = pac.Apellido + ", " + pac.Nombre;
+                fila.Cells[2].Value = pac.Equipo.Nombre;
+                if (fila.Cells[2].Value.ToString() == "Discrepancia")
+                {
+                    fila.Cells[2].Style.BackColor = System.Drawing.Color.LightSalmon;
+                }
+                fila.Cells[3].Value = pac.FechaInicio.ToString("dd-MM-yyyy");
+                fila.Cells[4].Value = pac.NumeroFracciones.ToString();
+                if (fila.Cells[4].Value.ToString() == "1000")
+                {
+                    fila.Cells[4].Style.BackColor = System.Drawing.Color.LightSalmon;
+                }
+                fila.Cells[5].Value = pac.LlevaPb;
+                fila.Cells[6].Value = pac.CTIngresada;
+                fila.Cells[7].Value = pac.PlanesCreados;
+                fila.Cells[8].Value = pac.PlanesAprobados;
+                fila.Cells[9].Value = pac.TratamientoAprobado;
+                fila.Cells[10].Value = pac.PbHechos;
+                fila.Cells[11].Value = pac.ArchivosEnEquipo;
+                DGV_PacientesTBI.Rows.Add(fila);
+            }
+            DGV_PacientesTBI.Columns[0].DefaultCellStyle.BackColor = DGV_QAPE.ColumnHeadersDefaultCellStyle.BackColor;
+            DGV_PacientesTBI.Columns[1].DefaultCellStyle.BackColor = DGV_QAPE.ColumnHeadersDefaultCellStyle.BackColor;
+            DGV_PacientesTBI.Columns[2].DefaultCellStyle.BackColor = DGV_QAPE.ColumnHeadersDefaultCellStyle.BackColor;
+            DGV_PacientesTBI.Columns[3].DefaultCellStyle.BackColor = DGV_QAPE.ColumnHeadersDefaultCellStyle.BackColor;
+            DGV_PacientesTBI.Columns[4].DefaultCellStyle.BackColor = DGV_QAPE.ColumnHeadersDefaultCellStyle.BackColor;
+            DGV_PacientesTBI.Columns[5].DefaultCellStyle.BackColor = DGV_QAPE.ColumnHeadersDefaultCellStyle.BackColor;
+            DGV_PacientesTBI.Columns[6].DefaultCellStyle.BackColor = DGV_QAPE.ColumnHeadersDefaultCellStyle.BackColor;
+            DGV_PacientesTBI.Columns[7].DefaultCellStyle.BackColor = DGV_QAPE.ColumnHeadersDefaultCellStyle.BackColor;
+            DGV_PacientesTBI.Columns[8].DefaultCellStyle.BackColor = DGV_QAPE.ColumnHeadersDefaultCellStyle.BackColor;
+            DGV_PacientesTBI.Columns[9].DefaultCellStyle.BackColor = DGV_QAPE.ColumnHeadersDefaultCellStyle.BackColor;
+            DGV_PacientesTBI.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            DGV_PacientesTBI.Update();
+            DGV_PacientesTBI.ClearSelection();
+        }
+        private PacienteTBI pacienteTBISeleccionado()
+        {
+            if (DGV_PacientesTBI.SelectedRows.Count == 1)
+            {
+                return pacientesTBI.First((PacienteTBI p) => p.ID == DGV_PacientesTBI.SelectedRows[0].Cells[0].Value.ToString());
+            }
+            return null;
+        }
+
+        private void LlenarInicios()
+        {
+            RTB_Inicios.Clear();
+            string[] inicios = File.ReadAllLines(Equipo.pathArchivos + "\\placas.txt");
+            RTB_Inicios.SelectionFont = new System.Drawing.Font("Microsoft Sans Serif", 11f, FontStyle.Regular);
+            RTB_Inicios.AppendText(inicios[0] + Environment.NewLine);
+            for (int i = 1; i < inicios.Length; i++)
+            {
+                if (inicios[i].Contains("Equipo"))
+                {
+                    RTB_Inicios.SelectionFont = new System.Drawing.Font("Microsoft Sans Serif", 10f, FontStyle.Bold);
+                    RTB_Inicios.AppendText(Environment.NewLine + Environment.NewLine + inicios[i]);
+                }
+                else
+                {
+                    RTB_Inicios.SelectionFont = new System.Drawing.Font("Microsoft Sans Serif", 10f, FontStyle.Regular);
+                    RTB_Inicios.AppendText(Environment.NewLine + inicios[i]);
+                }
+            }
+        }
+
+        private void BT_ActualizarInicios_Click(object sender, EventArgs e)
+        {
+            Conexion conexion = new Conexion(_ActualizaParametros: false, _ActualizaEnCurso: false, _ActualizaOcupacion: false, _ActualizaQA: false, Equipos, _actualizaQAPE: false, _actualizaPacTBI: false, _buscaIniciosSitramed: true);
+            conexion.ShowDialog();
+            LlenarInicios();
         }
     }
 

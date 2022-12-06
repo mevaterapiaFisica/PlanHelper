@@ -267,7 +267,7 @@ namespace PlanHelper
             {
                 string dcmPath = Directory.GetFiles(carpetaPlan).Where(f => f.Contains(".dcm") && !f.Contains("BeamRecord")).First();
                 var objeto = EvilDICOM.Core.DICOMObject.Read(dcmPath);
-                return objeto.FindFirst("300A00B2").DData;
+                return (string)objeto.FindFirst("300A00B2").DData;
             }
             else
             {
@@ -293,8 +293,8 @@ namespace PlanHelper
                     _pacienteNombre = aux[0] + ", " + aux[1];
                     _pacienteID = objeto.FindFirst("00100020").DData.ToString();
                     _planID = objeto.FindFirst("300A0002").DData.ToString();
-                    _numFracciones = objeto.FindFirst("300A0078").DData;
-                    _EquipoID = objeto.FindFirst("300A00B2").DData;
+                    _numFracciones = (int)objeto.FindFirst("300A0078").DData;
+                    _EquipoID = (string)objeto.FindFirst("300A00B2").DData;
 
                 }
                 /*else

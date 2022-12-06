@@ -51,6 +51,7 @@
             this.MinimizeBox = false;
             this.Name = "Conexion";
             this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PlanHelper V2: Búsqueda en base de datos";
             this.Shown += new System.EventHandler(this.Conexion_Shown);

@@ -30,7 +30,10 @@ namespace PlanHelper
         bool ActualizaOcupacion;
         bool ActualizaQA;
         bool ActualizaQAPE;
-        public Conexion(bool _ActualizaParametros, bool _ActualizaEnCurso, bool _ActualizaOcupacion, bool _ActualizaQA, List<Equipo> _Equipos, bool _actualizaQAPE = false)
+        bool ActualizaPacTBI;
+        bool BuscaIniciosSitramed;
+
+        public Conexion(bool _ActualizaParametros, bool _ActualizaEnCurso, bool _ActualizaOcupacion, bool _ActualizaQA, List<Equipo> _Equipos, bool _actualizaQAPE = false, bool _actualizaPacTBI = false, bool _buscaIniciosSitramed = false)
         {
             InitializeComponent();
             Equipos = _Equipos;
@@ -39,6 +42,8 @@ namespace PlanHelper
             ActualizaOcupacion = _ActualizaOcupacion;
             ActualizaQA = _ActualizaQA;
             ActualizaQAPE = _actualizaQAPE;
+            ActualizaPacTBI = _actualizaPacTBI;
+            BuscaIniciosSitramed = _buscaIniciosSitramed;
             if (DateTime.Now.Hour == 5)
             {
                 SeguimientoEq3();
@@ -48,6 +53,7 @@ namespace PlanHelper
 
         private void ActualizarParametros()
         {
+
             app = Eclipse.Application.CreateApplication("paberbuj", "123qwe");
             L_Texto.Text += "Actualizando parámetros de equipos...\n";
             L_Texto.Update();
@@ -120,9 +126,40 @@ namespace PlanHelper
             sw.Reset();
         }
 
+        private void ActualizarPacTBI()
+        {
+            L_Texto.Text += "Buscando pacientes TBI...\n";
+            L_Texto.Update();
+            sw.Start();
+            ConsultasDB.ActualizarPacTBI(aria);
+            Label l_Texto = L_Texto;
+            l_Texto.Text = l_Texto.Text + "Búsqueda finalizada. Archivo actualizado(demoró " + sw.Elapsed.ToString() + ")\n";
+            sw.Reset();
+        }
+
+        private void BuscarIniciosSitramed()
+        {
+            L_Texto.Text += "Buscando inicios en Sitramed...\n";
+            L_Texto.Update();
+            sw.Start();
+            BusquedaSitramed.Correr();
+            Label l_Texto = L_Texto;
+            l_Texto.Text = l_Texto.Text + "Búsqueda finalizada. Archivo actualizado(demoró " + sw.Elapsed.ToString() + ")\n";
+            sw.Reset();
+        }
+
         private void Conexion_Shown(object sender, EventArgs e)
         {
-            aria = new Aria();
+            try
+            {
+                aria = new Aria();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No se pudo conectar a Aria");
+                throw;
+            }
+
 
             if (ActualizaParametros)
             {
@@ -143,6 +180,14 @@ namespace PlanHelper
             if (ActualizaQAPE)
             {
                 ActualizarQAPE();
+            }
+            if (ActualizaPacTBI)
+            {
+                ActualizarPacTBI();
+            }
+            if (BuscaIniciosSitramed)
+            {
+                BuscarIniciosSitramed();
             }
             L_Texto.Text += "\n\nTareas finalizadas";
             L_Texto.Update();

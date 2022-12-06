@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
+using OxyPlot.Legends;
 
 namespace PlanHelper
 {
@@ -66,7 +67,11 @@ namespace PlanHelper
                     plotModel.Series.Add(serie);
                 }
             }
-            plotModel.LegendPosition = LegendPosition.BottomRight;
+            plotModel.Legends.Add(new Legend()
+            {
+                LegendPosition = LegendPosition.BottomRight,
+            });
+            //plotModel.Legends.First().LegendPosition = OxyPlot.Legends.LegendPosition.BottomRight;
             plotView1.Model = plotModel;
             
         }

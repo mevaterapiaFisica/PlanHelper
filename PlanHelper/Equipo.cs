@@ -101,13 +101,13 @@ namespace PlanHelper
         {
             if (File.Exists(pathArchivos + this.Nombre + "_ocupacion290921.txt"))
             {
-                return PlanPaciente.ExtraerDeArchivo(pathArchivos + this.Nombre + "_ocupacion290921.txt",true);
+                return PlanPaciente.ExtraerDeArchivo(pathArchivos + this.Nombre + "_ocupacion290921.txt", true);
             }
             else
             {
                 return new List<PlanPaciente>();
             }
-            
+
         }
 
         public static List<Equipo> Equipos()
@@ -233,12 +233,12 @@ namespace PlanHelper
             {
                 File.WriteAllLines(pathArchivos + Nombre + "_ocupacionHoy.txt", pacientesSiguen.ToArray());
             }
-            
+
             PacientesEnEquipoDia += pacientesSiguen.Count;
-            if (ID=="2100CMLC")
+            if (ID == "2100CMLC")
             {
                 int TBIs = ConsultasDB.TBIsDia(aria, this, Dias).Count;
-                if (TBIs>0)
+                if (TBIs > 0)
                 {
                     int turnosExtras = (TBIs - 2) * 4;
                     PacientesEnEquipoDia += turnosExtras;
@@ -279,7 +279,7 @@ namespace PlanHelper
             }
             else
             {
-                if (ParametrosPosibles.OrderBy(p => Math.Abs(p.Fracciones - Fracciones)).Count()>0 )
+                if (ParametrosPosibles.OrderBy(p => Math.Abs(p.Fracciones - Fracciones)).Count() > 0)
                 {
                     return ParametrosPosibles.OrderBy(p => Math.Abs(p.Fracciones - Fracciones)).First();
                 }
@@ -320,7 +320,7 @@ namespace PlanHelper
                 List<int> ocupaciones = new List<int>();
                 for (int i = -Parametro.Margen; i < Parametro.Margen + 1; i++)
                 {
-                    DateTime dia = ConsultasDB.AddBusinessDaysSinFeriados(DateTime.Today, i+(int)Parametro.Dias);
+                    DateTime dia = ConsultasDB.AddBusinessDaysSinFeriados(DateTime.Today, i + (int)Parametro.Dias);
                     if ((int)dia.DayOfWeek > 0 && (int)dia.DayOfWeek < 4)
                     {
                         int? ocupacion = BuscarOcupacion(dia);
@@ -374,51 +374,66 @@ namespace PlanHelper
             File.AppendAllText(pathArchivos + Nombre + "_seguimiento.txt", texto);
         }
 
+        public override bool Equals(object obj)
+        {
+            return obj is Equipo && this.ID == ((Equipo)obj).ID;
+        }
+
         public static Equipo FromString(string stringEquipo)
         {
             List<Equipo> equipos = InicializarEquipos();
             return equipos.Where(e => e.ID == stringEquipo).FirstOrDefault();
         }
+
+        public static Equipo FromStringNombre(string stringEquipo)
+        {
+            List<Equipo> source = Equipo.InicializarEquipos();
+            return source.Any<Equipo>((Func<Equipo, bool>)(e => e.Nombre == stringEquipo)) ? source.Where<Equipo>((Func<Equipo, bool>)(e => e.Nombre == stringEquipo)).FirstOrDefault<Equipo>() : Equipo.Discrepancia();
+        }
+
+        public static Equipo Discrepancia() => new Equipo(nameof(Discrepancia), "Error", false, "", 0, false, false, false);
     }
 
-
-
-    /*public class Parametro
-    {
-        public string StatusInicial { get; set; }
-        public string Modalidad { get; set; }
-        public int? Dias { get; set; }
-
-        public Parametro(string _status, string _modalidad, int? _dias)
-        {
-            StatusInicial = _status;
-            Modalidad = _modalidad;
-            Dias = _dias;
-        }
-        public override string ToString()
-        {
-            if (Dias != null)
-            {
-                return StatusInicial + ";" + Modalidad.ToString() + ";" + Dias.ToString();
-            }
-            else
-            {
-                return StatusInicial + ";" + Modalidad.ToString() + ";" + "null";
-            }
-        }
-
-        public static Parametro FromString(string parametroString)
-        {
-            string[] aux = parametroString.Split(';');
-            if (aux[2] != "null")
-            {
-                return new Parametro(aux[0], aux[1], Convert.ToInt32(aux[2]));
-            }
-            else
-            {
-                return new Parametro(aux[0], aux[1], null);
-            }
-
-        }
-    }*/
 }
+
+
+
+/*public class Parametro
+{
+    public string StatusInicial { get; set; }
+    public string Modalidad { get; set; }
+    public int? Dias { get; set; }
+
+    public Parametro(string _status, string _modalidad, int? _dias)
+    {
+        StatusInicial = _status;
+        Modalidad = _modalidad;
+        Dias = _dias;
+    }
+    public override string ToString()
+    {
+        if (Dias != null)
+        {
+            return StatusInicial + ";" + Modalidad.ToString() + ";" + Dias.ToString();
+        }
+        else
+        {
+            return StatusInicial + ";" + Modalidad.ToString() + ";" + "null";
+        }
+    }
+
+    public static Parametro FromString(string parametroString)
+    {
+        string[] aux = parametroString.Split(';');
+        if (aux[2] != "null")
+        {
+            return new Parametro(aux[0], aux[1], Convert.ToInt32(aux[2]));
+        }
+        else
+        {
+            return new Parametro(aux[0], aux[1], null);
+        }
+
+    }
+}*/
+

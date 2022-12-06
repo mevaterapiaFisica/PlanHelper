@@ -136,6 +136,28 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.QA_OK = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.NotaQA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.DGV_PacientesTBI = new System.Windows.Forms.DataGridView();
+            this.BT_NuevoTBI = new System.Windows.Forms.Button();
+            this.BT_TBIEditaPaciente = new System.Windows.Forms.Button();
+            this.BT_PacTBIEliminarPaciente = new System.Windows.Forms.Button();
+            this.BT_TBIActualizarBusqueda = new System.Windows.Forms.Button();
+            this.BT_TBIGuardarCambios = new System.Windows.Forms.Button();
+            this.RTB_Inicios = new System.Windows.Forms.RichTextBox();
+            this.BT_ActualizarInicios = new System.Windows.Forms.Button();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Inicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LlevaPbs = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewCheckBoxColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewCheckBoxColumn3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Treatment = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.PbsListos = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.DicomEnEq = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tab_Consulta.SuspendLayout();
             this.tab_EstadoEquipos.SuspendLayout();
@@ -155,6 +177,9 @@
             this.groupBox1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_QAPE)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_PacientesTBI)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -166,6 +191,8 @@
             this.tabControl1.Controls.Add(this.tab_ExacTrac);
             this.tabControl1.Controls.Add(this.tab_Buscador);
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(13, 13);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -1208,6 +1235,214 @@
             this.NotaQA.Name = "NotaQA";
             this.NotaQA.Width = 170;
             // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.BT_TBIGuardarCambios);
+            this.tabPage2.Controls.Add(this.BT_TBIActualizarBusqueda);
+            this.tabPage2.Controls.Add(this.BT_PacTBIEliminarPaciente);
+            this.tabPage2.Controls.Add(this.BT_TBIEditaPaciente);
+            this.tabPage2.Controls.Add(this.BT_NuevoTBI);
+            this.tabPage2.Controls.Add(this.DGV_PacientesTBI);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(861, 392);
+            this.tabPage2.TabIndex = 7;
+            this.tabPage2.Text = "TBI";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.BT_ActualizarInicios);
+            this.tabPage3.Controls.Add(this.RTB_Inicios);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(861, 392);
+            this.tabPage3.TabIndex = 8;
+            this.tabPage3.Text = "Inicios";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // DGV_PacientesTBI
+            // 
+            this.DGV_PacientesTBI.AllowUserToAddRows = false;
+            this.DGV_PacientesTBI.AllowUserToDeleteRows = false;
+            this.DGV_PacientesTBI.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_PacientesTBI.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn9,
+            this.Inicio,
+            this.Fx,
+            this.LlevaPbs,
+            this.dataGridViewCheckBoxColumn1,
+            this.dataGridViewCheckBoxColumn2,
+            this.dataGridViewCheckBoxColumn3,
+            this.Treatment,
+            this.PbsListos,
+            this.DicomEnEq});
+            this.DGV_PacientesTBI.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnKeystroke;
+            this.DGV_PacientesTBI.Location = new System.Drawing.Point(6, 6);
+            this.DGV_PacientesTBI.Name = "DGV_PacientesTBI";
+            this.DGV_PacientesTBI.RowHeadersVisible = false;
+            this.DGV_PacientesTBI.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DGV_PacientesTBI.Size = new System.Drawing.Size(830, 332);
+            this.DGV_PacientesTBI.TabIndex = 2;
+            // 
+            // BT_NuevoTBI
+            // 
+            this.BT_NuevoTBI.Location = new System.Drawing.Point(7, 355);
+            this.BT_NuevoTBI.Name = "BT_NuevoTBI";
+            this.BT_NuevoTBI.Size = new System.Drawing.Size(98, 23);
+            this.BT_NuevoTBI.TabIndex = 3;
+            this.BT_NuevoTBI.Text = "Nuevo paciente";
+            this.BT_NuevoTBI.UseVisualStyleBackColor = true;
+            this.BT_NuevoTBI.Click += new System.EventHandler(this.BT_NuevoTBI_Click);
+            // 
+            // BT_TBIEditaPaciente
+            // 
+            this.BT_TBIEditaPaciente.Location = new System.Drawing.Point(124, 355);
+            this.BT_TBIEditaPaciente.Name = "BT_TBIEditaPaciente";
+            this.BT_TBIEditaPaciente.Size = new System.Drawing.Size(98, 23);
+            this.BT_TBIEditaPaciente.TabIndex = 4;
+            this.BT_TBIEditaPaciente.Text = "Editar paciente";
+            this.BT_TBIEditaPaciente.UseVisualStyleBackColor = true;
+            this.BT_TBIEditaPaciente.Click += new System.EventHandler(this.BT_TBIEditaPaciente_Click);
+            // 
+            // BT_PacTBIEliminarPaciente
+            // 
+            this.BT_PacTBIEliminarPaciente.Location = new System.Drawing.Point(238, 355);
+            this.BT_PacTBIEliminarPaciente.Name = "BT_PacTBIEliminarPaciente";
+            this.BT_PacTBIEliminarPaciente.Size = new System.Drawing.Size(98, 23);
+            this.BT_PacTBIEliminarPaciente.TabIndex = 5;
+            this.BT_PacTBIEliminarPaciente.Text = "Eliminar paciente";
+            this.BT_PacTBIEliminarPaciente.UseVisualStyleBackColor = true;
+            this.BT_PacTBIEliminarPaciente.Click += new System.EventHandler(this.BT_PacTBIEliminarPaciente_Click);
+            // 
+            // BT_TBIActualizarBusqueda
+            // 
+            this.BT_TBIActualizarBusqueda.Location = new System.Drawing.Point(611, 355);
+            this.BT_TBIActualizarBusqueda.Name = "BT_TBIActualizarBusqueda";
+            this.BT_TBIActualizarBusqueda.Size = new System.Drawing.Size(98, 23);
+            this.BT_TBIActualizarBusqueda.TabIndex = 6;
+            this.BT_TBIActualizarBusqueda.Text = "Actualizar";
+            this.BT_TBIActualizarBusqueda.UseVisualStyleBackColor = true;
+            this.BT_TBIActualizarBusqueda.Click += new System.EventHandler(this.BT_TBIActualizarBusqueda_Click);
+            // 
+            // BT_TBIGuardarCambios
+            // 
+            this.BT_TBIGuardarCambios.Location = new System.Drawing.Point(738, 355);
+            this.BT_TBIGuardarCambios.Name = "BT_TBIGuardarCambios";
+            this.BT_TBIGuardarCambios.Size = new System.Drawing.Size(98, 23);
+            this.BT_TBIGuardarCambios.TabIndex = 7;
+            this.BT_TBIGuardarCambios.Text = "Guardar cambios";
+            this.BT_TBIGuardarCambios.UseVisualStyleBackColor = true;
+            this.BT_TBIGuardarCambios.Click += new System.EventHandler(this.BT_TBIGuardarCambios_Click);
+            // 
+            // RTB_Inicios
+            // 
+            this.RTB_Inicios.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.RTB_Inicios.Location = new System.Drawing.Point(34, 23);
+            this.RTB_Inicios.Name = "RTB_Inicios";
+            this.RTB_Inicios.Size = new System.Drawing.Size(372, 304);
+            this.RTB_Inicios.TabIndex = 0;
+            this.RTB_Inicios.Text = "";
+            // 
+            // BT_ActualizarInicios
+            // 
+            this.BT_ActualizarInicios.Location = new System.Drawing.Point(437, 336);
+            this.BT_ActualizarInicios.Name = "BT_ActualizarInicios";
+            this.BT_ActualizarInicios.Size = new System.Drawing.Size(75, 23);
+            this.BT_ActualizarInicios.TabIndex = 1;
+            this.BT_ActualizarInicios.Text = "Actualizar";
+            this.BT_ActualizarInicios.UseVisualStyleBackColor = true;
+            this.BT_ActualizarInicios.Click += new System.EventHandler(this.BT_ActualizarInicios_Click);
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "HC";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Width = 70;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "Paciente";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.Width = 180;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.HeaderText = "Equipo";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            this.dataGridViewTextBoxColumn9.Width = 70;
+            // 
+            // Inicio
+            // 
+            this.Inicio.HeaderText = "Inicio";
+            this.Inicio.Name = "Inicio";
+            this.Inicio.Width = 60;
+            // 
+            // Fx
+            // 
+            this.Fx.HeaderText = "Fx";
+            this.Fx.Name = "Fx";
+            this.Fx.Width = 40;
+            // 
+            // LlevaPbs
+            // 
+            this.LlevaPbs.HeaderText = "Lleva Pbs";
+            this.LlevaPbs.Name = "LlevaPbs";
+            this.LlevaPbs.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.LlevaPbs.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.LlevaPbs.Width = 50;
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.HeaderText = "TAC";
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCheckBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewCheckBoxColumn1.Width = 50;
+            // 
+            // dataGridViewCheckBoxColumn2
+            // 
+            this.dataGridViewCheckBoxColumn2.HeaderText = "Planes";
+            this.dataGridViewCheckBoxColumn2.Name = "dataGridViewCheckBoxColumn2";
+            this.dataGridViewCheckBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCheckBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewCheckBoxColumn2.Width = 50;
+            // 
+            // dataGridViewCheckBoxColumn3
+            // 
+            this.dataGridViewCheckBoxColumn3.HeaderText = "Aprobación";
+            this.dataGridViewCheckBoxColumn3.Name = "dataGridViewCheckBoxColumn3";
+            this.dataGridViewCheckBoxColumn3.Width = 70;
+            // 
+            // Treatment
+            // 
+            this.Treatment.HeaderText = "Treatment";
+            this.Treatment.Name = "Treatment";
+            this.Treatment.ReadOnly = true;
+            this.Treatment.Width = 70;
+            // 
+            // PbsListos
+            // 
+            this.PbsListos.HeaderText = "Pbs listos";
+            this.PbsListos.Name = "PbsListos";
+            this.PbsListos.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.PbsListos.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.PbsListos.Width = 50;
+            // 
+            // DicomEnEq
+            // 
+            this.DicomEnEq.HeaderText = "DicomEnEq";
+            this.DicomEnEq.Name = "DicomEnEq";
+            this.DicomEnEq.Width = 70;
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1249,6 +1484,9 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_QAPE)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_PacientesTBI)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1363,5 +1601,27 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewCheckBoxColumn QA_OK;
         private System.Windows.Forms.DataGridViewTextBoxColumn NotaQA;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Button BT_TBIGuardarCambios;
+        private System.Windows.Forms.Button BT_TBIActualizarBusqueda;
+        private System.Windows.Forms.Button BT_PacTBIEliminarPaciente;
+        private System.Windows.Forms.Button BT_TBIEditaPaciente;
+        private System.Windows.Forms.Button BT_NuevoTBI;
+        private System.Windows.Forms.DataGridView DGV_PacientesTBI;
+        private System.Windows.Forms.Button BT_ActualizarInicios;
+        private System.Windows.Forms.RichTextBox RTB_Inicios;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Inicio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fx;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn LlevaPbs;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn2;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn3;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Treatment;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn PbsListos;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn DicomEnEq;
     }
 }

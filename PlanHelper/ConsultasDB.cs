@@ -1088,7 +1088,7 @@ namespace PlanHelper
                 }
                 else if (modalidad == "IMRT")
                 {
-                    query = query.Where(p => p.Radiations.Any(r => r.ExternalFieldCommon.ControlPoints.Count > 30 && r.ExternalFieldCommon.ControlPoints.FirstOrDefault().GantryRtn==null));
+                    query = query.Where(p => p.Radiations.Any(r => r.ExternalFieldCommon.ControlPoints.Count > 30 && r.ExternalFieldCommon.ControlPoints.FirstOrDefault().GantryRtn == null));
                 }
 
 
@@ -1120,9 +1120,75 @@ namespace PlanHelper
             }
         }
 
+
+
+        #endregion
+
+        public static List<PacienteTBI> BuscarTodosLosPacientesTBIs(Aria aria)
+        {
+            List<PacienteTBI> pacientesTBI = new List<PacienteTBI>();
+            DateTime dosMeses = DateTime.Today.AddDays(-60.0);
+            List<AriaQ.PlanSetup> query = aria.PlanSetups.Where((AriaQ.PlanSetup p) => p.PlanSetupId.ToUpper().Contains("TBI") && p.Status != "Rejected").ToList();
+            query = query.Where((AriaQ.PlanSetup p) => p.CreationDate >= dosMeses).ToList();
+            query = (from p in query
+                     group p by p.Course.Patient.PatientId into @group
+                     select @group.First()).ToList();
+            foreach (AriaQ.PlanSetup plansetup in query)
+            {
+                pacientesTBI.Add(new PacienteTBI(plansetup));
+            }
+            return pacientesTBI;
+        }
+
+        public static List<AriaQ.PlanSetup> BuscarTodosLosPacientesPSTBIs(Aria aria)
+        {
+            DateTime dosMeses = DateTime.Today.AddDays(-60.0);
+            List<AriaQ.PlanSetup> query = aria.PlanSetups.Where((AriaQ.PlanSetup p) => p.PlanSetupId.ToUpper().Contains("TBI") && p.Status != "Rejected").ToList();
+            query = query.Where((AriaQ.PlanSetup p) => p.CreationDate >= dosMeses).ToList();
+            return (from p in query
+                    group p by p.Course.Patient.PatientId into @group
+                    select @group.First()).ToList();
+        }
+
+        public static List<AriaQ.PlanSetup> BuscarPacientesPSTBIs(Aria aria, List<PacienteTBI> pacientesLista)
+        {
+            List<string> IDsRed = pacientesLista.Select((PacienteTBI p) => p.ID.Remove(p.ID.Count() - 2)).ToList();
+            List<AriaQ.Patient> query = aria.Patients.Where((AriaQ.Patient p) => IDsRed.Any((string i) => p.PatientId.Contains(i))).ToList();
+            List<AriaQ.PlanSetup> planSetups = new List<AriaQ.PlanSetup>();
+            foreach (AriaQ.Patient paciente in query)
+            {
+                foreach (AriaQ.Course curso in paciente.Courses)
+                {
+                    if (curso.PlanSetups.Any((AriaQ.PlanSetup p) => p.PlanSetupId.ToUpper().Contains("TBI") && !p.PlanSetupId.ToUpper().Contains("PROT") && p.Status != "Rejected"))
+                    {
+                        planSetups.Add(curso.PlanSetups.First((AriaQ.PlanSetup p) => p.PlanSetupId.ToUpper().Contains("TBI") && !p.PlanSetupId.ToUpper().Contains("PROT") && p.Status != "Rejected"));
+                        break;
+                    }
+                }
+            }
+            return planSetups;
+        }
+
+        public static void ActualizarPacTBI(Aria aria)
+        {
+            List<PacienteTBI> pacientesEnArchivo = PacienteTBI.LeerArchivo();
+            List<AriaQ.PlanSetup> pacientesEnAria = BuscarPacientesPSTBIs(aria, pacientesEnArchivo);
+            foreach (AriaQ.PlanSetup pacienteEnAria in pacientesEnAria)
+            {
+                if (pacientesEnArchivo.Any((PacienteTBI p) => pacienteEnAria.Course.Patient.PatientId.Contains(p.ID.Remove(p.ID.Count() - 2))))
+                {
+                    pacientesEnArchivo.First((PacienteTBI p) => pacienteEnAria.Course.Patient.PatientId.Contains(p.ID.Remove(p.ID.Count() - 2))).Actualizar(pacienteEnAria);
+                }
+                else
+                {
+                    pacientesEnArchivo.Add(new PacienteTBI(pacienteEnAria));
+                }
+            }
+            List<PacienteTBI> pacientesContinuan = PacienteTBI.eliminarFinalizados(pacientesEnArchivo);
+            PacienteTBI.EscribirArchivo(pacientesContinuan);
+        }
+
+
     }
-
-    #endregion
-
 }
 

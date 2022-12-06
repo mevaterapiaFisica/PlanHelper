@@ -18,17 +18,19 @@ namespace PlanHelper
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            if (args != null && args.Count() > 0 && args[0] == "true" && Environment.MachineName == "ARIA-FISICA3" && Environment.UserName == "Varian")
+            if (args != null && args.Count() > 0 && args[0] == "true" && Environment.UserName == "Varian")
             {
                 List<Equipo> Equipos = Equipo.InicializarEquipos();
                 //Conexion conexion = new Conexion(DateTime.Today.DayOfWeek == DayOfWeek.Monday && DateTime.Now.Hour == 5, true, true, true, Equipos);
-                Conexion conexion = new Conexion(false, true, true, true, Equipos);
+                Conexion conexion = new Conexion(false, true, true, true, Equipos,true,true);
+                conexion.WindowState = FormWindowState.Minimized;
                 conexion.ShowDialog();
             }
-            else if (args != null && args.Count() > 0 && args[0] == "QAPE" && Environment.MachineName == "ARIA-FISICA3" && Environment.UserName == "Varian")
+            else if (args != null && args.Count() > 0 && args[0] == "QAPE" && Environment.UserName == "Varian")
             {
                 List<Equipo> Equipos = Equipo.InicializarEquipos();
                 Conexion conexion = new Conexion(false, false, false, false, Equipos, true);
+                conexion.WindowState = FormWindowState.Minimized;
                 conexion.ShowDialog();
             }
             else
