@@ -40,7 +40,7 @@ namespace PlanHelper
             stringList1.Add("Equipo 3");
             stringList1.Add("Equipo 4");
             List<string> stringList2 = new List<string>();
-            DateTime dia = ConsultasDB.AddBusinessDaysSinFeriados(DateTime.Today, 1.0);
+            DateTime dia = ConsultasDB.AddBusinessDays(DateTime.Today, 1.0);
             stringList2.Add("Inicios día: " + dia.ToString("dd/MM/yyyy"));
             foreach (string equipo in stringList1)
                 stringList2.AddRange((IEnumerable<string>)BusquedaSitramed.PlacasEquipoDia(equipo, dia, browser));
