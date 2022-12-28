@@ -22,7 +22,7 @@ namespace PlanHelper
             {
                 List<Equipo> Equipos = Equipo.InicializarEquipos();
                 //Conexion conexion = new Conexion(DateTime.Today.DayOfWeek == DayOfWeek.Monday && DateTime.Now.Hour == 5, true, true, true, Equipos);
-                Conexion conexion = new Conexion(false, true, true, true, Equipos,true,true);
+                Conexion conexion = new Conexion(false, true, true, true, Equipos,true,true,true);
                 conexion.WindowState = FormWindowState.Minimized;
                 conexion.ShowDialog();
             }
