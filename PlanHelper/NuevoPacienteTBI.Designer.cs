@@ -134,6 +134,7 @@
             // 
             this.CB_NuevoPacEquipo.FormattingEnabled = true;
             this.CB_NuevoPacEquipo.Items.AddRange(new object[] {
+            "Equipo 1",
             "Equipo 3",
             "Equipo 4"});
             this.CB_NuevoPacEquipo.Location = new System.Drawing.Point(105, 105);

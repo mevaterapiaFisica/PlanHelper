@@ -24,6 +24,7 @@ namespace PlanHelper
         public string QATitulo = "";
         public Form3()
         {
+            
             InitializeComponent();
             Stopwatch sw = new Stopwatch();
             //ConsultasDB.buscaPbElectrones();
@@ -1051,6 +1052,14 @@ namespace PlanHelper
                         {
                             equipo = "Equipo 3";
                         }
+                        else if (paciente.EquipoID =="Equipo 2 6EX")
+                        {
+                            equipo = "Equipo 2";
+                        }
+                        else if (paciente.EquipoID == "CL21EX")
+                        {
+                            equipo = "Medrano";
+                        }
                         DataGridViewRow row = new DataGridViewRow();
                         row.CreateCells(DGV_QAPE);
                         row.Cells[0].Value = paciente.PacienteID;
@@ -1223,7 +1232,7 @@ namespace PlanHelper
 
         private void BT_TBIActualizarBusqueda_Click(object sender, EventArgs e)
         {
-            if (Environment.UserName == "Varian")
+            if (Environment.UserName.ToLower() == "varian")
             {
                 Conexion conexion = new Conexion(false, false, false, false, Equipos, false, true);
                 conexion.ShowDialog();
