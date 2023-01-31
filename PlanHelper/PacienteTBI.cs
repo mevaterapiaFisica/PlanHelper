@@ -67,7 +67,7 @@ namespace PlanHelper
       this.PlanAnt = strArray[4];
       this.PlanPost = strArray[5];
       this.Equipo = Equipo.FromStringNombre(strArray[6]);
-      this.FechaInicio = DateTime.ParseExact(strArray[7], "dd-MM-yyyy", (IFormatProvider) CultureInfo.InvariantCulture);
+      this.FechaInicio = DateTime.ParseExact(strArray[7], "dd/MM/yyyy", (IFormatProvider) CultureInfo.InvariantCulture);
       this.NumeroFracciones = Convert.ToInt32(strArray[8]);
       this.FraccionesPorDia = Convert.ToInt32(strArray[9]);
       this.LlevaPb = Convert.ToBoolean(strArray[10]);
@@ -169,7 +169,7 @@ namespace PlanHelper
       this.TratamientoAprobado = true;
     }
 
-    public override string ToString() => this.ID + ";" + this.Apellido + ";" + this.Nombre + ";" + this.Curso + ";" + this.PlanAnt + ";" + this.PlanPost + ";" + this.Equipo.Nombre + ";" + this.FechaInicio.ToString("dd-MM-yyyy") + ";" + this.NumeroFracciones.ToString() + ";" + this.FraccionesPorDia.ToString() + ";" + this.LlevaPb.ToString() + ";" + this.CTIngresada.ToString() + ";" + this.PlanesCreados.ToString() + ";" + this.PlanesAprobados.ToString() + ";" + this.TratamientoAprobado.ToString() + ";" + this.PbHechos.ToString() + ";" + this.CIHecho.ToString() + ";" + this.ArchivosEnEquipo.ToString();
+    public override string ToString() => this.ID + ";" + this.Apellido + ";" + this.Nombre + ";" + this.Curso + ";" + this.PlanAnt + ";" + this.PlanPost + ";" + this.Equipo.Nombre + ";" + this.FechaInicio.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture) + ";" + this.NumeroFracciones.ToString() + ";" + this.FraccionesPorDia.ToString() + ";" + this.LlevaPb.ToString() + ";" + this.CTIngresada.ToString() + ";" + this.PlanesCreados.ToString() + ";" + this.PlanesAprobados.ToString() + ";" + this.TratamientoAprobado.ToString() + ";" + this.PbHechos.ToString() + ";" + this.CIHecho.ToString() + ";" + this.ArchivosEnEquipo.ToString();
 
     public bool Finalizo() => ConsultasDB.AddBusinessDaysSinFeriados(this.FechaInicio, (double) (this.NumeroFracciones / this.FraccionesPorDia)) < DateTime.Today;
 

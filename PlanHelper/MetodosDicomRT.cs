@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace PlanHelper
 {
@@ -185,7 +186,6 @@ namespace PlanHelper
         {
 
         }*/
-
         public static bool PlanPacienteSigueEnEquipoDia(Equipo equipo, double Dias, string carpetaPaciente, List<string> pacientesEstancados, List<PlanPaciente> planPacientesActualizarFx)
         {
             string aux = carpetaPaciente.Split(Path.DirectorySeparatorChar).Last();
@@ -219,7 +219,7 @@ namespace PlanHelper
                         {
                             planPaciente.BeamRecordOverride = BuscarOverride(carpetaBackup);
                         }
-                        pacientesEstancados.Add(planPaciente.PacienteID + ";" + planPaciente.PacienteNombre + ";" + planPaciente.EquipoID + ";" + planPaciente.PlanID + ";" + ultimaFecha.ToShortDateString() + ";" + planPaciente.BeamRecordOverride.ToString());
+                        pacientesEstancados.Add(planPaciente.PacienteID + ";" + planPaciente.PacienteNombre + ";" + planPaciente.EquipoID + ";" + planPaciente.PlanID + ";" + ultimaFecha.ToString("dd/MM/yyyy",CultureInfo.InvariantCulture) + ";" + planPaciente.BeamRecordOverride.ToString());
                     }
                 }
             }

@@ -87,8 +87,8 @@ namespace PlanHelper
             {
                 if (planEstancado(plan))
                 {
-                    PacientesAtrasados.Add(plan.Course.Patient.PatientId + ";" + plan.Course.Patient.LastName + ";" + plan.Radiations.First().RadiationDevice.Machine.MachineId + ";" + plan.PlanSetupId + ";" + plan.Status + ";" + plan.StatusDate.ToShortDateString());
-                }
+                    PacientesAtrasados.Add(plan.Course.Patient.PatientId + ";" + plan.Course.Patient.LastName + ";" + plan.Radiations.First().RadiationDevice.Machine.MachineId + ";" + plan.PlanSetupId + ";" + plan.Status + ";" + plan.StatusDate.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture));
+                }   
             }
             File.WriteAllLines(Equipo.pathArchivos + "QA_pacientesEstancadosEnCurso.txt", PacientesAtrasados.ToArray());
         }
@@ -702,7 +702,7 @@ namespace PlanHelper
         {
             if (dateTime != null)
             {
-                return ((DateTime)dateTime).ToShortDateString();
+                return ((DateTime)dateTime).ToString("dd/MM/yyyy",CultureInfo.InvariantCulture);
             }
             else
             {
@@ -813,7 +813,7 @@ namespace PlanHelper
                     DateTime? FechaPlanApproval = fechaAprobacionMedica(plan, app);
                     DateTime? FechaTreatApproval = fechaAprobacionFisica(plan);
                     DateTime? FechaInicio = fechaInicio(plan, equipos);
-                    string infoPlan = plan.Course.Patient.PatientId + ";" + plan.PlanSetupId + ";" + plan.Radiations.First().RadiationDevice.Machine.MachineId + ";" + plan.Status + ";" + plan.CreationDate.ToString("dd-MMM-yy") + ";" + IntNullToString(DiasEntre(plan.CreationDate, FechaInicio)) + ";" + IntNullToString(DiasEntre(FechaPlanApproval, FechaInicio)) + ";";
+                    string infoPlan = plan.Course.Patient.PatientId + ";" + plan.PlanSetupId + ";" + plan.Radiations.First().RadiationDevice.Machine.MachineId + ";" + plan.Status + ";" + plan.CreationDate.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture) + ";" + IntNullToString(DiasEntre(plan.CreationDate, FechaInicio)) + ";" + IntNullToString(DiasEntre(FechaPlanApproval, FechaInicio)) + ";";
                     infoPlan += IntNullToString(DiasEntre(FechaTreatApproval, FechaInicio)) + ";" + Modalidad(plan) + ";" + plan.RTPlans.First().SessionRTPlans.Where(s => s.Status.Contains("COMP")).Count().ToString() + ";" + plan.RTPlans.First().NoFractions;
                     info.Add(infoPlan);
                 }
@@ -963,7 +963,7 @@ namespace PlanHelper
         public static void agregarDateTime(string path)
         {
             List<string> texto = File.ReadAllLines(path).ToList();
-            texto.Insert(0, DateTime.Today.ToShortDateString() + " " + DateTime.Now.ToShortTimeString());
+            texto.Insert(0, DateTime.Today.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture) + " " + DateTime.Now.ToShortTimeString());
             File.WriteAllLines(path, texto.ToArray());
         }
         public static void agregarDateTime(string path, string _dateTime)
@@ -1080,6 +1080,8 @@ namespace PlanHelper
                 else if (modalidad == "Electrones")
                 {
                     query = query.Where(p => p.Radiations.Any(r => r.ExternalFieldCommon.EnergyMode.RadiationType == "E"));
+                    //query = query.Where(p => p.Radiations.Any(r => r.ExternalFieldCommon.EnergyMode.Energy > 17000));
+                    
                 }
                 else if (modalidad == "VMAT")
                 {

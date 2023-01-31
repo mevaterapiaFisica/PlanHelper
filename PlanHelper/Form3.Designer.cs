@@ -137,15 +137,12 @@
             this.QA_OK = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.NotaQA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.DGV_PacientesTBI = new System.Windows.Forms.DataGridView();
-            this.BT_NuevoTBI = new System.Windows.Forms.Button();
-            this.BT_TBIEditaPaciente = new System.Windows.Forms.Button();
-            this.BT_PacTBIEliminarPaciente = new System.Windows.Forms.Button();
-            this.BT_TBIActualizarBusqueda = new System.Windows.Forms.Button();
             this.BT_TBIGuardarCambios = new System.Windows.Forms.Button();
-            this.RTB_Inicios = new System.Windows.Forms.RichTextBox();
-            this.BT_ActualizarInicios = new System.Windows.Forms.Button();
+            this.BT_TBIActualizarBusqueda = new System.Windows.Forms.Button();
+            this.BT_PacTBIEliminarPaciente = new System.Windows.Forms.Button();
+            this.BT_TBIEditaPaciente = new System.Windows.Forms.Button();
+            this.BT_NuevoTBI = new System.Windows.Forms.Button();
+            this.DGV_PacientesTBI = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -158,6 +155,9 @@
             this.Treatment = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.PbsListos = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.DicomEnEq = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.BT_ActualizarInicios = new System.Windows.Forms.Button();
+            this.RTB_Inicios = new System.Windows.Forms.RichTextBox();
             this.tabControl1.SuspendLayout();
             this.tab_Consulta.SuspendLayout();
             this.tab_EstadoEquipos.SuspendLayout();
@@ -178,8 +178,8 @@
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_QAPE)).BeginInit();
             this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_PacientesTBI)).BeginInit();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -898,9 +898,11 @@
             this.CB_BuscadorEquipo.Items.AddRange(new object[] {
             "",
             "Equipo 1",
+            "Equipo 2",
             "Equipo 3",
             "Equipo 4",
-            "Cetro"});
+            "Cetro",
+            "Medrano"});
             this.CB_BuscadorEquipo.Location = new System.Drawing.Point(66, 16);
             this.CB_BuscadorEquipo.Name = "CB_BuscadorEquipo";
             this.CB_BuscadorEquipo.Size = new System.Drawing.Size(69, 21);
@@ -1251,17 +1253,55 @@
             this.tabPage2.Text = "TBI";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // tabPage3
+            // BT_TBIGuardarCambios
             // 
-            this.tabPage3.Controls.Add(this.BT_ActualizarInicios);
-            this.tabPage3.Controls.Add(this.RTB_Inicios);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(861, 392);
-            this.tabPage3.TabIndex = 8;
-            this.tabPage3.Text = "Inicios";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.BT_TBIGuardarCambios.Location = new System.Drawing.Point(738, 355);
+            this.BT_TBIGuardarCambios.Name = "BT_TBIGuardarCambios";
+            this.BT_TBIGuardarCambios.Size = new System.Drawing.Size(98, 23);
+            this.BT_TBIGuardarCambios.TabIndex = 7;
+            this.BT_TBIGuardarCambios.Text = "Guardar cambios";
+            this.BT_TBIGuardarCambios.UseVisualStyleBackColor = true;
+            this.BT_TBIGuardarCambios.Click += new System.EventHandler(this.BT_TBIGuardarCambios_Click);
+            // 
+            // BT_TBIActualizarBusqueda
+            // 
+            this.BT_TBIActualizarBusqueda.Location = new System.Drawing.Point(611, 355);
+            this.BT_TBIActualizarBusqueda.Name = "BT_TBIActualizarBusqueda";
+            this.BT_TBIActualizarBusqueda.Size = new System.Drawing.Size(98, 23);
+            this.BT_TBIActualizarBusqueda.TabIndex = 6;
+            this.BT_TBIActualizarBusqueda.Text = "Actualizar";
+            this.BT_TBIActualizarBusqueda.UseVisualStyleBackColor = true;
+            this.BT_TBIActualizarBusqueda.Click += new System.EventHandler(this.BT_TBIActualizarBusqueda_Click);
+            // 
+            // BT_PacTBIEliminarPaciente
+            // 
+            this.BT_PacTBIEliminarPaciente.Location = new System.Drawing.Point(238, 355);
+            this.BT_PacTBIEliminarPaciente.Name = "BT_PacTBIEliminarPaciente";
+            this.BT_PacTBIEliminarPaciente.Size = new System.Drawing.Size(98, 23);
+            this.BT_PacTBIEliminarPaciente.TabIndex = 5;
+            this.BT_PacTBIEliminarPaciente.Text = "Eliminar paciente";
+            this.BT_PacTBIEliminarPaciente.UseVisualStyleBackColor = true;
+            this.BT_PacTBIEliminarPaciente.Click += new System.EventHandler(this.BT_PacTBIEliminarPaciente_Click);
+            // 
+            // BT_TBIEditaPaciente
+            // 
+            this.BT_TBIEditaPaciente.Location = new System.Drawing.Point(124, 355);
+            this.BT_TBIEditaPaciente.Name = "BT_TBIEditaPaciente";
+            this.BT_TBIEditaPaciente.Size = new System.Drawing.Size(98, 23);
+            this.BT_TBIEditaPaciente.TabIndex = 4;
+            this.BT_TBIEditaPaciente.Text = "Editar paciente";
+            this.BT_TBIEditaPaciente.UseVisualStyleBackColor = true;
+            this.BT_TBIEditaPaciente.Click += new System.EventHandler(this.BT_TBIEditaPaciente_Click);
+            // 
+            // BT_NuevoTBI
+            // 
+            this.BT_NuevoTBI.Location = new System.Drawing.Point(7, 355);
+            this.BT_NuevoTBI.Name = "BT_NuevoTBI";
+            this.BT_NuevoTBI.Size = new System.Drawing.Size(98, 23);
+            this.BT_NuevoTBI.TabIndex = 3;
+            this.BT_NuevoTBI.Text = "Nuevo paciente";
+            this.BT_NuevoTBI.UseVisualStyleBackColor = true;
+            this.BT_NuevoTBI.Click += new System.EventHandler(this.BT_NuevoTBI_Click);
             // 
             // DGV_PacientesTBI
             // 
@@ -1288,75 +1328,6 @@
             this.DGV_PacientesTBI.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGV_PacientesTBI.Size = new System.Drawing.Size(830, 332);
             this.DGV_PacientesTBI.TabIndex = 2;
-            // 
-            // BT_NuevoTBI
-            // 
-            this.BT_NuevoTBI.Location = new System.Drawing.Point(7, 355);
-            this.BT_NuevoTBI.Name = "BT_NuevoTBI";
-            this.BT_NuevoTBI.Size = new System.Drawing.Size(98, 23);
-            this.BT_NuevoTBI.TabIndex = 3;
-            this.BT_NuevoTBI.Text = "Nuevo paciente";
-            this.BT_NuevoTBI.UseVisualStyleBackColor = true;
-            this.BT_NuevoTBI.Click += new System.EventHandler(this.BT_NuevoTBI_Click);
-            // 
-            // BT_TBIEditaPaciente
-            // 
-            this.BT_TBIEditaPaciente.Location = new System.Drawing.Point(124, 355);
-            this.BT_TBIEditaPaciente.Name = "BT_TBIEditaPaciente";
-            this.BT_TBIEditaPaciente.Size = new System.Drawing.Size(98, 23);
-            this.BT_TBIEditaPaciente.TabIndex = 4;
-            this.BT_TBIEditaPaciente.Text = "Editar paciente";
-            this.BT_TBIEditaPaciente.UseVisualStyleBackColor = true;
-            this.BT_TBIEditaPaciente.Click += new System.EventHandler(this.BT_TBIEditaPaciente_Click);
-            // 
-            // BT_PacTBIEliminarPaciente
-            // 
-            this.BT_PacTBIEliminarPaciente.Location = new System.Drawing.Point(238, 355);
-            this.BT_PacTBIEliminarPaciente.Name = "BT_PacTBIEliminarPaciente";
-            this.BT_PacTBIEliminarPaciente.Size = new System.Drawing.Size(98, 23);
-            this.BT_PacTBIEliminarPaciente.TabIndex = 5;
-            this.BT_PacTBIEliminarPaciente.Text = "Eliminar paciente";
-            this.BT_PacTBIEliminarPaciente.UseVisualStyleBackColor = true;
-            this.BT_PacTBIEliminarPaciente.Click += new System.EventHandler(this.BT_PacTBIEliminarPaciente_Click);
-            // 
-            // BT_TBIActualizarBusqueda
-            // 
-            this.BT_TBIActualizarBusqueda.Location = new System.Drawing.Point(611, 355);
-            this.BT_TBIActualizarBusqueda.Name = "BT_TBIActualizarBusqueda";
-            this.BT_TBIActualizarBusqueda.Size = new System.Drawing.Size(98, 23);
-            this.BT_TBIActualizarBusqueda.TabIndex = 6;
-            this.BT_TBIActualizarBusqueda.Text = "Actualizar";
-            this.BT_TBIActualizarBusqueda.UseVisualStyleBackColor = true;
-            this.BT_TBIActualizarBusqueda.Click += new System.EventHandler(this.BT_TBIActualizarBusqueda_Click);
-            // 
-            // BT_TBIGuardarCambios
-            // 
-            this.BT_TBIGuardarCambios.Location = new System.Drawing.Point(738, 355);
-            this.BT_TBIGuardarCambios.Name = "BT_TBIGuardarCambios";
-            this.BT_TBIGuardarCambios.Size = new System.Drawing.Size(98, 23);
-            this.BT_TBIGuardarCambios.TabIndex = 7;
-            this.BT_TBIGuardarCambios.Text = "Guardar cambios";
-            this.BT_TBIGuardarCambios.UseVisualStyleBackColor = true;
-            this.BT_TBIGuardarCambios.Click += new System.EventHandler(this.BT_TBIGuardarCambios_Click);
-            // 
-            // RTB_Inicios
-            // 
-            this.RTB_Inicios.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.RTB_Inicios.Location = new System.Drawing.Point(34, 23);
-            this.RTB_Inicios.Name = "RTB_Inicios";
-            this.RTB_Inicios.Size = new System.Drawing.Size(372, 304);
-            this.RTB_Inicios.TabIndex = 0;
-            this.RTB_Inicios.Text = "";
-            // 
-            // BT_ActualizarInicios
-            // 
-            this.BT_ActualizarInicios.Location = new System.Drawing.Point(437, 336);
-            this.BT_ActualizarInicios.Name = "BT_ActualizarInicios";
-            this.BT_ActualizarInicios.Size = new System.Drawing.Size(75, 23);
-            this.BT_ActualizarInicios.TabIndex = 1;
-            this.BT_ActualizarInicios.Text = "Actualizar";
-            this.BT_ActualizarInicios.UseVisualStyleBackColor = true;
-            this.BT_ActualizarInicios.Click += new System.EventHandler(this.BT_ActualizarInicios_Click);
             // 
             // dataGridViewTextBoxColumn6
             // 
@@ -1443,6 +1414,37 @@
             this.DicomEnEq.Name = "DicomEnEq";
             this.DicomEnEq.Width = 70;
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.BT_ActualizarInicios);
+            this.tabPage3.Controls.Add(this.RTB_Inicios);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(861, 392);
+            this.tabPage3.TabIndex = 8;
+            this.tabPage3.Text = "Inicios";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // BT_ActualizarInicios
+            // 
+            this.BT_ActualizarInicios.Location = new System.Drawing.Point(437, 336);
+            this.BT_ActualizarInicios.Name = "BT_ActualizarInicios";
+            this.BT_ActualizarInicios.Size = new System.Drawing.Size(75, 23);
+            this.BT_ActualizarInicios.TabIndex = 1;
+            this.BT_ActualizarInicios.Text = "Actualizar";
+            this.BT_ActualizarInicios.UseVisualStyleBackColor = true;
+            this.BT_ActualizarInicios.Click += new System.EventHandler(this.BT_ActualizarInicios_Click);
+            // 
+            // RTB_Inicios
+            // 
+            this.RTB_Inicios.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.RTB_Inicios.Location = new System.Drawing.Point(34, 23);
+            this.RTB_Inicios.Name = "RTB_Inicios";
+            this.RTB_Inicios.Size = new System.Drawing.Size(372, 304);
+            this.RTB_Inicios.TabIndex = 0;
+            this.RTB_Inicios.Text = "";
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1485,8 +1487,8 @@
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_QAPE)).EndInit();
             this.tabPage2.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGV_PacientesTBI)).EndInit();
+            this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

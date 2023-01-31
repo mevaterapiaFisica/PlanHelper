@@ -12,6 +12,7 @@ using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
 using OxyPlot.Legends;
+using System.Globalization;
 
 namespace PlanHelper
 {
@@ -54,7 +55,7 @@ namespace PlanHelper
                     };
                     foreach (string linea in fid)
                     {
-                        DateTime fecha = Convert.ToDateTime(linea.Split(';')[0]);
+                        DateTime fecha = DateTime.ParseExact(linea.Split(';')[0],"dd/MM/yyyy",CultureInfo.InvariantCulture);
                         double cantidad = Convert.ToInt32(linea.Split(';')[1]);
                         double turnosLibres = equipo.TurnosPorDia - cantidad;
                         //serie.Points.Add(new DataPoint(DateTimeAxis.ToDouble(fecha), cantidad));

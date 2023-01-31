@@ -644,7 +644,7 @@ namespace PlanHelper
                 Estilos.formatearTabla(tabla);
                 Thread.CurrentThread.CurrentCulture = new CultureInfo("es-ES");
                 seccion.AddParagraph(QATitulo, "Titulo");
-                seccion.AddParagraph("Fecha: " + DateTime.Today.ToShortDateString(), "Texto Negrita");
+                seccion.AddParagraph("Fecha: " + DateTime.Today.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture), "Texto Negrita");
                 seccion.Add(tabla);
                 doc.Add(seccion);
                 string path = Path.Combine(@"\\ARIAMEVADB-SVR\va_data$\PlanHelper\QA_Export\", QAVisible + "_" + DateTime.Now.ToString("dd-MM-yyyy") + ".pdf");
@@ -827,6 +827,14 @@ namespace PlanHelper
             {
                 equipoEtiqueta = "PBA_6EX_730";
             }
+            else if (CB_BuscadorEquipo.Text == "Equipo 2")
+            {
+                equipoEtiqueta = "Equipo 2 6EX";
+            }
+            else if (CB_BuscadorEquipo.Text == "Medrano")
+            {
+                equipoEtiqueta = "CL21EX";
+            }
             int aux;
             int? numFx;
             if (int.TryParse(TB_BuscadorNumFx.Text, out aux))
@@ -977,11 +985,11 @@ namespace PlanHelper
             }
             if (CHB_BuscadorDesde.Checked)
             {
-                descripcion += "Desde: " + DTP_BuscadorDesde.Value.ToShortDateString() + " - ";
+                descripcion += "Desde: " + DTP_BuscadorDesde.Value.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture) + " - ";
             }
             if (CHB_BuscadorHasta.Checked)
             {
-                descripcion += "Desde: " + DTP_BuscadorHasta.Value.ToShortDateString() + " - ";
+                descripcion += "Desde: " + DTP_BuscadorHasta.Value.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture) + " - ";
             }
             if (!string.IsNullOrEmpty(CB_BuscadorEquipo.Text))
             {
@@ -1003,7 +1011,7 @@ namespace PlanHelper
             Thread.CurrentThread.CurrentCulture = new CultureInfo("es-ES");
             seccion.AddParagraph("Búsqueda", "Titulo");
             seccion.AddParagraph(descripcion, "Texto Negrita");
-            seccion.AddParagraph("Fecha: " + DateTime.Today.ToShortDateString(), "Texto Negrita");
+            seccion.AddParagraph("Fecha: " + DateTime.Today.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture), "Texto Negrita");
             seccion.Add(tabla);
             doc.Add(seccion);
             string path = Path.Combine(@"\\ARIAMEVADB-SVR\va_data$\PlanHelper\Busquedas\", "Busqueda_" + DateTime.Now.ToString("dd-MM-yyyy_hh-mm-ss") + ".pdf");
@@ -1147,7 +1155,7 @@ namespace PlanHelper
             {
 
             }
-            else if (tabControl1.SelectedIndex == 5 && !(Environment.UserName == "Varian"))
+            else if (tabControl1.SelectedIndex == 5 && !(Environment.UserName.ToLower() == "varian"))
             {
                 tabControl1.SelectedIndex = 0;
                 MessageBox.Show("No se puede buscar en la base de datos desde esta pc y usuario");
@@ -1172,7 +1180,7 @@ namespace PlanHelper
 
         private void habilitacionBotones()
         {
-            if (Environment.UserName == "Varian")
+            if (Environment.UserName.ToLower() == "varian")
             {
                 BT_QAActualizarBusquedas.Enabled = true;
                 BT_EstadoEquiposActualizar.Enabled = true;
@@ -1273,7 +1281,7 @@ namespace PlanHelper
                 {
                     fila.Cells[2].Style.BackColor = System.Drawing.Color.LightSalmon;
                 }
-                fila.Cells[3].Value = pac.FechaInicio.ToString("dd-MM-yyyy");
+                fila.Cells[3].Value = pac.FechaInicio.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
                 fila.Cells[4].Value = pac.NumeroFracciones.ToString();
                 if (fila.Cells[4].Value.ToString() == "1000")
                 {

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Eclipse = VMS.TPS.Common.Model.API;
+using System.Globalization;
 
 namespace PlanHelper
 {
@@ -260,7 +261,7 @@ namespace PlanHelper
                     {
                         output.Add(ConsultasDB.AddBusinessDaysSinFeriados(DateTime.Today, Convert.ToDouble(i)).ToShortDateString() + ";" + PacientesEnEquipoDia(aria, Convert.ToDouble(i)).ToString());
                     }*/
-                    output.Add(ConsultasDB.AddBusinessDays(DateTime.Today, Convert.ToDouble(i)).ToShortDateString() + ";" + PacientesEnEquipoDia(aria, Convert.ToDouble(i)).ToString());
+                    output.Add(ConsultasDB.AddBusinessDays(DateTime.Today, Convert.ToDouble(i)).ToString("dd/MM/yyyy",CultureInfo.InvariantCulture) + ";" + PacientesEnEquipoDia(aria, Convert.ToDouble(i)).ToString());
                 }
                 File.WriteAllLines(pathArchivos + this.Nombre + "_agendaocupacion.txt", output.ToArray());
             }
@@ -346,7 +347,8 @@ namespace PlanHelper
                 string[] fid = File.ReadAllLines(pathArchivos + this.Nombre + "_agendaocupacion.txt");
                 try
                 {
-                    string linea = fid.Where(l => l.Contains(fecha.ToString("dd-MMM-yy"))).First();
+                    var fec = fecha.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    string linea = fid.Where(l => l.Contains(fecha.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture))).First();
                     return Convert.ToInt32(linea.Split(';')[1]);
                 }
                 catch (Exception)
@@ -370,7 +372,7 @@ namespace PlanHelper
 
         public void escribirSeguimiento()
         {
-            string texto = Environment.NewLine + DateTime.Today.ToShortDateString() + ";" + BuscarOcupacion(DateTime.Today).ToString() + ";" + BuscarOcupacion(DateTime.Today.AddDays(1)).ToString();
+            string texto = Environment.NewLine + DateTime.Today.ToString("dd/MM/yyyy",CultureInfo.InvariantCulture) + ";" + BuscarOcupacion(DateTime.Today).ToString() + ";" + BuscarOcupacion(DateTime.Today.AddDays(1)).ToString();
             File.AppendAllText(pathArchivos + Nombre + "_seguimiento.txt", texto);
         }
 

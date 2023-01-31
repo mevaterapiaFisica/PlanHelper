@@ -29,7 +29,7 @@ namespace PlanHelper
             output.Add("ID;Apellido;Plan;Dia Aprobacion;Año");
             foreach (PlanSetup p in mamas)
             {
-                output.Add(p.Course.Patient.PatientId + ";" + p.Course.Patient.LastName + ", " + p.Course.Patient.FirstName + ";" + p.PlanSetupId + ";" + p.StatusDate.ToShortDateString() + ";" + p.RTPlans.FirstOrDefault().NoFractions.ToString());
+                output.Add(p.Course.Patient.PatientId + ";" + p.Course.Patient.LastName + ", " + p.Course.Patient.FirstName + ";" + p.PlanSetupId + ";" + p.StatusDate.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture) + ";" + p.RTPlans.FirstOrDefault().NoFractions.ToString());
             }
 
             File.WriteAllLines(@"c:\output.txt", output.ToArray());
@@ -137,7 +137,7 @@ namespace PlanHelper
                 {
                     planSerials.Add(p.PlanSetupSer);
                     pacientesSerial.Add(p.Course.PatientSer);
-                    output.Add(p.Course.Patient.PatientId + ";" + p.Course.Patient.LastName + ", " + p.Course.Patient.FirstName + ";" + p.PlanSetupId + ";" + p.StatusDate.ToShortDateString() + ";" + p.RTPlans.FirstOrDefault().NoFractions.ToString());
+                    output.Add(p.Course.Patient.PatientId + ";" + p.Course.Patient.LastName + ", " + p.Course.Patient.FirstName + ";" + p.PlanSetupId + ";" + p.StatusDate.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture) + ";" + p.RTPlans.FirstOrDefault().NoFractions.ToString());
                 }
             }
             File.WriteAllLines(@"c:\output.txt", output.ToArray());
@@ -185,7 +185,7 @@ namespace PlanHelper
                     DateTime? fechaInicio = ConsultasDB.fechaInicio(plan, Equipos);
                     if (fechaInicio != null && (plan.StatusDate - (DateTime)fechaInicio).Days >= 1)
                     {
-                        output.Add(plan.Course.Patient.PatientId + ";" + plan.Course.Patient.LastName + ";" + plan.Course.Patient.FirstName + ";" + plan.PlanSetupId + ";" + plan.StatusDate.ToShortDateString() + ";" + ((DateTime)fechaInicio).ToShortDateString());
+                        output.Add(plan.Course.Patient.PatientId + ";" + plan.Course.Patient.LastName + ";" + plan.Course.Patient.FirstName + ";" + plan.PlanSetupId + ";" + plan.StatusDate.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture) + ";" + ((DateTime)fechaInicio).ToString("dd/MM/yyyy", CultureInfo.InvariantCulture));
                     }
                 }
 
