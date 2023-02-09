@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Globalization;
+using System.Threading;
 
 namespace PlanHelper
 {
@@ -179,6 +180,63 @@ namespace PlanHelper
 
             }
             return lista;
+        }
+
+        public static List<PlanPaciente> ExtraerSimple(string path)
+        {
+            List<PlanPaciente> planPacienteList = new List<PlanPaciente>();
+            try
+            {
+                using (FileStream fileStream = File.Open(path, FileMode.Open, FileAccess.Read, FileShare.None))
+                {
+                    fileStream.Close();
+                    foreach (string readAllLine in File.ReadAllLines(path))
+                        planPacienteList.Add(new PlanPaciente(readAllLine));
+                }
+            }
+            catch (IOException ex)
+            {
+                Thread.Sleep(1000);
+                PlanPaciente.ExtraerDeArchivo(path,0);
+            }
+            return planPacienteList;
+        }
+        public static List<PlanPaciente> ExtraerDeArchivo(
+      string path,
+      int saltear = 0,
+      bool esQAPE = false)
+        {
+            List<PlanPaciente> planPacienteList1 = (List<PlanPaciente>)null;
+            if (esQAPE)
+            {
+                string path1 = Equipo.pathArchivos + "listaNegraQAPE.txt";
+                if (File.Exists(path1))
+                    planPacienteList1 = PlanPaciente.ExtraerSimple(path1);
+            }
+            List<PlanPaciente> planPacienteList2 = new List<PlanPaciente>();
+            try
+            {
+                using (FileStream fileStream = File.Open(path, FileMode.Open, FileAccess.Read, FileShare.None))
+                {
+                    fileStream.Close();
+                    foreach (string String in ((IEnumerable<string>)File.ReadAllLines(path)).Skip<string>(saltear))
+                        planPacienteList2.Add(new PlanPaciente(String));
+                }
+            }
+            catch (IOException ex)
+            {
+                Thread.Sleep(1000);
+                PlanPaciente.ExtraerDeArchivo(path, saltear);
+            }
+            if (planPacienteList1 != null && planPacienteList1.Count > 0)
+            {
+                foreach (PlanPaciente planPaciente in planPacienteList1)
+                {
+                    if (planPacienteList2.Contains(planPaciente))
+                        planPacienteList2.Remove(planPaciente);
+                }
+            }
+            return planPacienteList2;
         }
 
         public static List<PlanPaciente> ExtraerDeArchivo(string path, bool actualizacionFracciones)

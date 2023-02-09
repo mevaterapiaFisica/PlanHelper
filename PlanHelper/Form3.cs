@@ -1346,6 +1346,34 @@ namespace PlanHelper
             conexion.ShowDialog();
             LlenarInicios();
         }
+
+        private void BT_EliminarDeLaLista_Click(object sender, EventArgs e)
+        {
+            List<string> contents = new List<string>();
+            List<PlanPaciente> planPacienteList = new List<PlanPaciente>();
+            foreach (DataGridViewRow selectedRow in (BaseCollection)this.DGV_QAPE.SelectedRows)
+            {
+                if (File.Exists(Equipo.pathArchivos + "pacientesQAPE.txt"))
+                {
+                    List<PlanPaciente> lista = PlanPaciente.ExtraerDeArchivo(Equipo.pathArchivos + "pacientesQAPE.txt", 1, true);
+                    PlanPaciente planPaciente = this.PlanDeRow(selectedRow, lista);
+                    contents.Add(planPaciente.ToString());
+                }
+            }
+            string path = Equipo.pathArchivos + "listaNegraQAPE.txt";
+            if (File.Exists(path))
+                File.AppendAllLines(path, (IEnumerable<string>)contents);
+            else
+                File.WriteAllLines(path, contents.ToArray());
+            List<PlanPaciente> source = PlanPaciente.ExtraerDeArchivo(Equipo.pathArchivos + "pacientesQAPE.txt", 1, true);
+            string _dateTime = ConsultasDB.LeerDateTimeQAPE();
+            List<PlanPaciente> list = source.Where<PlanPaciente>((Func<PlanPaciente, bool>)(p => p.RequierePlanQA)).ToList<PlanPaciente>();
+            MetodosAuxiliares.EscribirSiEstaDisponible(Equipo.pathArchivos + "pacientesQAPE.txt", source.Select<PlanPaciente, string>((Func<PlanPaciente, string>)(p => p.ToString())).ToArray<string>());
+            MetodosAuxiliares.EscribirSiEstaDisponible(Equipo.pathArchivos + "pacientesRequiereQAPE.txt", list.Select<PlanPaciente, string>((Func<PlanPaciente, string>)(p => p.ToStringQAPE())).ToArray<string>());
+            ConsultasDB.agregarDateTime(Equipo.pathArchivos + "pacientesQAPE.txt", _dateTime);
+            ConsultasDB.agregarHeader(Equipo.pathArchivos + "pacientesRequiereQAPE.txt");
+            this.LlenarDGVQAPE();
+        }
     }
 
 }

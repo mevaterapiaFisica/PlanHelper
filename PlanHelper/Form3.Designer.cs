@@ -158,6 +158,7 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.BT_ActualizarInicios = new System.Windows.Forms.Button();
             this.RTB_Inicios = new System.Windows.Forms.RichTextBox();
+            this.BT_EliminarDeLaLista = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tab_Consulta.SuspendLayout();
             this.tab_EstadoEquipos.SuspendLayout();
@@ -1108,6 +1109,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.BT_EliminarDeLaLista);
             this.tabPage1.Controls.Add(this.L_QAPEActualizacion);
             this.tabPage1.Controls.Add(this.BT_QAAgregar);
             this.tabPage1.Controls.Add(this.BT_QAGuardarCambios);
@@ -1178,6 +1180,7 @@
             this.DGV_QAPE.Location = new System.Drawing.Point(11, 10);
             this.DGV_QAPE.Name = "DGV_QAPE";
             this.DGV_QAPE.RowHeadersVisible = false;
+            this.DGV_QAPE.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGV_QAPE.Size = new System.Drawing.Size(830, 332);
             this.DGV_QAPE.TabIndex = 1;
             // 
@@ -1445,6 +1448,16 @@
             this.RTB_Inicios.TabIndex = 0;
             this.RTB_Inicios.Text = "";
             // 
+            // BT_EliminarDeLaLista
+            // 
+            this.BT_EliminarDeLaLista.Location = new System.Drawing.Point(425, 347);
+            this.BT_EliminarDeLaLista.Name = "BT_EliminarDeLaLista";
+            this.BT_EliminarDeLaLista.Size = new System.Drawing.Size(105, 23);
+            this.BT_EliminarDeLaLista.TabIndex = 6;
+            this.BT_EliminarDeLaLista.Text = "Eliminar de la lista";
+            this.BT_EliminarDeLaLista.UseVisualStyleBackColor = true;
+            this.BT_EliminarDeLaLista.Click += new System.EventHandler(this.BT_EliminarDeLaLista_Click);
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1625,5 +1638,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Treatment;
         private System.Windows.Forms.DataGridViewCheckBoxColumn PbsListos;
         private System.Windows.Forms.DataGridViewCheckBoxColumn DicomEnEq;
+        private System.Windows.Forms.Button BT_EliminarDeLaLista;
     }
 }
