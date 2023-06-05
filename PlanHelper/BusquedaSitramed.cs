@@ -17,7 +17,7 @@ namespace PlanHelper
         [STAThread]
         public static void Correr()
         {
-            // ISSUE: variable of a compiler-generated type
+            // ISSUE: variable of a compiler-generated typeº
             ICore core = new core();
             IBrowser browser = core.StartBrowser("http://10.0.0.39/sitramed/Default.asp");
 
@@ -27,7 +27,7 @@ namespace PlanHelper
             browser.FindElement("input text", "name=txtUsuario").InputText("PDABERBUJ");
             // ISSUE: reference to a compiler-generated method
             // ISSUE: reference to a compiler-generated method
-            browser.FindElement("input password", "name=txtPassword").InputText("1706");
+            browser.FindElement("input password", "name=txtPassword").InputText("3060");
             // ISSUE: reference to a compiler-generated method
             // ISSUE: reference to a compiler-generated method
             browser.FindElement("input button", "name=B3").Click();

@@ -188,9 +188,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>\\ARIAMEVADB-SVR\va_data$\PlanHelper\VMS.TPS.Common.Model.API.dll</HintPath>
     </Reference>
-    <Reference Include="VMS.TPS.Common.Model.Interface, Version=13.6.30.20230, Culture=neutral, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ClassLibrary1\bin\Debug\VMS.TPS.Common.Model.Interface.dll</HintPath>
+    <Reference Include="VMS.TPS.Common.Model.Interface">
+      <HintPath>..\..\CalcIndep_Carpeta\CalcIndep_Carpeta\bin\Debug\VMS.TPS.Common.Model.Interface.dll</HintPath>
     </Reference>
     <Reference Include="VMS.TPS.Common.Model.Types, Version=13.6.30.20230, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>

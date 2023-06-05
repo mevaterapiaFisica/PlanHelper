@@ -22,7 +22,7 @@ namespace PlanHelper
     {
 
 
-        String Route = @"\\FISICA0\centro de datos2018\Eclipse Planning Monitor\PtsInPlanning.phs";
+        String Route = @"\\10.0.0.57\centro de datos2018\Eclipse Planning Monitor\PtsInPlanning.phs";
         public Form1()
         {
             InitializeComponent();

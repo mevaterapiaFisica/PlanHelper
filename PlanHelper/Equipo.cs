@@ -116,8 +116,8 @@ namespace PlanHelper
             return new List<Equipo>()
             {
                 new Equipo("Equipo 1", "Equipo1", false, "", 52, true, false, false),
-                new Equipo("Equipo 2", "Equipo 2 6EX",true,@"\\FISICA0\equipo2\DICOM RT",52,false,false,false),
-                new Equipo("Equipo 3", "2100CMLC", true, @"\\Fisica0\dicom rt", 48, false, true, true),
+                new Equipo("Equipo 2", "Equipo 2 6EX",true,@"\\fisica0\equipo2\DICOM RT",52,false,false,false),
+                ///new Equipo("Equipo 3", "2100CMLC", true, @"\\Fisica0\dicom rt", 48, false, true, true),
                 new Equipo("Equipo 4", "D-2300CD", false, "", 40, true, true, true),
             };
         }
