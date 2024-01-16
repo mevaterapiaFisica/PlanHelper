@@ -443,16 +443,18 @@ namespace PlanHelper
 
                 if (endD.DayOfWeek == DayOfWeek.Saturday) calcBusinessDays--;
                 if (startD.DayOfWeek == DayOfWeek.Sunday) calcBusinessDays--;
-
-
-                List<DateTime> dias = Enumerable.Range(0, (endD - startD).Days + 1).Select(day => startD.AddDays(day)).ToList();
-                foreach (DateTime dia in dias)
+                if ((endD - startD).Days > 0)
                 {
-                    if (Feriados().Contains(dia))
+                    List<DateTime> dias = Enumerable.Range(0, (endD - startD).Days + 1).Select(day => startD.AddDays(day)).ToList();
+                    foreach (DateTime dia in dias)
                     {
-                        calcBusinessDays++;
+                        if (Feriados().Contains(dia))
+                        {
+                            calcBusinessDays--;
+                        }
                     }
                 }
+
 
                 return calcBusinessDays;
             }
@@ -555,7 +557,7 @@ namespace PlanHelper
                 int? uF = ultimaFraccion(plan, Equipos);
                 List<int> FraccImag = FraccionesConImagenes(plan);
                 string FraccImagS = "";
-                if (FraccImag!=null)
+                if (FraccImag != null)
                 {
                     for (int i = 0; i < FraccImag.Count; i++)
                     {
@@ -699,7 +701,7 @@ namespace PlanHelper
         {
             List<PlanSetup> planes = PlanesConAprobacionFisicaOMedica(equipo.ID, aria, fechaInicial);
             List<PlanSetup> pacientePendiente = new List<PlanSetup>();
-            
+
             foreach (PlanSetup plan in planes)
             {
                 pendienteImagen(plan, equipo.ToList(), pacientesPlacas, true);

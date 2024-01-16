@@ -156,14 +156,12 @@
             this.Treatment = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.PbsListos = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.DicomEnEq = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.BT_ActualizarInicios = new System.Windows.Forms.Button();
-            this.RTB_Inicios = new System.Windows.Forms.RichTextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.BT_EliminarPedido = new System.Windows.Forms.Button();
+            this.BT_CompletarPedido = new System.Windows.Forms.Button();
             this.BT_EditarPedido = new System.Windows.Forms.Button();
             this.BT_NuevoPedido = new System.Windows.Forms.Button();
             this.DGV_Pedidos = new System.Windows.Forms.DataGridView();
-            this.BT_CompletarPedido = new System.Windows.Forms.Button();
             this.ColPaciente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColTecnica = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColTarea = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -174,7 +172,10 @@
             this.ColSolicita = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColFisResponsable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColComentario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BT_EliminarPedido = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.BT_ActualizarInicios = new System.Windows.Forms.Button();
+            this.RTB_Inicios = new System.Windows.Forms.RichTextBox();
+            this.BT_PedidoActualizarEstado = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tab_Consulta.SuspendLayout();
             this.tab_EstadoEquipos.SuspendLayout();
@@ -196,9 +197,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.DGV_QAPE)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_PacientesTBI)).BeginInit();
-            this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Pedidos)).BeginInit();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -1446,39 +1447,9 @@
             this.DicomEnEq.Name = "DicomEnEq";
             this.DicomEnEq.Width = 70;
             // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.BT_ActualizarInicios);
-            this.tabPage3.Controls.Add(this.RTB_Inicios);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(861, 392);
-            this.tabPage3.TabIndex = 8;
-            this.tabPage3.Text = "Inicios";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // BT_ActualizarInicios
-            // 
-            this.BT_ActualizarInicios.Location = new System.Drawing.Point(437, 336);
-            this.BT_ActualizarInicios.Name = "BT_ActualizarInicios";
-            this.BT_ActualizarInicios.Size = new System.Drawing.Size(75, 23);
-            this.BT_ActualizarInicios.TabIndex = 1;
-            this.BT_ActualizarInicios.Text = "Actualizar";
-            this.BT_ActualizarInicios.UseVisualStyleBackColor = true;
-            this.BT_ActualizarInicios.Click += new System.EventHandler(this.BT_ActualizarInicios_Click);
-            // 
-            // RTB_Inicios
-            // 
-            this.RTB_Inicios.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.RTB_Inicios.Location = new System.Drawing.Point(34, 23);
-            this.RTB_Inicios.Name = "RTB_Inicios";
-            this.RTB_Inicios.Size = new System.Drawing.Size(372, 304);
-            this.RTB_Inicios.TabIndex = 0;
-            this.RTB_Inicios.Text = "";
-            // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.BT_PedidoActualizarEstado);
             this.tabPage4.Controls.Add(this.BT_EliminarPedido);
             this.tabPage4.Controls.Add(this.BT_CompletarPedido);
             this.tabPage4.Controls.Add(this.BT_EditarPedido);
@@ -1491,6 +1462,26 @@
             this.tabPage4.TabIndex = 9;
             this.tabPage4.Text = "Pedidos";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // BT_EliminarPedido
+            // 
+            this.BT_EliminarPedido.Location = new System.Drawing.Point(252, 359);
+            this.BT_EliminarPedido.Name = "BT_EliminarPedido";
+            this.BT_EliminarPedido.Size = new System.Drawing.Size(98, 23);
+            this.BT_EliminarPedido.TabIndex = 9;
+            this.BT_EliminarPedido.Text = "Eliminar";
+            this.BT_EliminarPedido.UseVisualStyleBackColor = true;
+            this.BT_EliminarPedido.Click += new System.EventHandler(this.BT_EliminarPedido_Click);
+            // 
+            // BT_CompletarPedido
+            // 
+            this.BT_CompletarPedido.Location = new System.Drawing.Point(747, 359);
+            this.BT_CompletarPedido.Name = "BT_CompletarPedido";
+            this.BT_CompletarPedido.Size = new System.Drawing.Size(98, 23);
+            this.BT_CompletarPedido.TabIndex = 8;
+            this.BT_CompletarPedido.Text = "Completar";
+            this.BT_CompletarPedido.UseVisualStyleBackColor = true;
+            this.BT_CompletarPedido.Click += new System.EventHandler(this.BT_CompletarPedido_Click);
             // 
             // BT_EditarPedido
             // 
@@ -1535,16 +1526,6 @@
             this.DGV_Pedidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGV_Pedidos.Size = new System.Drawing.Size(830, 332);
             this.DGV_Pedidos.TabIndex = 5;
-            // 
-            // BT_CompletarPedido
-            // 
-            this.BT_CompletarPedido.Location = new System.Drawing.Point(747, 359);
-            this.BT_CompletarPedido.Name = "BT_CompletarPedido";
-            this.BT_CompletarPedido.Size = new System.Drawing.Size(98, 23);
-            this.BT_CompletarPedido.TabIndex = 8;
-            this.BT_CompletarPedido.Text = "Completar";
-            this.BT_CompletarPedido.UseVisualStyleBackColor = true;
-            this.BT_CompletarPedido.Click += new System.EventHandler(this.BT_CompletarPedido_Click);
             // 
             // ColPaciente
             // 
@@ -1606,15 +1587,46 @@
             this.ColComentario.Name = "ColComentario";
             this.ColComentario.ReadOnly = true;
             // 
-            // BT_EliminarPedido
+            // tabPage3
             // 
-            this.BT_EliminarPedido.Location = new System.Drawing.Point(252, 359);
-            this.BT_EliminarPedido.Name = "BT_EliminarPedido";
-            this.BT_EliminarPedido.Size = new System.Drawing.Size(98, 23);
-            this.BT_EliminarPedido.TabIndex = 9;
-            this.BT_EliminarPedido.Text = "Eliminar";
-            this.BT_EliminarPedido.UseVisualStyleBackColor = true;
-            this.BT_EliminarPedido.Click += new System.EventHandler(this.BT_EliminarPedido_Click);
+            this.tabPage3.Controls.Add(this.BT_ActualizarInicios);
+            this.tabPage3.Controls.Add(this.RTB_Inicios);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(861, 392);
+            this.tabPage3.TabIndex = 8;
+            this.tabPage3.Text = "Inicios";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // BT_ActualizarInicios
+            // 
+            this.BT_ActualizarInicios.Location = new System.Drawing.Point(437, 336);
+            this.BT_ActualizarInicios.Name = "BT_ActualizarInicios";
+            this.BT_ActualizarInicios.Size = new System.Drawing.Size(75, 23);
+            this.BT_ActualizarInicios.TabIndex = 1;
+            this.BT_ActualizarInicios.Text = "Actualizar";
+            this.BT_ActualizarInicios.UseVisualStyleBackColor = true;
+            this.BT_ActualizarInicios.Click += new System.EventHandler(this.BT_ActualizarInicios_Click);
+            // 
+            // RTB_Inicios
+            // 
+            this.RTB_Inicios.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.RTB_Inicios.Location = new System.Drawing.Point(34, 23);
+            this.RTB_Inicios.Name = "RTB_Inicios";
+            this.RTB_Inicios.Size = new System.Drawing.Size(372, 304);
+            this.RTB_Inicios.TabIndex = 0;
+            this.RTB_Inicios.Text = "";
+            // 
+            // BT_PedidoActualizarEstado
+            // 
+            this.BT_PedidoActualizarEstado.Location = new System.Drawing.Point(628, 359);
+            this.BT_PedidoActualizarEstado.Name = "BT_PedidoActualizarEstado";
+            this.BT_PedidoActualizarEstado.Size = new System.Drawing.Size(98, 23);
+            this.BT_PedidoActualizarEstado.TabIndex = 10;
+            this.BT_PedidoActualizarEstado.Text = "Actualizar estado";
+            this.BT_PedidoActualizarEstado.UseVisualStyleBackColor = true;
+            this.BT_PedidoActualizarEstado.Click += new System.EventHandler(this.BT_PedidoActualizarEstado_Click);
             // 
             // Form3
             // 
@@ -1659,9 +1671,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.DGV_QAPE)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGV_PacientesTBI)).EndInit();
-            this.tabPage3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Pedidos)).EndInit();
+            this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1815,5 +1827,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColFisResponsable;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColComentario;
         private System.Windows.Forms.Button BT_EliminarPedido;
+        private System.Windows.Forms.Button BT_PedidoActualizarEstado;
     }
 }

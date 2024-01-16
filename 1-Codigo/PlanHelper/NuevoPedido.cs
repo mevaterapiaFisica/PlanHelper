@@ -14,15 +14,17 @@ namespace PlanHelper
     public partial class NuevoPedido : Form
     {
         bool _edita;
+        bool _actualizaEstado;
         public Pedido _pedido;
-        public NuevoPedido(bool edita, Pedido pedidoEdita = null)
+        public NuevoPedido(bool edita, bool actualizaEstado, Pedido pedidoEdita = null)
         {
             InitializeComponent();
             CargarComboBox();
 
             _pedido = new Pedido();
             _edita = edita;
-            if (edita)
+            _actualizaEstado = actualizaEstado;
+            if (edita || actualizaEstado)
             {
                 _pedido = pedidoEdita;
                 TB_Paciente.Text = _pedido.Paciente;
@@ -35,6 +37,20 @@ namespace PlanHelper
                 CB_FisicoSolicita.Text = _pedido.Solicita;
                 CB_FisicoResponsable.Text = _pedido.Responsable;
                 TB_Comentario.Text = _pedido.Comentario;
+                _pedido.TareaInicial = _pedido.Tarea;
+            }
+            if (actualizaEstado)
+            {
+                TB_Paciente.Enabled = false;
+                CB_Tecnica.Enabled = false;
+                //CB_Tarea.Text = _pedido.Tarea;
+                CB_Equipo.Enabled = false;
+                //DTP_FechaLimite.Value = _pedido.FechaLimite;
+                CB_Medico.Enabled = false;
+                CB_Motivo.Enabled= false;
+                CB_FisicoSolicita.Enabled = false;
+                CB_FisicoResponsable.Text = "";
+                //TB_Comentario.Text = _pedido.Comentario;
             }
             
         }
@@ -88,6 +104,10 @@ namespace PlanHelper
 
         private void BT_Aceptar_Click(object sender, EventArgs e)
         {
+            if (!_edita && !_actualizaEstado)
+            {
+                _pedido.fechaCarga = DateTime.Now;
+            }
             _pedido.Paciente = TB_Paciente.Text;
             _pedido.Tecnica = CB_Tecnica.Text;
             _pedido.Tarea = CB_Tarea.Text;

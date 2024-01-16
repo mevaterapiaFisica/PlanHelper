@@ -29,6 +29,8 @@ namespace PlanHelper
         public bool SeMidioPlanQA { get; set; }
         public bool PlanQAOK { get; set; }
         public string NotaQA { get; set; }
+        public int? UltimaFx { get; set; } //Valor que no se lee ni escribe en txt, se genera 1 vez cuando se actualiza la agenda de ocupacion en DicomRT
+        public DateTime UltimaFecha { get; set; } //Valor que no se lee ni escribe en txt, se genera 1 vez cuando se actualiza la agenda de ocupacion en DicomRT
 
         public PlanPaciente(PlanSetup planSetup)
         {
@@ -100,6 +102,12 @@ namespace PlanHelper
             EquipoID = _EquipoID;
             NumeroFracciones = _NumeroFracciones;
         }
+
+        public void ObtenerUltimaFx(string carpetaPaciente)
+        {
+            this.UltimaFx = MetodosDicomRT.ultimaFraccion(carpetaPaciente);
+        }
+
         public override string ToString()
         {
             string nfx;

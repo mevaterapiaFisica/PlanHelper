@@ -20,7 +20,7 @@ namespace PlanHelper
     {
         public List<Equipo> Equipos;
         private List<PacienteTBI> pacientesTBI;
-        private List<Pedido> pedidos;
+        //private List<Pedido> pedidos;
         public string QAVisible = "";
         public string QATitulo = "";
         public Form3()
@@ -1206,7 +1206,7 @@ namespace PlanHelper
         {
 
         }
-
+        #region TabTBI
         private void BT_NuevoTBI_Click(object sender, EventArgs e)
         {
             NuevoPacienteTBI nuevoPacienteTBI = new NuevoPacienteTBI(_edita: false);
@@ -1324,10 +1324,11 @@ namespace PlanHelper
             }
             return null;
         }
-
+        #endregion
+        #region Pedidos
         private void LlenarDGVPedidos()
         {
-            pedidos = Pedido.LeerArchivo();
+            var pedidos = Pedido.LeerArchivo();
             DGV_Pedidos.Rows.Clear();
             if (pedidos.Count <= 0)
             {
@@ -1351,20 +1352,27 @@ namespace PlanHelper
                 double diasFaltan = ConsultasDB.GetBusinessDays(DateTime.Now, ped.FechaLimite);
                 if (diasFaltan < 1)
                 {
-                    fila.DefaultCellStyle.BackColor = System.Drawing.Color.Red;
+                    fila.DefaultCellStyle.BackColor = System.Drawing.Color.Salmon;
                 }
                 else if(diasFaltan < 3)
                 {
                     fila.DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow;
                 }
+                if (ped.Responsable=="")
+                {
+                    fila.Cells[8].Style.BackColor = System.Drawing.Color.Salmon;
+                }
+                DGV_Pedidos.ClearSelection();
             }
 
             DGV_Pedidos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             DGV_Pedidos.Update();
+            DGV_Pedidos.Sort(DGV_Pedidos.Columns["ColFechaLimite"], ListSortDirection.Ascending);
             DGV_Pedidos.ClearSelection();
         }
         private Pedido pedidoSeleccionado()
         {
+            var pedidos = Pedido.LeerArchivo();
             if (DGV_Pedidos.SelectedRows.Count == 1)
             {
                 return pedidos.First(p => p.Paciente == DGV_Pedidos.SelectedRows[0].Cells[0].Value.ToString() && p.Tecnica == DGV_Pedidos.SelectedRows[0].Cells[1].Value.ToString() && p.Tarea == DGV_Pedidos.SelectedRows[0].Cells[2].Value.ToString());
@@ -1374,9 +1382,10 @@ namespace PlanHelper
 
         private void BT_NuevoPedido_Click(object sender, EventArgs e)
         {
-            NuevoPedido nuevoPedido = new NuevoPedido(false);
+            NuevoPedido nuevoPedido = new NuevoPedido(false,false);
             if (nuevoPedido.ShowDialog() == DialogResult.OK)
             {
+                var pedidos = Pedido.LeerArchivo();
                 pedidos.Add(nuevoPedido._pedido);
                 Pedido.EscribirArchivo(pedidos);
                 LlenarDGVPedidos();
@@ -1388,11 +1397,31 @@ namespace PlanHelper
             if (pedidoSeleccionado() != null)
             {
                 Pedido pedidoEditar = pedidoSeleccionado();
-                NuevoPedido nuevoPedido = new NuevoPedido(true, pedidoEditar);
+                NuevoPedido nuevoPedido = new NuevoPedido(true, false, pedidoEditar);
                 if (nuevoPedido.ShowDialog() == DialogResult.OK)
                 {
-                    pedidos.Remove(pedidoEditar);
-                    pedidos.Add(nuevoPedido._pedido);
+                    var pedidos = Pedido.LeerArchivo();
+                    int index = pedidos.IndexOf(pedidoSeleccionado());
+                    pedidos.Remove(pedidoSeleccionado());
+                    pedidos.Insert(index,nuevoPedido._pedido);
+                    Pedido.EscribirArchivo(pedidos);
+                    LlenarDGVPedidos();
+                }
+            }
+        }
+
+        private void BT_PedidoActualizarEstado_Click(object sender, EventArgs e)
+        {
+            if (pedidoSeleccionado() != null)
+            {
+                Pedido pedidoActualizar = pedidoSeleccionado();
+                NuevoPedido nuevoPedido = new NuevoPedido(false, true, pedidoActualizar);
+                if (nuevoPedido.ShowDialog() == DialogResult.OK)
+                {
+                    var pedidos = Pedido.LeerArchivo();
+                    int index = pedidos.IndexOf(pedidoSeleccionado());
+                    pedidos.Remove(pedidoSeleccionado());
+                    pedidos.Insert(index,nuevoPedido._pedido);
                     Pedido.EscribirArchivo(pedidos);
                     LlenarDGVPedidos();
                 }
@@ -1403,6 +1432,7 @@ namespace PlanHelper
         {
             if (pedidoSeleccionado() != null)
             {
+                var pedidos = Pedido.LeerArchivo();
                 pedidos.Remove(pedidoSeleccionado());
                 Pedido.EscribirArchivo(pedidos);
                 LlenarDGVPedidos();
@@ -1413,6 +1443,7 @@ namespace PlanHelper
         {
             if (pedidoSeleccionado() != null)
             {
+                var pedidos = Pedido.LeerArchivo();
                 Pedido completo = pedidoSeleccionado();
                 Pedido.AgregarACompletados(completo);
                 pedidos.Remove(completo);
@@ -1421,7 +1452,7 @@ namespace PlanHelper
             }
         }
 
-
+        #endregion
 
         private void LlenarInicios()
         {
@@ -1478,6 +1509,7 @@ namespace PlanHelper
             ConsultasDB.agregarHeader(Equipo.pathArchivos + "pacientesRequiereQAPE.txt");
             this.LlenarDGVQAPE();
         }
+
 
     }
 

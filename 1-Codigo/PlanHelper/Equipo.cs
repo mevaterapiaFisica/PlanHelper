@@ -217,7 +217,7 @@ namespace PlanHelper
             }
             return pacientesEnCurso;
         }
-
+        
         public int PacientesEnEquipoDia(Aria aria, double Dias)
         {
             List<PlanPaciente> planPacientes = LeerEnCurso();
@@ -248,6 +248,30 @@ namespace PlanHelper
             return PacientesEnEquipoDia;
         }
 
+        public List<int> PacientesEnEquipoDias(Aria aria, double ultimoDia)
+        {
+            List<PlanPaciente> planPacientes = LeerEnCurso();
+            /*planPacientes.AddRange(MetodosDicomRT.PlanPacientesEnEquipo(this));
+            List<string> pacientesSiguen = ConsultasDB.PacientesSiguenEnEquipoDia(aria, this, Dias);
+            if (Dias == 0)
+            {
+                File.WriteAllLines(pathArchivos + Nombre + "_ocupacionHoy.txt", pacientesSiguen.ToArray());
+            }
+
+            PacientesEnEquipoDia += pacientesSiguen.Count;
+            if (ID == "2100CMLC")
+            {
+                int TBIs = ConsultasDB.TBIsDia(aria, this, Dias).Count;
+                if (TBIs > 0)
+                {
+                    int turnosExtras = (TBIs - 2) * 4;
+                    PacientesEnEquipoDia += turnosExtras;
+                }
+            }
+            return PacientesEnEquipoDia;*/
+            return null;
+        }
+
         public void EscribirAgendaOcupacion(Aria aria)
         {
             int? maximoDias = this.Parametros.OrderBy(p => p.Dias).Last().Dias;
@@ -264,6 +288,33 @@ namespace PlanHelper
                     output.Add(ConsultasDB.AddBusinessDays(DateTime.Today, Convert.ToDouble(i)).ToString("dd/MM/yyyy",CultureInfo.InvariantCulture) + ";" + PacientesEnEquipoDia(aria, Convert.ToDouble(i)).ToString());
                 }
                 File.WriteAllLines(pathArchivos + this.Nombre + "_agendaocupacion.txt", output.ToArray());
+            }
+        }
+
+        public void EscribirAgendaOcupacion2(Aria aria)
+        {
+            int? maximoDias = this.Parametros.OrderBy(p => p.Dias).Last().Dias;
+            int margen = this.Parametros.OrderBy(p => p.Dias).Last().Margen;
+            if (maximoDias != null)
+            {
+                if (this.EsDicomRT)
+                {
+
+                }
+                else
+                {
+                    List<string> output = new List<string>();
+                    for (int i = 0; i < maximoDias + margen; i++)//busco un par de días de más por las dudas
+                    {
+                        /*if (!ConsultasDB.Feriados().Contains(ConsultasDB.AddBusinessDaysSinFeriados(DateTime.Today, Convert.ToDouble(i))))
+                        {
+                            output.Add(ConsultasDB.AddBusinessDaysSinFeriados(DateTime.Today, Convert.ToDouble(i)).ToShortDateString() + ";" + PacientesEnEquipoDia(aria, Convert.ToDouble(i)).ToString());
+                        }*/
+                        output.Add(ConsultasDB.AddBusinessDays(DateTime.Today, Convert.ToDouble(i)).ToString("dd/MM/yyyy", CultureInfo.InvariantCulture) + ";" + PacientesEnEquipoDia(aria, Convert.ToDouble(i)).ToString());
+                    }
+                }
+                
+                //File.WriteAllLines(pathArchivos + this.Nombre + "_agendaocupacion.txt", output.ToArray());
             }
         }
 
