@@ -1,4 +1,5 @@
 ﻿using AriaQ;
+using System.Diagnostics;
 using System.IO;
 using System;
 using System.Collections.Generic;
@@ -117,7 +118,7 @@ namespace PlanHelper
             {
                 new Equipo("Equipo 1", "Equipo1", false, "", 52, true, false, false),
                 new Equipo("Equipo 2", "Equipo 2 6EX",true,@"\\fisica0\equipo2\DICOM RT",52,false,false,false),
-                ///new Equipo("Equipo 3", "2100CMLC", true, @"\\Fisica0\dicom rt", 48, false, true, true),
+                new Equipo("Equipo 3", "Equipo3", true, @"\\fisica0\equipo3\DICOM RT", 52, false, true, true),
                 new Equipo("Equipo 4", "D-2300CD", false, "", 40, true, true, true),
             };
         }
@@ -248,28 +249,31 @@ namespace PlanHelper
             return PacientesEnEquipoDia;
         }
 
-        public List<int> PacientesEnEquipoDias(Aria aria, double ultimoDia)
+        public List<int> PacientesEnEquipoDiasDicomRT(double ultimoDia)
         {
-            List<PlanPaciente> planPacientes = LeerEnCurso();
-            /*planPacientes.AddRange(MetodosDicomRT.PlanPacientesEnEquipo(this));
-            List<string> pacientesSiguen = ConsultasDB.PacientesSiguenEnEquipoDia(aria, this, Dias);
-            if (Dias == 0)
-            {
-                File.WriteAllLines(pathArchivos + Nombre + "_ocupacionHoy.txt", pacientesSiguen.ToArray());
-            }
 
-            PacientesEnEquipoDia += pacientesSiguen.Count;
-            if (ID == "2100CMLC")
+            List<PlanPaciente> planPacientesEnCurso = LeerEnCurso();
+
+            List<int> ocupacionPorDia = new List<int>();
+            List<PlanPaciente> planPacientes = MetodosDicomRT.PlanPacientesEnEquipo(this);
+
+            for (int i = 0; i < ultimoDia + 1; i++)
             {
-                int TBIs = ConsultasDB.TBIsDia(aria, this, Dias).Count;
-                if (TBIs > 0)
+                List<PlanPaciente> pacientesSiguen = planPacientes.Where(p => p.UltimaFx + i <= p.NumeroFracciones && (DateTime.Today-p.UltimaFecha).Days<7).ToList();
+                foreach (PlanPaciente planPaciente in planPacientesEnCurso)
                 {
-                    int turnosExtras = (TBIs - 2) * 4;
-                    PacientesEnEquipoDia += turnosExtras;
+                    if (planPaciente.EstaraEnEquipo(this, i))
+                    {
+                        pacientesSiguen.Add(planPaciente);
+                    }
                 }
+                if (i == 0)
+                {
+                    File.WriteAllLines(pathArchivos + Nombre + "_ocupacionHoy.txt", pacientesSiguen.Select(p => p.ToString()).ToArray());
+                }
+                ocupacionPorDia.Add(pacientesSiguen.Count);
             }
-            return PacientesEnEquipoDia;*/
-            return null;
+            return ocupacionPorDia;
         }
 
         public void EscribirAgendaOcupacion(Aria aria)
@@ -295,26 +299,26 @@ namespace PlanHelper
         {
             int? maximoDias = this.Parametros.OrderBy(p => p.Dias).Last().Dias;
             int margen = this.Parametros.OrderBy(p => p.Dias).Last().Margen;
+            List<string> output = new List<string>();
             if (maximoDias != null)
             {
                 if (this.EsDicomRT)
                 {
-
+                    List<int> agendaOcupacion = PacientesEnEquipoDiasDicomRT((int)maximoDias + margen);
+                    for (int i = 0; i < maximoDias + margen; i++)//busco un par de días de más por las dudas
+                    {
+                        output.Add(ConsultasDB.AddBusinessDays(DateTime.Today, Convert.ToDouble(i)).ToString("dd/MM/yyyy", CultureInfo.InvariantCulture) + ";" + agendaOcupacion[i].ToString());
+                    }
                 }
                 else
                 {
-                    List<string> output = new List<string>();
                     for (int i = 0; i < maximoDias + margen; i++)//busco un par de días de más por las dudas
                     {
-                        /*if (!ConsultasDB.Feriados().Contains(ConsultasDB.AddBusinessDaysSinFeriados(DateTime.Today, Convert.ToDouble(i))))
-                        {
-                            output.Add(ConsultasDB.AddBusinessDaysSinFeriados(DateTime.Today, Convert.ToDouble(i)).ToShortDateString() + ";" + PacientesEnEquipoDia(aria, Convert.ToDouble(i)).ToString());
-                        }*/
                         output.Add(ConsultasDB.AddBusinessDays(DateTime.Today, Convert.ToDouble(i)).ToString("dd/MM/yyyy", CultureInfo.InvariantCulture) + ";" + PacientesEnEquipoDia(aria, Convert.ToDouble(i)).ToString());
                     }
                 }
                 
-                //File.WriteAllLines(pathArchivos + this.Nombre + "_agendaocupacion.txt", output.ToArray());
+                File.WriteAllLines(pathArchivos + this.Nombre + "_agendaocupacion2.txt", output.ToArray());
             }
         }
 
@@ -415,10 +419,19 @@ namespace PlanHelper
 
         public static void EscribirOcupacionEquipos(Aria aria, List<Equipo> Equipos)
         {
-            foreach (Equipo equipo in Equipos)
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+          /*  foreach (Equipo equipo in Equipos)
             {
                 equipo.EscribirAgendaOcupacion(aria);
+            }*/
+            var metodo1 = sw.Elapsed;
+            sw.Restart();
+            foreach (Equipo equipo in Equipos)
+            {
+                equipo.EscribirAgendaOcupacion2(aria);
             }
+            var metodo2 = sw.Elapsed;
         }
 
         public void escribirSeguimiento()

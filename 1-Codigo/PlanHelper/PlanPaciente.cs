@@ -31,6 +31,7 @@ namespace PlanHelper
         public string NotaQA { get; set; }
         public int? UltimaFx { get; set; } //Valor que no se lee ni escribe en txt, se genera 1 vez cuando se actualiza la agenda de ocupacion en DicomRT
         public DateTime UltimaFecha { get; set; } //Valor que no se lee ni escribe en txt, se genera 1 vez cuando se actualiza la agenda de ocupacion en DicomRT
+        public string CarpetaBackupPlan { get; set; }
 
         public PlanPaciente(PlanSetup planSetup)
         {
