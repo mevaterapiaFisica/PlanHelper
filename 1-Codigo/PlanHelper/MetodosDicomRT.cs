@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace PlanHelper
         {
             if (carpetaPaciente != null)
             {
-                List<string> carpetas = Directory.GetDirectories(carpetaPaciente).ToList();
+                List<string> carpetas = Directory.GetDirectories(carpetaPaciente).Where(c=>!esCarpetaOBI(c)).ToList();
                 if (carpetas.Count == 1 && carpetas.First().ToUpper().Contains("BA"))
                 {
                     return 1;
@@ -37,7 +38,7 @@ namespace PlanHelper
         }
         public static string CarpetaBackup(string path)
         {
-            List<string> carpetas = Directory.GetDirectories(path).ToList();
+            List<string> carpetas = Directory.GetDirectories(path).Where(c=>!esCarpetaOBI(c)).ToList();
             if (carpetas.Count > 0)
             {
                 if (carpetas.Any(c => c.ToUpper().Contains("BA")))
@@ -99,7 +100,7 @@ namespace PlanHelper
         {
             if (carpetaPaciente != null)
             {
-                List<string> carpetas = Directory.GetDirectories(carpetaPaciente).ToList();
+                List<string> carpetas = Directory.GetDirectories(carpetaPaciente).Where(c => !esCarpetaOBI(c)).ToList();
                 if (carpetas.Any(c => c.ToUpper().Contains("BA")))
                 {
                     string carpetaBackup = CarpetaBackup(carpetaPaciente);
@@ -157,7 +158,7 @@ namespace PlanHelper
         {
             if (carpetaPaciente != null)
             {
-                List<string> carpetas = Directory.GetDirectories(carpetaPaciente).ToList();
+                List<string> carpetas = Directory.GetDirectories(carpetaPaciente).ToList().Where(c => !esCarpetaOBI(c)).ToList();
                 if (carpetas.Any(c => c.ToUpper().Contains("BA")))
                 {
                     string carpetaBackup = CarpetaBackup(carpetaPaciente);
@@ -204,7 +205,7 @@ namespace PlanHelper
         {
             if (carpetaPaciente != null)
             {
-                List<string> carpetas = Directory.GetDirectories(carpetaPaciente).ToList();
+                List<string> carpetas = Directory.GetDirectories(carpetaPaciente).Where(c => !esCarpetaOBI(c)).ToList();
                 if (!carpetas.Any(c => c.ToUpper().Contains("BA")) && carpetas.Count > 1) //Tiene carpetas de cada tto
                 {
                     List<DateTime> ultimaAplicacionFechas = new List<DateTime>();
@@ -444,35 +445,6 @@ namespace PlanHelper
                     _EquipoID = (string)objeto.FindFirst("300A00B2").DData;
 
                 }
-                /*else
-                {
-                    string[] subcarpetas = Directory.GetDirectories(carpetaPaciente);
-                    if (Directory.GetFiles(subcarpetas.First()).Where(f => f.Contains(".dcm") && !f.Contains("BeamRecord")).Count() > 0)
-                    {
-                        string dcmPath = Directory.GetFiles(subcarpetas.First()).Where(f => f.Contains(".dcm") && !f.Contains("BeamRecord")).First();
-                        var objeto = EvilDICOM.Core.DICOMObject.Read(dcmPath);
-                        string nombreAux = objeto.FindFirst("00100010").DData.ToString();
-                        string[] aux = nombreAux.Split('^');
-
-                        _pacienteNombre = aux[0] + ", " + aux[1];
-                        _pacienteID = objeto.FindFirst("00100020").DData.ToString();
-                        _planID = objeto.FindFirst("300A0002").DData.ToString();
-                        _numFracciones = objeto.FindFirst("300A0078").DData;
-                        _EquipoID = objeto.FindFirst("300A00B2").DData;
-                    }
-                    foreach (string subcarpeta in subcarpetas.Skip(1))
-                    {
-                        if (Directory.GetFiles(subcarpeta).Where(f => f.Contains(".dcm") && !f.Contains("BeamRecord")).Count() > 0)
-                        {
-                            string dcmPath = Directory.GetFiles(subcarpeta).Where(f => f.Contains(".dcm") && !f.Contains("BeamRecord")).First();
-                            var objeto = EvilDICOM.Core.DICOMObject.Read(dcmPath);
-                            if (objeto.FindFirst("300A0078").DData != _numFracciones)
-                            {
-                                _numFracciones += objeto.FindFirst("300A0078").DData;
-                            }
-                        }
-                    }
-                }*/
             }
             return new PlanPaciente(_pacienteID, _pacienteNombre, _planID, _numFracciones, _EquipoID);
         }
@@ -525,6 +497,11 @@ namespace PlanHelper
         public static bool esPlan(string file)
         {
             return file.Contains(".dcm") && !file.Contains("RT.") && !file.Contains("RI.") && !file.Contains("RS.") && !file.Contains("RE.") && !file.Contains("CT.");
+        }
+        public static bool esCarpetaOBI(string carpeta)
+        {
+            string patron = "[0-9]{2}-[0-9]{2}-[0-9]{2}_[0-9]{2}-[0-9]{2}-[0-9]{2}";
+            return Regex.Match(carpeta.Split(Path.DirectorySeparatorChar).Last(), patron).Success;
         }
 
     }
