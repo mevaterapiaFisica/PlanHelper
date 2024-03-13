@@ -318,7 +318,7 @@ namespace PlanHelper
                     }
                 }
                 
-                File.WriteAllLines(pathArchivos + this.Nombre + "_agendaocupacion2.txt", output.ToArray());
+                File.WriteAllLines(pathArchivos + this.Nombre + "_agendaocupacion.txt", output.ToArray());
             }
         }
 
