@@ -17,6 +17,7 @@ namespace PlanHelper
         [STAThread]
         static void Main(string[] args)
         {
+            BusquedaSitramed.PruebaChrome();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             if (args != null && args.Count() > 0 && args[0] == "true" && Environment.UserName.ToLower() == "varian")

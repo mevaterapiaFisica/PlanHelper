@@ -419,19 +419,10 @@ namespace PlanHelper
 
         public static void EscribirOcupacionEquipos(Aria aria, List<Equipo> Equipos)
         {
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
-          /*  foreach (Equipo equipo in Equipos)
-            {
-                equipo.EscribirAgendaOcupacion(aria);
-            }*/
-            var metodo1 = sw.Elapsed;
-            sw.Restart();
             foreach (Equipo equipo in Equipos)
             {
                 equipo.EscribirAgendaOcupacion2(aria);
             }
-            var metodo2 = sw.Elapsed;
         }
 
         public void escribirSeguimiento()
