@@ -27,7 +27,8 @@ namespace PlanHelper
         {
 
             InitializeComponent();
-            Stopwatch sw = new Stopwatch();
+            //Stopwatch sw = new Stopwatch();
+            BorrarTabsNoUsadas();
             //ConsultasDB.buscaPbElectrones();
             Equipos = PlanHelper.Equipo.InicializarEquipos();
             GenerarGUI_Parametros();
@@ -136,7 +137,7 @@ namespace PlanHelper
             }
             if (ocupacion != null)
             {
-                return equipo.TurnosPorDia - (int)ocupacion;
+                return equipo.TurnosLibresPorDia() - (int)ocupacion;
             }
             else
             {
@@ -1354,11 +1355,11 @@ namespace PlanHelper
                 {
                     fila.DefaultCellStyle.BackColor = System.Drawing.Color.Salmon;
                 }
-                else if(diasFaltan < 3)
+                else if (diasFaltan < 3)
                 {
                     fila.DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow;
                 }
-                if (ped.Responsable=="")
+                if (ped.Responsable == "")
                 {
                     fila.Cells[8].Style.BackColor = System.Drawing.Color.Salmon;
                 }
@@ -1382,7 +1383,7 @@ namespace PlanHelper
 
         private void BT_NuevoPedido_Click(object sender, EventArgs e)
         {
-            NuevoPedido nuevoPedido = new NuevoPedido(false,false);
+            NuevoPedido nuevoPedido = new NuevoPedido(false, false);
             if (nuevoPedido.ShowDialog() == DialogResult.OK)
             {
                 var pedidos = Pedido.LeerArchivo();
@@ -1403,7 +1404,7 @@ namespace PlanHelper
                     var pedidos = Pedido.LeerArchivo();
                     int index = pedidos.IndexOf(pedidoSeleccionado());
                     pedidos.Remove(pedidoSeleccionado());
-                    pedidos.Insert(index,nuevoPedido._pedido);
+                    pedidos.Insert(index, nuevoPedido._pedido);
                     Pedido.EscribirArchivo(pedidos);
                     LlenarDGVPedidos();
                 }
@@ -1421,7 +1422,7 @@ namespace PlanHelper
                     var pedidos = Pedido.LeerArchivo();
                     int index = pedidos.IndexOf(pedidoSeleccionado());
                     pedidos.Remove(pedidoSeleccionado());
-                    pedidos.Insert(index,nuevoPedido._pedido);
+                    pedidos.Insert(index, nuevoPedido._pedido);
                     Pedido.EscribirArchivo(pedidos);
                     LlenarDGVPedidos();
                 }
@@ -1508,6 +1509,15 @@ namespace PlanHelper
             ConsultasDB.agregarDateTime(Equipo.pathArchivos + "pacientesQAPE.txt", _dateTime);
             ConsultasDB.agregarHeader(Equipo.pathArchivos + "pacientesRequiereQAPE.txt");
             this.LlenarDGVQAPE();
+        }
+
+        private void BorrarTabsNoUsadas()
+        {
+            tabControl1.TabPages.Remove(tabPage3);
+            tabControl1.TabPages.Remove(tab_QA);
+            tabControl1.TabPages.Remove(tab_Parametros);
+            tabControl1.TabPages.Remove(tab_ExacTrac);
+
         }
 
 

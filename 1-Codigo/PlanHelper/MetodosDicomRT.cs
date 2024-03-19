@@ -1,4 +1,5 @@
 ﻿using System;
+using AriaQ;
 using System.Text.RegularExpressions;
 using System.IO;
 using System.Collections.Generic;
@@ -328,7 +329,7 @@ namespace PlanHelper
             return pacientes;
         }
 
-        public static List<PlanPaciente> PlanPacientesEnEquipo(Equipo equipo)
+        public static List<PlanPaciente> PlanPacientesEnEquipo(Equipo equipo, Aria aria)
         {
             var carpetas = CarpetasPacientes(equipo);
             List<PlanPaciente> planPacientes = new List<PlanPaciente>();
@@ -362,6 +363,7 @@ namespace PlanHelper
                                 planPaciente.UltimaFx = ultimaFx.Item1;
                                 planPaciente.UltimaFecha = ultimaFx.Item2;
                                 planPaciente.CarpetaBackupPlan = CarpetaBackup(subcarpeta);
+                                planPaciente.DefinirTecnica(aria);
                                 planPacientes.Add(planPaciente);
                             }
                         }

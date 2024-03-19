@@ -20,22 +20,32 @@ namespace PlanHelper
         public bool EsDicomRT { get; set; }
         public string RutaDicomRT { get; set; }
         public int TurnosPorDia { get; set; }
+        public int TurnosReservadosTBI { get; set; }
+        public int TurnosReservadosEspeciales { get; set; }
+
         public bool HaceVMAT { get; set; }
         public bool Tiene10MV { get; set; }
         public bool TieneElectrones { get; set; }
+        //public bool HaceCBCT { get; set; }
 
         public List<Parametro> Parametros { get; set; }
         public DateTime? UltimoCalculo { get; set; }
-        public Equipo(string _Nombre, string _ID, bool _EsDicomRT, string _RutaDicomRT, int _TurnosPorDia, bool _HaceVMAT, bool _Tiene10MV, bool _TieneElectrones)
+        public Equipo(string _Nombre, string _ID, bool _EsDicomRT, string _RutaDicomRT, int _TurnosPorDia, int _TurnosReservadosTBI, int _TurnosReservadosEspeciales, bool _HaceVMAT, bool _Tiene10MV, bool _TieneElectrones)
         {
             Nombre = _Nombre;
             ID = _ID;
             EsDicomRT = _EsDicomRT;
             RutaDicomRT = _RutaDicomRT;
             TurnosPorDia = _TurnosPorDia;
+            TurnosReservadosTBI = _TurnosReservadosTBI;
+            TurnosReservadosEspeciales = _TurnosReservadosEspeciales;
             HaceVMAT = _HaceVMAT;
             Tiene10MV = _Tiene10MV;
             TieneElectrones = _TieneElectrones;
+        }
+        public int TurnosLibresPorDia()
+        {
+            return TurnosPorDia - TurnosReservadosEspeciales - TurnosReservadosTBI;
         }
 
         public static Equipo Seleccionar(List<Equipo> equipos, PlanSetup plan)
@@ -50,7 +60,7 @@ namespace PlanHelper
             texto.Add(ID);
             texto.Add(EsDicomRT.ToString());
             texto.Add(RutaDicomRT);
-            texto.Add(TurnosPorDia.ToString());
+            texto.Add(TurnosPorDia.ToString() + ";" + TurnosReservadosTBI + ";" + TurnosReservadosEspeciales);
             texto.Add(HaceVMAT.ToString());
             texto.Add(Tiene10MV.ToString());
             texto.Add(TieneElectrones.ToString());
@@ -79,7 +89,10 @@ namespace PlanHelper
             ID = aux[1];
             EsDicomRT = (aux[2].ToLower() == "true");
             RutaDicomRT = aux[3];
-            TurnosPorDia = Convert.ToInt32(aux[4]);
+            string[] turnos = aux[4].Split(';');
+            TurnosPorDia = Convert.ToInt32(turnos[0]);
+            TurnosReservadosTBI = Convert.ToInt32(turnos[1]);
+            TurnosReservadosEspeciales = Convert.ToInt32(turnos[2]);
             HaceVMAT = (aux[5].ToLower() == "true");
             Tiene10MV = (aux[6].ToLower() == "true");
             TieneElectrones = (aux[7].ToLower() == "true");
@@ -116,10 +129,10 @@ namespace PlanHelper
         {
             return new List<Equipo>()
             {
-                new Equipo("Equipo 1", "Equipo1", false, "", 52, true, false, false),
-                new Equipo("Equipo 2", "Equipo 2 6EX",true,@"\\fisica0\equipo2\DICOM RT",52,false,false,false),
-                new Equipo("Equipo 3", "Equipo3", true, @"\\fisica0\equipo3\DICOM RT", 52, false, true, true),
-                new Equipo("Equipo 4", "D-2300CD", false, "", 40, true, true, true),
+                new Equipo("Equipo 1", "Equipo1", false, "", 52,8,0, true, false, false),
+                new Equipo("Equipo 2", "Equipo 2 6EX",true,@"\\fisica0\equipo2\DICOM RT",52,0,0,false,false,false),
+                new Equipo("Equipo 3", "Equipo3", true, @"\\fisica0\equipo3\DICOM RT", 52,0,0, false, true, true),
+                new Equipo("Equipo 4", "D-2300CD", false, "", 52,0,16, true, true, true),
             };
         }
 
@@ -200,7 +213,7 @@ namespace PlanHelper
             List<PlanSetup> pacientesEnCurso = ConsultasDB.PacientesEncurso(aria, Equipos);
             foreach (Equipo equipo in Equipos)
             {
-                List<string> ocupacion = PlanPaciente.ConvertirListasToString(pacientesEnCurso.Where(p => p.Radiations.First().RadiationDevice.Machine.MachineId == equipo.ID).ToList());
+                List<string> ocupacion = PlanPaciente.ConvertirListasToString(pacientesEnCurso.Where(p => p.Radiations.First().RadiationDevice.Machine.MachineId == equipo.ID).ToList(),aria);
                 File.WriteAllLines(pathArchivos + equipo.Nombre + "_encurso.txt", ocupacion.ToArray());
             }
         }
@@ -221,13 +234,14 @@ namespace PlanHelper
         
         public int PacientesEnEquipoDia(Aria aria, double Dias)
         {
+            
             List<PlanPaciente> planPacientes = LeerEnCurso();
             int PacientesEnEquipoDia = 0;
             foreach (PlanPaciente planPaciente in planPacientes)
             {
                 if (planPaciente.EstaraEnEquipo(this, Dias))
                 {
-                    PacientesEnEquipoDia++;
+                    PacientesEnEquipoDia+=planPaciente.TurnosPorPaciente();
                 }
             }
             List<string> pacientesSiguen = ConsultasDB.PacientesSiguenEnEquipoDia(aria, this, Dias);
@@ -236,26 +250,48 @@ namespace PlanHelper
                 File.WriteAllLines(pathArchivos + Nombre + "_ocupacionHoy.txt", pacientesSiguen.ToArray());
             }
 
-            PacientesEnEquipoDia += pacientesSiguen.Count;
-            if (ID == "2100CMLC")
-            {
-                int TBIs = ConsultasDB.TBIsDia(aria, this, Dias).Count;
-                if (TBIs > 0)
-                {
-                    int turnosExtras = (TBIs - 2) * 4;
-                    PacientesEnEquipoDia += turnosExtras;
-                }
-            }
+            List<PlanPaciente> planPacienteSiguen = pacientesSiguen.Select(p => PlanPaciente.PlanPacienteDeString(p, aria)).ToList();
+
+            PacientesEnEquipoDia += CalcularTurnosDisponibles(planPacienteSiguen, aria);
             return PacientesEnEquipoDia;
         }
 
-        public List<int> PacientesEnEquipoDiasDicomRT(double ultimoDia)
+        public int CalcularTurnosDisponibles(List<PlanPaciente> planPaciente,Aria aria)
+        {
+            int TurnosTBI = planPaciente.Count(p => p.Tecnica == Tecnica.TBI) * PlanPaciente.TurnosPorTecnica(Tecnica.TBI);
+            int SobreturnoTBI = 0;
+            if (TurnosTBI> this.TurnosReservadosTBI)
+            {
+                SobreturnoTBI = TurnosTBI - this.TurnosReservadosTBI;
+            }
+            int SobreturnoEspeciales = 0;
+            int TurnosEspeciales = 0;
+            Tecnica[] especiales = new Tecnica[] { Tecnica.SBRT, Tecnica.SRS1fx, Tecnica.SRS3o5fx };
+            Tecnica[] otras = new Tecnica[] { Tecnica.IGRT, Tecnica.Otro };
+            foreach (Tecnica tecnica in especiales)
+            {
+                TurnosEspeciales += planPaciente.Count(p => p.Tecnica == tecnica) * PlanPaciente.TurnosPorTecnica(tecnica);
+            }
+            if (TurnosEspeciales>this.TurnosReservadosEspeciales)
+            {
+                SobreturnoEspeciales = TurnosEspeciales - this.TurnosReservadosEspeciales;
+            }
+
+            int turnosOtrasTecnicas = 0;
+            foreach (Tecnica tecnica in otras)
+            {
+                turnosOtrasTecnicas += planPaciente.Count(p => p.Tecnica == tecnica) * PlanPaciente.TurnosPorTecnica(tecnica);
+            }
+            return SobreturnoTBI + SobreturnoEspeciales + turnosOtrasTecnicas;
+        }
+
+        public List<int> PacientesEnEquipoDiasDicomRT(double ultimoDia, Aria aria)
         {
 
             List<PlanPaciente> planPacientesEnCurso = LeerEnCurso();
 
             List<int> ocupacionPorDia = new List<int>();
-            List<PlanPaciente> planPacientes = MetodosDicomRT.PlanPacientesEnEquipo(this);
+            List<PlanPaciente> planPacientes = MetodosDicomRT.PlanPacientesEnEquipo(this, aria);
 
             for (int i = 0; i < ultimoDia + 1; i++)
             {
@@ -271,7 +307,8 @@ namespace PlanHelper
                 {
                     File.WriteAllLines(pathArchivos + Nombre + "_ocupacionHoy.txt", pacientesSiguen.Select(p => p.ToString()).ToArray());
                 }
-                ocupacionPorDia.Add(pacientesSiguen.Count);
+                
+                ocupacionPorDia.Add(CalcularTurnosDisponibles(pacientesSiguen,aria));
             }
             return ocupacionPorDia;
         }
@@ -285,10 +322,6 @@ namespace PlanHelper
                 List<string> output = new List<string>();
                 for (int i = 0; i < maximoDias + margen; i++)//busco un par de días de más por las dudas
                 {
-                    /*if (!ConsultasDB.Feriados().Contains(ConsultasDB.AddBusinessDaysSinFeriados(DateTime.Today, Convert.ToDouble(i))))
-                    {
-                        output.Add(ConsultasDB.AddBusinessDaysSinFeriados(DateTime.Today, Convert.ToDouble(i)).ToShortDateString() + ";" + PacientesEnEquipoDia(aria, Convert.ToDouble(i)).ToString());
-                    }*/
                     output.Add(ConsultasDB.AddBusinessDays(DateTime.Today, Convert.ToDouble(i)).ToString("dd/MM/yyyy",CultureInfo.InvariantCulture) + ";" + PacientesEnEquipoDia(aria, Convert.ToDouble(i)).ToString());
                 }
                 File.WriteAllLines(pathArchivos + this.Nombre + "_agendaocupacion.txt", output.ToArray());
@@ -304,7 +337,7 @@ namespace PlanHelper
             {
                 if (this.EsDicomRT)
                 {
-                    List<int> agendaOcupacion = PacientesEnEquipoDiasDicomRT((int)maximoDias + margen);
+                    List<int> agendaOcupacion = PacientesEnEquipoDiasDicomRT((int)maximoDias + margen,aria);
                     for (int i = 0; i < maximoDias + margen; i++)//busco un par de días de más por las dudas
                     {
                         output.Add(ConsultasDB.AddBusinessDays(DateTime.Today, Convert.ToDouble(i)).ToString("dd/MM/yyyy", CultureInfo.InvariantCulture) + ";" + agendaOcupacion[i].ToString());
@@ -448,7 +481,7 @@ namespace PlanHelper
             return source.Any<Equipo>((Func<Equipo, bool>)(e => e.Nombre == stringEquipo)) ? source.Where<Equipo>((Func<Equipo, bool>)(e => e.Nombre == stringEquipo)).FirstOrDefault<Equipo>() : Equipo.Discrepancia();
         }
 
-        public static Equipo Discrepancia() => new Equipo(nameof(Discrepancia), "Error", false, "", 0, false, false, false);
+        public static Equipo Discrepancia() => new Equipo(nameof(Discrepancia), "Error", false, "", 0,0,0, false, false, false);
     }
 
 }

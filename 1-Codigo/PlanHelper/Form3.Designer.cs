@@ -157,6 +157,7 @@
             this.PbsListos = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.DicomEnEq = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.BT_PedidoActualizarEstado = new System.Windows.Forms.Button();
             this.BT_EliminarPedido = new System.Windows.Forms.Button();
             this.BT_CompletarPedido = new System.Windows.Forms.Button();
             this.BT_EditarPedido = new System.Windows.Forms.Button();
@@ -175,7 +176,6 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.BT_ActualizarInicios = new System.Windows.Forms.Button();
             this.RTB_Inicios = new System.Windows.Forms.RichTextBox();
-            this.BT_PedidoActualizarEstado = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tab_Consulta.SuspendLayout();
             this.tab_EstadoEquipos.SuspendLayout();
@@ -206,14 +206,14 @@
             // 
             this.tabControl1.Controls.Add(this.tab_Consulta);
             this.tabControl1.Controls.Add(this.tab_EstadoEquipos);
-            this.tabControl1.Controls.Add(this.tab_QA);
-            this.tabControl1.Controls.Add(this.tab_Parametros);
-            this.tabControl1.Controls.Add(this.tab_ExacTrac);
             this.tabControl1.Controls.Add(this.tab_Buscador);
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tab_QA);
+            this.tabControl1.Controls.Add(this.tab_ExacTrac);
+            this.tabControl1.Controls.Add(this.tab_Parametros);
             this.tabControl1.Location = new System.Drawing.Point(13, 13);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -1463,6 +1463,16 @@
             this.tabPage4.Text = "Pedidos";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // BT_PedidoActualizarEstado
+            // 
+            this.BT_PedidoActualizarEstado.Location = new System.Drawing.Point(628, 359);
+            this.BT_PedidoActualizarEstado.Name = "BT_PedidoActualizarEstado";
+            this.BT_PedidoActualizarEstado.Size = new System.Drawing.Size(98, 23);
+            this.BT_PedidoActualizarEstado.TabIndex = 10;
+            this.BT_PedidoActualizarEstado.Text = "Actualizar estado";
+            this.BT_PedidoActualizarEstado.UseVisualStyleBackColor = true;
+            this.BT_PedidoActualizarEstado.Click += new System.EventHandler(this.BT_PedidoActualizarEstado_Click);
+            // 
             // BT_EliminarPedido
             // 
             this.BT_EliminarPedido.Location = new System.Drawing.Point(252, 359);
@@ -1617,16 +1627,6 @@
             this.RTB_Inicios.Size = new System.Drawing.Size(372, 304);
             this.RTB_Inicios.TabIndex = 0;
             this.RTB_Inicios.Text = "";
-            // 
-            // BT_PedidoActualizarEstado
-            // 
-            this.BT_PedidoActualizarEstado.Location = new System.Drawing.Point(628, 359);
-            this.BT_PedidoActualizarEstado.Name = "BT_PedidoActualizarEstado";
-            this.BT_PedidoActualizarEstado.Size = new System.Drawing.Size(98, 23);
-            this.BT_PedidoActualizarEstado.TabIndex = 10;
-            this.BT_PedidoActualizarEstado.Text = "Actualizar estado";
-            this.BT_PedidoActualizarEstado.UseVisualStyleBackColor = true;
-            this.BT_PedidoActualizarEstado.Click += new System.EventHandler(this.BT_PedidoActualizarEstado_Click);
             // 
             // Form3
             // 

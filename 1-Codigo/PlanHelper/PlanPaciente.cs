@@ -32,6 +32,7 @@ namespace PlanHelper
         public int? UltimaFx { get; set; } //Valor que no se lee ni escribe en txt, se genera 1 vez cuando se actualiza la agenda de ocupacion en DicomRT
         public DateTime UltimaFecha { get; set; } //Valor que no se lee ni escribe en txt, se genera 1 vez cuando se actualiza la agenda de ocupacion en DicomRT
         public string CarpetaBackupPlan { get; set; }
+        public Tecnica Tecnica { get; set; }
 
         public PlanPaciente(PlanSetup planSetup)
         {
@@ -45,6 +46,7 @@ namespace PlanHelper
             FechaStatus = planSetup.StatusDate;
             EquipoID = planSetup.Radiations.First().RadiationDevice.Machine.MachineId;
             NumeroFracciones = planSetup.RTPlans.First().NoFractions;
+            Tecnica = Tecnica.Otro;
         }
 
         public PlanPaciente(string String)
@@ -79,6 +81,10 @@ namespace PlanHelper
                 PlanQAOK = Convert.ToBoolean(aux[15]);
                 NotaQA = aux[16];
             }
+            if (aux.Any(a => a.Contains("Tecnica:")))
+            {
+                Tecnica = (Tecnica)Enum.Parse(typeof(Tecnica), aux[17].Replace("Tecnica:", ""));
+            }
         }
         public PlanPaciente(string String, bool actualizacionFracciones)
         {
@@ -86,6 +92,7 @@ namespace PlanHelper
             PacienteID = aux[0];
             PacienteNombre = aux[1];
             PlanID = aux[2];
+            Tecnica = Tecnica.Otro;
             AplicacionesRealizadas = Convert.ToInt32(aux[3]);
             //NumeroFracciones = Convert.ToInt32(aux[4]);
         }
@@ -102,6 +109,7 @@ namespace PlanHelper
             FechaStatus = DateTime.MinValue;
             EquipoID = _EquipoID;
             NumeroFracciones = _NumeroFracciones;
+            Tecnica = Tecnica.Otro;
         }
 
         public void ObtenerUltimaFx(string carpetaPaciente)
@@ -134,7 +142,7 @@ namespace PlanHelper
                 NotaQA = "";
             }
             return PacienteID + ";" + PacienteNombre + ";" + CursoID + ";" + PlanID + ";" + PlanSer.ToString() + ";" + Modalidad + ";" + Status + ";" + FechaStatus.ToString() + ";" + EquipoID + ";" + nfx +
-                ";" + BeamRecordOverride.ToString() + ";" + AplicacionesRealizadas.ToString() + ";" + RequierePlanQA.ToString() + ";" + TienePlanQA.ToString() + ";" + SeMidioPlanQA.ToString() + ";" + PlanQAOK.ToString() + ";" + NotaQA.ToString();
+                ";" + BeamRecordOverride.ToString() + ";" + AplicacionesRealizadas.ToString() + ";" + RequierePlanQA.ToString() + ";" + TienePlanQA.ToString() + ";" + SeMidioPlanQA.ToString() + ";" + PlanQAOK.ToString() + ";" + NotaQA.ToString() + ";Tecnica:" + Tecnica.ToString();
         }
 
         public string ToStringQAPE()
@@ -206,7 +214,7 @@ namespace PlanHelper
             catch (IOException ex)
             {
                 Thread.Sleep(1000);
-                PlanPaciente.ExtraerDeArchivo(path,0);
+                PlanPaciente.ExtraerDeArchivo(path, 0);
             }
             return planPacienteList;
         }
@@ -259,12 +267,14 @@ namespace PlanHelper
             return lista;
         }
 
-        public static List<string> ConvertirListasToString(List<PlanSetup> planes)
+        public static List<string> ConvertirListasToString(List<PlanSetup> planes, Aria aria)
         {
             List<string> planPacientes = new List<string>();
             foreach (PlanSetup plan in planes)
             {
-                planPacientes.Add(new PlanPaciente(plan).ToString());
+                PlanPaciente planPaciente = new PlanPaciente(plan);
+                planPaciente.DefinirTecnica(aria);
+                planPacientes.Add(planPaciente.ToString());
             }
             return planPacientes;
         }
@@ -325,5 +335,125 @@ namespace PlanHelper
             }
             return true;
         }
+        public static Tecnica DefinirTecnica(PlanSetup plan)
+        {
+            if (plan.Status == "TreatApproval")
+            {
+                if (plan.PlanSetupId.Contains("TBI"))
+                {
+                    return Tecnica.TBI;
+                }
+                if (plan.Radiations.First().RadiationDevice.Machine.MachineId == "D-2300CD")
+                {
+                    if (plan.Radiations.First().DoseMatrices.First().ResX == 1)
+                    {
+                        if (plan.RTPlans.First().NoFractions == 1 && plan.RTPlans.First().PrescribedDose > 9)
+                        {
+                            return Tecnica.SRS1fx;
+                        }
+                        else if (plan.Radiations.Any(r => r.RadiationId == "CBCT"))
+                        {
+                            return Tecnica.SBRT;
+                        }
+                        else if (plan.RTPlans.First().NoFractions == 3 || plan.RTPlans.First().NoFractions == 5)
+                        {
+                            return Tecnica.SRS3o5fx;
+                        }
+                    }
+                }
+                if (plan.Radiations.Any(r => r.RadiationId == "CBCT"))
+                {
+                    return Tecnica.IGRT;
+                }
+            }
+            return Tecnica.Otro;
+        }
+        public void DefinirTecnica(Aria aria)
+        {
+            if (this.PacienteID=="")
+            {
+                return;
+            }
+
+            PlanSetup plan = new PlanSetup();
+            if (this.PlanSer != 0000)
+            {
+                plan = aria.PlanSetups.FirstOrDefault(p => p.PlanSetupSer == this.PlanSer);
+            }
+            else
+            {
+                var cursosActivosNoQA = aria.Patients.FirstOrDefault(p => p.PatientId == this.PacienteID).Courses.Where(c => c.ClinicalStatus == "ACTIVE" && !c.CourseId.Contains("QA") && !c.CourseId.Contains("Fisica"));
+                foreach (var curso in cursosActivosNoQA)
+                {
+                    plan = curso.PlanSetups.FirstOrDefault(p => p.PlanSetupId == this.PlanID && p.Status == "TreatApproval");
+                    break;
+                }
+            }
+            this.Tecnica = DefinirTecnica(plan);
+        }
+        public int TurnosPorPaciente()
+        {
+            return TurnosPorTecnica(this.Tecnica);
+        }
+
+        public static int TurnosPorTecnica(Tecnica tecnica)
+        {
+            if (tecnica == Tecnica.TBI)
+            {
+                return 4;
+            }
+            else if (tecnica == Tecnica.SRS1fx || tecnica == Tecnica.SBRT)
+            {
+                return 3;
+            }
+            else if (tecnica==Tecnica.IGRT)
+            {
+                return 2;
+            }
+            return 1;
+        }
+
+        public static Tecnica TecnicaPorPacienteString(string ID, Aria aria)
+        {
+            var cursosActivosNoQA = aria.Patients.FirstOrDefault(p => p.PatientId == ID).Courses.Where(c => c.ClinicalStatus == "Active" && !c.CourseId.Contains("QA") && !c.CourseId.Contains("Fisica"));
+            foreach (var curso in cursosActivosNoQA)
+            {
+                return DefinirTecnica(curso.PlanSetups.FirstOrDefault(p => p.Status == "TreatApproval"));
+            }
+            return Tecnica.Otro;
+        }
+        public static PlanPaciente PlanPacienteDeString(string ID, Aria aria)
+        {
+            var cursosActivosNoQA = aria.Patients.FirstOrDefault(p => p.PatientId == ID).Courses.Where(c => c.ClinicalStatus == "ACTIVE" && !c.CourseId.Contains("QA") && !c.CourseId.Contains("Fisica"));
+            foreach (var curso in cursosActivosNoQA)
+            {
+                PlanPaciente plan = new PlanPaciente(curso.PlanSetups.FirstOrDefault(p => p.Status == "TreatApproval"));
+                plan.DefinirTecnica(aria);
+                return plan;
+            }
+            return null;
+        }
+
+        public static int TurnosPorPacienteString(string ID, Aria aria)
+        {
+            var cursosActivosNoQA = aria.Patients.FirstOrDefault(p => p.PatientId == ID).Courses.Where(c => c.ClinicalStatus == "Active" && !c.CourseId.Contains("QA") && !c.CourseId.Contains("Fisica"));
+            foreach (var curso in cursosActivosNoQA)
+            {
+                Tecnica tecnica = DefinirTecnica(curso.PlanSetups.FirstOrDefault(p => p.Status == "TreatApproval"));
+                return TurnosPorTecnica(tecnica);
+            }
+            return 1;
+        }
+
     }
+    public enum Tecnica
+    {
+        TBI,
+        SRS1fx,
+        SRS3o5fx,
+        SBRT,
+        IGRT,
+        Otro
+    }
+
 }

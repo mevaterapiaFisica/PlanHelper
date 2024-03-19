@@ -336,7 +336,7 @@ namespace PlanHelper
         #region auxiliares
         public static string Modalidad(AriaQ.PlanSetup plan)
         {
-            if (plan.Radiations.First().ExternalFieldCommon.Technique.TechniqueId == "ARC" && plan.Radiations.First().ExternalFieldCommon.MLCPlans.First().MLCPlanType == "DynMLCPlan")
+            if (plan.Radiations.First().ExternalFieldCommon.Technique.TechniqueId == "ARC" && plan.Radiations.First().ExternalFieldCommon.MLCPlans.Count>0 && plan.Radiations.First().ExternalFieldCommon.MLCPlans.First().MLCPlanType == "DynMLCPlan")
             {
                 if (plan.Radiations.First().RadiationDevice.Machine.MachineId == "2100CMLC")
                 {
@@ -586,7 +586,7 @@ namespace PlanHelper
                 var SchAct = aria.ScheduledActivities.Where(s => DbFunctions.TruncateTime(s.ScheduledStartTime) == dia && s.ObjectStatus.Equals("Active")).ToList();
                 List<string> pacientes = SchAct.Where(s => Attendees.Contains(s.ActivityInstanceSer) && s.Patient != null).Select(s => s.Patient.PatientId).ToList();
                 //List<string> pacientes = SchAct.Where(s => Attendees.Contains(s.ActivityInstanceSer) && s.Patient != null).Select(s => s.Patient.LastName).ToList();
-                pacientes.RemoveAll(p => p.Contains("1-0000"));
+                pacientes.RemoveAll(p => p.Contains("E1-2022") || p.Contains("4-2022"));
                 return pacientes;
             }
         }
