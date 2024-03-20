@@ -122,7 +122,7 @@
             this.TB_BuscadorApellido = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.TB_BuscadorHC = new System.Windows.Forms.TextBox();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tab_QAPE = new System.Windows.Forms.TabPage();
             this.BT_EliminarDeLaLista = new System.Windows.Forms.Button();
             this.L_QAPEActualizacion = new System.Windows.Forms.Label();
             this.BT_QAAgregar = new System.Windows.Forms.Button();
@@ -137,7 +137,7 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.QA_OK = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.NotaQA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tab_TBI = new System.Windows.Forms.TabPage();
             this.BT_TBIGuardarCambios = new System.Windows.Forms.Button();
             this.BT_TBIActualizarBusqueda = new System.Windows.Forms.Button();
             this.BT_PacTBIEliminarPaciente = new System.Windows.Forms.Button();
@@ -156,7 +156,7 @@
             this.Treatment = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.PbsListos = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.DicomEnEq = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tab_pedidos = new System.Windows.Forms.TabPage();
             this.BT_PedidoActualizarEstado = new System.Windows.Forms.Button();
             this.BT_EliminarPedido = new System.Windows.Forms.Button();
             this.BT_CompletarPedido = new System.Windows.Forms.Button();
@@ -173,7 +173,7 @@
             this.ColSolicita = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColFisResponsable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColComentario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tab_inicios = new System.Windows.Forms.TabPage();
             this.BT_ActualizarInicios = new System.Windows.Forms.Button();
             this.RTB_Inicios = new System.Windows.Forms.RichTextBox();
             this.tabControl1.SuspendLayout();
@@ -193,13 +193,13 @@
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tab_QAPE.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_QAPE)).BeginInit();
-            this.tabPage2.SuspendLayout();
+            this.tab_TBI.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_PacientesTBI)).BeginInit();
-            this.tabPage4.SuspendLayout();
+            this.tab_pedidos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Pedidos)).BeginInit();
-            this.tabPage3.SuspendLayout();
+            this.tab_inicios.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -207,10 +207,10 @@
             this.tabControl1.Controls.Add(this.tab_Consulta);
             this.tabControl1.Controls.Add(this.tab_EstadoEquipos);
             this.tabControl1.Controls.Add(this.tab_Buscador);
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tab_QAPE);
+            this.tabControl1.Controls.Add(this.tab_TBI);
+            this.tabControl1.Controls.Add(this.tab_pedidos);
+            this.tabControl1.Controls.Add(this.tab_inicios);
             this.tabControl1.Controls.Add(this.tab_QA);
             this.tabControl1.Controls.Add(this.tab_ExacTrac);
             this.tabControl1.Controls.Add(this.tab_Parametros);
@@ -1127,21 +1127,21 @@
             this.TB_BuscadorHC.Size = new System.Drawing.Size(80, 20);
             this.TB_BuscadorHC.TabIndex = 1;
             // 
-            // tabPage1
+            // tab_QAPE
             // 
-            this.tabPage1.Controls.Add(this.BT_EliminarDeLaLista);
-            this.tabPage1.Controls.Add(this.L_QAPEActualizacion);
-            this.tabPage1.Controls.Add(this.BT_QAAgregar);
-            this.tabPage1.Controls.Add(this.BT_QAGuardarCambios);
-            this.tabPage1.Controls.Add(this.BT_ActualizarQAPE);
-            this.tabPage1.Controls.Add(this.DGV_QAPE);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(861, 392);
-            this.tabPage1.TabIndex = 6;
-            this.tabPage1.Text = "QA Paciente Específico";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tab_QAPE.Controls.Add(this.BT_EliminarDeLaLista);
+            this.tab_QAPE.Controls.Add(this.L_QAPEActualizacion);
+            this.tab_QAPE.Controls.Add(this.BT_QAAgregar);
+            this.tab_QAPE.Controls.Add(this.BT_QAGuardarCambios);
+            this.tab_QAPE.Controls.Add(this.BT_ActualizarQAPE);
+            this.tab_QAPE.Controls.Add(this.DGV_QAPE);
+            this.tab_QAPE.Location = new System.Drawing.Point(4, 22);
+            this.tab_QAPE.Name = "tab_QAPE";
+            this.tab_QAPE.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_QAPE.Size = new System.Drawing.Size(861, 392);
+            this.tab_QAPE.TabIndex = 6;
+            this.tab_QAPE.Text = "QA Paciente Específico";
+            this.tab_QAPE.UseVisualStyleBackColor = true;
             // 
             // BT_EliminarDeLaLista
             // 
@@ -1270,21 +1270,21 @@
             this.NotaQA.Name = "NotaQA";
             this.NotaQA.Width = 170;
             // 
-            // tabPage2
+            // tab_TBI
             // 
-            this.tabPage2.Controls.Add(this.BT_TBIGuardarCambios);
-            this.tabPage2.Controls.Add(this.BT_TBIActualizarBusqueda);
-            this.tabPage2.Controls.Add(this.BT_PacTBIEliminarPaciente);
-            this.tabPage2.Controls.Add(this.BT_TBIEditaPaciente);
-            this.tabPage2.Controls.Add(this.BT_NuevoTBI);
-            this.tabPage2.Controls.Add(this.DGV_PacientesTBI);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(861, 392);
-            this.tabPage2.TabIndex = 7;
-            this.tabPage2.Text = "TBI";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tab_TBI.Controls.Add(this.BT_TBIGuardarCambios);
+            this.tab_TBI.Controls.Add(this.BT_TBIActualizarBusqueda);
+            this.tab_TBI.Controls.Add(this.BT_PacTBIEliminarPaciente);
+            this.tab_TBI.Controls.Add(this.BT_TBIEditaPaciente);
+            this.tab_TBI.Controls.Add(this.BT_NuevoTBI);
+            this.tab_TBI.Controls.Add(this.DGV_PacientesTBI);
+            this.tab_TBI.Location = new System.Drawing.Point(4, 22);
+            this.tab_TBI.Name = "tab_TBI";
+            this.tab_TBI.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_TBI.Size = new System.Drawing.Size(861, 392);
+            this.tab_TBI.TabIndex = 7;
+            this.tab_TBI.Text = "TBI";
+            this.tab_TBI.UseVisualStyleBackColor = true;
             // 
             // BT_TBIGuardarCambios
             // 
@@ -1447,21 +1447,21 @@
             this.DicomEnEq.Name = "DicomEnEq";
             this.DicomEnEq.Width = 70;
             // 
-            // tabPage4
+            // tab_pedidos
             // 
-            this.tabPage4.Controls.Add(this.BT_PedidoActualizarEstado);
-            this.tabPage4.Controls.Add(this.BT_EliminarPedido);
-            this.tabPage4.Controls.Add(this.BT_CompletarPedido);
-            this.tabPage4.Controls.Add(this.BT_EditarPedido);
-            this.tabPage4.Controls.Add(this.BT_NuevoPedido);
-            this.tabPage4.Controls.Add(this.DGV_Pedidos);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(861, 392);
-            this.tabPage4.TabIndex = 9;
-            this.tabPage4.Text = "Pedidos";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            this.tab_pedidos.Controls.Add(this.BT_PedidoActualizarEstado);
+            this.tab_pedidos.Controls.Add(this.BT_EliminarPedido);
+            this.tab_pedidos.Controls.Add(this.BT_CompletarPedido);
+            this.tab_pedidos.Controls.Add(this.BT_EditarPedido);
+            this.tab_pedidos.Controls.Add(this.BT_NuevoPedido);
+            this.tab_pedidos.Controls.Add(this.DGV_Pedidos);
+            this.tab_pedidos.Location = new System.Drawing.Point(4, 22);
+            this.tab_pedidos.Name = "tab_pedidos";
+            this.tab_pedidos.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_pedidos.Size = new System.Drawing.Size(861, 392);
+            this.tab_pedidos.TabIndex = 9;
+            this.tab_pedidos.Text = "Pedidos";
+            this.tab_pedidos.UseVisualStyleBackColor = true;
             // 
             // BT_PedidoActualizarEstado
             // 
@@ -1597,17 +1597,17 @@
             this.ColComentario.Name = "ColComentario";
             this.ColComentario.ReadOnly = true;
             // 
-            // tabPage3
+            // tab_inicios
             // 
-            this.tabPage3.Controls.Add(this.BT_ActualizarInicios);
-            this.tabPage3.Controls.Add(this.RTB_Inicios);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(861, 392);
-            this.tabPage3.TabIndex = 8;
-            this.tabPage3.Text = "Inicios";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.tab_inicios.Controls.Add(this.BT_ActualizarInicios);
+            this.tab_inicios.Controls.Add(this.RTB_Inicios);
+            this.tab_inicios.Location = new System.Drawing.Point(4, 22);
+            this.tab_inicios.Name = "tab_inicios";
+            this.tab_inicios.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_inicios.Size = new System.Drawing.Size(861, 392);
+            this.tab_inicios.TabIndex = 8;
+            this.tab_inicios.Text = "Inicios";
+            this.tab_inicios.UseVisualStyleBackColor = true;
             // 
             // BT_ActualizarInicios
             // 
@@ -1666,14 +1666,14 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.tab_QAPE.ResumeLayout(false);
+            this.tab_QAPE.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_QAPE)).EndInit();
-            this.tabPage2.ResumeLayout(false);
+            this.tab_TBI.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGV_PacientesTBI)).EndInit();
-            this.tabPage4.ResumeLayout(false);
+            this.tab_pedidos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Pedidos)).EndInit();
-            this.tabPage3.ResumeLayout(false);
+            this.tab_inicios.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1774,7 +1774,7 @@
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox TB_BuscadorEstructuras;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tab_QAPE;
         private System.Windows.Forms.Button BT_ActualizarQAPE;
         private System.Windows.Forms.DataGridView DGV_QAPE;
         private System.Windows.Forms.Button BT_QAAgregar;
@@ -1788,8 +1788,8 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewCheckBoxColumn QA_OK;
         private System.Windows.Forms.DataGridViewTextBoxColumn NotaQA;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tab_TBI;
+        private System.Windows.Forms.TabPage tab_inicios;
         private System.Windows.Forms.Button BT_TBIGuardarCambios;
         private System.Windows.Forms.Button BT_TBIActualizarBusqueda;
         private System.Windows.Forms.Button BT_PacTBIEliminarPaciente;
@@ -1811,7 +1811,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn PbsListos;
         private System.Windows.Forms.DataGridViewCheckBoxColumn DicomEnEq;
         private System.Windows.Forms.Button BT_EliminarDeLaLista;
-        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TabPage tab_pedidos;
         private System.Windows.Forms.Button BT_EditarPedido;
         private System.Windows.Forms.Button BT_NuevoPedido;
         private System.Windows.Forms.DataGridView DGV_Pedidos;

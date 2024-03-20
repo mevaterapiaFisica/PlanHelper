@@ -1136,50 +1136,50 @@ namespace PlanHelper
         #endregion
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tabControl1.SelectedIndex == 0)
+            /*if (tabControl1.SelectedIndex == 0)
             {
 
-            }
-            else if (tabControl1.SelectedIndex == 1)
+            }*/
+            if (tabControl1.SelectedTab.Name == "tab_EstadoEquipos")
             {
                 llenarDGVEstadoEquipos();
             }
-            else if (tabControl1.SelectedIndex == 2)
+            else if (tabControl1.SelectedTab.Name == "tab_QA")
             {
                 llenarLB_QA();
                 L_QA_UltimaBusquedaPlacasPendientes.Text = "Última búsqueda: " + File.GetLastWriteTime(Directory.GetFiles(Equipo.pathArchivos).Where(s => s.Contains("QA_VMATcorto")).First()).ToString();
             }
-            else if (tabControl1.SelectedIndex == 3)
+            /*else if (tabControl1.SelectedIndex == 3)
             {
 
             }
             else if (tabControl1.SelectedIndex == 4)
             {
 
-            }
-            else if (tabControl1.SelectedIndex == 5 && !(Environment.UserName.ToLower() == "varian"))
+            }*/
+            else if (tabControl1.SelectedTab.Name == "tab_Buscador" && !(Environment.UserName.ToLower() == "varian"))
             {
                 tabControl1.SelectedIndex = 0;
                 MessageBox.Show("No se puede buscar en la base de datos desde esta pc y usuario");
             }
-            else if (tabControl1.SelectedIndex == 6)
+            else if (tabControl1.SelectedTab.Name == "tab_QAPE")
             {
                 LlenarDGVQAPE();
             }
-            else if (this.tabControl1.SelectedIndex == 7)
+            else if (this.tabControl1.SelectedTab.Name == "tab_TBI")
             {
                 this.LlenarDGVTBI();
             }
 
-            else if (this.tabControl1.SelectedIndex == 8)
+            else if (this.tabControl1.SelectedTab.Name == "tab_pedidos")
             {
                 this.LlenarDGVPedidos();
             }
             else
             {
-                if (this.tabControl1.SelectedIndex != 8)
+                /*if (this.tabControl1.SelectedIndex != 8)
                     return;
-                this.LlenarInicios();
+                this.LlenarInicios();*/
             }
         }
 
@@ -1513,7 +1513,7 @@ namespace PlanHelper
 
         private void BorrarTabsNoUsadas()
         {
-            tabControl1.TabPages.Remove(tabPage3);
+            tabControl1.TabPages.Remove(tab_inicios);
             tabControl1.TabPages.Remove(tab_QA);
             tabControl1.TabPages.Remove(tab_Parametros);
             tabControl1.TabPages.Remove(tab_ExacTrac);
