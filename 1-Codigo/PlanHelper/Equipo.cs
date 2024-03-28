@@ -20,8 +20,8 @@ namespace PlanHelper
         public bool EsDicomRT { get; set; }
         public string RutaDicomRT { get; set; }
         public int TurnosPorDia { get; set; }
-        public int TurnosReservadosTBI { get; set; }
-        public int TurnosReservadosEspeciales { get; set; }
+        //public int TurnosReservadosTBI { get; set; }
+        //public int TurnosReservadosEspeciales { get; set; }
 
         public bool HaceVMAT { get; set; }
         public bool Tiene10MV { get; set; }
@@ -30,22 +30,28 @@ namespace PlanHelper
 
         public List<Parametro> Parametros { get; set; }
         public DateTime? UltimoCalculo { get; set; }
-        public Equipo(string _Nombre, string _ID, bool _EsDicomRT, string _RutaDicomRT, int _TurnosPorDia, int _TurnosReservadosTBI, int _TurnosReservadosEspeciales, bool _HaceVMAT, bool _Tiene10MV, bool _TieneElectrones)
+
+        public List<HorarioReservado> HorariosReservados { get; set; }
+        public Equipo(string _Nombre, string _ID, bool _EsDicomRT, string _RutaDicomRT, int _TurnosPorDia, bool _HaceVMAT, bool _Tiene10MV, bool _TieneElectrones, List<HorarioReservado> _horariosReservados =null)
         {
             Nombre = _Nombre;
             ID = _ID;
             EsDicomRT = _EsDicomRT;
             RutaDicomRT = _RutaDicomRT;
             TurnosPorDia = _TurnosPorDia;
-            TurnosReservadosTBI = _TurnosReservadosTBI;
-            TurnosReservadosEspeciales = _TurnosReservadosEspeciales;
+            //TurnosReservadosTBI = _TurnosReservadosTBI;
+            //TurnosReservadosEspeciales = _TurnosReservadosEspeciales;
             HaceVMAT = _HaceVMAT;
             Tiene10MV = _Tiene10MV;
             TieneElectrones = _TieneElectrones;
+            if (_horariosReservados!=null)
+            {
+                HorariosReservados = _horariosReservados;
+            }
         }
         public int TurnosLibresPorDia()
         {
-            return TurnosPorDia - TurnosReservadosEspeciales - TurnosReservadosTBI;
+            return TurnosPorDia;// - TurnosReservadosEspeciales - TurnosReservadosTBI;
         }
 
         public static Equipo Seleccionar(List<Equipo> equipos, PlanSetup plan)
@@ -60,7 +66,7 @@ namespace PlanHelper
             texto.Add(ID);
             texto.Add(EsDicomRT.ToString());
             texto.Add(RutaDicomRT);
-            texto.Add(TurnosPorDia.ToString() + ";" + TurnosReservadosTBI + ";" + TurnosReservadosEspeciales);
+            texto.Add(TurnosPorDia.ToString());// + ";" + TurnosReservadosTBI + ";" + TurnosReservadosEspeciales);
             texto.Add(HaceVMAT.ToString());
             texto.Add(Tiene10MV.ToString());
             texto.Add(TieneElectrones.ToString());
@@ -89,10 +95,11 @@ namespace PlanHelper
             ID = aux[1];
             EsDicomRT = (aux[2].ToLower() == "true");
             RutaDicomRT = aux[3];
-            string[] turnos = aux[4].Split(';');
+            /*string[] turnos = aux[4].Split(';');
             TurnosPorDia = Convert.ToInt32(turnos[0]);
             TurnosReservadosTBI = Convert.ToInt32(turnos[1]);
-            TurnosReservadosEspeciales = Convert.ToInt32(turnos[2]);
+            TurnosReservadosEspeciales = Convert.ToInt32(turnos[2]);*/
+            TurnosPorDia = Convert.ToInt32(aux[4]);
             HaceVMAT = (aux[5].ToLower() == "true");
             Tiene10MV = (aux[6].ToLower() == "true");
             TieneElectrones = (aux[7].ToLower() == "true");
@@ -129,10 +136,10 @@ namespace PlanHelper
         {
             return new List<Equipo>()
             {
-                new Equipo("Equipo 1", "Equipo1", false, "", 52,8,0, true, false, false),
-                new Equipo("Equipo 2", "Equipo 2 6EX",true,@"\\fisica0\equipo2\DICOM RT",52,0,0,false,false,false),
-                new Equipo("Equipo 3", "Equipo3", true, @"\\fisica0\equipo3\DICOM RT", 52,0,0, false, true, true),
-                new Equipo("Equipo 4", "D-2300CD", false, "", 52,0,16, true, true, true),
+                new Equipo("Equipo 1", "Equipo1", false, "", 52, true, false, false),
+                new Equipo("Equipo 2", "Equipo 2 6EX",true,@"\\fisica0\equipo2\DICOM RT",52,false,false,false),
+                new Equipo("Equipo 3", "Equipo3", true, @"\\fisica0\equipo3\DICOM RT", 52, false, true, true),
+                new Equipo("Equipo 4", "D-2300CD", false, "", 52, true, true, true),
             };
         }
 
@@ -147,6 +154,32 @@ namespace PlanHelper
                 }
             }
             return equipos;
+        }
+
+        public static List<Equipo> InicializarEquiposConHorarioReservado()
+        {
+            List<Equipo> equipos = InicializarEquipos();
+            Equipo equipo1 = equipos.First(e => e.Nombre == "Equipo 1");
+            Equipo equipo4 = equipos.First(e => e.Nombre == "Equipo 4");
+            equipo1.HorariosReservados = new List<HorarioReservado>();
+            equipo1.HorariosReservados.Add(new HorarioReservado("11:00", "12:00", "TBI_turno1"));
+            equipo1.HorariosReservados.Add(new HorarioReservado("14:00", "15:00", "TBI_turno2"));
+
+            equipo4.HorariosReservados = new List<HorarioReservado>();
+            equipo4.HorariosReservados.Add(new HorarioReservado("10:00", "12:00", "Especiales_turno1"));
+            equipo4.HorariosReservados.Add(new HorarioReservado("14:00", "16:00", "Especiales_turno2"));
+
+            return equipos;
+        }
+
+        public double HorasHorariosReservados()
+        {
+            double horas = 0;
+            foreach (var hr in HorariosReservados)
+            {
+                horas += hr.DuracionHoras();
+            }
+            return horas;
         }
 
         public static void CalcularParametrosEquipos(Aria aria, Eclipse.Application app, List<Equipo> equipos)
@@ -258,7 +291,7 @@ namespace PlanHelper
 
         public int CalcularTurnosDisponibles(List<PlanPaciente> planPaciente,Aria aria)
         {
-            int TurnosTBI = planPaciente.Count(p => p.Tecnica == Tecnica.TBI) * PlanPaciente.TurnosPorTecnica(Tecnica.TBI);
+            /*int TurnosTBI = planPaciente.Count(p => p.Tecnica == Tecnica.TBI) * PlanPaciente.TurnosPorTecnica(Tecnica.TBI);
             int SobreturnoTBI = 0;
             if (TurnosTBI> this.TurnosReservadosTBI)
             {
@@ -282,8 +315,11 @@ namespace PlanHelper
             {
                 turnosOtrasTecnicas += planPaciente.Count(p => p.Tecnica == tecnica) * PlanPaciente.TurnosPorTecnica(tecnica);
             }
-            return SobreturnoTBI + SobreturnoEspeciales + turnosOtrasTecnicas;
+            return SobreturnoTBI + SobreturnoEspeciales + turnosOtrasTecnicas;*/
+            return 0;
         }
+
+        
 
         public List<int> PacientesEnEquipoDiasDicomRT(double ultimoDia, Aria aria)
         {
@@ -458,6 +494,25 @@ namespace PlanHelper
             }
         }
 
+        public static void EscribirOcupacionEquipos2(List<Equipo> equipos)
+        {
+            int? maximoDias = 0;
+            int? margen = 0;
+            foreach (Equipo equipo in equipos)
+            {
+                if (equipo.Parametros.OrderBy(p => p.Dias).Last().Dias>maximoDias)
+                {
+                    maximoDias = equipo.Parametros.OrderBy(p => p.Dias).Last().Dias;
+                }
+                if (equipo.Parametros.OrderBy(p => p.Dias).Last().Margen > margen)
+                {
+                    margen = equipo.Parametros.OrderBy(p => p.Dias).Last().Margen;
+                }
+            }
+            List<OcupacionEquipo> ocupaciones = BusquedaSitramed.BuscarOcupacionEquipos(equipos, maximoDias + margen);
+
+        }
+
         public void escribirSeguimiento()
         {
             string texto = Environment.NewLine + DateTime.Today.ToString("dd/MM/yyyy",CultureInfo.InvariantCulture) + ";" + BuscarOcupacion(DateTime.Today).ToString() + ";" + BuscarOcupacion(DateTime.Today.AddDays(1)).ToString();
@@ -481,7 +536,14 @@ namespace PlanHelper
             return source.Any<Equipo>((Func<Equipo, bool>)(e => e.Nombre == stringEquipo)) ? source.Where<Equipo>((Func<Equipo, bool>)(e => e.Nombre == stringEquipo)).FirstOrDefault<Equipo>() : Equipo.Discrepancia();
         }
 
-        public static Equipo Discrepancia() => new Equipo(nameof(Discrepancia), "Error", false, "", 0,0,0, false, false, false);
+        public static Equipo Discrepancia() => new Equipo(nameof(Discrepancia), "Error", false, "", 0, false, false, false);
+
+        public bool EstaEnHorarioReservado(TurnoSitra turnoSitra)
+        {
+            return HorariosReservados.Any(r => r.LoContiene(turnoSitra));
+        }
+
+        
     }
 
 }

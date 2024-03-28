@@ -16,7 +16,7 @@ namespace PlanHelper
         {
             if (carpetaPaciente != null)
             {
-                List<string> carpetas = Directory.GetDirectories(carpetaPaciente).Where(c=>!esCarpetaOBI(c)).ToList();
+                List<string> carpetas = Directory.GetDirectories(carpetaPaciente).Where(c => !esCarpetaOBI(c)).ToList();
                 if (carpetas.Count == 1 && carpetas.First().ToUpper().Contains("BA"))
                 {
                     return 1;
@@ -39,7 +39,7 @@ namespace PlanHelper
         }
         public static string CarpetaBackup(string path)
         {
-            List<string> carpetas = Directory.GetDirectories(path).Where(c=>!esCarpetaOBI(c)).ToList();
+            List<string> carpetas = Directory.GetDirectories(path).Where(c => !esCarpetaOBI(c)).ToList();
             if (carpetas.Count > 0)
             {
                 if (carpetas.Any(c => c.ToUpper().Contains("BA")))
@@ -183,6 +183,58 @@ namespace PlanHelper
                     foreach (string carpeta in carpetas)
                     {
                         uFx = ultimaFraccion2(carpeta);
+                        if (uFx.Item1 != null)
+                        {
+                            fracciones.Add(uFx);
+                        }
+                    }
+                    if (TratamientosSimultaneos(carpetaPaciente) > 1)
+                    {
+                        return fracciones.First();
+                    }
+                    else
+                    {
+                        return new Tuple<int?, DateTime>(fracciones.Select(f => f.Item1).Sum(), fracciones.Select(f => f.Item2).OrderByDescending(d => d).First());
+                    }
+                }
+            }
+            return new Tuple<int?, DateTime>(0, DateTime.MinValue);
+        }
+
+        public static Tuple<int?, DateTime> ultimaFraccion3(string carpetaPaciente)
+        {
+            if (carpetaPaciente != null)
+            {
+                List<string> carpetas = Directory.GetDirectories(carpetaPaciente).ToList().Where(c => !esCarpetaOBI(c)).ToList();
+                if (carpetas.Any(c => c.ToUpper().Contains("BA")))
+                {
+                    List<string> beamRecords = Directory.GetFiles(carpetaPaciente, "*.*", SearchOption.AllDirectories).Where(f => esBeamRecord(f)).ToList();
+                    List<DateTime> fracciones = beamRecords.Select(b => File.GetLastWriteTime(b).Date).OrderByDescending(f => f).Distinct().ToList();
+                    /*string carpetaBackup = CarpetaBackup(carpetaPaciente);
+                    if (carpetaBackup != null && Directory.GetFiles(carpetaBackup).Where(f => esBeamRecord(f)).ToList().Count > 0)
+                    {
+                        var FileSystemInfos = new DirectoryInfo(carpetaBackup).GetFileSystemInfos().Where(f => esBeamRecord(f.Name)).ToList();
+
+                        //int numeroDeFracciones = new DirectoryInfo(carpetaBackup).GetFileSystemInfos().Where(f => f.Name.Contains("BeamRecord")).Select(f => f.LastWriteTime.Date).ToList().Distinct().Count();
+                        if (new DirectoryInfo(carpetaPaciente).GetFileSystemInfos().Where(f => esBeamRecord(f.Name)).Count() > 0)
+                        {
+                            FileSystemInfos.AddRange(new DirectoryInfo(carpetaPaciente).GetFileSystemInfos().Where(f => esBeamRecord(f.Name)).ToList());
+                        }
+                        var fracciones = FileSystemInfos.Select(f => f.LastWriteTime.Date).ToList().OrderByDescending(f => f).Distinct();*/
+                    if (fracciones.Count>0)
+                    {
+                        return new Tuple<int?, DateTime>(fracciones.Count(), fracciones.First());
+                    }
+                    
+
+                }
+                else if (carpetas.Count > 1)
+                {
+                    List<Tuple<int?, DateTime>> fracciones = new List<Tuple<int?, DateTime>>();
+                    Tuple<int?, DateTime> uFx;
+                    foreach (string carpeta in carpetas)
+                    {
+                        uFx = ultimaFraccion3(carpeta);
                         if (uFx.Item1 != null)
                         {
                             fracciones.Add(uFx);
@@ -347,6 +399,11 @@ namespace PlanHelper
                         {
                             PlanPaciente planPaciente = ExtraerDeDCM(carpeta);
                             var ultimaFx = ultimaFraccion2(carpeta);
+                            var ultimaFx3 = ultimaFraccion3(carpeta);
+                            if (ultimaFx.Item1 != ultimaFx3.Item1)
+                            {
+
+                            }
                             planPaciente.UltimaFx = ultimaFx.Item1;
                             planPaciente.UltimaFecha = ultimaFx.Item2;
                             planPaciente.CarpetaBackupPlan = CarpetaBackup(carpeta);
@@ -360,10 +417,12 @@ namespace PlanHelper
                             {
                                 PlanPaciente planPaciente = ExtraerDeDCM(subcarpeta);
                                 var ultimaFx = ultimaFraccion2(subcarpeta);
+                                var ultimaFx3 = ultimaFraccion3(subcarpeta);
                                 planPaciente.UltimaFx = ultimaFx.Item1;
                                 planPaciente.UltimaFecha = ultimaFx.Item2;
                                 planPaciente.CarpetaBackupPlan = CarpetaBackup(subcarpeta);
-                                planPaciente.DefinirTecnica(aria);
+                                if (planPaciente.PacienteID == null)
+                                    planPaciente.DefinirTecnica(aria);
                                 planPacientes.Add(planPaciente);
                             }
                         }

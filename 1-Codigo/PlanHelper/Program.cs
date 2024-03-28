@@ -37,6 +37,7 @@ namespace PlanHelper
             }
             else
             {
+                BusquedaSitramed.PruebaChrome();
                 Application.Run(new Form3());
                 //Application.Run(new NuevoPedido(false));
             }

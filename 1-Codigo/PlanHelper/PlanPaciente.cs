@@ -36,17 +36,20 @@ namespace PlanHelper
 
         public PlanPaciente(PlanSetup planSetup)
         {
-            PacienteID = planSetup.Course.Patient.PatientId;
-            PacienteNombre = planSetup.Course.Patient.LastName + ", " + planSetup.Course.Patient.FirstName;
-            CursoID = planSetup.Course.CourseId;
-            PlanID = planSetup.PlanSetupId;
-            PlanSer = planSetup.PlanSetupSer;
-            Modalidad = ConsultasDB.Modalidad(planSetup);
-            Status = planSetup.Status;
-            FechaStatus = planSetup.StatusDate;
-            EquipoID = planSetup.Radiations.First().RadiationDevice.Machine.MachineId;
-            NumeroFracciones = planSetup.RTPlans.First().NoFractions;
-            Tecnica = Tecnica.Otro;
+            if (planSetup != null)
+            {
+                PacienteID = planSetup.Course.Patient.PatientId;
+                PacienteNombre = planSetup.Course.Patient.LastName + ", " + planSetup.Course.Patient.FirstName;
+                CursoID = planSetup.Course.CourseId;
+                PlanID = planSetup.PlanSetupId;
+                PlanSer = planSetup.PlanSetupSer;
+                Modalidad = ConsultasDB.Modalidad(planSetup);
+                Status = planSetup.Status;
+                FechaStatus = planSetup.StatusDate;
+                EquipoID = planSetup.Radiations.First().RadiationDevice.Machine.MachineId;
+                NumeroFracciones = planSetup.RTPlans.First().NoFractions;
+                Tecnica = Tecnica.Otro;
+            }
         }
 
         public PlanPaciente(string String)
@@ -273,6 +276,10 @@ namespace PlanHelper
             foreach (PlanSetup plan in planes)
             {
                 PlanPaciente planPaciente = new PlanPaciente(plan);
+                if (planPaciente.PacienteID == null)
+                {
+
+                }
                 planPaciente.DefinirTecnica(aria);
                 planPacientes.Add(planPaciente.ToString());
             }
@@ -370,7 +377,7 @@ namespace PlanHelper
         }
         public void DefinirTecnica(Aria aria)
         {
-            if (this.PacienteID=="")
+            if (this.PacienteID == "")
             {
                 return;
             }
@@ -380,7 +387,7 @@ namespace PlanHelper
             {
                 plan = aria.PlanSetups.FirstOrDefault(p => p.PlanSetupSer == this.PlanSer);
             }
-            else
+            else if (this.PacienteID != null)
             {
                 var cursosActivosNoQA = aria.Patients.FirstOrDefault(p => p.PatientId == this.PacienteID).Courses.Where(c => c.ClinicalStatus == "ACTIVE" && !c.CourseId.Contains("QA") && !c.CourseId.Contains("Fisica"));
                 foreach (var curso in cursosActivosNoQA)
@@ -406,16 +413,16 @@ namespace PlanHelper
             {
                 return 3;
             }
-            else if (tecnica==Tecnica.IGRT)
+            else if (tecnica == Tecnica.IGRT)
             {
-                return 2;
+                return 1; //hay muchos con CBCT aunque no sean IGRT
             }
             return 1;
         }
 
         public static Tecnica TecnicaPorPacienteString(string ID, Aria aria)
         {
-            var cursosActivosNoQA = aria.Patients.FirstOrDefault(p => p.PatientId == ID).Courses.Where(c => c.ClinicalStatus == "Active" && !c.CourseId.Contains("QA") && !c.CourseId.Contains("Fisica"));
+            var cursosActivosNoQA = aria.Patients.FirstOrDefault(p => p.PatientId == ID).Courses.Where(c => c.ClinicalStatus == "ACTIVE" && !c.CourseId.Contains("QA") && !c.CourseId.Contains("Fisica"));
             foreach (var curso in cursosActivosNoQA)
             {
                 return DefinirTecnica(curso.PlanSetups.FirstOrDefault(p => p.Status == "TreatApproval"));
@@ -428,6 +435,10 @@ namespace PlanHelper
             foreach (var curso in cursosActivosNoQA)
             {
                 PlanPaciente plan = new PlanPaciente(curso.PlanSetups.FirstOrDefault(p => p.Status == "TreatApproval"));
+                if (plan.PacienteID == null)
+                {
+
+                }
                 plan.DefinirTecnica(aria);
                 return plan;
             }

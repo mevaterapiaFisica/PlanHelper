@@ -6,6 +6,8 @@
 
 using OpenTwebstLib;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
+
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System.Text.RegularExpressions;
@@ -23,78 +25,97 @@ namespace PlanHelper
     {
         [STAThread]
 
-        /*public static void PruebaChrome()
+        public static void PruebaChrome()
         {
-            // instantiate a driver instance to control
-            // Chrome in headless mode
             var chromeOptions = new ChromeOptions();
-            //chromeOptions.AddArguments("--headless=new"); // comment out for testing
+            chromeOptions.PageLoadStrategy = PageLoadStrategy.Eager;
+            //chromeOptions.AddArgument("--headless");
+            chromeOptions.AddArguments("window-size=1920,1080");
             var driver = new ChromeDriver(chromeOptions);
-
-            // open the target page in Chrome
             driver.Navigate().GoToUrl("https://mevaterapia.lambdaclass.com/session/new?request_path=%2F");
-            driver.Manage().Window.Size = new System.Drawing.Size(1920, 1080);
             driver.FindElement(By.Id("user_email")).SendKeys("pablo.aberbuj@mevaterapia.com.ar");
             driver.FindElement(By.Id("user_password")).SendKeys("123qweQW");
             driver.FindElement(By.CssSelector(".is-flex > .button:nth-child(1)")).Click();
-            driver.FindElement(By.CssSelector(".dropdown-container:nth-child(2) > .menu-label")).Click();
-            driver.FindElement(By.CssSelector(".open .sublist:nth-child(4) > li:nth-child(1) > a")).Click();
-
-
-            string[] Equipos = new string[] { "Equipo 1", "Equipo 2", "Equipo 3", "Equipo 4" };
-            DateTime[] dias = new DateTime[] { DateTime.Today, DateTime.Today.AddDays(3), DateTime.Today.AddDays(4), DateTime.Today.AddDays(5) };
-            List<List<string>> superLista = new List<List<string>>();
-            List<string> lista = new List<string>();
+            string[] Equipos = new string[] { "Equipo 4" };//{ "Equipo 1", "Equipo 2", "Equipo 3", "Equipo 4" };
+            List<DateTime> dias = new List<DateTime>();
+            dias.Add(DateTime.Today);
+            for (int i = 4; i < 5; i++)
+                //for (int i = 1; i < 5; i++)
+                {
+                dias.Add(ConsultasDB.AddBusinessDays(DateTime.Today, i));
+            }
+            List<OcupacionEquipo> ocupacionEquipos = new List<OcupacionEquipo>();
             Stopwatch sw = new Stopwatch();
             sw.Start();
             foreach (string Equipo in Equipos)
             {
                 foreach (DateTime dia in dias)
                 {
-                    lista.Add(citasDiaEquipo(dia, Equipo, driver));
+                    ocupacionEquipos.Add(new OcupacionEquipo(Equipo, dia, citasDiaEquipo(dia, Equipo, driver)));
                 }
             }
-            /*Thread thread = new Thread(obj => citasDiaEquipo(dias[0], Equipos[0], driver,1));
-            Thread thread2 = new Thread(obj => citasDiaEquipo(dias[1], Equipos[0], driver,2));
-            Thread thread3 = new Thread(obj => citasDiaEquipo(dias[0], Equipos[1], driver,3));
-            Thread thread4 = new Thread(obj => citasDiaEquipo(dias[1], Equipos[1], driver,4));
 
-            thread.Start();
-            thread2.Start();
-            thread3.Start();
-            thread4.Start();
-            thread.Join();
-            thread2.Join();
-            thread3.Join();
-            thread4.Join();
-            var tiempo = sw.Elapsed;
-
-            //var citasEq3 = citasDiaEquipo(DateTime.Today, "Equipo 3", driver);
             driver.Close();
-            //int cantidad = citasEq3.Count;
+            /*browser.getAllWindowHandles().then(function(handles) {
+                browser.driver.switchTo().window(handles[1]);
+                browser.driver.close();
+                browser.driver.switchTo().window(handles[0]);
         }*/
 
-       /* public static string citasDiaEquipo(DateTime dia, string Equipo, ChromeDriver driver)
-        {
-            //System.Threading.Thread.Sleep(600);
-            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(4));
-            List<string> citas = new List<string>();
-            // driver.Navigate().GoToUrl("https://mevaterapia.lambdaclass.com/reception/appointments/machine");
-            //driver.FindElement(By.CssSelector("body")).SendKeys(Keys.Control + "t");
-            //((IJavaScriptExecutor)driver).ExecuteScript("window.open();");
-            //driver.SwitchTo().Window(driver.WindowHandles.Last());
-            //driver.SwitchTo().Window(driver.WindowHandles[tab]);
-            //driver.Navigate().GoToUrl("https://mevaterapia.lambdaclass.com/reception/appointments/machine");
+            var tiempo = sw.Elapsed;
+        }
 
-            SeleccionarFecha(dia, driver, wait);
+        public static List<OcupacionEquipo> BuscarOcupacionEquipos(List<Equipo> equipos, int _dias)
+        {
+            var chromeOptions = new ChromeOptions();
+            chromeOptions.PageLoadStrategy = PageLoadStrategy.Eager;
+            chromeOptions.AddArguments("window-size=1920,1080");
+            var driver = new ChromeDriver(chromeOptions);
+            driver.Navigate().GoToUrl("https://mevaterapia.lambdaclass.com/session/new?request_path=%2F");
+            driver.FindElement(By.Id("user_email")).SendKeys("pablo.aberbuj@mevaterapia.com.ar");
+            driver.FindElement(By.Id("user_password")).SendKeys("123qweQW");
+            driver.FindElement(By.CssSelector(".is-flex > .button:nth-child(1)")).Click();
+            List<DateTime> dias = new List<DateTime>();
+            dias.Add(DateTime.Today);
+            //for (int i = 4; i < 5; i++)
+            for (int i = 1; i < _dias; i++)
+            {
+                dias.Add(ConsultasDB.AddBusinessDays(DateTime.Today, i));
+            }
+            List<OcupacionEquipo> ocupacionEquipos = new List<OcupacionEquipo>();
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            foreach (Equipo equipo in equipos)
+            {
+                foreach (DateTime dia in dias)
+                {
+                    ocupacionEquipos.Add(new OcupacionEquipo(equipo.Nombre, dia, citasDiaEquipo(dia, equipo.Nombre, driver)));
+                }
+            }
+            driver.Close();
+            return ocupacionEquipos;
+        }
+        
+        public static List<TurnoSitra> citasDiaEquipo(DateTime dia, string Equipo, IWebDriver driver)
+        {
             System.Threading.Thread.Sleep(2000);
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(4));
+            List<TurnoSitra> citas = new List<TurnoSitra>();
+            driver.FindElement(By.CssSelector("body")).SendKeys(Keys.Control + "t");
+            ((IJavaScriptExecutor)driver).ExecuteScript("window.open();");
+            driver.SwitchTo().Window(driver.WindowHandles[driver.WindowHandles.Count - 1]);
+            driver.Navigate().GoToUrl("https://mevaterapia.lambdaclass.com/reception/appointments/machine");
 
             SeleccionarEquipo(Equipo, driver, wait);
-            System.Threading.Thread.Sleep(2000);
+            System.Threading.Thread.Sleep(500);
+
+            SeleccionarFecha(dia, driver, wait, true);
+            System.Threading.Thread.Sleep(500);
+
+            CHequearFecha(driver, dia, wait);
             wait.Until(ExpectedConditions.ElementIsVisible(By.Id("machineDrag")));
             var elemento = driver.FindElement(By.Id("machineDrag"));
-            driver.FindElement(By.)
-           /* List<IWebElement> lstTrElem = new List<IWebElement>(elemento.FindElements(By.TagName("tr")));
+            List<IWebElement> lstTrElem = new List<IWebElement>(elemento.FindElements(By.TagName("tr")));
             foreach (var elemTr in lstTrElem)
             {
                 List<IWebElement> lstTdElem = new List<IWebElement>(elemTr.FindElements(By.TagName("td")));
@@ -103,51 +124,84 @@ namespace PlanHelper
                     string strRowData = "";
                     foreach (var elemTd in lstTdElem)
                     {
-                        strRowData = strRowData + elemTd.Text + ";";
+                        if (elemTd == null || elemTd.Text == "")
+                        {
+                            strRowData = strRowData + " ;";
+                        }
+                        else
+                        {
+                            strRowData = strRowData + elemTd.Text + ";";
+                        }
                     }
-                    citas.Add(strRowData);
+                    TurnoSitra turnoSitra = new TurnoSitra(strRowData);
+                    if (turnoSitra.Paciente != null)
+                    {
+                        citas.Add(turnoSitra);
+                    }
+
                 }
             }
+            return citas;
+        }
 
-            var cells = elemento.FindElements(By.XPath("//tbody/tr/td"));
-
-            // Iterate through each cell
-            string textoTabla = "";
-            foreach (WebElement cell in cells)
-            {
-                textoTabla += cell.Text + cell.TagName;
-                // Process the cell data as needed
-                
-            }
-
-            return textoTabla;
-            /*foreach (var fila in tbody)
-            {
-                //var celdas = fila.FindElements(By.TagName("tr"));
-                var horaInicio = fila.FindElement(By.PartialLinkText("/reception/appointments/machine/")).Text;
-                var nombre = fila.FindElement(By.PartialLinkText("/reception/appointments/machine/")).Text;
-            }
-            //return citas;
-            string path = @"C:\" + Equipo + "_" + dia.ToString("dd_MMM_yyyy") + ".txt";
-            File.WriteAllLines(path, citas.ToArray());
-        }*/
-
-       /* public static void SeleccionarFecha(DateTime fecha, ChromeDriver driver, WebDriverWait wait)
+        public static void SeleccionarFecha(DateTime fecha, IWebDriver driver, WebDriverWait wait, bool esPrimeraVez)
         {
             var DTP = driver.FindElement(By.Id("search_date"));
             wait.Until(ExpectedConditions.ElementToBeClickable(DTP));
-            DTP.Clear();
-            DTP.SendKeys(fecha.ToString("yyyy-MM-dd"));
-            DTP.SendKeys(Keys.Enter);
-        }*/
+            var DTPmain = driver.FindElement(By.ClassName("datepicker-main"));
+            driver.FindElement(By.Id("search_date")).Click();
+            string dia = fecha.ToString("dd");
+            if (dia[0] == '0')
+            {
+                dia = dia.Remove(0, 1);
+            }
+            if (esPrimeraVez && fecha.Month != DateTime.Today.Month)
+            {
+                var next = driver.FindElement(By.CssSelector(".next-btn"));
+                wait.Until(ExpectedConditions.ElementToBeClickable(next));
+                next.Click();
+            }
+            foreach (IWebElement ele in DTPmain.FindElements(By.ClassName("datepicker-cell"))) // use foreach iterate each cell.
+            {
+                if (!ele.GetAttribute("class").Contains("prev"))
+                {
+                    string date = ele.GetAttribute("textContent"); // get the text of the element.
 
-        /*public static void SeleccionarEquipo(string Equipo, ChromeDriver driver, WebDriverWait wait)
+                    if (date == dia) // check if the date is 20
+                    {
+                        ele.Click(); // if date is 20, select it.
+                        break;
+                    }
+                }
+            }
+        }
+
+        public static void SeleccionarEquipo(string Equipo, IWebDriver driver, WebDriverWait wait)
         {
             var dropdown = driver.FindElement(By.Id("search_machine_id"));
             var selectElement = new SelectElement(dropdown);
             wait.Until(ExpectedConditions.ElementToBeClickable(dropdown));
             selectElement.SelectByText(Equipo);
-        }*/
+        }
+
+        public static void CHequearFecha(IWebDriver driver, DateTime fecha, WebDriverWait wait)
+        {
+            string fechaS = fecha.ToString("yyyy-MM-dd");
+            var subs = driver.FindElements(By.ClassName("subtitle"));
+            foreach (var sub in subs)
+            {
+                if (sub.Text.Contains("Turnos "))
+                {
+                    var texto = sub.Text;
+                    while (!sub.Text.Contains(fechaS))
+                    {
+                        SeleccionarFecha(fecha, driver, wait, false);
+                        Thread.Sleep(1500);
+                    }
+                }
+            }
+        }
+
         public static void Correr()
         {
             // ISSUE: variable of a compiler-generated typeº
@@ -234,5 +288,8 @@ namespace PlanHelper
             string[] strArray = linea.Split('-');
             return strArray[0].Trim() + " - " + strArray[2].Trim();
         }
+
     }
+
+
 }
