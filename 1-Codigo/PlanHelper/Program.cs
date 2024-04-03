@@ -37,7 +37,9 @@ namespace PlanHelper
             }
             else
             {
-                BusquedaSitramed.PruebaChrome();
+                //BusquedaSitramed.PruebaChrome();
+                List<Equipo> equipos = Equipo.InicializarEquiposConHorarioReservado();
+                Equipo.EscribirOcupacionEquipos2(equipos);
                 Application.Run(new Form3());
                 //Application.Run(new NuevoPedido(false));
             }

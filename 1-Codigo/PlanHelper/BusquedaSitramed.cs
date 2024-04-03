@@ -141,7 +141,9 @@ namespace PlanHelper
 
                 }
             }
+            //driver.Close();
             return citas;
+            
         }
 
         public static void SeleccionarFecha(DateTime fecha, IWebDriver driver, WebDriverWait wait, bool esPrimeraVez)

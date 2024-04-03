@@ -32,7 +32,7 @@ namespace PlanHelper
         public DateTime? UltimoCalculo { get; set; }
 
         public List<HorarioReservado> HorariosReservados { get; set; }
-        public Equipo(string _Nombre, string _ID, bool _EsDicomRT, string _RutaDicomRT, int _TurnosPorDia, bool _HaceVMAT, bool _Tiene10MV, bool _TieneElectrones, List<HorarioReservado> _horariosReservados =null)
+        public Equipo(string _Nombre, string _ID, bool _EsDicomRT, string _RutaDicomRT, int _TurnosPorDia, bool _HaceVMAT, bool _Tiene10MV, bool _TieneElectrones, List<HorarioReservado> _horariosReservados = null)
         {
             Nombre = _Nombre;
             ID = _ID;
@@ -44,7 +44,7 @@ namespace PlanHelper
             HaceVMAT = _HaceVMAT;
             Tiene10MV = _Tiene10MV;
             TieneElectrones = _TieneElectrones;
-            if (_horariosReservados!=null)
+            if (_horariosReservados != null)
             {
                 HorariosReservados = _horariosReservados;
             }
@@ -95,11 +95,11 @@ namespace PlanHelper
             ID = aux[1];
             EsDicomRT = (aux[2].ToLower() == "true");
             RutaDicomRT = aux[3];
-            /*string[] turnos = aux[4].Split(';');
+            string[] turnos = aux[4].Split(';');
             TurnosPorDia = Convert.ToInt32(turnos[0]);
-            TurnosReservadosTBI = Convert.ToInt32(turnos[1]);
-            TurnosReservadosEspeciales = Convert.ToInt32(turnos[2]);*/
-            TurnosPorDia = Convert.ToInt32(aux[4]);
+            //TurnosReservadosTBI = Convert.ToInt32(turnos[1]);
+            //TurnosReservadosEspeciales = Convert.ToInt32(turnos[2]);
+            //TurnosPorDia = Convert.ToInt32(aux[4]);
             HaceVMAT = (aux[5].ToLower() == "true");
             Tiene10MV = (aux[6].ToLower() == "true");
             TieneElectrones = (aux[7].ToLower() == "true");
@@ -246,7 +246,7 @@ namespace PlanHelper
             List<PlanSetup> pacientesEnCurso = ConsultasDB.PacientesEncurso(aria, Equipos);
             foreach (Equipo equipo in Equipos)
             {
-                List<string> ocupacion = PlanPaciente.ConvertirListasToString(pacientesEnCurso.Where(p => p.Radiations.First().RadiationDevice.Machine.MachineId == equipo.ID).ToList(),aria);
+                List<string> ocupacion = PlanPaciente.ConvertirListasToString(pacientesEnCurso.Where(p => p.Radiations.First().RadiationDevice.Machine.MachineId == equipo.ID).ToList(), aria);
                 File.WriteAllLines(pathArchivos + equipo.Nombre + "_encurso.txt", ocupacion.ToArray());
             }
         }
@@ -264,17 +264,17 @@ namespace PlanHelper
             }
             return pacientesEnCurso;
         }
-        
+
         public int PacientesEnEquipoDia(Aria aria, double Dias)
         {
-            
+
             List<PlanPaciente> planPacientes = LeerEnCurso();
             int PacientesEnEquipoDia = 0;
             foreach (PlanPaciente planPaciente in planPacientes)
             {
                 if (planPaciente.EstaraEnEquipo(this, Dias))
                 {
-                    PacientesEnEquipoDia+=planPaciente.TurnosPorPaciente();
+                    PacientesEnEquipoDia += planPaciente.TurnosPorPaciente();
                 }
             }
             List<string> pacientesSiguen = ConsultasDB.PacientesSiguenEnEquipoDia(aria, this, Dias);
@@ -289,7 +289,7 @@ namespace PlanHelper
             return PacientesEnEquipoDia;
         }
 
-        public int CalcularTurnosDisponibles(List<PlanPaciente> planPaciente,Aria aria)
+        public int CalcularTurnosDisponibles(List<PlanPaciente> planPaciente, Aria aria)
         {
             /*int TurnosTBI = planPaciente.Count(p => p.Tecnica == Tecnica.TBI) * PlanPaciente.TurnosPorTecnica(Tecnica.TBI);
             int SobreturnoTBI = 0;
@@ -319,7 +319,7 @@ namespace PlanHelper
             return 0;
         }
 
-        
+
 
         public List<int> PacientesEnEquipoDiasDicomRT(double ultimoDia, Aria aria)
         {
@@ -331,7 +331,7 @@ namespace PlanHelper
 
             for (int i = 0; i < ultimoDia + 1; i++)
             {
-                List<PlanPaciente> pacientesSiguen = planPacientes.Where(p => p.UltimaFx + i <= p.NumeroFracciones && (DateTime.Today-p.UltimaFecha).Days<7).ToList();
+                List<PlanPaciente> pacientesSiguen = planPacientes.Where(p => p.UltimaFx + i <= p.NumeroFracciones && (DateTime.Today - p.UltimaFecha).Days < 7).ToList();
                 foreach (PlanPaciente planPaciente in planPacientesEnCurso)
                 {
                     if (planPaciente.EstaraEnEquipo(this, i))
@@ -343,8 +343,8 @@ namespace PlanHelper
                 {
                     File.WriteAllLines(pathArchivos + Nombre + "_ocupacionHoy.txt", pacientesSiguen.Select(p => p.ToString()).ToArray());
                 }
-                
-                ocupacionPorDia.Add(CalcularTurnosDisponibles(pacientesSiguen,aria));
+
+                ocupacionPorDia.Add(CalcularTurnosDisponibles(pacientesSiguen, aria));
             }
             return ocupacionPorDia;
         }
@@ -358,7 +358,7 @@ namespace PlanHelper
                 List<string> output = new List<string>();
                 for (int i = 0; i < maximoDias + margen; i++)//busco un par de días de más por las dudas
                 {
-                    output.Add(ConsultasDB.AddBusinessDays(DateTime.Today, Convert.ToDouble(i)).ToString("dd/MM/yyyy",CultureInfo.InvariantCulture) + ";" + PacientesEnEquipoDia(aria, Convert.ToDouble(i)).ToString());
+                    output.Add(ConsultasDB.AddBusinessDays(DateTime.Today, Convert.ToDouble(i)).ToString("dd/MM/yyyy", CultureInfo.InvariantCulture) + ";" + PacientesEnEquipoDia(aria, Convert.ToDouble(i)).ToString());
                 }
                 File.WriteAllLines(pathArchivos + this.Nombre + "_agendaocupacion.txt", output.ToArray());
             }
@@ -373,7 +373,7 @@ namespace PlanHelper
             {
                 if (this.EsDicomRT)
                 {
-                    List<int> agendaOcupacion = PacientesEnEquipoDiasDicomRT((int)maximoDias + margen,aria);
+                    List<int> agendaOcupacion = PacientesEnEquipoDiasDicomRT((int)maximoDias + margen, aria);
                     for (int i = 0; i < maximoDias + margen; i++)//busco un par de días de más por las dudas
                     {
                         output.Add(ConsultasDB.AddBusinessDays(DateTime.Today, Convert.ToDouble(i)).ToString("dd/MM/yyyy", CultureInfo.InvariantCulture) + ";" + agendaOcupacion[i].ToString());
@@ -386,7 +386,7 @@ namespace PlanHelper
                         output.Add(ConsultasDB.AddBusinessDays(DateTime.Today, Convert.ToDouble(i)).ToString("dd/MM/yyyy", CultureInfo.InvariantCulture) + ";" + PacientesEnEquipoDia(aria, Convert.ToDouble(i)).ToString());
                     }
                 }
-                
+
                 File.WriteAllLines(pathArchivos + this.Nombre + "_agendaocupacion.txt", output.ToArray());
             }
         }
@@ -498,9 +498,9 @@ namespace PlanHelper
         {
             int? maximoDias = 0;
             int? margen = 0;
-            foreach (Equipo equipo in equipos)
+            /*foreach (Equipo equipo in equipos)
             {
-                if (equipo.Parametros.OrderBy(p => p.Dias).Last().Dias>maximoDias)
+                if (equipo.Parametros.OrderBy(p => p.Dias).Last().Dias > maximoDias)
                 {
                     maximoDias = equipo.Parametros.OrderBy(p => p.Dias).Last().Dias;
                 }
@@ -508,14 +508,22 @@ namespace PlanHelper
                 {
                     margen = equipo.Parametros.OrderBy(p => p.Dias).Last().Margen;
                 }
-            }
-            List<OcupacionEquipo> ocupaciones = BusquedaSitramed.BuscarOcupacionEquipos(equipos, maximoDias + margen);
+            }*/
+            maximoDias = 7;
+            List<OcupacionEquipo> ocupaciones = BusquedaSitramed.BuscarOcupacionEquipos(equipos, (int)maximoDias + (int)margen);
 
+            foreach (Equipo equipo in equipos)
+            {
+                List<OcupacionEquipo> ocupacionesEquipo = ocupaciones.Where(e => e.Equipo == equipo.Nombre).ToList();
+                var output = ocupacionesEquipo.Select(o => o.Fecha.ToString("dd/MM/yyyy") + ";" + o.HorasOcupadas(equipo).ToString()).ToArray();
+                File.WriteAllLines(pathArchivos + equipo.Nombre + "_agendaocupacion2.txt", output);
+            }
         }
+
 
         public void escribirSeguimiento()
         {
-            string texto = Environment.NewLine + DateTime.Today.ToString("dd/MM/yyyy",CultureInfo.InvariantCulture) + ";" + BuscarOcupacion(DateTime.Today).ToString() + ";" + BuscarOcupacion(DateTime.Today.AddDays(1)).ToString();
+            string texto = Environment.NewLine + DateTime.Today.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture) + ";" + BuscarOcupacion(DateTime.Today).ToString() + ";" + BuscarOcupacion(DateTime.Today.AddDays(1)).ToString();
             File.AppendAllText(pathArchivos + Nombre + "_seguimiento.txt", texto);
         }
 
@@ -543,7 +551,7 @@ namespace PlanHelper
             return HorariosReservados.Any(r => r.LoContiene(turnoSitra));
         }
 
-        
+
     }
 
 }
