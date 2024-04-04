@@ -27,7 +27,7 @@ namespace PlanHelper
             return 0;
         }
 
-        public double HorasOcupadas(Equipo equipo)
+        public double TurnosOcupados(Equipo equipo)
         {
             if (Turnos != null && Turnos.Count > 0)
             {
@@ -39,7 +39,8 @@ namespace PlanHelper
                         Minutos += turno.Duracion();
                     }
                 }
-                return Minutos / 60;
+                Minutos += equipo.MinutosHorarioReservado();
+                return Minutos / 15;  //Mido turnos de 15 minutos
             }
             return 0;
         }

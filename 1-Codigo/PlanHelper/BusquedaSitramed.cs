@@ -93,13 +93,14 @@ namespace PlanHelper
                 }
             }
             driver.Close();
+            driver.Dispose();
             return ocupacionEquipos;
         }
         
         public static List<TurnoSitra> citasDiaEquipo(DateTime dia, string Equipo, IWebDriver driver)
         {
             System.Threading.Thread.Sleep(2000);
-            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(4));
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
             List<TurnoSitra> citas = new List<TurnoSitra>();
             driver.FindElement(By.CssSelector("body")).SendKeys(Keys.Control + "t");
             ((IJavaScriptExecutor)driver).ExecuteScript("window.open();");
@@ -141,7 +142,8 @@ namespace PlanHelper
 
                 }
             }
-            //driver.Close();
+            driver.Close();
+            driver.SwitchTo().Window(driver.WindowHandles[driver.WindowHandles.Count - 1]);
             return citas;
             
         }

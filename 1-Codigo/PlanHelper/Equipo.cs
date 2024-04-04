@@ -153,6 +153,16 @@ namespace PlanHelper
                     equipo.LeerEquipo();
                 }
             }
+            Equipo equipo1 = equipos.First(e => e.Nombre == "Equipo 1");
+            Equipo equipo4 = equipos.First(e => e.Nombre == "Equipo 4");
+            equipo1.HorariosReservados = new List<HorarioReservado>();
+            equipo1.HorariosReservados.Add(new HorarioReservado("11:00", "12:00", "TBI_turno1"));
+            equipo1.HorariosReservados.Add(new HorarioReservado("14:00", "15:00", "TBI_turno2"));
+
+            equipo4.HorariosReservados = new List<HorarioReservado>();
+            equipo4.HorariosReservados.Add(new HorarioReservado("10:00", "12:00", "Especiales_turno1"));
+            equipo4.HorariosReservados.Add(new HorarioReservado("14:00", "16:00", "Especiales_turno2"));
+
             return equipos;
         }
 
@@ -172,14 +182,17 @@ namespace PlanHelper
             return equipos;
         }
 
-        public double HorasHorariosReservados()
+        public double MinutosHorarioReservado()
         {
-            double horas = 0;
-            foreach (var hr in HorariosReservados)
+            double minutos = 0;
+            if (HorariosReservados!=null && HorariosReservados.Count>0)
             {
-                horas += hr.DuracionHoras();
+                foreach (var hr in HorariosReservados)
+                {
+                    minutos += hr.DuracionMinutos();
+                }
             }
-            return horas;
+            return minutos;
         }
 
         public static void CalcularParametrosEquipos(Aria aria, Eclipse.Application app, List<Equipo> equipos)
@@ -498,7 +511,7 @@ namespace PlanHelper
         {
             int? maximoDias = 0;
             int? margen = 0;
-            /*foreach (Equipo equipo in equipos)
+            foreach (Equipo equipo in equipos)
             {
                 if (equipo.Parametros.OrderBy(p => p.Dias).Last().Dias > maximoDias)
                 {
@@ -508,15 +521,15 @@ namespace PlanHelper
                 {
                     margen = equipo.Parametros.OrderBy(p => p.Dias).Last().Margen;
                 }
-            }*/
-            maximoDias = 7;
+            }
+            //maximoDias = ;
             List<OcupacionEquipo> ocupaciones = BusquedaSitramed.BuscarOcupacionEquipos(equipos, (int)maximoDias + (int)margen);
 
             foreach (Equipo equipo in equipos)
             {
                 List<OcupacionEquipo> ocupacionesEquipo = ocupaciones.Where(e => e.Equipo == equipo.Nombre).ToList();
-                var output = ocupacionesEquipo.Select(o => o.Fecha.ToString("dd/MM/yyyy") + ";" + o.HorasOcupadas(equipo).ToString()).ToArray();
-                File.WriteAllLines(pathArchivos + equipo.Nombre + "_agendaocupacion2.txt", output);
+                var output = ocupacionesEquipo.Select(o => o.Fecha.ToString("dd/MM/yyyy") + ";" + Math.Round(o.TurnosOcupados(equipo),2).ToString()).ToArray();
+                File.WriteAllLines(pathArchivos + equipo.Nombre + "_agendaocupacion.txt", output);
             }
         }
 
@@ -548,7 +561,12 @@ namespace PlanHelper
 
         public bool EstaEnHorarioReservado(TurnoSitra turnoSitra)
         {
-            return HorariosReservados.Any(r => r.LoContiene(turnoSitra));
+            if (HorariosReservados!=null && HorariosReservados.Count>0)
+            {
+                return HorariosReservados.Any(r => r.LoContiene(turnoSitra));
+            }
+            return false;
+            
         }
 
 

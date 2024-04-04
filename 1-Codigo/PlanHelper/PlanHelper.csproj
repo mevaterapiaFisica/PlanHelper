@@ -195,7 +195,7 @@
       <HintPath>\\ARIAMEVADB-SVR\va_data$\PlanHelper\VMS.TPS.Common.Model.API.dll</HintPath>
     </Reference>
     <Reference Include="VMS.TPS.Common.Model.Interface">
-      <HintPath>..\..\CalcIndep_Carpeta\CalcIndep_Carpeta\bin\Debug\VMS.TPS.Common.Model.Interface.dll</HintPath>
+      <HintPath>\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\1-En desarrollo\Proyecto Chequeos\PruebaTreeListView\bin\x64\Debug\VMS.TPS.Common.Model.Interface.dll</HintPath>
     </Reference>
     <Reference Include="VMS.TPS.Common.Model.Types, Version=13.6.30.20230, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>

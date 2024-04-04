@@ -83,7 +83,8 @@ namespace PlanHelper
             L_Texto.Text += "Calculando ocupación de equipos...\n";
             L_Texto.Update();
             sw.Start();
-            Equipo.EscribirOcupacionEquipos(aria, Equipos);
+            //Equipo.EscribirOcupacionEquipos(aria, Equipos);
+            Equipo.EscribirOcupacionEquipos2(Equipos);
             L_Texto.Text += "Búsqueda finalizada. Archivos actualizados" + " (demoró " + sw.Elapsed.ToString() + ")\n";
             L_Texto.Update();
             sw.Stop();

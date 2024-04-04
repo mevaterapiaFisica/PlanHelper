@@ -21,12 +21,19 @@ namespace PlanHelper
 
         public bool LoContiene(TurnoSitra turnoSitra)
         {
-            return turnoSitra.HoraInicio.TimeOfDay >= HoraDesde.TimeOfDay && turnoSitra.HoraInicio.TimeOfDay <= HoraHasta.TimeOfDay;
+            var var1 = turnoSitra.HoraInicio.TimeOfDay >= HoraDesde.TimeOfDay;
+            var var2 = turnoSitra.HoraFin.TimeOfDay <= HoraHasta.TimeOfDay;
+            if (var1 && var2)
+            {
+
+            }
+            return turnoSitra.HoraInicio.TimeOfDay >= HoraDesde.TimeOfDay && turnoSitra.HoraFin.TimeOfDay <= HoraHasta.TimeOfDay;
         }
 
-        public double DuracionHoras()
+        public double DuracionMinutos()
         {
-            return (HoraHasta.TimeOfDay - HoraDesde.TimeOfDay).Minutes / 60;
+            //HoraHasta.Subtract(HoraDesde).TotalMinutes;
+            return (HoraHasta.TimeOfDay - HoraDesde.TimeOfDay).TotalMinutes;
         }
     }
 }

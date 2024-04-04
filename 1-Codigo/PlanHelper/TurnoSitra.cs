@@ -15,7 +15,7 @@ namespace PlanHelper
 
         public int Duracion()
         {
-            return (HoraFin - HoraInicio).Minutes;
+            return Convert.ToInt32((HoraFin.TimeOfDay - HoraInicio.TimeOfDay).TotalMinutes);
         }
 
         public TurnoSitra(string texto)
