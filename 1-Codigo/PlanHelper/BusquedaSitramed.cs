@@ -17,6 +17,7 @@ using System.Threading;
 using System.Diagnostics;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 //using System.Runtime.InteropServices;
 
 namespace PlanHelper
@@ -40,8 +41,8 @@ namespace PlanHelper
             List<DateTime> dias = new List<DateTime>();
             dias.Add(DateTime.Today);
             for (int i = 4; i < 5; i++)
-                //for (int i = 1; i < 5; i++)
-                {
+            //for (int i = 1; i < 5; i++)
+            {
                 dias.Add(ConsultasDB.AddBusinessDays(DateTime.Today, i));
             }
             List<OcupacionEquipo> ocupacionEquipos = new List<OcupacionEquipo>();
@@ -65,7 +66,7 @@ namespace PlanHelper
             var tiempo = sw.Elapsed;
         }
 
-        public static List<OcupacionEquipo> BuscarOcupacionEquipos(List<Equipo> equipos, int _dias)
+        public static List<OcupacionEquipo> BuscarOcupacionEquipos(List<Equipo> equipos)
         {
             var chromeOptions = new ChromeOptions();
             chromeOptions.PageLoadStrategy = PageLoadStrategy.Eager;
@@ -75,20 +76,24 @@ namespace PlanHelper
             driver.FindElement(By.Id("user_email")).SendKeys("pablo.aberbuj@mevaterapia.com.ar");
             driver.FindElement(By.Id("user_password")).SendKeys("123qweQW");
             driver.FindElement(By.CssSelector(".is-flex > .button:nth-child(1)")).Click();
-            List<DateTime> dias = new List<DateTime>();
-            dias.Add(DateTime.Today);
-            //for (int i = 4; i < 5; i++)
-            for (int i = 1; i < _dias; i++)
-            {
-                dias.Add(ConsultasDB.AddBusinessDays(DateTime.Today, i));
-            }
             List<OcupacionEquipo> ocupacionEquipos = new List<OcupacionEquipo>();
             Stopwatch sw = new Stopwatch();
             sw.Start();
             foreach (Equipo equipo in equipos)
             {
-                foreach (DateTime dia in dias)
+                int? maximoDias = 0;
+                int? margen = 0;
+                if (equipo.Parametros.OrderBy(p => p.Dias).Last().Dias > maximoDias)
                 {
+                    maximoDias = equipo.Parametros.OrderBy(p => p.Dias).Last().Dias;
+                }
+                if (equipo.Parametros.OrderBy(p => p.Dias).Last().Margen > margen)
+                {
+                    margen = equipo.Parametros.OrderBy(p => p.Dias).Last().Margen;
+                }
+                for (int i = 0; i < ((int)maximoDias + (int)margen); i++)
+                {
+                    DateTime dia = ConsultasDB.AddBusinessDays(DateTime.Today, i);
                     ocupacionEquipos.Add(new OcupacionEquipo(equipo.Nombre, dia, citasDiaEquipo(dia, equipo.Nombre, driver)));
                 }
             }
@@ -96,7 +101,7 @@ namespace PlanHelper
             driver.Dispose();
             return ocupacionEquipos;
         }
-        
+
         public static List<TurnoSitra> citasDiaEquipo(DateTime dia, string Equipo, IWebDriver driver)
         {
             System.Threading.Thread.Sleep(2000);
@@ -145,7 +150,7 @@ namespace PlanHelper
             driver.Close();
             driver.SwitchTo().Window(driver.WindowHandles[driver.WindowHandles.Count - 1]);
             return citas;
-            
+
         }
 
         public static void SeleccionarFecha(DateTime fecha, IWebDriver driver, WebDriverWait wait, bool esPrimeraVez)

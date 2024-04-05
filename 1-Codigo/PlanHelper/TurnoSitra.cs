@@ -61,7 +61,7 @@ namespace PlanHelper
 
         public override string ToString()
         {
-            return Paciente + "-" + Tipo + HoraInicio.ToString() + "-" + Duracion() + "minutos";
+            return Paciente + "-" + Tipo + "-" + HoraInicio.ToString() + "-" + Duracion() + "minutos";
         }
 
     }

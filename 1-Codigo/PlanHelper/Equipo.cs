@@ -38,9 +38,8 @@ namespace PlanHelper
             ID = _ID;
             EsDicomRT = _EsDicomRT;
             RutaDicomRT = _RutaDicomRT;
-            TurnosPorDia = _TurnosPorDia;
-            //TurnosReservadosTBI = _TurnosReservadosTBI;
-            //TurnosReservadosEspeciales = _TurnosReservadosEspeciales;
+            //TurnosPorDia = _TurnosPorDia;
+            TurnosPorDia = 52; //lo fijo ahí porque ahora resto por los horariosReservados Son 13 horas por 4 turnos
             HaceVMAT = _HaceVMAT;
             Tiene10MV = _Tiene10MV;
             TieneElectrones = _TieneElectrones;
@@ -336,9 +335,7 @@ namespace PlanHelper
 
         public List<int> PacientesEnEquipoDiasDicomRT(double ultimoDia, Aria aria)
         {
-
             List<PlanPaciente> planPacientesEnCurso = LeerEnCurso();
-
             List<int> ocupacionPorDia = new List<int>();
             List<PlanPaciente> planPacientes = MetodosDicomRT.PlanPacientesEnEquipo(this, aria);
 
@@ -509,28 +506,20 @@ namespace PlanHelper
 
         public static void EscribirOcupacionEquipos2(List<Equipo> equipos)
         {
-            int? maximoDias = 0;
-            int? margen = 0;
-            foreach (Equipo equipo in equipos)
-            {
-                if (equipo.Parametros.OrderBy(p => p.Dias).Last().Dias > maximoDias)
-                {
-                    maximoDias = equipo.Parametros.OrderBy(p => p.Dias).Last().Dias;
-                }
-                if (equipo.Parametros.OrderBy(p => p.Dias).Last().Margen > margen)
-                {
-                    margen = equipo.Parametros.OrderBy(p => p.Dias).Last().Margen;
-                }
-            }
-            //maximoDias = ;
-            List<OcupacionEquipo> ocupaciones = BusquedaSitramed.BuscarOcupacionEquipos(equipos, (int)maximoDias + (int)margen);
+            List<OcupacionEquipo> ocupaciones = BusquedaSitramed.BuscarOcupacionEquipos(equipos);
 
             foreach (Equipo equipo in equipos)
             {
+
                 List<OcupacionEquipo> ocupacionesEquipo = ocupaciones.Where(e => e.Equipo == equipo.Nombre).ToList();
-                var output = ocupacionesEquipo.Select(o => o.Fecha.ToString("dd/MM/yyyy") + ";" + Math.Round(o.TurnosOcupados(equipo),2).ToString()).ToArray();
+                var output = ocupacionesEquipo.Select(o => o.Fecha.ToString("dd/MM/yyyy") + ";" + Math.Round(o.TurnosOcupados(equipo),0).ToString()).ToArray();
                 File.WriteAllLines(pathArchivos + equipo.Nombre + "_agendaocupacion.txt", output);
+                OcupacionEquipo ocupacionEquipoHoy = ocupacionesEquipo.First(o => o.Fecha == DateTime.Today);
+                File.WriteAllLines(pathArchivos + equipo.Nombre + "_ocupacionHoy.txt", ocupacionEquipoHoy.Turnos.Select(t=>t.ToString()).ToArray());
             }
+
+
+            
         }
 
 

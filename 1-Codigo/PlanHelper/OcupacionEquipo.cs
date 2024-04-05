@@ -31,7 +31,7 @@ namespace PlanHelper
         {
             if (Turnos != null && Turnos.Count > 0)
             {
-                double Minutos= 0;
+                double Minutos = 0;
                 foreach (var turno in Turnos)
                 {
                     if (!equipo.EstaEnHorarioReservado(turno))
@@ -40,13 +40,24 @@ namespace PlanHelper
                     }
                 }
                 Minutos += equipo.MinutosHorarioReservado();
-                return Minutos / 15;  //Mido turnos de 15 minutos
+
+                double turnos = Minutos / 15;
+
+                List<PlanPaciente> planPacientes = equipo.LeerEnCurso();
+                foreach (PlanPaciente planPaciente in planPacientes)
+                {
+                    if (planPaciente.EstaraEnEquipo(equipo, (this.Fecha - DateTime.Today).TotalDays))
+                    {
+                        turnos++; //FAlta revisar si esta en la lista
+                    }
+                }
+                return turnos;  //Mido turnos de 15 minutos
             }
             return 0;
         }
 
-        
 
-        
+
+
     }
 }

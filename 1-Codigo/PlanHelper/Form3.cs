@@ -137,7 +137,7 @@ namespace PlanHelper
             }
             if (ocupacion != null)
             {
-                return equipo.TurnosLibresPorDia() - (int)ocupacion;
+                return equipo.TurnosPorDia - (int)ocupacion;
             }
             else
             {
@@ -161,18 +161,7 @@ namespace PlanHelper
 
                 if (Tuplas.Any(t => t.Item2 != null))
                 {
-                    if (DateTime.Today.Month == 12)
-                    {
-                        MessageBox.Show("Muchaaaaaaaaaaaaaaaaaaaaaaachos....\nPlanificar para el " + Tuplas.OrderByDescending(t => t.Item2).First().Item1.Nombre);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Planificar para el " + Tuplas.OrderByDescending(t => t.Item2).First().Item1.Nombre);
-                    }
-
-                    /*Equipo equipoElegido = Tuplas.OrderByDescending(t => t.Item2).First().Item1;
-                    TB_ParaQueEquipo.Text += "Planificar para el " + equipoElegido.Nombre + Environment.NewLine;
-                    TB_ParaQueEquipo.Text += "Se asume que el paciente iniciará el " + FechaDeInicio(equipoElegido).ToShortDateString() + Environment.NewLine + Environment.NewLine;*/
+                    MessageBox.Show("Planificar para el " + Tuplas.OrderByDescending(t => t.Item2).First().Item1.Nombre);
                     foreach (var tupla in Tuplas)
                     {
                         TB_ParaQueEquipo.Text += tupla.Item1.Nombre + ": " + TurnosLibres(tupla.Item1).ToString() + " turnos libres" + Environment.NewLine;
