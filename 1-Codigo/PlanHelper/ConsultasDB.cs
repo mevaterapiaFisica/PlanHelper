@@ -98,14 +98,15 @@ namespace PlanHelper
             Equipo equipo = Equipo.Seleccionar(Equipo.InicializarEquipos(), plan);
             Parametro parametro;
             double tolerancia = 1;
-            if (plan.RTPlans.First().NoFractions != null)
+            parametro = equipo.encontrarParametro(plan.Status, Modalidad(plan));
+            /*if (plan.RTPlans.First().NoFractions != null)
             {
-                parametro = equipo.encontrarParametro(plan.Status, Modalidad(plan), (int)plan.RTPlans.First().NoFractions);
+                parametro = equipo.encontrarParametro(plan.Status, Modalidad(plan));//, (int)plan.RTPlans.First().NoFractions);
             }
             else
             {
-                parametro = equipo.encontrarParametro(plan.Status, Modalidad(plan), 0);
-            }
+                parametro = equipo.encontrarParametro(plan.Status, Modalidad(plan));
+            }*/
             return GetBusinessDays(plan.StatusDate, DateTime.Today) > (parametro.Dias + (parametro.Margen * tolerancia));
 
         }
@@ -336,12 +337,16 @@ namespace PlanHelper
         #region auxiliares
         public static string Modalidad(AriaQ.PlanSetup plan)
         {
+            if (plan.Radiations.First().ExternalFieldCommon.Technique==null)
+            {
+                return "Indefinido";
+            }
             if (plan.Radiations.First().ExternalFieldCommon.Technique.TechniqueId == "ARC" && plan.Radiations.First().ExternalFieldCommon.MLCPlans.Count>0 && plan.Radiations.First().ExternalFieldCommon.MLCPlans.First().MLCPlanType == "DynMLCPlan")
             {
-                if (plan.Radiations.First().RadiationDevice.Machine.MachineId == "2100CMLC")
+                /*if (plan.Radiations.First().RadiationDevice.Machine.MachineId == "2100CMLC")
                 {
                     return "3DC"; //Es un arco conformado. Tengo que ver como distinguirlo. Con el DoseRate probar
-                }
+                }*/
                 return "VMAT";
             }
             else if (plan.Radiations.First().ExternalFieldCommon.Technique.TechniqueId == "ARC")
@@ -593,9 +598,11 @@ namespace PlanHelper
 
         public static int? PromedioCreacionInicio(Aria aria, Equipo equipo, string modalidad, DateTime fechaInicial, DateTime? fechaFinal = null)
         {
-            List<PlanSetup> planes = planesCreadosEntreFechas(aria, fechaInicial, fechaFinal).Where(p => p.Radiations.First().RadiationDevice.Machine.MachineId == equipo.ID && Modalidad(p) == modalidad).ToList();
+            var planes = planesCreadosEntreFechas(aria, fechaInicial, fechaFinal).Where(p => p.Radiations.First().RadiationDevice.Machine.MachineId == equipo.ID && Modalidad(p) == modalidad);
             List<int> dias = new List<int>();
-            foreach (PlanSetup plan in planes)
+            List<PlanSetup> planesFiltrados = planes.Where(p => !p.Course.CourseId.Contains("QA") && !p.Course.CourseId.Contains("Fisica") && !p.Course.PlanSetups.Any(pc => pc.PlanSetupId!=p.PlanSetupId && (pc.Status == "TreatApproval" || pc.Status == "PlanApproval"))).ToList();
+            var pacientes = planesFiltrados.Select(p => p.Course.Patient.PatientId + "-" + p.Course.Patient.LastName).ToList();
+            foreach (PlanSetup plan in planesFiltrados)
             {
                 int? dia = diasCreacionInicioPorPlan(plan, equipo.ToList());
                 if (dia != null && dia > 0 && dia < 20)
@@ -1048,7 +1055,7 @@ namespace PlanHelper
             List<PlanPaciente> planesRemover = new List<PlanPaciente>();
             if (File.Exists(Equipo.pathArchivos + "pacientesQAPE.txt") && new FileInfo(Equipo.pathArchivos + "pacientesQAPE.txt").Length > 0)
             {
-                planesEnArchivo.AddRange(PlanPaciente.ExtraerDeArchivo(Equipo.pathArchivos + "pacientesQAPE.txt", 1));
+                planesEnArchivo.AddRange(PlanPaciente.ExtraerDeArchivo(Equipo.pathArchivos + "pacientesQAPE.txt", 1));//.Where(p=>p.NotaQA!=""));
                 foreach (PlanPaciente planEnArchivo in planesEnArchivo)
                 {
                     if (!planEnArchivo.actualizarPlanPacienteQA(planesNuevos, aria))

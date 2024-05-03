@@ -28,7 +28,7 @@ namespace PlanHelper
         {
             if (Dias != null)
             {
-                return StatusInicial + ";" + Modalidad.ToString() + ";" + Dias.ToString() + ";" + Margen.ToString() + ";" + ValeParaTodasLasFracciones.ToString() + ";" + Fracciones.ToString();
+                return StatusInicial + ";" + Modalidad.ToString() + "; Dias: " +  Dias.ToString() + "; Margen: " + Margen.ToString() + ";" + ValeParaTodasLasFracciones.ToString() + ";" + Fracciones.ToString();
             }
             else
             {
@@ -41,7 +41,7 @@ namespace PlanHelper
             string[] aux = parametroString.Split(';');
             if (aux[2] != "null")
             {
-                return new Parametro(aux[0], aux[1], Convert.ToInt32(aux[2]),Convert.ToInt32(aux[3]), Convert.ToBoolean(aux[4]), Convert.ToInt32(aux[5]));
+                return new Parametro(aux[0], aux[1], Convert.ToInt32(aux[2].Replace("Dias: ","")),Convert.ToInt32(aux[3].Replace("Margen: ", "")), Convert.ToBoolean(aux[4]), Convert.ToInt32(aux[5]));
             }
             else
             {

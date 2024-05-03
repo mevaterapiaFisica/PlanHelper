@@ -63,6 +63,15 @@ namespace PlanHelper
         {
             return Paciente + "-" + Tipo + "-" + HoraInicio.ToString() + "-" + Duracion() + "minutos";
         }
+        public string Apellido()
+        {
+            return Paciente.Split(',')[0].ToUpper();
+        }
+
+        public string Nombre()
+        {
+            return Paciente.Split(',')[1].ToUpper();
+        }
 
     }
 }

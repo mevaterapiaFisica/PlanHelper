@@ -32,6 +32,12 @@ namespace PlanHelper
         public DateTime? UltimoCalculo { get; set; }
 
         public List<HorarioReservado> HorariosReservados { get; set; }
+
+        public override string ToString()
+        {
+            return Nombre;
+
+        }
         public Equipo(string _Nombre, string _ID, bool _EsDicomRT, string _RutaDicomRT, int _TurnosPorDia, bool _HaceVMAT, bool _Tiene10MV, bool _TieneElectrones, List<HorarioReservado> _horariosReservados = null)
         {
             Nombre = _Nombre;
@@ -108,14 +114,14 @@ namespace PlanHelper
             {
                 Parametros.Add(Parametro.FromString(aux[i]));
             }
-            if (aux[CantidadDeParametros + 9] != "null")
+            /*if (aux[CantidadDeParametros + 9] != "null")
             {
-                UltimoCalculo = Convert.ToDateTime(aux[CantidadDeParametros + 9]);
+                //UltimoCalculo = Convert.ToDateTime(aux[CantidadDeParametros + 9]);
             }
             else
             {
                 UltimoCalculo = null;
-            }
+            }*/
         }
 
         public List<PlanPaciente> planPacientesActualizarFx()
@@ -184,7 +190,7 @@ namespace PlanHelper
         public double MinutosHorarioReservado()
         {
             double minutos = 0;
-            if (HorariosReservados!=null && HorariosReservados.Count>0)
+            if (HorariosReservados != null && HorariosReservados.Count > 0)
             {
                 foreach (var hr in HorariosReservados)
                 {
@@ -241,7 +247,7 @@ namespace PlanHelper
         {
             for (int i = 0; i < Parametros.Count; i++)
             {
-                Parametros.ElementAt(i).Dias = ConsultasDB.PromedioStatusInicio(Parametros.ElementAt(i).StatusInicial, aria, app, this, Parametros.ElementAt(i).Modalidad, DateTime.Today.AddMonths(-2));
+                Parametros.ElementAt(i).Dias = ConsultasDB.PromedioStatusInicio(Parametros.ElementAt(i).StatusInicial, aria, app, this, Parametros.ElementAt(i).Modalidad, DateTime.Today.AddMonths(-6));
             }
             UltimoCalculo = DateTime.Now;
         }
@@ -262,6 +268,21 @@ namespace PlanHelper
                 File.WriteAllLines(pathArchivos + equipo.Nombre + "_encurso.txt", ocupacion.ToArray());
             }
         }
+
+        /*public static void EscribirEnCursoNoAgendado(Aria aria, List<Equipo> Equipos, List<OcupacionEquipo> ocupacionesEquipos)
+        {
+            List<PlanSetup> pacientesEnCurso = ConsultasDB.PacientesEncurso(aria, Equipos);
+            foreach (Equipo equipo in Equipos)
+            {
+                List<PlanSetup> pacientesEnCursoEquipo = pacientesEnCurso.Where(p => p.Radiations.First().RadiationDevice.Machine.MachineId == equipo.ID).ToList();
+                foreach (PlanSetup plan in pacientesEnCursoEquipo)
+                {
+                    if (!(this.Turnos.Any(t => planPaciente.Apellido() == t.Apellido() && planPaciente.Nombre() == t.Nombre())))
+                }
+                List<string> ocupacion = PlanPaciente.ConvertirListasToString(, aria);
+                File.WriteAllLines(pathArchivos + equipo.Nombre + "_encurso.txt", ocupacion.ToArray());
+            }
+        }*/
 
         public List<PlanPaciente> LeerEnCurso()
         {
@@ -401,10 +422,19 @@ namespace PlanHelper
             }
         }
 
-        public Parametro encontrarParametro(string status, string modalidad, int Fracciones)
+        public Parametro encontrarParametro(string status, string modalidad)
         {
-            List<Parametro> ParametrosPosibles = Parametros.Where(p => p.StatusInicial == status && p.Modalidad == modalidad).ToList();
-            if (ParametrosPosibles.Any(p => p.ValeParaTodasLasFracciones))
+            if (Parametros.Any(p => p.StatusInicial == status && p.Modalidad == modalidad))
+            {
+                return Parametros.First(p => p.StatusInicial == status && p.Modalidad == modalidad);
+            }
+            else if (Parametros.Any(p => p.StatusInicial == status))
+            {
+                return Parametros.First(p => p.StatusInicial == status);
+            }
+            return Parametros.First();
+
+            /*if (ParametrosPosibles.Any(p => p.ValeParaTodasLasFracciones))
             {
                 return ParametrosPosibles.Where(p => p.ValeParaTodasLasFracciones).First();
             }
@@ -423,7 +453,7 @@ namespace PlanHelper
                     return Parametros.First();
                 }
                 ; //Me quedo con el más cercano
-            }
+            }*/
         }
 
         public Tuple<DateTime, int> minimaOcupacionEnRango(Parametro Parametro, DateTime? fecha = null)
@@ -512,14 +542,14 @@ namespace PlanHelper
             {
 
                 List<OcupacionEquipo> ocupacionesEquipo = ocupaciones.Where(e => e.Equipo == equipo.Nombre).ToList();
-                var output = ocupacionesEquipo.Select(o => o.Fecha.ToString("dd/MM/yyyy") + ";" + Math.Round(o.TurnosOcupados(equipo),0).ToString()).ToArray();
+                var output = ocupacionesEquipo.Select(o => o.Fecha.ToString("dd/MM/yyyy") + ";" + Math.Round(o.TurnosOcupados(equipo), 0).ToString()).ToArray();
                 File.WriteAllLines(pathArchivos + equipo.Nombre + "_agendaocupacion.txt", output);
                 OcupacionEquipo ocupacionEquipoHoy = ocupacionesEquipo.First(o => o.Fecha == DateTime.Today);
-                File.WriteAllLines(pathArchivos + equipo.Nombre + "_ocupacionHoy.txt", ocupacionEquipoHoy.Turnos.Select(t=>t.ToString()).ToArray());
+                File.WriteAllLines(pathArchivos + equipo.Nombre + "_ocupacionHoy.txt", ocupacionEquipoHoy.Turnos.Select(t => t.ToString()).ToArray());
             }
 
 
-            
+
         }
 
 
@@ -550,12 +580,12 @@ namespace PlanHelper
 
         public bool EstaEnHorarioReservado(TurnoSitra turnoSitra)
         {
-            if (HorariosReservados!=null && HorariosReservados.Count>0)
+            if (HorariosReservados != null && HorariosReservados.Count > 0)
             {
                 return HorariosReservados.Any(r => r.LoContiene(turnoSitra));
             }
             return false;
-            
+
         }
 
 

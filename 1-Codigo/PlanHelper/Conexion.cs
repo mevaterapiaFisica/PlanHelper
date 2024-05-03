@@ -44,10 +44,10 @@ namespace PlanHelper
             ActualizaQAPE = _actualizaQAPE;
             ActualizaPacTBI = _actualizaPacTBI;
             BuscaIniciosSitramed = _buscaIniciosSitramed;
-            if (DateTime.Now.Hour == 5)
+           /* if (DateTime.Now.Hour == 5)
             {
                 SeguimientoEq3();
-            }
+            }*/
             L_Texto.Text = "";
         }
 

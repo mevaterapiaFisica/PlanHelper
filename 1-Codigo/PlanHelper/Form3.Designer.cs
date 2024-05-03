@@ -51,35 +51,6 @@
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tab_QA = new System.Windows.Forms.TabPage();
-            this.BT_QA_ExportarLista = new System.Windows.Forms.Button();
-            this.LB_QA = new System.Windows.Forms.ListBox();
-            this.BT_QA_SacarDeLista = new System.Windows.Forms.Button();
-            this.BT_QAActualizarBusquedas = new System.Windows.Forms.Button();
-            this.L_QA_UltimaBusquedaPlacasPendientes = new System.Windows.Forms.Label();
-            this.DGV_QA_PlacasPendientes = new System.Windows.Forms.DataGridView();
-            this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tab_Parametros = new System.Windows.Forms.TabPage();
-            this.BT_Minar = new System.Windows.Forms.Button();
-            this.BT_ParametrosRecalcular = new System.Windows.Forms.Button();
-            this.L_ParametrosUltimoCalculo = new System.Windows.Forms.Label();
-            this.tab_ExacTrac = new System.Windows.Forms.TabPage();
-            this.BT_EliminarExacTrac = new System.Windows.Forms.Button();
-            this.LB_ExacTrac = new System.Windows.Forms.ListBox();
-            this.BT_BuscarExacTrac = new System.Windows.Forms.Button();
-            this.DGV_ExacTrac = new System.Windows.Forms.DataGridView();
-            this.Seleccion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.HC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HayCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HayEstructuras = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tab_Buscador = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -176,15 +147,39 @@
             this.tab_inicios = new System.Windows.Forms.TabPage();
             this.BT_ActualizarInicios = new System.Windows.Forms.Button();
             this.RTB_Inicios = new System.Windows.Forms.RichTextBox();
+            this.tab_QA = new System.Windows.Forms.TabPage();
+            this.BT_QA_ExportarLista = new System.Windows.Forms.Button();
+            this.LB_QA = new System.Windows.Forms.ListBox();
+            this.BT_QA_SacarDeLista = new System.Windows.Forms.Button();
+            this.BT_QAActualizarBusquedas = new System.Windows.Forms.Button();
+            this.L_QA_UltimaBusquedaPlacasPendientes = new System.Windows.Forms.Label();
+            this.DGV_QA_PlacasPendientes = new System.Windows.Forms.DataGridView();
+            this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tab_ExacTrac = new System.Windows.Forms.TabPage();
+            this.BT_EliminarExacTrac = new System.Windows.Forms.Button();
+            this.LB_ExacTrac = new System.Windows.Forms.ListBox();
+            this.BT_BuscarExacTrac = new System.Windows.Forms.Button();
+            this.DGV_ExacTrac = new System.Windows.Forms.DataGridView();
+            this.Seleccion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.HC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HayCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HayEstructuras = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tab_Parametros = new System.Windows.Forms.TabPage();
+            this.BT_Minar = new System.Windows.Forms.Button();
+            this.BT_ParametrosRecalcular = new System.Windows.Forms.Button();
+            this.L_ParametrosUltimoCalculo = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tab_Consulta.SuspendLayout();
             this.tab_EstadoEquipos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_EstadoEquipos)).BeginInit();
-            this.tab_QA.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DGV_QA_PlacasPendientes)).BeginInit();
-            this.tab_Parametros.SuspendLayout();
-            this.tab_ExacTrac.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DGV_ExacTrac)).BeginInit();
             this.tab_Buscador.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -200,6 +195,11 @@
             this.tab_pedidos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Pedidos)).BeginInit();
             this.tab_inicios.SuspendLayout();
+            this.tab_QA.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_QA_PlacasPendientes)).BeginInit();
+            this.tab_ExacTrac.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_ExacTrac)).BeginInit();
+            this.tab_Parametros.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -243,6 +243,7 @@
             // 
             // TB_NumFracciones
             // 
+            this.TB_NumFracciones.Enabled = false;
             this.TB_NumFracciones.Location = new System.Drawing.Point(134, 130);
             this.TB_NumFracciones.Name = "TB_NumFracciones";
             this.TB_NumFracciones.Size = new System.Drawing.Size(100, 20);
@@ -251,6 +252,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Enabled = false;
             this.label2.Location = new System.Drawing.Point(19, 133);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(114, 13);
@@ -442,272 +444,6 @@
             this.Column11.Name = "Column11";
             this.Column11.ReadOnly = true;
             this.Column11.Width = 70;
-            // 
-            // tab_QA
-            // 
-            this.tab_QA.Controls.Add(this.BT_QA_ExportarLista);
-            this.tab_QA.Controls.Add(this.LB_QA);
-            this.tab_QA.Controls.Add(this.BT_QA_SacarDeLista);
-            this.tab_QA.Controls.Add(this.BT_QAActualizarBusquedas);
-            this.tab_QA.Controls.Add(this.L_QA_UltimaBusquedaPlacasPendientes);
-            this.tab_QA.Controls.Add(this.DGV_QA_PlacasPendientes);
-            this.tab_QA.Location = new System.Drawing.Point(4, 22);
-            this.tab_QA.Name = "tab_QA";
-            this.tab_QA.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_QA.Size = new System.Drawing.Size(861, 392);
-            this.tab_QA.TabIndex = 2;
-            this.tab_QA.Text = "QA";
-            this.tab_QA.UseVisualStyleBackColor = true;
-            // 
-            // BT_QA_ExportarLista
-            // 
-            this.BT_QA_ExportarLista.Location = new System.Drawing.Point(184, 193);
-            this.BT_QA_ExportarLista.Name = "BT_QA_ExportarLista";
-            this.BT_QA_ExportarLista.Size = new System.Drawing.Size(120, 24);
-            this.BT_QA_ExportarLista.TabIndex = 7;
-            this.BT_QA_ExportarLista.Text = "Exportar lista";
-            this.BT_QA_ExportarLista.UseVisualStyleBackColor = true;
-            this.BT_QA_ExportarLista.Click += new System.EventHandler(this.BT_QA_ExportarLista_Click);
-            // 
-            // LB_QA
-            // 
-            this.LB_QA.FormattingEnabled = true;
-            this.LB_QA.Location = new System.Drawing.Point(7, 12);
-            this.LB_QA.Name = "LB_QA";
-            this.LB_QA.Size = new System.Drawing.Size(171, 173);
-            this.LB_QA.TabIndex = 6;
-            this.LB_QA.SelectedIndexChanged += new System.EventHandler(this.LB_QA_SelectedIndexChanged);
-            // 
-            // BT_QA_SacarDeLista
-            // 
-            this.BT_QA_SacarDeLista.Location = new System.Drawing.Point(562, 192);
-            this.BT_QA_SacarDeLista.Name = "BT_QA_SacarDeLista";
-            this.BT_QA_SacarDeLista.Size = new System.Drawing.Size(120, 25);
-            this.BT_QA_SacarDeLista.TabIndex = 5;
-            this.BT_QA_SacarDeLista.Text = "Sacar de la lista";
-            this.BT_QA_SacarDeLista.UseVisualStyleBackColor = true;
-            this.BT_QA_SacarDeLista.Click += new System.EventHandler(this.BT_QA_SacarDeLista_Click);
-            // 
-            // BT_QAActualizarBusquedas
-            // 
-            this.BT_QAActualizarBusquedas.Location = new System.Drawing.Point(562, 232);
-            this.BT_QAActualizarBusquedas.Name = "BT_QAActualizarBusquedas";
-            this.BT_QAActualizarBusquedas.Size = new System.Drawing.Size(120, 24);
-            this.BT_QAActualizarBusquedas.TabIndex = 4;
-            this.BT_QAActualizarBusquedas.Text = "Actualizar Búsquedas";
-            this.BT_QAActualizarBusquedas.UseVisualStyleBackColor = true;
-            this.BT_QAActualizarBusquedas.Click += new System.EventHandler(this.BT_ActualizarBusquedas_Click);
-            // 
-            // L_QA_UltimaBusquedaPlacasPendientes
-            // 
-            this.L_QA_UltimaBusquedaPlacasPendientes.AutoSize = true;
-            this.L_QA_UltimaBusquedaPlacasPendientes.Location = new System.Drawing.Point(181, 238);
-            this.L_QA_UltimaBusquedaPlacasPendientes.Name = "L_QA_UltimaBusquedaPlacasPendientes";
-            this.L_QA_UltimaBusquedaPlacasPendientes.Size = new System.Drawing.Size(92, 13);
-            this.L_QA_UltimaBusquedaPlacasPendientes.TabIndex = 2;
-            this.L_QA_UltimaBusquedaPlacasPendientes.Text = "Última búsqueda: ";
-            // 
-            // DGV_QA_PlacasPendientes
-            // 
-            this.DGV_QA_PlacasPendientes.AllowUserToAddRows = false;
-            this.DGV_QA_PlacasPendientes.AllowUserToDeleteRows = false;
-            this.DGV_QA_PlacasPendientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGV_QA_PlacasPendientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Seleccionar,
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6});
-            this.DGV_QA_PlacasPendientes.Location = new System.Drawing.Point(184, 12);
-            this.DGV_QA_PlacasPendientes.Name = "DGV_QA_PlacasPendientes";
-            this.DGV_QA_PlacasPendientes.RowHeadersVisible = false;
-            this.DGV_QA_PlacasPendientes.Size = new System.Drawing.Size(560, 173);
-            this.DGV_QA_PlacasPendientes.TabIndex = 1;
-            // 
-            // Seleccionar
-            // 
-            this.Seleccionar.HeaderText = "";
-            this.Seleccionar.Name = "Seleccionar";
-            this.Seleccionar.Width = 20;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "HC";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 60;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Nombre";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 150;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Equipo";
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 60;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Plan";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 70;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Última fx";
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 80;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Última placa";
-            this.Column6.Name = "Column6";
-            this.Column6.Width = 90;
-            // 
-            // tab_Parametros
-            // 
-            this.tab_Parametros.Controls.Add(this.BT_Minar);
-            this.tab_Parametros.Controls.Add(this.BT_ParametrosRecalcular);
-            this.tab_Parametros.Controls.Add(this.L_ParametrosUltimoCalculo);
-            this.tab_Parametros.Location = new System.Drawing.Point(4, 22);
-            this.tab_Parametros.Name = "tab_Parametros";
-            this.tab_Parametros.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_Parametros.Size = new System.Drawing.Size(861, 392);
-            this.tab_Parametros.TabIndex = 3;
-            this.tab_Parametros.Text = "Parámetros";
-            this.tab_Parametros.UseVisualStyleBackColor = true;
-            // 
-            // BT_Minar
-            // 
-            this.BT_Minar.Enabled = false;
-            this.BT_Minar.Location = new System.Drawing.Point(558, 209);
-            this.BT_Minar.Name = "BT_Minar";
-            this.BT_Minar.Size = new System.Drawing.Size(75, 23);
-            this.BT_Minar.TabIndex = 8;
-            this.BT_Minar.Text = "Minar";
-            this.BT_Minar.UseVisualStyleBackColor = true;
-            this.BT_Minar.Click += new System.EventHandler(this.BT_Minar_Click);
-            // 
-            // BT_ParametrosRecalcular
-            // 
-            this.BT_ParametrosRecalcular.Location = new System.Drawing.Point(277, 214);
-            this.BT_ParametrosRecalcular.Name = "BT_ParametrosRecalcular";
-            this.BT_ParametrosRecalcular.Size = new System.Drawing.Size(75, 23);
-            this.BT_ParametrosRecalcular.TabIndex = 7;
-            this.BT_ParametrosRecalcular.Text = "Recalcular";
-            this.BT_ParametrosRecalcular.UseVisualStyleBackColor = true;
-            this.BT_ParametrosRecalcular.Visible = false;
-            this.BT_ParametrosRecalcular.Click += new System.EventHandler(this.BT_ParametrosRecalcular_Click);
-            // 
-            // L_ParametrosUltimoCalculo
-            // 
-            this.L_ParametrosUltimoCalculo.AutoSize = true;
-            this.L_ParametrosUltimoCalculo.Location = new System.Drawing.Point(24, 214);
-            this.L_ParametrosUltimoCalculo.Name = "L_ParametrosUltimoCalculo";
-            this.L_ParametrosUltimoCalculo.Size = new System.Drawing.Size(74, 13);
-            this.L_ParametrosUltimoCalculo.TabIndex = 6;
-            this.L_ParametrosUltimoCalculo.Text = "Último Cálculo";
-            // 
-            // tab_ExacTrac
-            // 
-            this.tab_ExacTrac.Controls.Add(this.BT_EliminarExacTrac);
-            this.tab_ExacTrac.Controls.Add(this.LB_ExacTrac);
-            this.tab_ExacTrac.Controls.Add(this.BT_BuscarExacTrac);
-            this.tab_ExacTrac.Controls.Add(this.DGV_ExacTrac);
-            this.tab_ExacTrac.Location = new System.Drawing.Point(4, 22);
-            this.tab_ExacTrac.Name = "tab_ExacTrac";
-            this.tab_ExacTrac.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_ExacTrac.Size = new System.Drawing.Size(861, 392);
-            this.tab_ExacTrac.TabIndex = 4;
-            this.tab_ExacTrac.Text = "ExacTrac";
-            this.tab_ExacTrac.UseVisualStyleBackColor = true;
-            // 
-            // BT_EliminarExacTrac
-            // 
-            this.BT_EliminarExacTrac.Enabled = false;
-            this.BT_EliminarExacTrac.Location = new System.Drawing.Point(51, 219);
-            this.BT_EliminarExacTrac.Name = "BT_EliminarExacTrac";
-            this.BT_EliminarExacTrac.Size = new System.Drawing.Size(75, 23);
-            this.BT_EliminarExacTrac.TabIndex = 3;
-            this.BT_EliminarExacTrac.Text = "Eliminar";
-            this.BT_EliminarExacTrac.UseVisualStyleBackColor = true;
-            // 
-            // LB_ExacTrac
-            // 
-            this.LB_ExacTrac.FormattingEnabled = true;
-            this.LB_ExacTrac.Location = new System.Drawing.Point(6, 18);
-            this.LB_ExacTrac.Name = "LB_ExacTrac";
-            this.LB_ExacTrac.Size = new System.Drawing.Size(120, 95);
-            this.LB_ExacTrac.TabIndex = 2;
-            this.LB_ExacTrac.SelectedIndexChanged += new System.EventHandler(this.LB_ExacTrac_SelectedIndexChanged);
-            // 
-            // BT_BuscarExacTrac
-            // 
-            this.BT_BuscarExacTrac.Location = new System.Drawing.Point(51, 154);
-            this.BT_BuscarExacTrac.Name = "BT_BuscarExacTrac";
-            this.BT_BuscarExacTrac.Size = new System.Drawing.Size(75, 23);
-            this.BT_BuscarExacTrac.TabIndex = 1;
-            this.BT_BuscarExacTrac.Text = "Buscar";
-            this.BT_BuscarExacTrac.UseVisualStyleBackColor = true;
-            this.BT_BuscarExacTrac.Click += new System.EventHandler(this.BT_BuscarExacTrac_Click);
-            // 
-            // DGV_ExacTrac
-            // 
-            this.DGV_ExacTrac.AllowUserToAddRows = false;
-            this.DGV_ExacTrac.AllowUserToDeleteRows = false;
-            this.DGV_ExacTrac.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGV_ExacTrac.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Seleccion,
-            this.HC,
-            this.Nombre,
-            this.Plan,
-            this.HayCT,
-            this.HayEstructuras});
-            this.DGV_ExacTrac.Location = new System.Drawing.Point(148, 18);
-            this.DGV_ExacTrac.Name = "DGV_ExacTrac";
-            this.DGV_ExacTrac.RowHeadersVisible = false;
-            this.DGV_ExacTrac.Size = new System.Drawing.Size(499, 224);
-            this.DGV_ExacTrac.TabIndex = 0;
-            // 
-            // Seleccion
-            // 
-            this.Seleccion.HeaderText = "";
-            this.Seleccion.Name = "Seleccion";
-            this.Seleccion.Width = 30;
-            // 
-            // HC
-            // 
-            this.HC.HeaderText = "HC";
-            this.HC.Name = "HC";
-            this.HC.Width = 70;
-            // 
-            // Nombre
-            // 
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.Width = 150;
-            // 
-            // Plan
-            // 
-            this.Plan.HeaderText = "Plan";
-            this.Plan.Name = "Plan";
-            this.Plan.Width = 80;
-            // 
-            // HayCT
-            // 
-            this.HayCT.HeaderText = "Hay CT";
-            this.HayCT.Name = "HayCT";
-            this.HayCT.Width = 70;
-            // 
-            // HayEstructuras
-            // 
-            this.HayEstructuras.HeaderText = "Hay estructuras";
-            this.HayEstructuras.Name = "HayEstructuras";
-            this.HayEstructuras.Width = 70;
             // 
             // tab_Buscador
             // 
@@ -1628,6 +1364,272 @@
             this.RTB_Inicios.TabIndex = 0;
             this.RTB_Inicios.Text = "";
             // 
+            // tab_QA
+            // 
+            this.tab_QA.Controls.Add(this.BT_QA_ExportarLista);
+            this.tab_QA.Controls.Add(this.LB_QA);
+            this.tab_QA.Controls.Add(this.BT_QA_SacarDeLista);
+            this.tab_QA.Controls.Add(this.BT_QAActualizarBusquedas);
+            this.tab_QA.Controls.Add(this.L_QA_UltimaBusquedaPlacasPendientes);
+            this.tab_QA.Controls.Add(this.DGV_QA_PlacasPendientes);
+            this.tab_QA.Location = new System.Drawing.Point(4, 22);
+            this.tab_QA.Name = "tab_QA";
+            this.tab_QA.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_QA.Size = new System.Drawing.Size(861, 392);
+            this.tab_QA.TabIndex = 2;
+            this.tab_QA.Text = "QA";
+            this.tab_QA.UseVisualStyleBackColor = true;
+            // 
+            // BT_QA_ExportarLista
+            // 
+            this.BT_QA_ExportarLista.Location = new System.Drawing.Point(184, 193);
+            this.BT_QA_ExportarLista.Name = "BT_QA_ExportarLista";
+            this.BT_QA_ExportarLista.Size = new System.Drawing.Size(120, 24);
+            this.BT_QA_ExportarLista.TabIndex = 7;
+            this.BT_QA_ExportarLista.Text = "Exportar lista";
+            this.BT_QA_ExportarLista.UseVisualStyleBackColor = true;
+            this.BT_QA_ExportarLista.Click += new System.EventHandler(this.BT_QA_ExportarLista_Click);
+            // 
+            // LB_QA
+            // 
+            this.LB_QA.FormattingEnabled = true;
+            this.LB_QA.Location = new System.Drawing.Point(7, 12);
+            this.LB_QA.Name = "LB_QA";
+            this.LB_QA.Size = new System.Drawing.Size(171, 173);
+            this.LB_QA.TabIndex = 6;
+            this.LB_QA.SelectedIndexChanged += new System.EventHandler(this.LB_QA_SelectedIndexChanged);
+            // 
+            // BT_QA_SacarDeLista
+            // 
+            this.BT_QA_SacarDeLista.Location = new System.Drawing.Point(562, 192);
+            this.BT_QA_SacarDeLista.Name = "BT_QA_SacarDeLista";
+            this.BT_QA_SacarDeLista.Size = new System.Drawing.Size(120, 25);
+            this.BT_QA_SacarDeLista.TabIndex = 5;
+            this.BT_QA_SacarDeLista.Text = "Sacar de la lista";
+            this.BT_QA_SacarDeLista.UseVisualStyleBackColor = true;
+            this.BT_QA_SacarDeLista.Click += new System.EventHandler(this.BT_QA_SacarDeLista_Click);
+            // 
+            // BT_QAActualizarBusquedas
+            // 
+            this.BT_QAActualizarBusquedas.Location = new System.Drawing.Point(562, 232);
+            this.BT_QAActualizarBusquedas.Name = "BT_QAActualizarBusquedas";
+            this.BT_QAActualizarBusquedas.Size = new System.Drawing.Size(120, 24);
+            this.BT_QAActualizarBusquedas.TabIndex = 4;
+            this.BT_QAActualizarBusquedas.Text = "Actualizar Búsquedas";
+            this.BT_QAActualizarBusquedas.UseVisualStyleBackColor = true;
+            this.BT_QAActualizarBusquedas.Click += new System.EventHandler(this.BT_ActualizarBusquedas_Click);
+            // 
+            // L_QA_UltimaBusquedaPlacasPendientes
+            // 
+            this.L_QA_UltimaBusquedaPlacasPendientes.AutoSize = true;
+            this.L_QA_UltimaBusquedaPlacasPendientes.Location = new System.Drawing.Point(181, 238);
+            this.L_QA_UltimaBusquedaPlacasPendientes.Name = "L_QA_UltimaBusquedaPlacasPendientes";
+            this.L_QA_UltimaBusquedaPlacasPendientes.Size = new System.Drawing.Size(92, 13);
+            this.L_QA_UltimaBusquedaPlacasPendientes.TabIndex = 2;
+            this.L_QA_UltimaBusquedaPlacasPendientes.Text = "Última búsqueda: ";
+            // 
+            // DGV_QA_PlacasPendientes
+            // 
+            this.DGV_QA_PlacasPendientes.AllowUserToAddRows = false;
+            this.DGV_QA_PlacasPendientes.AllowUserToDeleteRows = false;
+            this.DGV_QA_PlacasPendientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_QA_PlacasPendientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Seleccionar,
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6});
+            this.DGV_QA_PlacasPendientes.Location = new System.Drawing.Point(184, 12);
+            this.DGV_QA_PlacasPendientes.Name = "DGV_QA_PlacasPendientes";
+            this.DGV_QA_PlacasPendientes.RowHeadersVisible = false;
+            this.DGV_QA_PlacasPendientes.Size = new System.Drawing.Size(560, 173);
+            this.DGV_QA_PlacasPendientes.TabIndex = 1;
+            // 
+            // Seleccionar
+            // 
+            this.Seleccionar.HeaderText = "";
+            this.Seleccionar.Name = "Seleccionar";
+            this.Seleccionar.Width = 20;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "HC";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 60;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Nombre";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 150;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Equipo";
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 60;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Plan";
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 70;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Última fx";
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 80;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Última placa";
+            this.Column6.Name = "Column6";
+            this.Column6.Width = 90;
+            // 
+            // tab_ExacTrac
+            // 
+            this.tab_ExacTrac.Controls.Add(this.BT_EliminarExacTrac);
+            this.tab_ExacTrac.Controls.Add(this.LB_ExacTrac);
+            this.tab_ExacTrac.Controls.Add(this.BT_BuscarExacTrac);
+            this.tab_ExacTrac.Controls.Add(this.DGV_ExacTrac);
+            this.tab_ExacTrac.Location = new System.Drawing.Point(4, 22);
+            this.tab_ExacTrac.Name = "tab_ExacTrac";
+            this.tab_ExacTrac.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_ExacTrac.Size = new System.Drawing.Size(861, 392);
+            this.tab_ExacTrac.TabIndex = 4;
+            this.tab_ExacTrac.Text = "ExacTrac";
+            this.tab_ExacTrac.UseVisualStyleBackColor = true;
+            // 
+            // BT_EliminarExacTrac
+            // 
+            this.BT_EliminarExacTrac.Enabled = false;
+            this.BT_EliminarExacTrac.Location = new System.Drawing.Point(51, 219);
+            this.BT_EliminarExacTrac.Name = "BT_EliminarExacTrac";
+            this.BT_EliminarExacTrac.Size = new System.Drawing.Size(75, 23);
+            this.BT_EliminarExacTrac.TabIndex = 3;
+            this.BT_EliminarExacTrac.Text = "Eliminar";
+            this.BT_EliminarExacTrac.UseVisualStyleBackColor = true;
+            // 
+            // LB_ExacTrac
+            // 
+            this.LB_ExacTrac.FormattingEnabled = true;
+            this.LB_ExacTrac.Location = new System.Drawing.Point(6, 18);
+            this.LB_ExacTrac.Name = "LB_ExacTrac";
+            this.LB_ExacTrac.Size = new System.Drawing.Size(120, 95);
+            this.LB_ExacTrac.TabIndex = 2;
+            this.LB_ExacTrac.SelectedIndexChanged += new System.EventHandler(this.LB_ExacTrac_SelectedIndexChanged);
+            // 
+            // BT_BuscarExacTrac
+            // 
+            this.BT_BuscarExacTrac.Location = new System.Drawing.Point(51, 154);
+            this.BT_BuscarExacTrac.Name = "BT_BuscarExacTrac";
+            this.BT_BuscarExacTrac.Size = new System.Drawing.Size(75, 23);
+            this.BT_BuscarExacTrac.TabIndex = 1;
+            this.BT_BuscarExacTrac.Text = "Buscar";
+            this.BT_BuscarExacTrac.UseVisualStyleBackColor = true;
+            this.BT_BuscarExacTrac.Click += new System.EventHandler(this.BT_BuscarExacTrac_Click);
+            // 
+            // DGV_ExacTrac
+            // 
+            this.DGV_ExacTrac.AllowUserToAddRows = false;
+            this.DGV_ExacTrac.AllowUserToDeleteRows = false;
+            this.DGV_ExacTrac.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_ExacTrac.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Seleccion,
+            this.HC,
+            this.Nombre,
+            this.Plan,
+            this.HayCT,
+            this.HayEstructuras});
+            this.DGV_ExacTrac.Location = new System.Drawing.Point(148, 18);
+            this.DGV_ExacTrac.Name = "DGV_ExacTrac";
+            this.DGV_ExacTrac.RowHeadersVisible = false;
+            this.DGV_ExacTrac.Size = new System.Drawing.Size(499, 224);
+            this.DGV_ExacTrac.TabIndex = 0;
+            // 
+            // Seleccion
+            // 
+            this.Seleccion.HeaderText = "";
+            this.Seleccion.Name = "Seleccion";
+            this.Seleccion.Width = 30;
+            // 
+            // HC
+            // 
+            this.HC.HeaderText = "HC";
+            this.HC.Name = "HC";
+            this.HC.Width = 70;
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.Width = 150;
+            // 
+            // Plan
+            // 
+            this.Plan.HeaderText = "Plan";
+            this.Plan.Name = "Plan";
+            this.Plan.Width = 80;
+            // 
+            // HayCT
+            // 
+            this.HayCT.HeaderText = "Hay CT";
+            this.HayCT.Name = "HayCT";
+            this.HayCT.Width = 70;
+            // 
+            // HayEstructuras
+            // 
+            this.HayEstructuras.HeaderText = "Hay estructuras";
+            this.HayEstructuras.Name = "HayEstructuras";
+            this.HayEstructuras.Width = 70;
+            // 
+            // tab_Parametros
+            // 
+            this.tab_Parametros.Controls.Add(this.BT_Minar);
+            this.tab_Parametros.Controls.Add(this.BT_ParametrosRecalcular);
+            this.tab_Parametros.Controls.Add(this.L_ParametrosUltimoCalculo);
+            this.tab_Parametros.Location = new System.Drawing.Point(4, 22);
+            this.tab_Parametros.Name = "tab_Parametros";
+            this.tab_Parametros.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_Parametros.Size = new System.Drawing.Size(861, 392);
+            this.tab_Parametros.TabIndex = 3;
+            this.tab_Parametros.Text = "Parámetros";
+            this.tab_Parametros.UseVisualStyleBackColor = true;
+            // 
+            // BT_Minar
+            // 
+            this.BT_Minar.Enabled = false;
+            this.BT_Minar.Location = new System.Drawing.Point(558, 209);
+            this.BT_Minar.Name = "BT_Minar";
+            this.BT_Minar.Size = new System.Drawing.Size(75, 23);
+            this.BT_Minar.TabIndex = 8;
+            this.BT_Minar.Text = "Minar";
+            this.BT_Minar.UseVisualStyleBackColor = true;
+            this.BT_Minar.Click += new System.EventHandler(this.BT_Minar_Click);
+            // 
+            // BT_ParametrosRecalcular
+            // 
+            this.BT_ParametrosRecalcular.Location = new System.Drawing.Point(277, 214);
+            this.BT_ParametrosRecalcular.Name = "BT_ParametrosRecalcular";
+            this.BT_ParametrosRecalcular.Size = new System.Drawing.Size(75, 23);
+            this.BT_ParametrosRecalcular.TabIndex = 7;
+            this.BT_ParametrosRecalcular.Text = "Recalcular";
+            this.BT_ParametrosRecalcular.UseVisualStyleBackColor = true;
+            this.BT_ParametrosRecalcular.Visible = false;
+            this.BT_ParametrosRecalcular.Click += new System.EventHandler(this.BT_ParametrosRecalcular_Click);
+            // 
+            // L_ParametrosUltimoCalculo
+            // 
+            this.L_ParametrosUltimoCalculo.AutoSize = true;
+            this.L_ParametrosUltimoCalculo.Location = new System.Drawing.Point(24, 214);
+            this.L_ParametrosUltimoCalculo.Name = "L_ParametrosUltimoCalculo";
+            this.L_ParametrosUltimoCalculo.Size = new System.Drawing.Size(74, 13);
+            this.L_ParametrosUltimoCalculo.TabIndex = 6;
+            this.L_ParametrosUltimoCalculo.Text = "Último Cálculo";
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1644,13 +1646,6 @@
             this.tab_EstadoEquipos.ResumeLayout(false);
             this.tab_EstadoEquipos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_EstadoEquipos)).EndInit();
-            this.tab_QA.ResumeLayout(false);
-            this.tab_QA.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DGV_QA_PlacasPendientes)).EndInit();
-            this.tab_Parametros.ResumeLayout(false);
-            this.tab_Parametros.PerformLayout();
-            this.tab_ExacTrac.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DGV_ExacTrac)).EndInit();
             this.tab_Buscador.ResumeLayout(false);
             this.tab_Buscador.PerformLayout();
             this.groupBox6.ResumeLayout(false);
@@ -1674,6 +1669,13 @@
             this.tab_pedidos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Pedidos)).EndInit();
             this.tab_inicios.ResumeLayout(false);
+            this.tab_QA.ResumeLayout(false);
+            this.tab_QA.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_QA_PlacasPendientes)).EndInit();
+            this.tab_ExacTrac.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_ExacTrac)).EndInit();
+            this.tab_Parametros.ResumeLayout(false);
+            this.tab_Parametros.PerformLayout();
             this.ResumeLayout(false);
 
         }

@@ -48,7 +48,10 @@ namespace PlanHelper
                 {
                     if (planPaciente.EstaraEnEquipo(equipo, (this.Fecha - DateTime.Today).TotalDays))
                     {
-                        turnos++; //FAlta revisar si esta en la lista
+                        if (!(this.Turnos.Any(t => planPaciente.Apellido() == t.Apellido() && planPaciente.Nombre() == t.Nombre())))
+                        {
+                            turnos++; //FAlta revisar si esta en la lista
+                        }
                     }
                 }
                 return turnos;  //Mido turnos de 15 minutos

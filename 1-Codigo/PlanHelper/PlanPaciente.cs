@@ -120,6 +120,15 @@ namespace PlanHelper
             this.UltimaFx = MetodosDicomRT.ultimaFraccion(carpetaPaciente);
         }
 
+        public string Apellido()
+        {
+            return PacienteNombre.Split(',')[0].ToUpper();
+        }
+
+        public string Nombre()
+        {
+            return PacienteNombre.Split(',')[1].ToUpper();
+        }
         public override string ToString()
         {
             string nfx;
@@ -157,13 +166,16 @@ namespace PlanHelper
         {
             if (otroPlan.GetType() == typeof(PlanPaciente))
             {
-                return PlanSer == ((PlanPaciente)otroPlan).PlanSer;
-                //return (PacienteID == ((PlanPaciente)otroPlan).PacienteID) && (CursoID == ((PlanPaciente)otroPlan).CursoID) && (PlanSer == ((PlanPaciente)otroPlan).PlanSer) && (EquipoID == ((PlanPaciente)otroPlan).EquipoID);
+                if (PlanSer == ((PlanPaciente)otroPlan).PlanSer)
+                {
+                    return true;
+                }
+                else
+                {
+                    return this.PacienteID == ((PlanPaciente)otroPlan).PacienteID && this.PlanID == ((PlanPaciente)otroPlan).PlanID;
+                }
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
 
         public static List<PlanPaciente> ConvertirListas(List<PlanSetup> planes)
@@ -221,10 +233,7 @@ namespace PlanHelper
             }
             return planPacienteList;
         }
-        public static List<PlanPaciente> ExtraerDeArchivo(
-      string path,
-      int saltear = 0,
-      bool esQAPE = false)
+        public static List<PlanPaciente> ExtraerDeArchivo(string path, int saltear = 0, bool esQAPE = false)
         {
             List<PlanPaciente> planPacienteList1 = (List<PlanPaciente>)null;
             if (esQAPE)

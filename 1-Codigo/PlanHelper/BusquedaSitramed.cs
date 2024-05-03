@@ -55,7 +55,6 @@ namespace PlanHelper
                     ocupacionEquipos.Add(new OcupacionEquipo(Equipo, dia, citasDiaEquipo(dia, Equipo, driver)));
                 }
             }
-
             driver.Close();
             /*browser.getAllWindowHandles().then(function(handles) {
                 browser.driver.switchTo().window(handles[1]);

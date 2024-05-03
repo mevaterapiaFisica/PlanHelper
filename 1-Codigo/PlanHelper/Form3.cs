@@ -133,7 +133,7 @@ namespace PlanHelper
                 {
                     modalidad = "VMAT";
                 }
-                ocupacion = equipo.ocupacionMediaEnRango(equipo.encontrarParametro("Unapproved", modalidad, NumeroDeFracciones()));
+                ocupacion = equipo.ocupacionMediaEnRango(equipo.encontrarParametro("Unapproved", modalidad));
             }
             if (ocupacion != null)
             {
@@ -148,29 +148,28 @@ namespace PlanHelper
         {
             TB_ParaQueEquipo.Text = "";
             List<Tuple<Equipo, int?>> Tuplas = new List<Tuple<Equipo, int?>>();
-            if (NumeroDeFracciones() == 0)
+            /*if (NumeroDeFracciones() == 0)
             {
                 MessageBox.Show("Ingresar número de fracciones");
             }
             else
+            {*/
+            foreach (Equipo equipo in EquiposUtiles())
             {
-                foreach (Equipo equipo in EquiposUtiles())
-                {
-                    Tuplas.Add(new Tuple<Equipo, int?>(equipo, TurnosLibres(equipo)));
-                }
+                Tuplas.Add(new Tuple<Equipo, int?>(equipo, TurnosLibres(equipo)));
+            }
 
-                if (Tuplas.Any(t => t.Item2 != null))
+            if (Tuplas.Any(t => t.Item2 != null))
+            {
+                MessageBox.Show("Planificar para el " + Tuplas.OrderByDescending(t => t.Item2).First().Item1.Nombre);
+                foreach (var tupla in Tuplas)
                 {
-                    MessageBox.Show("Planificar para el " + Tuplas.OrderByDescending(t => t.Item2).First().Item1.Nombre);
-                    foreach (var tupla in Tuplas)
-                    {
-                        TB_ParaQueEquipo.Text += tupla.Item1.Nombre + ": " + TurnosLibres(tupla.Item1).ToString() + " turnos libres" + Environment.NewLine;
-                    }
+                    TB_ParaQueEquipo.Text += tupla.Item1.Nombre + ": " + TurnosLibres(tupla.Item1).ToString() + " turnos libres" + Environment.NewLine;
                 }
-                else
-                {
-                    MessageBox.Show("No hay información para ese día");
-                }
+            }
+            else
+            {
+                MessageBox.Show("No hay información para ese día");
             }
             TB_ParaQueEquipo.Update();
         }
@@ -1047,7 +1046,7 @@ namespace PlanHelper
                         {
                             equipo = "Equipo 1";
                         }
-                        else if (paciente.EquipoID == "2100CMLC")
+                        else if (paciente.EquipoID == "Equipo3")
                         {
                             equipo = "Equipo 3";
                         }
