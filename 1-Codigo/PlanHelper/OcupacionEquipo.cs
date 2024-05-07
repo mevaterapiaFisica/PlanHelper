@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,18 @@ namespace PlanHelper
             Equipo = _equipo;
             Fecha = _fecha;
             Turnos = _turnos;
+        }
+
+        public OcupacionEquipo(string path)
+        {
+            string[] lineas = File.ReadAllLines(path);
+            Equipo = lineas[0];
+            Fecha = DateTime.ParseExact(lineas[1], "HH:mm", null, System.Globalization.DateTimeStyles.None);
+            Turnos = new List<TurnoSitra>();
+            for (int i=2;i<lineas.Count();i++)
+            {
+                Turnos.Add(TurnoSitra.FromString(lineas[3]);
+            }
         }
         public double HorasOcupadasTotales()
         {
@@ -58,6 +71,16 @@ namespace PlanHelper
             }
             return 0;
         }
+        public void EscribirAArchivo(string path)
+        {
+            List<string> texto = new List<string>();
+            texto.Add(Equipo);
+            texto.Add(Fecha.ToString("HH:mm"));
+            texto.AddRange(Turnos.Select(t => t.ToString()));
+            File.WriteAllLines(path, texto.ToArray());
+        }
+
+        
 
 
 

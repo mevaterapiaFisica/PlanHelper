@@ -17,7 +17,10 @@ namespace PlanHelper
         {
             return Convert.ToInt32((HoraFin.TimeOfDay - HoraInicio.TimeOfDay).TotalMinutes);
         }
+        public TurnoSitra()
+        {
 
+        }
         public TurnoSitra(string texto)
         {
             string[] aux = texto.Split(';');
@@ -61,8 +64,21 @@ namespace PlanHelper
 
         public override string ToString()
         {
-            return Paciente + "-" + Tipo + "-" + HoraInicio.ToString() + "-" + Duracion() + "minutos";
+            return Paciente + "-" + Tipo + "-" + HoraInicio.ToString("HH:mm") + "-" + HoraFin.ToString("HH:mm") + Duracion() + "-minutos";
         }
+
+        public static TurnoSitra FromString(string linea)
+        {
+            TurnoSitra turnoSitra = new TurnoSitra();
+            string[] aux = linea.Split('-');
+            turnoSitra.Paciente = aux[0];
+            turnoSitra.Tipo = aux[1];
+            turnoSitra.HoraInicio = DateTime.ParseExact(aux[2], "HH:mm", null, System.Globalization.DateTimeStyles.None);
+            turnoSitra.HoraFin= DateTime.ParseExact(aux[3], "HH:mm", null, System.Globalization.DateTimeStyles.None);
+
+            return turnoSitra;
+        }
+
         public string Apellido()
         {
             return Paciente.Split(',')[0].ToUpper();
