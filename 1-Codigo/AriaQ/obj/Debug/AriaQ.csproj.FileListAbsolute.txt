@@ -1,0 +1,24 @@
+C:\Users\varian\Documents\GitHub\PlanHelper\AriaQ\bin\Debug\AriaQ.dll.config
+C:\Users\varian\Documents\GitHub\PlanHelper\AriaQ\bin\Debug\AriaQ.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\AriaQ\bin\Debug\AriaQ.pdb
+C:\Users\varian\Documents\GitHub\PlanHelper\AriaQ\bin\Debug\EntityFramework.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\AriaQ\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\AriaQ\bin\Debug\EntityFramework.xml
+C:\Users\varian\Documents\GitHub\PlanHelper\AriaQ\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\varian\Documents\GitHub\PlanHelper\AriaQ\obj\Debug\AriaQ.csproj.AssemblyReference.cache
+C:\Users\varian\Documents\GitHub\PlanHelper\AriaQ\obj\Debug\AriaQ.csproj.CoreCompileInputs.cache
+C:\Users\varian\Documents\GitHub\PlanHelper\AriaQ\obj\Debug\AriaQ.csproj.CopyComplete
+C:\Users\varian\Documents\GitHub\PlanHelper\AriaQ\obj\Debug\AriaQ.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\AriaQ\obj\Debug\AriaQ.pdb
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\AriaQ\bin\Debug\AriaQ.dll.config
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\AriaQ\bin\Debug\AriaQ.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\AriaQ\bin\Debug\AriaQ.pdb
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\AriaQ\bin\Debug\EntityFramework.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\AriaQ\bin\Debug\EntityFramework.SqlServer.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\AriaQ\bin\Debug\EntityFramework.xml
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\AriaQ\bin\Debug\EntityFramework.SqlServer.xml
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\AriaQ\obj\Debug\AriaQ.csproj.AssemblyReference.cache
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\AriaQ\obj\Debug\AriaQ.csproj.CoreCompileInputs.cache
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\AriaQ\obj\Debug\AriaQ.csproj.CopyComplete
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\AriaQ\obj\Debug\AriaQ.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\AriaQ\obj\Debug\AriaQ.pdb

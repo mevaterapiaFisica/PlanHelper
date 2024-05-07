@@ -1,0 +1,273 @@
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\PlanHelper.exe.config
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\PlanHelper.exe.manifest
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\PlanHelper.application
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\PlanHelper.exe
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\PlanHelper.pdb
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\AriaQ.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\EntityFramework.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\EntityFramework.SqlServer.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\EvilDICOM.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Configuration.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Logging.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Options.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Primitives.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\MigraDoc.DocumentObjectModel.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\MigraDoc.Rendering.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\MigraDoc.RtfRendering.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\OxyPlot.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\OxyPlot.WindowsForms.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\PdfSharp.Charting.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\PdfSharp.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\System.Buffers.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\System.ComponentModel.Annotations.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\System.Memory.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\System.Numerics.Vectors.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\VMS.TPS.Common.Model.API.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\VMS.TPS.Common.Model.Types.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\AriaQ.pdb
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\AriaQ.dll.config
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\EntityFramework.xml
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\EntityFramework.SqlServer.xml
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Configuration.xml
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Configuration.Abstractions.xml
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Configuration.Binder.xml
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\Microsoft.Extensions.DependencyInjection.xml
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Logging.xml
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Options.xml
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Primitives.xml
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\MigraDoc.DocumentObjectModel.xml
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\MigraDoc.Rendering.xml
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\MigraDoc.RtfRendering.xml
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\OxyPlot.xml
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\OxyPlot.WindowsForms.xml
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\PdfSharp.xml
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\PdfSharp.Charting.xml
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\System.Buffers.xml
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\System.Memory.xml
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\System.Numerics.Vectors.xml
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\de\MigraDoc.DocumentObjectModel.resources.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\de\MigraDoc.Rendering.resources.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\de\MigraDoc.RtfRendering.resources.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\de\PdfSharp.resources.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\de\PdfSharp.Charting.resources.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\obj\x64\Debug\PlanHelper.csproj.AssemblyReference.cache
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\obj\x64\Debug\PlanHelper.csproj.SuggestedBindingRedirects.cache
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\obj\x64\Debug\Interop.OpenTwebstLib.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\obj\x64\Debug\Interop.SHDocVw.dll
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\obj\x64\Debug\PlanHelper.csproj.ResolveComReference.cache
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\obj\x64\Debug\PlanHelper.AgregarQA.resources
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\obj\x64\Debug\PlanHelper.Conexion.resources
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\obj\x64\Debug\PlanHelper.Form1.resources
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\obj\x64\Debug\PlanHelper.Form2.resources
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\obj\x64\Debug\PlanHelper.Form3.resources
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\obj\x64\Debug\PlanHelper.Form4.resources
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\obj\x64\Debug\PlanHelper.Grafico.resources
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\obj\x64\Debug\PlanHelper.ListaPacientes.resources
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\obj\x64\Debug\PlanHelper.NuevoPacienteTBI.resources
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\obj\x64\Debug\PlanHelper.Properties.Resources.resources
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\obj\x64\Debug\PlanHelper.csproj.GenerateResource.cache
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\obj\x64\Debug\PlanHelper.csproj.CoreCompileInputs.cache
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\obj\x64\Debug\PlanHelper.exe.manifest
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\obj\x64\Debug\PlanHelper.application
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\obj\x64\Debug\PlanHelper.csproj.CopyComplete
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\obj\x64\Debug\PlanHelper.exe
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\obj\x64\Debug\PlanHelper.pdb
+C:\Users\varian\Documents\GitHub\PlanHelper\PlanHelper\bin\x64\Debug\VMS.TPS.Common.Model.Interface.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\PlanHelper.pdb
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\PlanHelper.exe.config
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\PlanHelper.exe.manifest
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\PlanHelper.application
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\PlanHelper.exe
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\AriaQ.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\EntityFramework.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\EntityFramework.SqlServer.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\EvilDICOM.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Configuration.Abstractions.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Configuration.Binder.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Configuration.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Extensions.DependencyInjection.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Logging.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Options.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Primitives.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\MigraDoc.DocumentObjectModel.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\MigraDoc.Rendering.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\MigraDoc.RtfRendering.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\OxyPlot.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\OxyPlot.WindowsForms.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\PdfSharp.Charting.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\PdfSharp.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\System.Buffers.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\System.ComponentModel.Annotations.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\System.Memory.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\System.Numerics.Vectors.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\System.Runtime.CompilerServices.Unsafe.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\System.Threading.Tasks.Extensions.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\VMS.TPS.Common.Model.API.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\VMS.TPS.Common.Model.Types.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\AriaQ.pdb
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\AriaQ.dll.config
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\EntityFramework.xml
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\EntityFramework.SqlServer.xml
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Configuration.xml
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Configuration.Abstractions.xml
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Configuration.Binder.xml
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Extensions.DependencyInjection.xml
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Logging.xml
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Options.xml
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Primitives.xml
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\MigraDoc.DocumentObjectModel.xml
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\MigraDoc.Rendering.xml
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\MigraDoc.RtfRendering.xml
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\OxyPlot.xml
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\OxyPlot.WindowsForms.xml
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\PdfSharp.xml
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\PdfSharp.Charting.xml
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\System.Buffers.xml
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\System.Memory.xml
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\System.Numerics.Vectors.xml
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\System.Runtime.CompilerServices.Unsafe.xml
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\System.Threading.Tasks.Extensions.xml
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\de\MigraDoc.DocumentObjectModel.resources.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\de\MigraDoc.Rendering.resources.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\de\MigraDoc.RtfRendering.resources.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\de\PdfSharp.resources.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\de\PdfSharp.Charting.resources.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.csproj.AssemblyReference.cache
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\Interop.OpenTwebstLib.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\Interop.SHDocVw.dll
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.csproj.ResolveComReference.cache
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.AgregarQA.resources
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.Conexion.resources
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.Form1.resources
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.Form2.resources
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.Form3.resources
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.Form4.resources
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.Grafico.resources
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.ListaPacientes.resources
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.NuevoPacienteTBI.resources
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.NuevoPedido.resources
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.Properties.Resources.resources
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.csproj.GenerateResource.cache
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.csproj.CoreCompileInputs.cache
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.exe.manifest
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.application
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.csproj.CopyComplete
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.exe
+\\fisica0\centro_de_datos2018\000_Centro de Datos 2021\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.pdb
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\PlanHelper.exe.config
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\PlanHelper.exe.manifest
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\PlanHelper.application
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\PlanHelper.exe
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\PlanHelper.pdb
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\AriaQ.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\EntityFramework.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\EntityFramework.SqlServer.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\EvilDICOM.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Configuration.Abstractions.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Configuration.Binder.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Configuration.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Extensions.DependencyInjection.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Logging.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Options.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Primitives.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\MigraDoc.DocumentObjectModel.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\MigraDoc.Rendering.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\MigraDoc.RtfRendering.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\OxyPlot.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\OxyPlot.WindowsForms.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\PdfSharp.Charting.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\PdfSharp.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\System.Buffers.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\System.ComponentModel.Annotations.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\System.Memory.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\System.Numerics.Vectors.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\System.Runtime.CompilerServices.Unsafe.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\System.Threading.Tasks.Extensions.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\VMS.TPS.Common.Model.API.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\VMS.TPS.Common.Model.Types.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\AriaQ.pdb
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\AriaQ.dll.config
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\EntityFramework.xml
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\EntityFramework.SqlServer.xml
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Configuration.xml
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Configuration.Abstractions.xml
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Configuration.Binder.xml
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Extensions.DependencyInjection.xml
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Logging.xml
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Options.xml
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Microsoft.Extensions.Primitives.xml
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\MigraDoc.DocumentObjectModel.xml
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\MigraDoc.Rendering.xml
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\MigraDoc.RtfRendering.xml
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\OxyPlot.xml
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\OxyPlot.WindowsForms.xml
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\PdfSharp.xml
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\PdfSharp.Charting.xml
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\System.Buffers.xml
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\System.Memory.xml
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\System.Numerics.Vectors.xml
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\System.Runtime.CompilerServices.Unsafe.xml
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\System.Threading.Tasks.Extensions.xml
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\de\MigraDoc.DocumentObjectModel.resources.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\de\MigraDoc.Rendering.resources.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\de\MigraDoc.RtfRendering.resources.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\de\PdfSharp.resources.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\de\PdfSharp.Charting.resources.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.csproj.AssemblyReference.cache
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\Interop.OpenTwebstLib.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\Interop.SHDocVw.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.csproj.ResolveComReference.cache
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.AgregarQA.resources
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.Conexion.resources
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.Form1.resources
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.Form2.resources
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.Form3.resources
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.Form4.resources
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.Grafico.resources
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.ListaPacientes.resources
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.NuevoPacienteTBI.resources
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.NuevoPedido.resources
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.Properties.Resources.resources
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.csproj.GenerateResource.cache
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.csproj.CoreCompileInputs.cache
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.exe.manifest
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.application
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.csproj.CopyComplete
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.exe
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\obj\x64\Debug\PlanHelper.pdb
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\selenium-manager\linux\selenium-manager
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\selenium-manager\macos\selenium-manager
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\selenium-manager\windows\selenium-manager.exe
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Newtonsoft.Json.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\WebDriver.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\Newtonsoft.Json.xml
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\WebDriver.xml
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\WebDriver.Support.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\WebDriver.Support.xml
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\SeleniumExtras.WaitHelpers.dll
+Z:\12-Software propio\2-En uso clínico\PlanHelper\1-Codigo\PlanHelper\bin\x64\Debug\VMS.TPS.Common.Model.Interface.dll

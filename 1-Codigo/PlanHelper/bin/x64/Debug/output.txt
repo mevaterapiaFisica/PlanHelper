@@ -1,0 +1,373 @@
+;07:00;LEMME, Daniel Guillermo;Equipo 1;2;-;OSECAC INTERIOR;Tratamiento;Intensidad Modulada - Amigdala + cervical derecho;2024-03-18;2024-04-04;07:15;Atendido;
+;07:15;GODOY, Sixto;Equipo 1;2;-;Pami Quilmes - UGL XXXVII;Tratamiento;Intensidad Modulada - próstata y vesículas seminales;2024-03-18;2024-05-07;07:30;Dar Presente
+Suspender;
+;07:30;TORRES BAUTISTA, Lida Amelia;Equipo 1;1;-;Elevar;Tratamiento;Intensidad Modulada - pelvis;2024-03-22;2024-04-08;07:40;Atendido;
+;07:50;MARASCIO, Angela Maria;Equipo 1;1;-;MEDICUS;Tratamiento;Intensidad Modulada - oido izquierdo;2024-03-25;2024-05-14;08:00;Retirado
+Dar Presente;
+;08:00;POLIDORO, Mirta Edith;Equipo 1;1;-;COMEI (ODONTOLOGOS);Tratamiento;Intensidad Modulada - Lesion en recto-ano+ ganglios;2024-03-27;2024-05-08;08:15;Atendido;
+;09:00;BLADILO, Ruben Alberto;Equipo 1;3;-;OSDE;Tratamiento;Intensidad Modulada - lecho de prostatectomia + ganglios;2024-03-18;2024-05-06;09:10;Atendido;
+;09:20;MALGRANDE, Santiago Anibal;Equipo 1;2;-;OSUTHGRA;Tratamiento;Intensidad Modulada - Prostata;2024-03-18;2024-04-18;09:30;Atendido;
+;09:30;VENTRICELLI, Pedro;Equipo 1;2;-;Plan de Salud;Tratamiento;Intensidad Modulada - Recto + Areas ganglionares;2024-03-18;2024-04-09;09:45;Dar Presente
+Suspender;
+;09:45;DI BENEDETTO, Silvia Nelida;Equipo 1
+PRÓXIMO TURNO:
+1 DÍA;2;-;OSDE;Tratamiento;Intensidad Modulada - mama izquierda;2024-03-18;2024-03-27;10:00;Turno Finalizado;
+;10:00;RIMONDI, Arnoldo Juan;Equipo 1;3;-;Plan de Salud;Tratamiento;Intensidad Modulada - Prostata + Vesiculas;2024-03-19;2024-05-15;10:15;Atendido;
+;10:15;POGGIO, Jose Maria;Equipo 1;2;-;DASUTEN;Tratamiento;Intensidad Modulada - Laringe + cervical bilateral;2024-03-18;2024-04-15;10:30;Atendido;
+;10:30;LOPEZ, Mariana Rocio;Equipo 1;2;-;OSDE;Tratamiento;Intensidad Modulada - Lecho AHT + areas ganglionares;2024-03-19;2024-04-24;10:40;Atendido;
+;10:40;VOELKER ACOSTA, Ricardo Leonel;Equipo 1;2;-;PACIENTES PRIVADOS;Tratamiento;Intensidad Modulada - prostata + vesiculas;2024-03-18;2024-04-11;10:50;Retirado
+Dar Presente;
+;10:50;RIVAS, Andres Lujan;Equipo 1;2;-;Dasu;Tratamiento;Intensidad Modulada - TORAX;2024-03-18;2024-04-03;11:00;Atendido;
+;12:00;PEDEVILLA, Jorge Carlos;Equipo 1;2;-;OSDE;Tratamiento;Intensidad Modulada - Prostata;2024-03-18;2024-04-18;12:15;Atendido;
+;12:15;PAMPIN, Cesar Roberto;Equipo 1;2;-;UNION PERSONAL;Tratamiento;Intensidad Modulada - prostata + vesiculas;2024-03-18;2024-05-15;12:30;Ingresado;
+;12:30;GOLDIUK, Roberto Jose;Equipo 1;2;-;Plan de Salud;Tratamiento;Intensidad Modulada - lecho de prostatectomia + areas ganglionares;2024-03-18;2024-04-26;12:45;Se retiró
+Suspender;
+;12:45;HANONO, Ernesto;Equipo 1;2;-;Pami Capital Federal - UGL VI;Tratamiento;Intensidad Modulada - Prostata + vesiculas + areas ganglionares;2024-03-20;2024-05-16;13:00;Dar Presente
+Suspender;
+;13:00;CIACCIARELLI, Monica Analia;Equipo 1;2;-;OSDE;Tratamiento;Intensidad Modulada - pelvis;2024-03-18;2024-04-04;13:15;Dar Presente
+Suspender;
+;13:30;BENITEZ, Maria Eugenia;Equipo 1;1;-;UNION PERSONAL;Tratamiento;Intensidad Modulada - Utero + Areas ganglionares;2024-03-26;2024-05-02;13:40;Dar Presente
+Suspender;
+;13:40;NOTARI, Aida Norma;Equipo 1;2;-;Pami Capital Federal - UGL VI;Tratamiento;Intensidad Modulada - Lecho de mastectomia + areas;2024-03-26;2024-04-30;13:50;Dar Presente
+Suspender;
+;13:50;PERRI, Osvaldo Ruben;Equipo 1;2;-;Pami Capital Federal - UGL VI;Tratamiento;Intensidad Modulada - lecho de reseccion preauricular izquierdo.;2024-03-26;2024-04-30;14:00;Dar Presente
+Suspender;
+;14:00;IWASSJUK, Basilio Jose;Equipo 1
+PRÓXIMO TURNO:
+1 DÍA;2;-;OSDE;Tratamiento;Intensidad Modulada - Pelvis + vejiga;2024-03-27;2024-04-24;14:15;Dar Presente
+Suspender;
+;15:00;GONZALEZ AESCHLIMANN, Carmelo Hector;Equipo 1
+PRÓXIMO TURNO:
+7 DÍAS;2;-;MEDICUS;Tratamiento;Intensidad Modulada - torax;2024-03-18;2024-03-27;15:15;Dar Presente
+Suspender;
+;15:15;GOMEZ, Andrea Viviana;Equipo 1;2;-;Sancor - Osuti;Tratamiento;Intensidad Modulada - Seno piriforme y áreas ganglionares;2024-03-26;2024-05-14;15:30;Dar Presente
+Suspender;
+;15:30;ALTAMIRANO, Jorge Ramon;Equipo 1;2;-;Pami Capital Federal - UGL VI;Tratamiento;Intensidad Modulada - Laringe glotica.;2024-03-21;2024-05-13;15:45;Dar Presente
+Suspender;
+;15:45;LOCOCO, Nicolas Alberto;Equipo 1;3;-;Policia Federal;Tratamiento;Intensidad Modulada - prostata + vesiculas;2024-03-20;2024-05-16;16:00;Dar Presente
+Suspender;
+;16:00;LAVIN, Pedro;Equipo 1
+PRÓXIMO TURNO:
+7 DÍAS;2;-;OSDE;Tratamiento;Intensidad Modulada - prostata + ganglios;2024-03-26;2024-05-09;16:15;Dar Presente
+Suspender;
+;16:15;FUENTE, Luis Ricardo;Equipo 1
+PRÓXIMO TURNO:
+7 DÍAS;1;-;UNION PERSONAL;Tratamiento;Intensidad Modulada - prostata + vesiculas;2024-03-26;2024-05-15;16:30;Dar Presente
+Suspender;
+;16:30;NAON, Eduardo Maximo Cristobal;Equipo 1;2;-;DOSUBA;Tratamiento;Intensidad Modulada - lesion pulmon;2024-03-18;2024-05-02;16:45;Dar Presente
+Suspender;
+;16:45;SANCHEZ, Marcelo Marcos Manuel;Equipo 1;2;-;PODER JUDICIAL;Tratamiento;Intensidad Modulada - cyc;2024-03-18;2024-04-17;17:00;Dar Presente
+Suspender;
+;17:00;CONTI, Oscar Enrique;Equipo 1;1;-;OSAPM;Tratamiento;Intensidad Modulada - pancreas + areas ganglionares;2024-03-18;2024-04-24;17:15;Dar Presente
+Suspender;
+;17:15;BARRERA, Alfredo;Equipo 1;2;-;OSCTCP - UTA;Tratamiento;Intensidad Modulada - Amigdala izquierda + Cervical;2024-03-21;2024-05-09;17:30;Dar Presente
+Suspender;
+;17:30;ASRIN, Edith Del Valle;Equipo 1;1;-;OSDE;Tratamiento;Intensidad Modulada - Recto medio e inferior + Areas ganglionares;2024-03-25;2024-05-02;17:45;Dar Presente
+Suspender;
+;17:45;ENRIQUEZ, Cesar Lorenzo;Equipo 1;2;-;InSSSeP CHACO;Tratamiento;Intensidad Modulada - Mediastino;2024-03-25;2024-05-02;18:00;Dar Presente
+Suspender;
+;18:00;LAVIN, Pedro;Equipo 1;2;-;OSDE;Tratamiento;Intensidad Modulada - prostata + ganglios;2024-03-25;2024-05-09;18:15;Dar Presente
+Suspender;
+;18:15;SZEINKOP, Gustavo Pablo;Equipo 1
+PRÓXIMO TURNO:
+7 DÍAS;2;-;ENSALUD;Tratamiento;Intensidad Modulada - lecho de amigdalectomia derecha +/- areas;2024-03-25;2024-04-18;18:30;Dar Presente
+Suspender;
+;18:30;MENDOZA, Hector;Equipo 1;1;-;Plan de Salud;Tratamiento;Intensidad Modulada - vejiga;2024-03-18;2024-04-25;18:45;Dar Presente
+Suspender;
+;18:45;MAITO, Juan Jose;Equipo 1;3;-;OSDE;Tratamiento;Intensidad Modulada - prostata;2024-03-25;2024-05-22;19:00;Dar Presente
+Suspender;
+;19:00;PERRONE, Marina Alejandra;Equipo 1;1;-;OSDE;Tratamiento;Intensidad Modulada - Canal anal + areas ganglionares;2024-03-19;2024-04-29;19:15;Dar Presente
+Suspender;
+;19:15;MAZZONI, Diana;Equipo 1;2;-;Plan de Salud;Tratamiento;Intensidad Modulada - TORAX;2024-03-21;2024-05-02;19:30;Dar Presente
+Suspender;
+;19:30;PAEZ, Ruben Antonio;Equipo 1;2;-;Pami Capital Federal - UGL VI;Tratamiento;Intensidad Modulada - Laringe + areas ganglionares;2024-03-27;2024-04-29;19:40;Dar Presente
+Suspender;
+;19:40;FERRARI, Lydia Nelly Margarita;Equipo 1;2;-;Centro Medico Pueyrredón;Tratamiento;Intensidad Modulada - region submaxilar derecha;2024-03-27;2024-05-14;19:50;Dar Presente
+Suspender;
+;19:50;GROPPA, Patricia Susana;Equipo 1;1;-;Plan de Salud;Tratamiento;Intensidad Modulada - SNC;2024-03-26;2024-05-09;20:00;Dar Presente
+Suspender;
+;07:00;LEMME, Daniel Guillermo;Equipo 1;2;-;OSECAC INTERIOR;Tratamiento;Intensidad Modulada - Amigdala + cervical derecho;2024-03-18;2024-04-04;07:15;;
+;07:15;GODOY, Sixto;Equipo 1;2;-;Pami Quilmes - UGL XXXVII;Tratamiento;Intensidad Modulada - próstata y vesículas seminales;2024-03-18;2024-05-07;07:30;;
+;07:30;TORRES BAUTISTA, Lida Amelia;Equipo 1;1;-;Elevar;Tratamiento;Intensidad Modulada - pelvis;2024-03-22;2024-04-08;07:40;;
+;07:50;MARASCIO, Angela Maria;Equipo 1;1;-;MEDICUS;Tratamiento;Intensidad Modulada - oido izquierdo;2024-03-25;2024-05-14;08:00;;
+;09:00;BLADILO, Ruben Alberto;Equipo 1;3;-;OSDE;Tratamiento;Intensidad Modulada - lecho de prostatectomia + ganglios;2024-03-18;2024-05-06;09:10;;
+;09:10;IWASSJUK, Basilio Jose;Equipo 1;2;-;OSDE;Tratamiento;Intensidad Modulada - Pelvis + vejiga;2024-03-28;2024-04-24;09:20;;
+;09:20;MALGRANDE, Santiago Anibal;Equipo 1;2;-;OSUTHGRA;Tratamiento;Intensidad Modulada - Prostata;2024-03-18;2024-04-18;09:30;;
+;09:30;VENTRICELLI, Pedro;Equipo 1;2;-;Plan de Salud;Tratamiento;Intensidad Modulada - Recto + Areas ganglionares;2024-03-18;2024-04-09;09:45;;
+;09:45;TORRES BAUTISTA, Lida Amelia;Equipo 1
+PRÓXIMO TURNO:
+6 DÍAS;1;-;Elevar;Tratamiento;Intensidad Modulada - pelvis;2024-03-28;2024-04-08;10:00;;
+;10:00;RIMONDI, Arnoldo Juan;Equipo 1;3;-;Plan de Salud;Tratamiento;Intensidad Modulada - Prostata + Vesiculas;2024-03-19;2024-05-15;10:15;;
+;10:15;POGGIO, Jose Maria;Equipo 1;2;-;DASUTEN;Tratamiento;Intensidad Modulada - Laringe + cervical bilateral;2024-03-18;2024-04-15;10:30;;
+;10:30;LOPEZ, Mariana Rocio;Equipo 1;2;-;OSDE;Tratamiento;Intensidad Modulada - Lecho AHT + areas ganglionares;2024-03-19;2024-04-24;10:40;;
+;10:40;VOELKER ACOSTA, Ricardo Leonel;Equipo 1;2;-;PACIENTES PRIVADOS;Tratamiento;Intensidad Modulada - prostata + vesiculas;2024-03-18;2024-04-11;10:50;;
+;10:50;RIVAS, Andres Lujan;Equipo 1;2;-;Dasu;Tratamiento;Intensidad Modulada - TORAX;2024-03-18;2024-04-03;11:00;;
+;11:00;POLIDORO, Mirta Edith;Equipo 1;1;-;COMEI (ODONTOLOGOS);Tratamiento;Intensidad Modulada - Lesion en recto-ano+ ganglios;2024-03-28;2024-05-08;11:15;;
+;12:00;PEDEVILLA, Jorge Carlos;Equipo 1;2;-;OSDE;Tratamiento;Intensidad Modulada - Prostata;2024-03-18;2024-04-18;12:15;;
+;12:15;PAMPIN, Cesar Roberto;Equipo 1;2;-;UNION PERSONAL;Tratamiento;Intensidad Modulada - prostata + vesiculas;2024-03-18;2024-05-15;12:30;;
+;12:30;GOLDIUK, Roberto Jose;Equipo 1;2;-;Plan de Salud;Tratamiento;Intensidad Modulada - lecho de prostatectomia + areas ganglionares;2024-03-18;2024-04-26;12:45;;
+;12:45;HANONO, Ernesto;Equipo 1;2;-;Pami Capital Federal - UGL VI;Tratamiento;Intensidad Modulada - Prostata + vesiculas + areas ganglionares;2024-03-20;2024-05-16;13:00;;
+;13:00;CIACCIARELLI, Monica Analia;Equipo 1;2;-;OSDE;Tratamiento;Intensidad Modulada - pelvis;2024-03-18;2024-04-04;13:15;;
+;13:30;BENITEZ, Maria Eugenia;Equipo 1;1;-;UNION PERSONAL;Tratamiento;Intensidad Modulada - Utero + Areas ganglionares;2024-03-26;2024-05-02;13:40;;
+;13:40;NOTARI, Aida Norma;Equipo 1;2;-;Pami Capital Federal - UGL VI;Tratamiento;Intensidad Modulada - Lecho de mastectomia + areas;2024-03-26;2024-04-30;13:50;;
+;13:50;PERRI, Osvaldo Ruben;Equipo 1;2;-;Pami Capital Federal - UGL VI;Tratamiento;Intensidad Modulada - lecho de reseccion preauricular izquierdo.;2024-03-26;2024-04-30;14:00;;
+;14:00;SZEINKOP, Gustavo Pablo;Equipo 1;2;-;ENSALUD;Tratamiento;Intensidad Modulada - lecho de amigdalectomia derecha +/- areas;2024-03-28;2024-04-18;14:15;;
+;15:00;GONZALEZ AESCHLIMANN, Carmelo Hector;Equipo 1
+PRÓXIMO TURNO:
+6 DÍAS;2;-;MEDICUS;Tratamiento;Intensidad Modulada - torax;2024-03-18;2024-03-27;15:15;;
+;15:15;GOMEZ, Andrea Viviana;Equipo 1;2;-;Sancor - Osuti;Tratamiento;Intensidad Modulada - Seno piriforme y áreas ganglionares;2024-03-26;2024-05-14;15:30;;
+;15:30;ALTAMIRANO, Jorge Ramon;Equipo 1;2;-;Pami Capital Federal - UGL VI;Tratamiento;Intensidad Modulada - Laringe glotica.;2024-03-21;2024-05-13;15:45;;
+;15:45;LOCOCO, Nicolas Alberto;Equipo 1;3;-;Policia Federal;Tratamiento;Intensidad Modulada - prostata + vesiculas;2024-03-20;2024-05-16;16:00;;
+;16:00;LAVIN, Pedro;Equipo 1
+PRÓXIMO TURNO:
+6 DÍAS;2;-;OSDE;Tratamiento;Intensidad Modulada - prostata + ganglios;2024-03-26;2024-05-09;16:15;;
+;16:15;FUENTE, Luis Ricardo;Equipo 1
+PRÓXIMO TURNO:
+6 DÍAS;1;-;UNION PERSONAL;Tratamiento;Intensidad Modulada - prostata + vesiculas;2024-03-26;2024-05-15;16:30;;
+;16:30;NAON, Eduardo Maximo Cristobal;Equipo 1;2;-;DOSUBA;Tratamiento;Intensidad Modulada - lesion pulmon;2024-03-18;2024-05-02;16:45;;
+;16:45;SANCHEZ, Marcelo Marcos Manuel;Equipo 1;2;-;PODER JUDICIAL;Tratamiento;Intensidad Modulada - cyc;2024-03-18;2024-04-17;17:00;;
+;17:00;CONTI, Oscar Enrique;Equipo 1;1;-;OSAPM;Tratamiento;Intensidad Modulada - pancreas + areas ganglionares;2024-03-18;2024-04-24;17:15;;
+;17:15;BARRERA, Alfredo;Equipo 1;2;-;OSCTCP - UTA;Tratamiento;Intensidad Modulada - Amigdala izquierda + Cervical;2024-03-21;2024-05-09;17:30;;
+;17:30;ASRIN, Edith Del Valle;Equipo 1;1;-;OSDE;Tratamiento;Intensidad Modulada - Recto medio e inferior + Areas ganglionares;2024-03-25;2024-05-02;17:45;;
+;17:45;ENRIQUEZ, Cesar Lorenzo;Equipo 1;2;-;InSSSeP CHACO;Tratamiento;Intensidad Modulada - Mediastino;2024-03-25;2024-05-02;18:00;;
+;18:00;LAVIN, Pedro;Equipo 1;2;-;OSDE;Tratamiento;Intensidad Modulada - prostata + ganglios;2024-03-25;2024-05-09;18:15;;
+;18:30;MENDOZA, Hector;Equipo 1;1;-;Plan de Salud;Tratamiento;Intensidad Modulada - vejiga;2024-03-18;2024-04-25;18:45;;
+;18:45;MAITO, Juan Jose;Equipo 1;3;-;OSDE;Tratamiento;Intensidad Modulada - prostata;2024-03-25;2024-05-22;19:00;;
+;19:00;PERRONE, Marina Alejandra;Equipo 1;1;-;OSDE;Tratamiento;Intensidad Modulada - Canal anal + areas ganglionares;2024-03-19;2024-04-29;19:15;;
+;19:15;MAZZONI, Diana;Equipo 1;2;-;Plan de Salud;Tratamiento;Intensidad Modulada - TORAX;2024-03-21;2024-05-02;19:30;;
+;19:30;PAEZ, Ruben Antonio;Equipo 1;2;-;Pami Capital Federal - UGL VI;Tratamiento;Intensidad Modulada - Laringe + areas ganglionares;2024-03-27;2024-04-29;19:40;;
+;19:40;FERRARI, Lydia Nelly Margarita;Equipo 1;2;-;Centro Medico Pueyrredón;Tratamiento;Intensidad Modulada - region submaxilar derecha;2024-03-27;2024-05-14;19:50;;
+;19:50;GROPPA, Patricia Susana;Equipo 1;1;-;Plan de Salud;Tratamiento;Intensidad Modulada - SNC;2024-03-26;2024-05-09;20:00;;
+;07:00;LEMME, Daniel Guillermo;Equipo 1;2;-;OSECAC INTERIOR;Tratamiento;Intensidad Modulada - Amigdala + cervical derecho;2024-03-18;2024-04-04;07:15;;
+;07:15;GODOY, Sixto;Equipo 1;2;-;Pami Quilmes - UGL XXXVII;Tratamiento;Intensidad Modulada - próstata y vesículas seminales;2024-03-18;2024-05-07;07:30;;
+;07:30;TORRES BAUTISTA, Lida Amelia;Equipo 1;1;-;Elevar;Tratamiento;Intensidad Modulada - pelvis;2024-03-22;2024-04-08;07:40;;
+;07:50;MARASCIO, Angela Maria;Equipo 1;1;-;MEDICUS;Tratamiento;Intensidad Modulada - oido izquierdo;2024-03-25;2024-05-14;08:00;;
+;09:00;BLADILO, Ruben Alberto;Equipo 1;3;-;OSDE;Tratamiento;Intensidad Modulada - lecho de prostatectomia + ganglios;2024-03-18;2024-05-06;09:10;;
+;09:10;IWASSJUK, Basilio Jose;Equipo 1;2;-;OSDE;Tratamiento;Intensidad Modulada - Pelvis + vejiga;2024-03-28;2024-04-24;09:20;;
+;09:20;MALGRANDE, Santiago Anibal;Equipo 1;2;-;OSUTHGRA;Tratamiento;Intensidad Modulada - Prostata;2024-03-18;2024-04-18;09:30;;
+;09:30;VENTRICELLI, Pedro;Equipo 1;2;-;Plan de Salud;Tratamiento;Intensidad Modulada - Recto + Areas ganglionares;2024-03-18;2024-04-09;09:45;;
+;10:00;RIMONDI, Arnoldo Juan;Equipo 1;3;-;Plan de Salud;Tratamiento;Intensidad Modulada - Prostata + Vesiculas;2024-03-19;2024-05-15;10:15;;
+;10:15;POGGIO, Jose Maria;Equipo 1;2;-;DASUTEN;Tratamiento;Intensidad Modulada - Laringe + cervical bilateral;2024-03-18;2024-04-15;10:30;;
+;10:30;LOPEZ, Mariana Rocio;Equipo 1;2;-;OSDE;Tratamiento;Intensidad Modulada - Lecho AHT + areas ganglionares;2024-03-19;2024-04-24;10:40;;
+;10:40;VOELKER ACOSTA, Ricardo Leonel;Equipo 1;2;-;PACIENTES PRIVADOS;Tratamiento;Intensidad Modulada - prostata + vesiculas;2024-03-18;2024-04-11;10:50;;
+;10:50;RIVAS, Andres Lujan;Equipo 1;2;-;Dasu;Tratamiento;Intensidad Modulada - TORAX;2024-03-18;2024-04-03;11:00;;
+;12:00;PEDEVILLA, Jorge Carlos;Equipo 1;2;-;OSDE;Tratamiento;Intensidad Modulada - Prostata;2024-03-18;2024-04-18;12:15;;
+;12:15;PAMPIN, Cesar Roberto;Equipo 1;2;-;UNION PERSONAL;Tratamiento;Intensidad Modulada - prostata + vesiculas;2024-03-18;2024-05-15;12:30;;
+;12:30;GOLDIUK, Roberto Jose;Equipo 1;2;-;Plan de Salud;Tratamiento;Intensidad Modulada - lecho de prostatectomia + areas ganglionares;2024-03-18;2024-04-26;12:45;;
+;12:45;HANONO, Ernesto;Equipo 1;2;-;Pami Capital Federal - UGL VI;Tratamiento;Intensidad Modulada - Prostata + vesiculas + areas ganglionares;2024-03-20;2024-05-16;13:00;;
+;13:00;CIACCIARELLI, Monica Analia;Equipo 1;2;-;OSDE;Tratamiento;Intensidad Modulada - pelvis;2024-03-18;2024-04-04;13:15;;
+;13:30;BENITEZ, Maria Eugenia;Equipo 1;1;-;UNION PERSONAL;Tratamiento;Intensidad Modulada - Utero + Areas ganglionares;2024-03-26;2024-05-02;13:40;;
+;13:40;NOTARI, Aida Norma;Equipo 1;2;-;Pami Capital Federal - UGL VI;Tratamiento;Intensidad Modulada - Lecho de mastectomia + areas;2024-03-26;2024-04-30;13:50;;
+;13:50;PERRI, Osvaldo Ruben;Equipo 1;2;-;Pami Capital Federal - UGL VI;Tratamiento;Intensidad Modulada - lecho de reseccion preauricular izquierdo.;2024-03-26;2024-04-30;14:00;;
+;15:00;GONZALEZ AESCHLIMANN, Carmelo Hector;Equipo 1
+PRÓXIMO TURNO:
+5 DÍAS;2;-;MEDICUS;Tratamiento;Intensidad Modulada - torax;2024-03-18;2024-03-27;15:15;;
+;15:15;GOMEZ, Andrea Viviana;Equipo 1;2;-;Sancor - Osuti;Tratamiento;Intensidad Modulada - Seno piriforme y áreas ganglionares;2024-03-26;2024-05-14;15:30;;
+;15:30;ALTAMIRANO, Jorge Ramon;Equipo 1;2;-;Pami Capital Federal - UGL VI;Tratamiento;Intensidad Modulada - Laringe glotica.;2024-03-21;2024-05-13;15:45;;
+;15:45;LOCOCO, Nicolas Alberto;Equipo 1;3;-;Policia Federal;Tratamiento;Intensidad Modulada - prostata + vesiculas;2024-03-20;2024-05-16;16:00;;
+;16:00;LAVIN, Pedro;Equipo 1
+PRÓXIMO TURNO:
+5 DÍAS;2;-;OSDE;Tratamiento;Intensidad Modulada - prostata + ganglios;2024-03-26;2024-05-09;16:15;;
+;16:30;NAON, Eduardo Maximo Cristobal;Equipo 1;2;-;DOSUBA;Tratamiento;Intensidad Modulada - lesion pulmon;2024-03-18;2024-05-02;16:45;;
+;16:45;SANCHEZ, Marcelo Marcos Manuel;Equipo 1;2;-;PODER JUDICIAL;Tratamiento;Intensidad Modulada - cyc;2024-03-18;2024-04-17;17:00;;
+;17:00;CONTI, Oscar Enrique;Equipo 1;1;-;OSAPM;Tratamiento;Intensidad Modulada - pancreas + areas ganglionares;2024-03-18;2024-04-24;17:15;;
+;17:15;BARRERA, Alfredo;Equipo 1;2;-;OSCTCP - UTA;Tratamiento;Intensidad Modulada - Amigdala izquierda + Cervical;2024-03-21;2024-05-09;17:30;;
+;17:30;ASRIN, Edith Del Valle;Equipo 1;1;-;OSDE;Tratamiento;Intensidad Modulada - Recto medio e inferior + Areas ganglionares;2024-03-25;2024-05-02;17:45;;
+;17:45;ENRIQUEZ, Cesar Lorenzo;Equipo 1;2;-;InSSSeP CHACO;Tratamiento;Intensidad Modulada - Mediastino;2024-03-25;2024-05-02;18:00;;
+;18:00;LAVIN, Pedro;Equipo 1;2;-;OSDE;Tratamiento;Intensidad Modulada - prostata + ganglios;2024-03-25;2024-05-09;18:15;;
+;18:30;MENDOZA, Hector;Equipo 1;1;-;Plan de Salud;Tratamiento;Intensidad Modulada - vejiga;2024-03-18;2024-04-25;18:45;;
+;18:45;MAITO, Juan Jose;Equipo 1;3;-;OSDE;Tratamiento;Intensidad Modulada - prostata;2024-03-25;2024-05-22;19:00;;
+;19:00;PERRONE, Marina Alejandra;Equipo 1;1;-;OSDE;Tratamiento;Intensidad Modulada - Canal anal + areas ganglionares;2024-03-19;2024-04-29;19:15;;
+;19:15;MAZZONI, Diana;Equipo 1;2;-;Plan de Salud;Tratamiento;Intensidad Modulada - TORAX;2024-03-21;2024-05-02;19:30;;
+;19:30;PAEZ, Ruben Antonio;Equipo 1;2;-;Pami Capital Federal - UGL VI;Tratamiento;Intensidad Modulada - Laringe + areas ganglionares;2024-03-27;2024-04-29;19:40;;
+;19:40;FERRARI, Lydia Nelly Margarita;Equipo 1;2;-;Centro Medico Pueyrredón;Tratamiento;Intensidad Modulada - region submaxilar derecha;2024-03-27;2024-05-14;19:50;;
+;19:50;GROPPA, Patricia Susana;Equipo 1;1;-;Plan de Salud;Tratamiento;Intensidad Modulada - SNC;2024-03-26;2024-05-09;20:00;;
+;06:45;TOLOSA SANTA CRUZ, Stella Maris;Equipo 2;-;-;CASA - Caja de Abogados;Tratamiento;Tridimensional Conformado - Lecho de mastectomia izquierda;2024-03-26;2024-04-17;07:00;Atendido;
+;07:00;LA CAVA, Elvira Yolanda;Equipo 2;2;-;OMINT;Tratamiento;Tridimensional Conformado - Volumen mamario izquierdo;2024-03-21;2024-04-12;07:10;Atendido;
+;07:10;PUCCIO, Marta Lidia;Equipo 2;2;-;Galeno (Oro, Plata);Tratamiento;Tridimensional Conformado - Volumen mamario izquierdo+ boost;2024-03-19;2024-04-10;07:20;Atendido;
+;07:20;GONZALEZ, Roberto Oscar;Equipo 2;2;-;Circulo Medico Lomas de Zamora;Tratamiento;Intensidad Modulada - prostata + vesiculas;2024-03-20;2024-05-09;07:30;Atendido;
+;07:30;BARROS GARCIA, Jose;Equipo 2;1;-;Plan de Salud;Tratamiento;Tridimensional Conformado - 1/3 proximal de femur derecho;2024-03-25;2024-04-04;07:45;Dar Presente
+Suspender;
+;08:00;TAVIO, Mirta Olga;Equipo 2;2;-;Pami Capital Federal - UGL VI;Placa Verificadora;Tridimensional Conformado - Volumen mamario derecho + Boost;2024-03-27;-;08:30;Atendido;
+;08:30;DIODATI, Roberto Antonio;Equipo 2;2;-;Galeno (Azul, Blanco, Ambar);Placa Verificadora;Tridimensional Conformado - D2;2024-03-27;-;09:00;Atendido;
+;09:00;PITTAMEGLIO, Maria Laura;Equipo 2;2;-;OSDE;Tratamiento;Tridimensional Conformado - mama derecha;2024-03-20;2024-04-05;09:15;Dar Presente
+Suspender;
+;09:15;SANCHEZ BALCARCEL, Graciela Noemi;Equipo 2
+PRÓXIMO TURNO:
+8 DÍAS;1;-;OSDE;Tratamiento;Tridimensional Conformado - mama izquierda;2024-03-12;2024-04-03;09:30;Atendido;
+;09:30;GIAMPAOLO, Beatriz Nelida;Equipo 2;2;-;UNION PERSONAL;Tratamiento;Tridimensional Conformado - Lecho de AHT + areas ganglionares;2024-03-04;2024-04-08;09:40;Atendido;
+;09:40;OLIVERA, Angelica Mercedes;Equipo 2;2;-;OSDE;Tratamiento;Tridimensional Conformado - lecho AHT + areas ganglionares;2024-03-20;2024-04-25;09:50;Atendido;
+;09:50;BIRRA, Mario;Equipo 2;3;-;IOMA;Tratamiento;Tridimensional Conformado - axila izquierda;2024-02-28;2024-04-12;10:00;Atendido;
+;10:00;MARTINEZ, Susana Nelida;Equipo 2;2;-;SMATA;Tratamiento;Tridimensional Conformado - Mama izquierda;2024-03-14;2024-04-05;10:15;Dar Presente
+Suspender;
+;10:15;LA CAVA, Elvira Yolanda;Equipo 2;2;-;OMINT;Tratamiento;Tridimensional Conformado - Volumen mamario izquierdo;2024-03-25;2024-04-12;10:30;Retirado
+Dar Presente;
+;10:30;MUSSANO, Gilda Nora;Equipo 2;3;-;Plan de Salud;Tratamiento;Tridimensional Conformado - mama izquierda;2024-03-13;2024-04-04;10:45;Atendido;
+;10:45;UBEDA, Eliana Jaquelina;Equipo 2;1;-;OSPM Maestranza;Tratamiento;Tridimensional Conformado - PELVIS;2024-03-14;2024-04-19;11:00;Atendido;
+;11:00;PAZ, Beatriz Isabel;Equipo 2
+PRÓXIMO TURNO:
+8 DÍAS;3;-;Pami Capital Federal - UGL VI;Tratamiento;Tridimensional Conformado - mama derecha;2024-03-27;2024-04-18;11:15;Atendido;
+;11:15;BOBE BORRELLI, Margarita Graciela;Equipo 2;1;-;Pami Capital Federal - UGL VI;Tratamiento;Tridimensional Conformado - Utero + Areas ganglionares;2024-02-28;2024-04-18;11:30;Atendido;
+;11:30;REYNOSO, Marcelo Adrian;Equipo 2;3;-;CASA - Caja de Abogados;Tratamiento;Tridimensional Conformado - pelvis;2024-03-05;2024-04-17;11:45;Atendido;
+;11:45;PEREIRA, Elsa Carmen;Equipo 2;3;-;Circulo Medico Lomas de Zamora;Tratamiento;Tridimensional Conformado - pelvis;2024-02-28;2024-04-09;12:00;Atendido;
+;12:00;VACCAREZZA, Carlota Maria;Equipo 2;2;-;CASA - Caja de Abogados;Tratamiento;Tridimensional Conformado - pared abdominal derecha;2024-03-19;2024-04-24;12:15;Dar Presente
+Suspender;
+;12:00;MONTELLO, Luis;Equipo 2;2;-;OSDE;Tratamiento;Tridimensional Conformado - SNC;2024-03-05;2024-03-27;12:15;Dar Presente
+Suspender;
+;12:15;ALONSO, Maria Alejandra;Equipo 2
+PRÓXIMO TURNO:
+8 DÍAS;2;-;OSDE;Tratamiento;Tridimensional Conformado - vol mamario der;2024-03-12;2024-04-03;12:30;Atendido;
+;12:30;PARIS, Viviana Elizabeth;Equipo 2;2;-;OSDE;Tratamiento;Tridimensional Conformado - VOL MAMARIO IZQ;2024-03-27;2024-04-17;12:45;Atendido;
+;12:45;ARRIOLA, Elsa Noemi;Equipo 2;2;-;IOMA;Tratamiento;Tridimensional Conformado - lecho AHT + areas ganglionares;2024-03-27;2024-05-02;13:00;Ingresado;
+;13:00;GIACOSA, Irma Eugenia;Equipo 2;2;-;Plan de Salud;Tratamiento;Tridimensional Conformado - Volumen mamario derecho;2024-03-27;2024-04-16;13:15;Se retiró
+Suspender;
+;13:15;TARGA, Martin Marcelo;Equipo 2;1;-;OSUTHGRA;Tratamiento;Tridimensional Conformado - Holocraneo;2024-03-26;2024-04-10;13:30;Se retiró
+Suspender;
+;13:30;ZIMMERMANN, Adela Magdalena;Equipo 2;2;-;OSDE;Tratamiento;Tridimensional Conformado - Plasmocitoma pelvico;2024-03-27;2024-04-04;13:45;Atendido;
+;13:45;ESCOBAR, Walter Maximilano;Equipo 2;1;-;OSECAC INTERIOR;Tratamiento;Tridimensional Conformado - Region atlanto-occipital;2024-03-26;2024-04-10;14:00;Dar Presente
+Suspender;
+;14:00;SOTO, Romina Liliana;Equipo 2;1;-;Farmacia - OSPF;Tratamiento;Tridimensional Conformado - Holocraneo;2024-03-26;2024-04-10;14:15;Dar Presente
+Suspender;
+;14:30;DI DIEGO, Hebe Catalina;Equipo 2
+PRÓXIMO TURNO:
+7 DÍAS;1;-;Plan de Salud;Tratamiento;Intensidad Modulada - lesion cuero cabelludo;2024-03-26;2024-04-24;14:40;Dar Presente
+Suspender;
+;14:40;OUTEDA, Maria Rosa;Equipo 2;2;-;IOMA;Tratamiento;Tridimensional Conformado - lesion hilio + mediastino comprometido;2024-03-20;2024-04-19;14:50;Dar Presente
+Suspender;
+;14:50;FERNANDEZ PALAMARCHUK, Natalia Fabiana;Equipo 2;1;-;MEDICUS;Tratamiento;Tridimensional Conformado - SNC;2024-03-21;2024-04-17;15:00;Dar Presente
+Suspender;
+;15:00;PIEDRABUENA, Maria Silvia;Equipo 2;2;-;UNION PERSONAL;Tratamiento;Tridimensional Conformado - mama izquierda;2024-03-21;2024-04-04;15:15;Dar Presente
+Suspender;
+;15:15;DE CARLO, Estela Maris;Equipo 2;3;-;Policia Federal;Tratamiento;Tridimensional Conformado - mama derecha;2024-03-21;2024-04-12;15:30;Dar Presente
+Suspender;
+️;15:30;PIERUCCI, Mariano;Equipo 2
+PRÓXIMO TURNO:
+9 DÍAS;3;-;Plan de Salud;Tratamiento;Tridimensional Conformado - sacroiliaca izquierda;2024-03-21;2024-04-03;15:45;Dar Presente
+Suspender;
+;15:45;ROMANO, Maria Paola;Equipo 2;2;-;UNION PERSONAL;Tratamiento;Tridimensional Conformado - Volumen mamario izquierdo + Boost;2024-03-27;2024-04-18;16:00;Dar Presente
+Suspender;
+️;16:15;BARROS GARCIA, Jose;Equipo 2
+PRÓXIMO TURNO:
+7 DÍAS;1;-;Plan de Salud;Tratamiento;Tridimensional Conformado - 1/3 proximal de femur derecho;2024-03-20;2024-04-04;16:30;Dar Presente
+Suspender;
+;16:30;OLIVAREZ ARENAS, Martha;Equipo 2
+PRÓXIMO TURNO:
+1 DÍA;3;-;Pami Capital Federal - UGL VI;Tratamiento;Tridimensional Conformado - pelvis;2024-02-27;2024-03-27;16:40;Dar Presente
+Suspender;
+;16:40;MARTINEZ, Maria Cristina;Equipo 2;1;-;PACIENTES PRIVADOS;Tratamiento;Tridimensional Conformado - Pelvis y lecho de AHT;2024-02-27;2024-04-04;16:50;Dar Presente
+Suspender;
+;16:50;VILLARREAL, Mirta Noemi;Equipo 2;2;-;UNION PERSONAL;Tratamiento;Tridimensional Conformado - Volumen mamario izquierdo;2024-03-20;2024-04-12;17:00;Dar Presente
+Suspender;
+;17:00;RIZZO, Marcela Claudia;Equipo 2;2;-;MEDICUS;Tratamiento;Tridimensional Conformado - Lecho de AHT + areas ganglionares;2024-03-27;2024-04-12;17:15;Dar Presente
+Suspender;
+;17:30;MANSILLA, Mariana Lorena;Equipo 2;2;-;UNION PERSONAL;Tratamiento;Tridimensional Conformado - Masa pelviana + ganglios pelvis.;2024-03-05;2024-04-12;17:45;Dar Presente
+Suspender;
+;17:45;CAMARA, Diana Albina;Equipo 2;1;-;Pami Capital Federal - UGL VI;Tratamiento;Tridimensional Conformado - Holocraneo;2024-03-27;2024-04-08;18:00;Dar Presente
+Suspender;
+;06:45;TOLOSA SANTA CRUZ, Stella Maris;Equipo 2;-;-;CASA - Caja de Abogados;Tratamiento;Tridimensional Conformado - Lecho de mastectomia izquierda;2024-03-26;2024-04-17;07:00;;
+;07:00;LA CAVA, Elvira Yolanda;Equipo 2;2;-;OMINT;Tratamiento;Tridimensional Conformado - Volumen mamario izquierdo;2024-03-21;2024-04-12;07:10;;
+;07:10;PUCCIO, Marta Lidia;Equipo 2;2;-;Galeno (Oro, Plata);Tratamiento;Tridimensional Conformado - Volumen mamario izquierdo+ boost;2024-03-19;2024-04-10;07:20;;
+;07:20;GONZALEZ, Roberto Oscar;Equipo 2;2;-;Circulo Medico Lomas de Zamora;Tratamiento;Intensidad Modulada - prostata + vesiculas;2024-03-20;2024-05-09;07:30;;
+;07:30;BARROS GARCIA, Jose;Equipo 2;1;-;Plan de Salud;Tratamiento;Tridimensional Conformado - 1/3 proximal de femur derecho;2024-03-25;2024-04-04;07:45;;
+;09:00;PITTAMEGLIO, Maria Laura;Equipo 2;2;-;OSDE;Tratamiento;Tridimensional Conformado - mama derecha;2024-03-20;2024-04-05;09:15;;
+;09:15;SANCHEZ BALCARCEL, Graciela Noemi;Equipo 2
+PRÓXIMO TURNO:
+7 DÍAS;1;-;OSDE;Tratamiento;Tridimensional Conformado - mama izquierda;2024-03-12;2024-04-03;09:30;;
+;09:30;GIAMPAOLO, Beatriz Nelida;Equipo 2;2;-;UNION PERSONAL;Tratamiento;Tridimensional Conformado - Lecho de AHT + areas ganglionares;2024-03-04;2024-04-08;09:40;;
+;09:40;OLIVERA, Angelica Mercedes;Equipo 2;2;-;OSDE;Tratamiento;Tridimensional Conformado - lecho AHT + areas ganglionares;2024-03-20;2024-04-25;09:50;;
+;09:50;BIRRA, Mario;Equipo 2;3;-;IOMA;Tratamiento;Tridimensional Conformado - axila izquierda;2024-02-28;2024-04-12;10:00;;
+;10:00;MARTINEZ, Susana Nelida;Equipo 2;2;-;SMATA;Tratamiento;Tridimensional Conformado - Mama izquierda;2024-03-14;2024-04-05;10:15;;
+;10:15;LA CAVA, Elvira Yolanda;Equipo 2;2;-;OMINT;Tratamiento;Tridimensional Conformado - Volumen mamario izquierdo;2024-03-25;2024-04-12;10:30;;
+;10:30;MUSSANO, Gilda Nora;Equipo 2;3;-;Plan de Salud;Tratamiento;Tridimensional Conformado - mama izquierda;2024-03-13;2024-04-04;10:45;;
+;10:45;UBEDA, Eliana Jaquelina;Equipo 2;1;-;OSPM Maestranza;Tratamiento;Tridimensional Conformado - PELVIS;2024-03-14;2024-04-19;11:00;;
+;11:00;PAZ, Beatriz Isabel;Equipo 2
+PRÓXIMO TURNO:
+7 DÍAS;3;-;Pami Capital Federal - UGL VI;Tratamiento;Tridimensional Conformado - mama derecha;2024-03-27;2024-04-18;11:15;;
+;11:15;BOBE BORRELLI, Margarita Graciela;Equipo 2;1;-;Pami Capital Federal - UGL VI;Tratamiento;Tridimensional Conformado - Utero + Areas ganglionares;2024-02-28;2024-04-18;11:30;;
+;11:30;REYNOSO, Marcelo Adrian;Equipo 2;3;-;CASA - Caja de Abogados;Tratamiento;Tridimensional Conformado - pelvis;2024-03-05;2024-04-17;11:45;;
+;11:45;PEREIRA, Elsa Carmen;Equipo 2;3;-;Circulo Medico Lomas de Zamora;Tratamiento;Tridimensional Conformado - pelvis;2024-02-28;2024-04-09;12:00;;
+;12:00;VACCAREZZA, Carlota Maria;Equipo 2;2;-;CASA - Caja de Abogados;Tratamiento;Tridimensional Conformado - pared abdominal derecha;2024-03-19;2024-04-24;12:15;;
+;12:00;MONTELLO, Luis;Equipo 2;2;-;OSDE;Tratamiento;Tridimensional Conformado - SNC;2024-03-05;2024-03-27;12:15;;
+;12:15;ALONSO, Maria Alejandra;Equipo 2
+PRÓXIMO TURNO:
+7 DÍAS;2;-;OSDE;Tratamiento;Tridimensional Conformado - vol mamario der;2024-03-12;2024-04-03;12:30;;
+;12:30;PARIS, Viviana Elizabeth;Equipo 2;2;-;OSDE;Tratamiento;Tridimensional Conformado - VOL MAMARIO IZQ;2024-03-27;2024-04-17;12:45;;
+;12:45;ARRIOLA, Elsa Noemi;Equipo 2;2;-;IOMA;Tratamiento;Tridimensional Conformado - lecho AHT + areas ganglionares;2024-03-27;2024-05-02;13:00;;
+;13:00;GIACOSA, Irma Eugenia;Equipo 2;2;-;Plan de Salud;Tratamiento;Tridimensional Conformado - Volumen mamario derecho;2024-03-27;2024-04-16;13:15;;
+;13:15;TARGA, Martin Marcelo;Equipo 2;1;-;OSUTHGRA;Tratamiento;Tridimensional Conformado - Holocraneo;2024-03-26;2024-04-10;13:30;;
+;13:30;ZIMMERMANN, Adela Magdalena;Equipo 2;2;-;OSDE;Tratamiento;Tridimensional Conformado - Plasmocitoma pelvico;2024-03-27;2024-04-04;13:45;;
+;13:45;ESCOBAR, Walter Maximilano;Equipo 2;1;-;OSECAC INTERIOR;Tratamiento;Tridimensional Conformado - Region atlanto-occipital;2024-03-26;2024-04-10;14:00;;
+;14:00;SOTO, Romina Liliana;Equipo 2;1;-;Farmacia - OSPF;Tratamiento;Tridimensional Conformado - Holocraneo;2024-03-26;2024-04-10;14:15;;
+;14:30;DI DIEGO, Hebe Catalina;Equipo 2
+PRÓXIMO TURNO:
+6 DÍAS;1;-;Plan de Salud;Tratamiento;Intensidad Modulada - lesion cuero cabelludo;2024-03-26;2024-04-24;14:40;;
+;14:40;OUTEDA, Maria Rosa;Equipo 2;2;-;IOMA;Tratamiento;Tridimensional Conformado - lesion hilio + mediastino comprometido;2024-03-20;2024-04-19;14:50;;
+;14:50;FERNANDEZ PALAMARCHUK, Natalia Fabiana;Equipo 2;1;-;MEDICUS;Tratamiento;Tridimensional Conformado - SNC;2024-03-21;2024-04-17;15:00;;
+;15:00;PIEDRABUENA, Maria Silvia;Equipo 2;2;-;UNION PERSONAL;Tratamiento;Tridimensional Conformado - mama izquierda;2024-03-21;2024-04-04;15:15;;
+;15:15;DE CARLO, Estela Maris;Equipo 2;3;-;Policia Federal;Tratamiento;Tridimensional Conformado - mama derecha;2024-03-21;2024-04-12;15:30;;
+️;15:30;PIERUCCI, Mariano;Equipo 2
+PRÓXIMO TURNO:
+8 DÍAS;3;-;Plan de Salud;Tratamiento;Tridimensional Conformado - sacroiliaca izquierda;2024-03-21;2024-04-03;15:45;;
+;15:45;ROMANO, Maria Paola;Equipo 2;2;-;UNION PERSONAL;Tratamiento;Tridimensional Conformado - Volumen mamario izquierdo + Boost;2024-03-27;2024-04-18;16:00;;
+️;16:15;BARROS GARCIA, Jose;Equipo 2
+PRÓXIMO TURNO:
+6 DÍAS;1;-;Plan de Salud;Tratamiento;Tridimensional Conformado - 1/3 proximal de femur derecho;2024-03-20;2024-04-04;16:30;;
+;16:30;OLIVAREZ ARENAS, Martha;Equipo 2;3;-;Pami Capital Federal - UGL VI;Tratamiento;Tridimensional Conformado - pelvis;2024-02-27;2024-03-27;16:40;;
+;16:30;MARTINEZ, Maria Cristina;Equipo 2;1;-;PACIENTES PRIVADOS;Tratamiento;Tridimensional Conformado - Pelvis y lecho de AHT;2024-03-28;2024-04-04;16:45;;
+;16:45;VILLARREAL, Mirta Noemi;Equipo 2;2;-;UNION PERSONAL;Tratamiento;Tridimensional Conformado - Volumen mamario izquierdo;2024-03-28;2024-04-12;17:00;;
+;17:00;RIZZO, Marcela Claudia;Equipo 2;2;-;MEDICUS;Tratamiento;Tridimensional Conformado - Lecho de AHT + areas ganglionares;2024-03-27;2024-04-12;17:15;;
+;17:30;MANSILLA, Mariana Lorena;Equipo 2;2;-;UNION PERSONAL;Tratamiento;Tridimensional Conformado - Masa pelviana + ganglios pelvis.;2024-03-05;2024-04-12;17:45;;
+;17:45;CAMARA, Diana Albina;Equipo 2;1;-;Pami Capital Federal - UGL VI;Tratamiento;Tridimensional Conformado - Holocraneo;2024-03-27;2024-04-08;18:00;;
+;07:00;LA CAVA, Elvira Yolanda;Equipo 2;2;-;OMINT;Tratamiento;Tridimensional Conformado - Volumen mamario izquierdo;2024-03-21;2024-04-12;07:10;;
+;07:10;PUCCIO, Marta Lidia;Equipo 2;2;-;Galeno (Oro, Plata);Tratamiento;Tridimensional Conformado - Volumen mamario izquierdo+ boost;2024-03-19;2024-04-10;07:20;;
+;07:20;GONZALEZ, Roberto Oscar;Equipo 2;2;-;Circulo Medico Lomas de Zamora;Tratamiento;Intensidad Modulada - prostata + vesiculas;2024-03-20;2024-05-09;07:30;;
+;07:30;BARROS GARCIA, Jose;Equipo 2;1;-;Plan de Salud;Tratamiento;Tridimensional Conformado - 1/3 proximal de femur derecho;2024-03-25;2024-04-04;07:45;;
+;09:00;PITTAMEGLIO, Maria Laura;Equipo 2;2;-;OSDE;Tratamiento;Tridimensional Conformado - mama derecha;2024-03-20;2024-04-05;09:15;;
+;09:15;SANCHEZ BALCARCEL, Graciela Noemi;Equipo 2
+PRÓXIMO TURNO:
+6 DÍAS;1;-;OSDE;Tratamiento;Tridimensional Conformado - mama izquierda;2024-03-12;2024-04-03;09:30;;
+;09:30;GIAMPAOLO, Beatriz Nelida;Equipo 2;2;-;UNION PERSONAL;Tratamiento;Tridimensional Conformado - Lecho de AHT + areas ganglionares;2024-03-04;2024-04-08;09:40;;
+;09:40;OLIVERA, Angelica Mercedes;Equipo 2;2;-;OSDE;Tratamiento;Tridimensional Conformado - lecho AHT + areas ganglionares;2024-03-20;2024-04-25;09:50;;
+;09:50;BIRRA, Mario;Equipo 2;3;-;IOMA;Tratamiento;Tridimensional Conformado - axila izquierda;2024-02-28;2024-04-12;10:00;;
+;10:00;MARTINEZ, Susana Nelida;Equipo 2;2;-;SMATA;Tratamiento;Tridimensional Conformado - Mama izquierda;2024-03-14;2024-04-05;10:15;;
+;10:15;LA CAVA, Elvira Yolanda;Equipo 2;2;-;OMINT;Tratamiento;Tridimensional Conformado - Volumen mamario izquierdo;2024-03-25;2024-04-12;10:30;;
+;10:30;MUSSANO, Gilda Nora;Equipo 2;3;-;Plan de Salud;Tratamiento;Tridimensional Conformado - mama izquierda;2024-03-13;2024-04-04;10:45;;
+;10:45;UBEDA, Eliana Jaquelina;Equipo 2;1;-;OSPM Maestranza;Tratamiento;Tridimensional Conformado - PELVIS;2024-03-14;2024-04-19;11:00;;
+;11:00;PAZ, Beatriz Isabel;Equipo 2
+PRÓXIMO TURNO:
+6 DÍAS;3;-;Pami Capital Federal - UGL VI;Tratamiento;Tridimensional Conformado - mama derecha;2024-03-27;2024-04-18;11:15;;
+;11:15;BOBE BORRELLI, Margarita Graciela;Equipo 2;1;-;Pami Capital Federal - UGL VI;Tratamiento;Tridimensional Conformado - Utero + Areas ganglionares;2024-02-28;2024-04-18;11:30;;
+;11:30;REYNOSO, Marcelo Adrian;Equipo 2;3;-;CASA - Caja de Abogados;Tratamiento;Tridimensional Conformado - pelvis;2024-03-05;2024-04-17;11:45;;
+;11:45;PEREIRA, Elsa Carmen;Equipo 2;3;-;Circulo Medico Lomas de Zamora;Tratamiento;Tridimensional Conformado - pelvis;2024-02-28;2024-04-09;12:00;;
+;12:00;VACCAREZZA, Carlota Maria;Equipo 2;2;-;CASA - Caja de Abogados;Tratamiento;Tridimensional Conformado - pared abdominal derecha;2024-03-19;2024-04-24;12:15;;
+;12:00;MONTELLO, Luis;Equipo 2;2;-;OSDE;Tratamiento;Tridimensional Conformado - SNC;2024-03-05;2024-03-27;12:15;;
+;12:15;ALONSO, Maria Alejandra;Equipo 2
+PRÓXIMO TURNO:
+6 DÍAS;2;-;OSDE;Tratamiento;Tridimensional Conformado - vol mamario der;2024-03-12;2024-04-03;12:30;;
+;12:30;PARIS, Viviana Elizabeth;Equipo 2;2;-;OSDE;Tratamiento;Tridimensional Conformado - VOL MAMARIO IZQ;2024-03-27;2024-04-17;12:45;;
+;12:45;ARRIOLA, Elsa Noemi;Equipo 2;2;-;IOMA;Tratamiento;Tridimensional Conformado - lecho AHT + areas ganglionares;2024-03-27;2024-05-02;13:00;;
+;13:00;GIACOSA, Irma Eugenia;Equipo 2;2;-;Plan de Salud;Tratamiento;Tridimensional Conformado - Volumen mamario derecho;2024-03-27;2024-04-16;13:15;;
+;13:15;TARGA, Martin Marcelo;Equipo 2;1;-;OSUTHGRA;Tratamiento;Tridimensional Conformado - Holocraneo;2024-03-26;2024-04-10;13:30;;
+;13:30;ZIMMERMANN, Adela Magdalena;Equipo 2;2;-;OSDE;Tratamiento;Tridimensional Conformado - Plasmocitoma pelvico;2024-03-27;2024-04-04;13:45;;
+;13:45;ESCOBAR, Walter Maximilano;Equipo 2;1;-;OSECAC INTERIOR;Tratamiento;Tridimensional Conformado - Region atlanto-occipital;2024-03-26;2024-04-10;14:00;;
+;14:00;SOTO, Romina Liliana;Equipo 2;1;-;Farmacia - OSPF;Tratamiento;Tridimensional Conformado - Holocraneo;2024-03-26;2024-04-10;14:15;;
+;14:30;DI DIEGO, Hebe Catalina;Equipo 2
+PRÓXIMO TURNO:
+5 DÍAS;1;-;Plan de Salud;Tratamiento;Intensidad Modulada - lesion cuero cabelludo;2024-03-26;2024-04-24;14:40;;
+;14:40;OUTEDA, Maria Rosa;Equipo 2;2;-;IOMA;Tratamiento;Tridimensional Conformado - lesion hilio + mediastino comprometido;2024-03-20;2024-04-19;14:50;;
+;14:50;FERNANDEZ PALAMARCHUK, Natalia Fabiana;Equipo 2;1;-;MEDICUS;Tratamiento;Tridimensional Conformado - SNC;2024-03-21;2024-04-17;15:00;;
+;15:00;PIEDRABUENA, Maria Silvia;Equipo 2;2;-;UNION PERSONAL;Tratamiento;Tridimensional Conformado - mama izquierda;2024-03-21;2024-04-04;15:15;;
+;15:15;DE CARLO, Estela Maris;Equipo 2;3;-;Policia Federal;Tratamiento;Tridimensional Conformado - mama derecha;2024-03-21;2024-04-12;15:30;;
+️;15:30;PIERUCCI, Mariano;Equipo 2
+PRÓXIMO TURNO:
+7 DÍAS;3;-;Plan de Salud;Tratamiento;Tridimensional Conformado - sacroiliaca izquierda;2024-03-21;2024-04-03;15:45;;
+;15:45;ROMANO, Maria Paola;Equipo 2;2;-;UNION PERSONAL;Tratamiento;Tridimensional Conformado - Volumen mamario izquierdo + Boost;2024-03-27;2024-04-18;16:00;;
+️;16:15;BARROS GARCIA, Jose;Equipo 2
+PRÓXIMO TURNO:
+5 DÍAS;1;-;Plan de Salud;Tratamiento;Tridimensional Conformado - 1/3 proximal de femur derecho;2024-03-20;2024-04-04;16:30;;
+;16:30;OLIVAREZ ARENAS, Martha;Equipo 2;3;-;Pami Capital Federal - UGL VI;Tratamiento;Tridimensional Conformado - pelvis;2024-02-27;2024-03-27;16:40;;
+;16:30;MARTINEZ, Maria Cristina;Equipo 2;1;-;PACIENTES PRIVADOS;Tratamiento;Tridimensional Conformado - Pelvis y lecho de AHT;2024-03-28;2024-04-04;16:45;;
+;16:45;VILLARREAL, Mirta Noemi;Equipo 2;2;-;UNION PERSONAL;Tratamiento;Tridimensional Conformado - Volumen mamario izquierdo;2024-03-28;2024-04-12;17:00;;
+;17:00;RIZZO, Marcela Claudia;Equipo 2;2;-;MEDICUS;Tratamiento;Tridimensional Conformado - Lecho de AHT + areas ganglionares;2024-03-27;2024-04-12;17:15;;
+;17:30;MANSILLA, Mariana Lorena;Equipo 2;2;-;UNION PERSONAL;Tratamiento;Tridimensional Conformado - Masa pelviana + ganglios pelvis.;2024-03-05;2024-04-12;17:45;;
+;17:45;CAMARA, Diana Albina;Equipo 2;1;-;Pami Capital Federal - UGL VI;Tratamiento;Tridimensional Conformado - Holocraneo;2024-03-27;2024-04-08;18:00;;
