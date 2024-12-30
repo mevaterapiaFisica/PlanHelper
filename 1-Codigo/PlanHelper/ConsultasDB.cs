@@ -337,11 +337,11 @@ namespace PlanHelper
         #region auxiliares
         public static string Modalidad(AriaQ.PlanSetup plan)
         {
-            if (plan.Radiations.First().ExternalFieldCommon.Technique==null)
+            if (plan.Radiations.First().ExternalFieldCommon.Technique == null)
             {
                 return "Indefinido";
             }
-            if (plan.Radiations.First().ExternalFieldCommon.Technique.TechniqueId == "ARC" && plan.Radiations.First().ExternalFieldCommon.MLCPlans.Count>0 && plan.Radiations.First().ExternalFieldCommon.MLCPlans.First().MLCPlanType == "DynMLCPlan")
+            if (plan.Radiations.First().ExternalFieldCommon.Technique.TechniqueId == "ARC" && plan.Radiations.First().ExternalFieldCommon.MLCPlans.Count > 0 && plan.Radiations.First().ExternalFieldCommon.MLCPlans.First().MLCPlanType == "DynMLCPlan")
             {
                 /*if (plan.Radiations.First().RadiationDevice.Machine.MachineId == "2100CMLC")
                 {
@@ -600,7 +600,7 @@ namespace PlanHelper
         {
             var planes = planesCreadosEntreFechas(aria, fechaInicial, fechaFinal).Where(p => p.Radiations.First().RadiationDevice.Machine.MachineId == equipo.ID && Modalidad(p) == modalidad);
             List<int> dias = new List<int>();
-            List<PlanSetup> planesFiltrados = planes.Where(p => !p.Course.CourseId.Contains("QA") && !p.Course.CourseId.Contains("Fisica") && !p.Course.PlanSetups.Any(pc => pc.PlanSetupId!=p.PlanSetupId && (pc.Status == "TreatApproval" || pc.Status == "PlanApproval"))).ToList();
+            List<PlanSetup> planesFiltrados = planes.Where(p => !p.Course.CourseId.Contains("QA") && !p.Course.CourseId.Contains("Fisica") && !p.Course.PlanSetups.Any(pc => pc.PlanSetupId != p.PlanSetupId && (pc.Status == "TreatApproval" || pc.Status == "PlanApproval"))).ToList();
             var pacientes = planesFiltrados.Select(p => p.Course.Patient.PatientId + "-" + p.Course.Patient.LastName).ToList();
             foreach (PlanSetup plan in planesFiltrados)
             {
@@ -1000,50 +1000,66 @@ namespace PlanHelper
             query = query.Where(p => p.Radiations.Any(r => (r.ExternalFieldCommon.ControlPoints.Any(c => c.GantryRtn != null) && r.ExternalFieldCommon.MLCPlans.FirstOrDefault().IndexParameterType.ToLower().Contains("imrt")) || (r.ExternalFieldCommon.ControlPoints.Count > 30 && r.ExternalFieldCommon.ControlPoints.FirstOrDefault().GantryRtn == null)));
             //query = query.Where(p => p.Radiations.Any(r => r.ExternalFieldCommon.ControlPoints.Count > 30 && r.ExternalFieldCommon.ControlPoints.FirstOrDefault().GantryRtn == null));
             query = query.Where(p => p.CreationDate >= unMes);
-            query = query.Where(p => p.Radiations.FirstOrDefault().RadiationDevice.Machine.MachineId != "PBA_6EX_730");
+            List<string> equiposMevaMedrano = new List<string> { "Equipo1", "Equipo 2 6EX", "Equipo3", "D-2300CD", "CL21EX" };
+            query = query.Where(p => equiposMevaMedrano.Contains(p.Radiations.FirstOrDefault().RadiationDevice.Machine.MachineId));
             query = query.Where(p => p.Status == "PlanApproval" || p.Status == "Unapproved");
             var lista = query.ToList();
+            List<string> equiposQA = new List<string>();
+            equiposQA.Add("E1-2022");
+            equiposQA.Add("4-2022");
+            equiposQA.Add("E3-2023");
+
             foreach (var plan in query)
             {
-                PlanPaciente planPaciente = new PlanPaciente(plan);
-                if (planPaciente.Status == "PlanApproval")
-                {
-                    planPaciente.RequierePlanQA = true;
-                }
-                else
-                {
-                    planPaciente.RequierePlanQA = false;
-                }
-
                 var paciente = plan.Course.Patient;
-                if (plan.RTPlans.First().PlanRelationships1.Count > 0)
+                if (!equiposQA.Contains(paciente.PatientId))
                 {
-                    planPaciente.TienePlanQA = true;
-                    long RTPPlanVerSer = plan.RTPlans.First().PlanRelationships1.FirstOrDefault().RTPlanSer;
-                    var RTPlanVer = aria.RTPlans.FirstOrDefault(p => p.RTPlanSer == RTPPlanVerSer);
-                    if (RTPlanVer.SessionRTPlans.Count > 0)
+                    PlanPaciente planPaciente = new PlanPaciente(plan);
+                    planPaciente.RequierePlanQA = planPaciente.Status == "PlanApproval";
+                    /*if (planPaciente.Status == "PlanApproval")
                     {
-
-                        if (RTPlanVer.PlanSetup.Radiations.FirstOrDefault().SliceRTs.Any(s => s.AcqNote != null))
+                        planPaciente.RequierePlanQA = true;
+                    }
+                    else
+                    {
+                        planPaciente.RequierePlanQA = false;
+                    }*/
+                    if (plan.RTPlans.First().PlanRelationships1.Count > 0)
+                    {
+                        planPaciente.TienePlanQA = true;
+                        long RTPPlanVerSer = plan.RTPlans.First().PlanRelationships1.FirstOrDefault().RTPlanSer;
+                        var RTPlanVer = aria.RTPlans.FirstOrDefault(p => p.RTPlanSer == RTPPlanVerSer);
+                        if (RTPlanVer.SessionRTPlans.Count > 0)
                         {
-                            planPaciente.SeMidioPlanQA = true;
+
+                            var rad = RTPlanVer.PlanSetup.Radiations.FirstOrDefault();
+                            var radS = RTPlanVer.PlanSetup.Radiations.FirstOrDefault().SliceRTs;
+                            if (RTPlanVer.PlanSetup.Radiations.FirstOrDefault().SliceRTs.Any(s => s.SliceRTType == "SlicePI" && s.AcqNote != null))
+                            {
+                                planPaciente.SeMidioPlanQA = true;
+                            }
+                            else
+                            {
+                                planPaciente.SeMidioPlanQA = false;
+                            }
                         }
                         else
                         {
-                            planPaciente.SeMidioPlanQA = false;
+
                         }
                     }
                     else
                     {
-
+                        planPaciente.TienePlanQA = false;
                     }
+                    planPacientesQAPE.Add(planPaciente);
                 }
                 else
                 {
-                    planPaciente.TienePlanQA = false;
+
                 }
-                planPacientesQAPE.Add(planPaciente);
             }
+
             return planPacientesQAPE;
         }
 
@@ -1051,6 +1067,7 @@ namespace PlanHelper
         {
             //Aria aria = new Aria();
             List<PlanPaciente> planesEnArchivo = new List<PlanPaciente>();
+            List<PlanPaciente> ListaNegra = PlanPaciente.ExtraerDeArchivo(Equipo.pathArchivos + "listaNegraQAPE.txt", 0);
             List<PlanPaciente> planesNuevos = busquedaQAPE(aria);
             List<PlanPaciente> planesRemover = new List<PlanPaciente>();
             if (File.Exists(Equipo.pathArchivos + "pacientesQAPE.txt") && new FileInfo(Equipo.pathArchivos + "pacientesQAPE.txt").Length > 0)
@@ -1058,6 +1075,19 @@ namespace PlanHelper
                 planesEnArchivo.AddRange(PlanPaciente.ExtraerDeArchivo(Equipo.pathArchivos + "pacientesQAPE.txt", 1));//.Where(p=>p.NotaQA!=""));
                 foreach (PlanPaciente planEnArchivo in planesEnArchivo)
                 {
+                    /*if (planEnArchivo.Apellido().ToLower().Contains("zomer"))
+                    {
+                        /*var plan = aria.PlanSetups.Where(p => planEnArchivo.PlanSer == p.PlanSetupSer).FirstOrDefault();
+                        var curso = plan.Course.CourseId;
+                        long RTPPlanVerSer = plan.RTPlans.First().PlanRelationships1.FirstOrDefault().RTPlanSer;
+                        var RTPlanVer = aria.RTPlans.FirstOrDefault(p => p.RTPlanSer == RTPPlanVerSer);
+                        if (RTPlanVer.SessionRTPlans.Count > 0)
+                        {
+
+                            var rad = RTPlanVer.PlanSetup.Radiations.FirstOrDefault();
+                            var radS = RTPlanVer.PlanSetup.Radiations.FirstOrDefault().SliceRTs;
+                        }
+                    }*/
                     if (!planEnArchivo.actualizarPlanPacienteQA(planesNuevos, aria))
                     {
                         planesRemover.Add(planEnArchivo);
@@ -1074,6 +1104,11 @@ namespace PlanHelper
                 }
             }
             planesEnArchivo.AddRange(planesNuevos);
+            foreach (PlanPaciente pacListaNegra in ListaNegra)
+            {
+                planesEnArchivo.Remove(pacListaNegra);
+            }
+
             File.WriteAllLines(Equipo.pathArchivos + "pacientesQAPE.txt", planesEnArchivo.Select(p => p.ToString()).ToArray());
             agregarDateTime(Equipo.pathArchivos + "pacientesQAPE.txt");
             List<PlanPaciente> pacientesRequiereQA = planesEnArchivo.Where(p => p.RequierePlanQA).ToList();

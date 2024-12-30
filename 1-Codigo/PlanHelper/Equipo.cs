@@ -537,20 +537,45 @@ namespace PlanHelper
         public static void EscribirOcupacionEquipos2(List<Equipo> equipos)
         {
             List<OcupacionEquipo> ocupaciones = BusquedaSitramed.BuscarOcupacionEquipos(equipos);
-
+            List<OcupacionEquipo> inicios = new List<OcupacionEquipo>();
+            
+            List<DateTime> dosDiasHabiles = new List<DateTime>();
+            dosDiasHabiles.Add(ConsultasDB.AddBusinessDays(DateTime.Today, 1));
+            dosDiasHabiles.Add(ConsultasDB.AddBusinessDays(DateTime.Today, 2));
+            List<string> placas = new List<string>();
             foreach (Equipo equipo in equipos)
             {
-
+                //placas.Add(equipo.Nombre);
+                for (int i = 0; i < 2; i++)
+                {
+                    DateTime proximoDiaHabil = dosDiasHabiles[i];
+                    //placas.Add(proximoDiaHabil.ToString("dd/MM/yyy"));
+                    OcupacionEquipo oep = ocupaciones.First(o => o.Equipo == equipo.Nombre && o.Fecha == proximoDiaHabil);
+                    OcupacionEquipo op = new OcupacionEquipo(equipo.ID, proximoDiaHabil, oep.Turnos.Where(t => !t.Tipo.Contains("Tratamiento")).ToList());
+                    inicios.Add(op);
+                }
                 List<OcupacionEquipo> ocupacionesEquipo = ocupaciones.Where(e => e.Equipo == equipo.Nombre).ToList();
                 var output = ocupacionesEquipo.Select(o => o.Fecha.ToString("dd/MM/yyyy") + ";" + Math.Round(o.TurnosOcupados(equipo), 0).ToString()).ToArray();
                 File.WriteAllLines(pathArchivos + equipo.Nombre + "_agendaocupacion.txt", output);
                 OcupacionEquipo ocupacionEquipoHoy = ocupacionesEquipo.First(o => o.Fecha == DateTime.Today);
                 File.WriteAllLines(pathArchivos + equipo.Nombre + "_ocupacionHoy.txt", ocupacionEquipoHoy.Turnos.Select(t => t.ToString()).ToArray());
             }
-
-
-
+            foreach (DateTime dia in dosDiasHabiles)
+            {
+                placas.Add(dia.ToString("dd/MM/yyy"));
+                foreach(Equipo equipo in equipos)
+                {
+                    OcupacionEquipo ope = inicios.First(o => o.Equipo == equipo.ID && o.Fecha == dia);
+                    if (ope.Turnos.Count>0)
+                    {
+                        placas.Add(equipo.Nombre);
+                        placas.AddRange(ope.Turnos.Select(t => t.ToStringRed()).ToList());
+                    }
+                }
+            }
+            File.WriteAllLines(pathArchivos + "placas.txt", placas.ToArray());
         }
+        
 
 
         public void escribirSeguimiento()

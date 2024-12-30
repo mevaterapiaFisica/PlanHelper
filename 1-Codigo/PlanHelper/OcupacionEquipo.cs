@@ -28,7 +28,7 @@ namespace PlanHelper
             Turnos = new List<TurnoSitra>();
             for (int i=2;i<lineas.Count();i++)
             {
-                Turnos.Add(TurnoSitra.FromString(lineas[3]);
+                Turnos.Add(TurnoSitra.FromString(lineas[3]));
             }
         }
         public double HorasOcupadasTotales()

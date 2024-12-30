@@ -76,8 +76,6 @@ namespace PlanHelper
             driver.FindElement(By.Id("user_password")).SendKeys("123qweQW");
             driver.FindElement(By.CssSelector(".is-flex > .button:nth-child(1)")).Click();
             List<OcupacionEquipo> ocupacionEquipos = new List<OcupacionEquipo>();
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
             foreach (Equipo equipo in equipos)
             {
                 int? maximoDias = 0;
@@ -98,6 +96,46 @@ namespace PlanHelper
             }
             driver.Close();
             driver.Dispose();
+            return ocupacionEquipos;
+        }
+
+        public static List<OcupacionEquipo> TestOcupacionEquipos(List<Equipo> equipos)
+        {
+            var chromeOptions = new ChromeOptions();
+            chromeOptions.PageLoadStrategy = PageLoadStrategy.Eager;
+            chromeOptions.AddArguments("window-size=1920,1080");
+            var driver = new ChromeDriver(chromeOptions);
+            driver.Navigate().GoToUrl("https://mevaterapia.lambdaclass.com/session/new?request_path=%2F");
+            driver.FindElement(By.Id("user_email")).SendKeys("pablo.aberbuj@mevaterapia.com.ar");
+            driver.FindElement(By.Id("user_password")).SendKeys("123qweQW");
+            driver.FindElement(By.CssSelector(".is-flex > .button:nth-child(1)")).Click();
+            List<OcupacionEquipo> ocupacionEquipos = new List<OcupacionEquipo>();
+            //foreach (Equipo equipo in equipos)
+            //{
+                int? maximoDias = 2;
+                int? margen = 0;
+            Equipo equipo = equipos.First(e => e.ID == "Equipo 2 6EX");
+                /*if (equipo.Parametros.OrderBy(p => p.Dias).Last().Dias > maximoDias)
+                {
+                    maximoDias = equipo.Parametros.OrderBy(p => p.Dias).Last().Dias;
+                }
+                if (equipo.Parametros.OrderBy(p => p.Dias).Last().Margen > margen)
+                {
+                    margen = equipo.Parametros.OrderBy(p => p.Dias).Last().Margen;
+                }*/
+                for (int i = 0; i < ((int)maximoDias + (int)margen); i++)
+                {
+                    DateTime dia = ConsultasDB.AddBusinessDays(DateTime.Today, i);
+                    ocupacionEquipos.Add(new OcupacionEquipo(equipo.Nombre, dia, citasDiaEquipo(dia, equipo.Nombre, driver)));
+                }
+            //}
+            driver.Close();
+            driver.Dispose();
+            DateTime proximoDiaHabil = ConsultasDB.AddBusinessDays(DateTime.Today, 1);
+                OcupacionEquipo oep = ocupacionEquipos.First(o => o.Equipo == equipo.Nombre && o.Fecha == proximoDiaHabil);
+                OcupacionEquipo op = new OcupacionEquipo(equipo.Nombre, proximoDiaHabil, oep.Turnos.Where(t => !t.Tipo.Contains("Tratamiento")).ToList());
+
+
             return ocupacionEquipos;
         }
 

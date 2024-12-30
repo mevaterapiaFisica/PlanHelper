@@ -64,7 +64,12 @@ namespace PlanHelper
 
         public override string ToString()
         {
-            return Paciente + "-" + Tipo + "-" + HoraInicio.ToString("HH:mm") + "-" + HoraFin.ToString("HH:mm") + Duracion() + "-minutos";
+            return Paciente + "-" + Tipo + "-" + HoraInicio.ToString("HH:mm") + "-" + HoraFin.ToString("HH:mm") + "-" + Duracion() + "-minutos";
+        }
+
+        public string ToStringRed()
+        {
+            return Paciente + "-" + Tipo + "-" + HoraInicio.ToString("HH:mm");
         }
 
         public static TurnoSitra FromString(string linea)

@@ -15,6 +15,7 @@ namespace PlanHelper
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
+
         static void Main(string[] args)
         {
             //BusquedaSitramed.PruebaChrome();
@@ -39,6 +40,7 @@ namespace PlanHelper
             {
                 //BusquedaSitramed.PruebaChrome();
                 List<Equipo> equipos = Equipo.InicializarEquipos();
+                //BusquedaSitramed.TestOcupacionEquipos(equipos);
                 //Equipo.EscribirOcupacionEquipos2(equipos);*/
                 //Conexion conexion = new Conexion(true,false,false,false,equipos);
                 //conexion.ShowDialog();

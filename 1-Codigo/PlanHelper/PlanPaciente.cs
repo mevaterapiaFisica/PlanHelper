@@ -73,7 +73,7 @@ namespace PlanHelper
             else
             {
                 NumeroFracciones = null;
-            }
+            }          
             if (aux.Count() > 16) //QAPE
             {
                 BeamRecordOverride = Convert.ToBoolean(aux[10]);
@@ -344,7 +344,7 @@ namespace PlanHelper
                 {
                     return true;
                 }
-                else if (planNuevo.Status == "TreatApproval")
+                else if (planNuevo.Status == "TreatApproval" || (DateTime.Today-planNuevo.CreationDate).TotalDays>30)
                 {
                     return false;
                 }

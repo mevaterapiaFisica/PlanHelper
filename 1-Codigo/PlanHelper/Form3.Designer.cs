@@ -1347,12 +1347,13 @@
             // 
             // BT_ActualizarInicios
             // 
-            this.BT_ActualizarInicios.Location = new System.Drawing.Point(437, 336);
+            this.BT_ActualizarInicios.Location = new System.Drawing.Point(760, 353);
             this.BT_ActualizarInicios.Name = "BT_ActualizarInicios";
             this.BT_ActualizarInicios.Size = new System.Drawing.Size(75, 23);
             this.BT_ActualizarInicios.TabIndex = 1;
             this.BT_ActualizarInicios.Text = "Actualizar";
             this.BT_ActualizarInicios.UseVisualStyleBackColor = true;
+            this.BT_ActualizarInicios.Visible = false;
             this.BT_ActualizarInicios.Click += new System.EventHandler(this.BT_ActualizarInicios_Click);
             // 
             // RTB_Inicios
@@ -1360,7 +1361,7 @@
             this.RTB_Inicios.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.RTB_Inicios.Location = new System.Drawing.Point(34, 23);
             this.RTB_Inicios.Name = "RTB_Inicios";
-            this.RTB_Inicios.Size = new System.Drawing.Size(372, 304);
+            this.RTB_Inicios.Size = new System.Drawing.Size(478, 353);
             this.RTB_Inicios.TabIndex = 0;
             this.RTB_Inicios.Text = "";
             // 

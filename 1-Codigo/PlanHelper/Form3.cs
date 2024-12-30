@@ -1137,11 +1137,11 @@ namespace PlanHelper
                 llenarLB_QA();
                 L_QA_UltimaBusquedaPlacasPendientes.Text = "Última búsqueda: " + File.GetLastWriteTime(Directory.GetFiles(Equipo.pathArchivos).Where(s => s.Contains("QA_VMATcorto")).First()).ToString();
             }
-            /*else if (tabControl1.SelectedIndex == 3)
+            else if (tabControl1.SelectedTab.Name == "tab_inicios")
             {
-
+                LlenarInicios();
             }
-            else if (tabControl1.SelectedIndex == 4)
+            /*else if (tabControl1.SelectedIndex == 4)
             {
 
             }*/
@@ -1448,10 +1448,15 @@ namespace PlanHelper
             RTB_Inicios.Clear();
             string[] inicios = File.ReadAllLines(Equipo.pathArchivos + "\\placas.txt");
             RTB_Inicios.SelectionFont = new System.Drawing.Font("Microsoft Sans Serif", 11f, FontStyle.Regular);
-            RTB_Inicios.AppendText(inicios[0] + Environment.NewLine);
+            RTB_Inicios.AppendText(inicios[0]);
             for (int i = 1; i < inicios.Length; i++)
             {
-                if (inicios[i].Contains("Equipo"))
+                if (inicios[i].Contains("/202"))
+                {
+                    RTB_Inicios.SelectionFont = new System.Drawing.Font("Microsoft Sans Serif", 11f, FontStyle.Regular);
+                    RTB_Inicios.AppendText(Environment.NewLine + Environment.NewLine + inicios[i]);
+                }
+                else if (inicios[i].Contains("Equipo") && !inicios[i].Contains("Actividad"))
                 {
                     RTB_Inicios.SelectionFont = new System.Drawing.Font("Microsoft Sans Serif", 10f, FontStyle.Bold);
                     RTB_Inicios.AppendText(Environment.NewLine + Environment.NewLine + inicios[i]);
@@ -1501,14 +1506,12 @@ namespace PlanHelper
 
         private void BorrarTabsNoUsadas()
         {
-            tabControl1.TabPages.Remove(tab_inicios);
+            //tabControl1.TabPages.Remove(tab_inicios);
             tabControl1.TabPages.Remove(tab_QA);
             tabControl1.TabPages.Remove(tab_Parametros);
             tabControl1.TabPages.Remove(tab_ExacTrac);
 
         }
-
-
     }
 
 }

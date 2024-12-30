@@ -366,14 +366,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PlanHelper.exe" size="248320">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PlanHelper.exe" size="251904">
       <assemblyIdentity name="PlanHelper" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>jWMoydQRydYWMFY/rIyYArtH5FmmQbEdSUXwiYHhbuM=</dsig:DigestValue>
+        <dsig:DigestValue>IIAT9MGjNKsu5Yo9weTJ//YUxr/a9Ho/UusCFsMcglw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
