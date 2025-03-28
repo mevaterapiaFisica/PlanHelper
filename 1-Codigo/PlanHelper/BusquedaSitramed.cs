@@ -154,7 +154,7 @@ namespace PlanHelper
 
             SeleccionarFecha(dia, driver, wait, true);
             System.Threading.Thread.Sleep(500);
-
+            driver.FindElement(By.CssSelector(".mt-6")).Click();
             CHequearFecha(driver, dia, wait);
             wait.Until(ExpectedConditions.ElementIsVisible(By.Id("machineDrag")));
             var elemento = driver.FindElement(By.Id("machineDrag"));

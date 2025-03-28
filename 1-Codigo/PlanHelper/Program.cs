@@ -38,8 +38,11 @@ namespace PlanHelper
             }
             else
             {
+                
+
                 //BusquedaSitramed.PruebaChrome();
                 List<Equipo> equipos = Equipo.InicializarEquipos();
+                BusquedaSitramed.BuscarOcupacionEquipos(equipos);
                 //BusquedaSitramed.TestOcupacionEquipos(equipos);
                 //Equipo.EscribirOcupacionEquipos2(equipos);*/
                 //Conexion conexion = new Conexion(true,false,false,false,equipos);
